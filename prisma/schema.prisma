@@ -1,0 +1,443 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  user
+  creator
+  business
+  admin
+}
+
+enum GeneralStatus {
+  pending
+  approved
+  rejected
+  active
+  inactive
+  hidden
+  blocked
+  merged
+  deleted
+}
+
+enum PostType {
+  review
+  promotion
+  event
+  album
+}
+
+enum MediaType {
+  image
+  video
+}
+
+enum TagType {
+  hashtag
+  system
+  category
+}
+
+enum TargetType {
+  post
+  comment
+  review
+  place
+  user
+  tag
+}
+
+model User {
+  id            Int            @id @default(autoincrement())
+  username      String         @unique @db.VarChar(50)
+  fullName      String         @map("full_name") @db.VarChar(120)
+  email         String         @unique @db.VarChar(191)
+  passwordHash  String         @map("password_hash") @db.VarChar(255)
+  avatarUrl     String?        @map("avatar_url") @db.Text
+  bio           String?        @db.Text
+  role          UserRole       @default(user)
+  status        GeneralStatus  @default(active)
+  createdAt     DateTime       @default(now()) @map("created_at")
+  updatedAt     DateTime       @updatedAt @map("updated_at")
+
+  creatorProfile   CreatorProfile?
+  businessProfile  BusinessProfile?
+  roleRequests     RoleRequest[]
+  posts            Post[]          @relation("PostAuthor")
+  reviews          Review[]
+  comments         Comment[]
+  likes            Like[]
+  favorites        Favorite[]
+  followers        Follow[]        @relation("Followers")
+  following        Follow[]        @relation("Following")
+  reports          Report[]        @relation("Reporter")
+  notifications    Notification[]
+  tagPreferences   UserTagPreference[]
+  auditLogs        AuditLog[]
+  createdPlaces    Place[]         @relation("CreatedPlaces")
+
+  @@map("users")
+}
+
+model CreatorProfile {
+  id          Int      @id @default(autoincrement())
+  userId      Int      @unique @map("user_id")
+  displayName String?  @map("display_name") @db.VarChar(120)
+  bio         String?  @db.Text
+  socialLinks Json?    @map("social_links")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("creator_profiles")
+}
+
+model BusinessProfile {
+  id           Int           @id @default(autoincrement())
+  userId        Int          @unique @map("user_id")
+  businessName  String       @map("business_name") @db.VarChar(191)
+  phone         String?      @db.VarChar(30)
+  address       String?      @db.Text
+  status        GeneralStatus @default(pending)
+  verifiedAt    DateTime?    @map("verified_at")
+  createdAt     DateTime     @default(now()) @map("created_at")
+  updatedAt     DateTime     @updatedAt @map("updated_at")
+
+  user       User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  places     Place[]
+  promotions Promotion[]
+
+  @@map("business_profiles")
+}
+
+model RoleRequest {
+  id          Int          @id @default(autoincrement())
+  userId       Int         @map("user_id")
+  requestType  UserRole    @map("request_type")
+  status       GeneralStatus @default(pending)
+  reason       String?     @db.Text
+  evidenceUrl  String?     @map("evidence_url") @db.Text
+  adminNote    String?     @map("admin_note") @db.Text
+  reviewedBy   Int?        @map("reviewed_by")
+  reviewedAt   DateTime?   @map("reviewed_at")
+  createdAt    DateTime    @default(now()) @map("created_at")
+  updatedAt    DateTime    @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([requestType, status])
+  @@map("role_requests")
+}
+
+model Category {
+  id        Int           @id @default(autoincrement())
+  name      String        @unique @db.VarChar(120)
+  slug      String        @unique @db.VarChar(150)
+  icon      String?       @db.VarChar(255)
+  parentId  Int?          @map("parent_id")
+  status    GeneralStatus @default(active)
+  createdAt DateTime      @default(now()) @map("created_at")
+  updatedAt DateTime      @updatedAt @map("updated_at")
+
+  places Place[]
+
+  @@map("categories")
+}
+
+model Place {
+  id                 Int             @id @default(autoincrement())
+  name               String          @db.VarChar(191)
+  slug               String          @unique @db.VarChar(191)
+  categoryId         Int?            @map("category_id")
+  address            String?         @db.Text
+  ward               String?         @db.VarChar(120)
+  district           String?         @db.VarChar(120)
+  city               String?         @db.VarChar(120)
+  lat                Decimal?        @db.Decimal(10, 7)
+  lng                Decimal?        @db.Decimal(10, 7)
+  priceMin           Int?            @map("price_min")
+  priceMax           Int?            @map("price_max")
+  openingHours       Json?           @map("opening_hours")
+  ratingAvg          Decimal         @default(0) @map("rating_avg") @db.Decimal(3, 2)
+  ratingCount        Int             @default(0) @map("rating_count")
+  status             GeneralStatus   @default(pending)
+  createdByUserId    Int?            @map("created_by_user_id")
+  businessProfileId  Int?            @map("business_profile_id")
+  createdAt          DateTime        @default(now()) @map("created_at")
+  updatedAt          DateTime        @updatedAt @map("updated_at")
+
+  category       Category?       @relation(fields: [categoryId], references: [id])
+  creator        User?           @relation("CreatedPlaces", fields: [createdByUserId], references: [id])
+  business       BusinessProfile? @relation(fields: [businessProfileId], references: [id])
+  media          PlaceMedia[]
+  posts          Post[]
+  reviews        Review[]
+  favorites      Favorite[]
+
+  @@index([categoryId, city, district])
+  @@index([lat, lng])
+  @@index([status])
+  @@map("places")
+}
+
+model PlaceMedia {
+  id            Int       @id @default(autoincrement())
+  placeId       Int       @map("place_id")
+  mediaType     MediaType @map("media_type")
+  mediaUrl      String    @map("media_url") @db.Text
+  thumbnailUrl  String?   @map("thumbnail_url") @db.Text
+  sortOrder     Int       @default(0) @map("sort_order")
+  createdAt     DateTime  @default(now()) @map("created_at")
+
+  place Place @relation(fields: [placeId], references: [id], onDelete: Cascade)
+
+  @@index([placeId])
+  @@map("place_media")
+}
+
+model Post {
+  id            Int           @id @default(autoincrement())
+  authorId      Int           @map("author_id")
+  placeId       Int?          @map("place_id")
+  postType      PostType      @map("post_type")
+  caption       String?       @db.Text
+  visibility    String        @default("public") @db.VarChar(20)
+  status        GeneralStatus @default(approved)
+  viewCount     Int           @default(0) @map("view_count")
+  likeCount     Int           @default(0) @map("like_count")
+  commentCount  Int           @default(0) @map("comment_count")
+  shareCount    Int           @default(0) @map("share_count")
+  saveCount     Int           @default(0) @map("save_count")
+  createdAt     DateTime      @default(now()) @map("created_at")
+  updatedAt     DateTime      @updatedAt @map("updated_at")
+
+  author      User       @relation("PostAuthor", fields: [authorId], references: [id])
+  place       Place?     @relation(fields: [placeId], references: [id])
+  media       PostMedia[]
+  comments    Comment[]
+  tags        PostTag[]
+  promotion   Promotion?
+
+  @@index([status, createdAt])
+  @@index([postType])
+  @@index([authorId])
+  @@index([placeId])
+  @@map("posts")
+}
+
+model PostMedia {
+  id               Int       @id @default(autoincrement())
+  postId            Int      @map("post_id")
+  mediaType         MediaType @map("media_type")
+  mediaUrl          String   @map("media_url") @db.Text
+  thumbnailUrl      String?  @map("thumbnail_url") @db.Text
+  durationSeconds   Int?     @map("duration_seconds")
+  sortOrder         Int      @default(0) @map("sort_order")
+  createdAt         DateTime @default(now()) @map("created_at")
+
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@index([postId])
+  @@map("post_media")
+}
+
+model Promotion {
+  id                Int           @id @default(autoincrement())
+  postId            Int           @unique @map("post_id")
+  businessProfileId Int           @map("business_profile_id")
+  title             String        @db.VarChar(191)
+  description       String?       @db.Text
+  discountText      String?       @map("discount_text") @db.VarChar(191)
+  conditions        String?       @db.Text
+  validFrom         DateTime?     @map("valid_from")
+  validTo           DateTime?     @map("valid_to")
+  status            GeneralStatus @default(active)
+  createdAt         DateTime      @default(now()) @map("created_at")
+  updatedAt         DateTime      @updatedAt @map("updated_at")
+
+  post     Post            @relation(fields: [postId], references: [id], onDelete: Cascade)
+  business BusinessProfile @relation(fields: [businessProfileId], references: [id])
+
+  @@index([businessProfileId, status])
+  @@map("promotions")
+}
+
+model Review {
+  id         Int           @id @default(autoincrement())
+  userId     Int           @map("user_id")
+  placeId    Int           @map("place_id")
+  rating     Int
+  content    String?       @db.Text
+  status     GeneralStatus @default(approved)
+  createdAt  DateTime      @default(now()) @map("created_at")
+  updatedAt  DateTime      @updatedAt @map("updated_at")
+
+  user    User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  place   Place @relation(fields: [placeId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, placeId])
+  @@index([placeId, status])
+  @@map("reviews")
+}
+
+model Comment {
+  id         Int           @id @default(autoincrement())
+  postId     Int           @map("post_id")
+  userId     Int           @map("user_id")
+  parentId   Int?          @map("parent_id")
+  content    String        @db.Text
+  status     GeneralStatus @default(approved)
+  createdAt  DateTime      @default(now()) @map("created_at")
+  updatedAt  DateTime      @updatedAt @map("updated_at")
+
+  post       Post       @relation(fields: [postId], references: [id], onDelete: Cascade)
+  user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  parent     Comment?   @relation("CommentReplies", fields: [parentId], references: [id])
+  replies    Comment[]  @relation("CommentReplies")
+
+  @@index([postId, createdAt])
+  @@map("comments")
+}
+
+model Like {
+  id          Int        @id @default(autoincrement())
+  userId      Int        @map("user_id")
+  targetType  TargetType @map("target_type")
+  targetId    Int        @map("target_id")
+  createdAt   DateTime   @default(now()) @map("created_at")
+
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, targetType, targetId])
+  @@map("likes")
+}
+
+model Favorite {
+  id         Int      @id @default(autoincrement())
+  userId     Int      @map("user_id")
+  placeId    Int      @map("place_id")
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  user   User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  place  Place @relation(fields: [placeId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, placeId])
+  @@map("favorites")
+}
+
+model Follow {
+  id              Int      @id @default(autoincrement())
+  followerId      Int      @map("follower_id")
+  followingUserId Int      @map("following_user_id")
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  follower      User @relation("Followers", fields: [followerId], references: [id], onDelete: Cascade)
+  followingUser User @relation("Following", fields: [followingUserId], references: [id], onDelete: Cascade)
+
+  @@unique([followerId, followingUserId])
+  @@map("follows")
+}
+
+model Report {
+  id          Int           @id @default(autoincrement())
+  reporterId  Int           @map("reporter_id")
+  targetType  TargetType    @map("target_type")
+  targetId    Int           @map("target_id")
+  reason      String        @db.Text
+  status      GeneralStatus @default(pending)
+  adminNote   String?       @map("admin_note") @db.Text
+  resolvedBy  Int?          @map("resolved_by")
+  resolvedAt  DateTime?     @map("resolved_at")
+  createdAt   DateTime      @default(now()) @map("created_at")
+  updatedAt   DateTime      @updatedAt @map("updated_at")
+
+  reporter User    @relation("Reporter", fields: [reporterId], references: [id], onDelete: Cascade)
+
+  @@index([targetType, targetId])
+  @@index([status])
+  @@map("reports")
+}
+
+model Notification {
+  id         Int      @id @default(autoincrement())
+  userId     Int      @map("user_id")
+  type       String   @db.VarChar(60)
+  title      String   @db.VarChar(191)
+  body       String?  @db.Text
+  dataJson   Json?    @map("data_json")
+  isRead     Boolean  @default(false) @map("is_read")
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, isRead, createdAt])
+  @@map("notifications")
+}
+
+model Tag {
+  id             Int           @id @default(autoincrement())
+  name           String        @unique @db.VarChar(120)
+  slug           String        @unique @db.VarChar(150)
+  type           TagType       @default(hashtag)
+  usageCount     Int           @default(0) @map("usage_count")
+  status         GeneralStatus @default(active)
+  mergedToTagId  Int?          @map("merged_to_tag_id")
+  createdAt      DateTime      @default(now()) @map("created_at")
+  updatedAt      DateTime      @updatedAt @map("updated_at")
+
+  posts          PostTag[]
+  userPreference UserTagPreference[]
+
+  @@index([status, usageCount])
+  @@map("tags")
+}
+
+model PostTag {
+  postId     Int      @map("post_id")
+  tagId      Int      @map("tag_id")
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+  tag  Tag  @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([postId, tagId])
+  @@index([tagId])
+  @@map("post_tags")
+}
+
+model UserTagPreference {
+  id                Int      @id @default(autoincrement())
+  userId            Int      @map("user_id")
+  tagId             Int      @map("tag_id")
+  score             Decimal  @default(0) @db.Decimal(10, 2)
+  lastInteractedAt  DateTime? @map("last_interacted_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tag  Tag  @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, tagId])
+  @@map("user_tag_preferences")
+}
+
+model AuditLog {
+  id          Int      @id @default(autoincrement())
+  adminId     Int      @map("admin_id")
+  action      String   @db.VarChar(120)
+  targetType  String   @map("target_type") @db.VarChar(60)
+  targetId    Int      @map("target_id")
+  beforeJson  Json?    @map("before_json")
+  afterJson   Json?    @map("after_json")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  admin User @relation(fields: [adminId], references: [id], onDelete: Cascade)
+
+  @@index([adminId, createdAt])
+  @@map("audit_logs")
+}
