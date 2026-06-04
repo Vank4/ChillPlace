@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(225, 191, 181, 0.3);
+        }
+        .step-transition {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .role-card-active {
+            border-color: #ab3500 !important;
+            background-color: rgba(255, 107, 53, 0.05) !important;
+            transform: translateY(-4px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#eff1f3",
+                        "on-secondary-container": "#2a5782",
+                        "primary-fixed": "#ffdbd0",
+                        "on-secondary-fixed": "#001d35",
+                        "secondary-container": "#a2cdff",
+                        "primary-fixed-dim": "#ffb59d",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#184974",
+                        "outline": "#8d7168",
+                        "surface": "#f7f9fb",
+                        "inverse-surface": "#2d3133",
+                        "tertiary-fixed-dim": "#4fdbc8",
+                        "error": "#ba1a1a",
+                        "primary-container": "#ff6b35",
+                        "on-surface-variant": "#594139",
+                        "tertiary": "#006b5f",
+                        "on-tertiary-container": "#003832",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#e6e8ea",
+                        "on-primary-fixed": "#390c00",
+                        "on-primary": "#ffffff",
+                        "background": "#f7f9fb",
+                        "tertiary-fixed": "#71f8e4",
+                        "on-primary-container": "#5f1900",
+                        "inverse-primary": "#ffb59d",
+                        "surface-container": "#eceef0",
+                        "secondary-fixed-dim": "#a0cafc",
+                        "on-primary-fixed-variant": "#832600",
+                        "secondary-fixed": "#d1e4ff",
+                        "surface-tint": "#ab3500",
+                        "on-error-container": "#93000a",
+                        "primary": "#ab3500",
+                        "secondary": "#35618d",
+                        "surface-container-low": "#f2f4f6",
+                        "outline-variant": "#e1bfb5",
+                        "surface-bright": "#f7f9fb",
+                        "tertiary-container": "#00ac9b",
+                        "on-secondary": "#ffffff",
+                        "surface-dim": "#d8dadc",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-tertiary-fixed-variant": "#005048",
+                        "on-tertiary-fixed": "#00201c",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-variant": "#e0e3e5",
+                        "on-background": "#191c1e",
+                        "on-surface": "#191c1e",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "md": "16px",
+                        "margin-desktop": "32px",
+                        "lg": "24px",
+                        "xxl": "48px",
+                        "xs": "4px",
+                        "margin-mobile": "16px",
+                        "xl": "32px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md shadow-sm">
+<div class="flex items-center justify-between px-md h-16 w-full max-w-5xl mx-auto">
+<button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity active:scale-95 duration-200">menu</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile tracking-tighter text-primary">Nâng cấp tài khoản</h1>
+<button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity active:scale-95 duration-200">notifications</button>
+</div>
+</header>
+<main class="pt-24 px-md max-w-xl mx-auto">
+<!-- Progress Stepper -->
+<div class="flex items-center justify-between mb-lg px-2">
+<div class="flex flex-col items-center">
+<div class="w-10 h-10 rounded-full flex items-center justify-center bg-primary-container text-on-primary font-label-md text-label-md transition-colors duration-300" id="step-1-circle">1</div>
+<span class="font-label-sm text-label-sm mt-2 text-primary">Vai trò</span>
+</div>
+<div class="flex-grow h-[2px] mx-4 bg-outline-variant/30 mb-6">
+<div class="h-full bg-primary-container transition-all duration-500 w-0" id="progress-bar"></div>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container text-on-surface-variant font-label-md text-label-md transition-colors duration-300" id="step-2-circle">2</div>
+<span class="font-label-sm text-label-sm mt-2 text-on-surface-variant">Thông tin</span>
+</div>
+</div>
+<!-- Step 1: Role Selection -->
+<div class="step-transition opacity-100 block" id="step-1">
+<div class="mb-lg">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-2">Chọn vai trò</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Trở thành một phần của cộng đồng ChillPlace để phát triển sức ảnh hưởng.</p>
+</div>
+<div class="grid grid-cols-1 gap-md">
+<!-- Creator Card -->
+<div class="glass-card p-lg rounded-xl cursor-pointer border-2 border-transparent hover:border-outline-variant transition-all duration-300 group" id="role-creator" onclick="selectRole('creator')">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded-lg bg-primary-container/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl">auto_awesome</span>
+</div>
+<div class="h-6 w-6 rounded-full border-2 border-outline-variant flex items-center justify-center group-[.role-card-active]:border-primary">
+<div class="h-3 w-3 rounded-full bg-primary opacity-0 group-[.role-card-active]:opacity-100 transition-opacity"></div>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Nhà Sáng Tạo</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg">Dành cho những người muốn chia sẻ khoảnh khắc và kết nối với cộng đồng.</p>
+<ul class="space-y-3">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-md text-label-md">Đăng tin không giới hạn</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-md text-label-md">Gắn thẻ địa điểm yêu thích</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-md text-label-md">Phân tích lượt tiếp cận cá nhân</span>
+</li>
+</ul>
+</div>
+<!-- Business Card -->
+<div class="glass-card p-lg rounded-xl cursor-pointer border-2 border-transparent hover:border-outline-variant transition-all duration-300 group" id="role-business" onclick="selectRole('business')">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded-lg bg-secondary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-3xl">storefront</span>
+</div>
+<div class="h-6 w-6 rounded-full border-2 border-outline-variant flex items-center justify-center group-[.role-card-active]:border-secondary">
+<div class="h-3 w-3 rounded-full bg-secondary opacity-0 group-[.role-card-active]:opacity-100 transition-opacity"></div>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-secondary mb-2">Doanh Nghiệp</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg">Giải pháp tối ưu cho quán chill, nhà hàng và các địa điểm dịch vụ.</p>
+<ul class="space-y-3">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-md text-label-md">Xác minh địa điểm chính chủ</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-md text-label-md">Tạo chiến dịch khuyến mãi</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-md text-label-md">Quản lý phản hồi khách hàng</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Step 2: Information Form (Hidden Initially) -->
+<div class="step-transition opacity-0 hidden" id="step-2">
+<div class="mb-lg">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-2">Thông tin đăng ký</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Cung cấp thêm chi tiết để chúng tôi xác thực tài khoản của bạn.</p>
+</div>
+<form class="space-y-lg">
+<div class="space-y-md">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">Tên hiển thị chuyên nghiệp</label>
+<input class="w-full bg-white border-outline-variant rounded-xl px-4 py-3 focus:border-primary focus:ring-primary/20 outline-none transition-all" placeholder="Nhập tên của bạn hoặc thương hiệu" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">Lĩnh vực / Chuyên môn</label>
+<select class="w-full bg-white border-outline-variant rounded-xl px-4 py-3 focus:border-primary focus:ring-primary/20 outline-none transition-all">
+<option>Food &amp; Beverage</option>
+<option>Lifestyle &amp; Travel</option>
+<option>Fashion &amp; Beauty</option>
+<option>Entertainment</option>
+</select>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">Mô tả ngắn gọn (Bio)</label>
+<textarea class="w-full bg-white border-outline-variant rounded-xl px-4 py-3 focus:border-primary focus:ring-primary/20 outline-none transition-all" placeholder="Chia sẻ một chút về mục tiêu của bạn..." rows="3"></textarea>
+</div>
+</div>
+<div class="p-lg bg-surface-container-high rounded-xl flex items-start gap-md">
+<span class="material-symbols-outlined text-primary-container">info</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Thông tin của bạn sẽ được đội ngũ ChillPlace xem xét và phản hồi trong vòng 24-48 giờ làm việc.</p>
+</div>
+</form>
+</div>
+<!-- Action Button -->
+<div class="mt-xl">
+<button class="w-full bg-primary-container text-white font-headline-md text-body-lg py-4 rounded-xl shadow-[0px_8px_24px_rgba(255,107,53,0.15)] active:scale-95 transition-transform duration-200" id="next-btn" onclick="nextStep()">
+                Tiếp tục
+            </button>
+<button class="w-full mt-4 text-secondary font-label-md text-label-md py-2 hidden" id="back-btn" onclick="prevStep()">
+                Quay lại
+            </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface rounded-t-xl shadow-[0px_-4px_20px_rgba(31,78,121,0.08)] border-t border-outline-variant/30">
+<div class="flex justify-around items-center w-full px-2 py-3 pb-safe">
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm">Feed</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined">map</span>
+<span class="font-label-sm text-label-sm">Map</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined text-primary-container text-3xl">add_circle</span>
+<span class="font-label-sm text-label-sm text-primary-container">Create</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm">Explore</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary bg-primary-container/10 rounded-full py-1 px-3 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</button>
+</div>
+</nav>
+<script>
+        let currentStep = 1;
+        let selectedRole = '';
+
+        function selectRole(role) {
+            selectedRole = role;
+            document.getElementById('role-creator').classList.remove('role-card-active');
+            document.getElementById('role-business').classList.remove('role-card-active');
+            
+            const selectedCard = document.getElementById('role-' + role);
+            selectedCard.classList.add('role-card-active');
+            
+            // Add a little bounce effect on selection
+            selectedCard.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                selectedCard.style.transform = 'translateY(-4px)';
+            }, 100);
+        }
+
+        function nextStep() {
+            if (currentStep === 1) {
+                if (!selectedRole) {
+                    alert('Vui lòng chọn một vai trò trước khi tiếp tục.');
+                    return;
+                }
+                
+                document.getElementById('step-1').classList.replace('opacity-100', 'opacity-0');
+                setTimeout(() => {
+                    document.getElementById('step-1').classList.add('hidden');
+                    document.getElementById('step-2').classList.remove('hidden');
+                    setTimeout(() => {
+                        document.getElementById('step-2').classList.replace('opacity-0', 'opacity-100');
+                    }, 50);
+                }, 400);
+
+                document.getElementById('step-2-circle').classList.replace('bg-surface-container', 'bg-primary-container');
+                document.getElementById('step-2-circle').classList.replace('text-on-surface-variant', 'text-on-primary');
+                document.getElementById('progress-bar').style.width = '100%';
+                document.getElementById('next-btn').innerText = 'Hoàn tất yêu cầu';
+                document.getElementById('back-btn').classList.remove('hidden');
+                currentStep = 2;
+            } else {
+                // Submit logic
+                const btn = document.getElementById('next-btn');
+                btn.innerHTML = '<span class="material-symbols-outlined animate-spin">refresh</span> Đang xử lý...';
+                btn.disabled = true;
+                
+                setTimeout(() => {
+                    alert('Yêu cầu nâng cấp tài khoản đã được gửi thành công!');
+                    window.location.reload();
+                }, 1500);
+            }
+        }
+
+        function prevStep() {
+            if (currentStep === 2) {
+                document.getElementById('step-2').classList.replace('opacity-100', 'opacity-0');
+                setTimeout(() => {
+                    document.getElementById('step-2').classList.add('hidden');
+                    document.getElementById('step-1').classList.remove('hidden');
+                    setTimeout(() => {
+                        document.getElementById('step-1').classList.replace('opacity-0', 'opacity-100');
+                    }, 50);
+                }, 400);
+
+                document.getElementById('step-2-circle').classList.replace('bg-primary-container', 'bg-surface-container');
+                document.getElementById('step-2-circle').classList.replace('text-on-primary', 'text-on-surface-variant');
+                document.getElementById('progress-bar').style.width = '0%';
+                document.getElementById('next-btn').innerText = 'Tiếp tục';
+                document.getElementById('back-btn').classList.add('hidden');
+                currentStep = 1;
+            }
+        }
+    </script>
+</body></html>

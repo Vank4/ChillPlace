@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px border-outline-variant;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed": "#001d35",
+                    "secondary-fixed-dim": "#a0cafc",
+                    "on-primary": "#ffffff",
+                    "surface": "#f7f9fb",
+                    "secondary-container": "#a2cdff",
+                    "primary-container": "#ff6b35",
+                    "outline": "#8d7168",
+                    "on-tertiary-fixed-variant": "#005048",
+                    "on-error": "#ffffff",
+                    "on-background": "#191c1e",
+                    "error": "#ba1a1a",
+                    "on-tertiary": "#ffffff",
+                    "surface-bright": "#f7f9fb",
+                    "primary": "#ab3500",
+                    "on-error-container": "#93000a",
+                    "inverse-on-surface": "#eff1f3",
+                    "secondary": "#35618d",
+                    "surface-variant": "#e0e3e5",
+                    "inverse-surface": "#2d3133",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed": "#00201c",
+                    "primary-fixed-dim": "#ffb59d",
+                    "tertiary-container": "#00ac9b",
+                    "tertiary-fixed-dim": "#4fdbc8",
+                    "on-tertiary-container": "#003832",
+                    "outline-variant": "#e1bfb5",
+                    "on-primary-container": "#5f1900",
+                    "background": "#f7f9fb",
+                    "tertiary": "#006b5f",
+                    "surface-dim": "#d8dadc",
+                    "surface-tint": "#ab3500",
+                    "error-container": "#ffdad6",
+                    "primary-fixed": "#ffdbd0",
+                    "tertiary-fixed": "#71f8e4",
+                    "on-surface": "#191c1e",
+                    "surface-container-highest": "#e0e3e5",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-container": "#2a5782",
+                    "on-primary-fixed": "#390c00",
+                    "secondary-fixed": "#d1e4ff",
+                    "on-secondary-fixed-variant": "#184974",
+                    "surface-container": "#eceef0",
+                    "on-surface-variant": "#594139",
+                    "surface-container-high": "#e6e8ea",
+                    "inverse-primary": "#ffb59d",
+                    "surface-container-low": "#f2f4f6",
+                    "on-primary-fixed-variant": "#832600"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "margin-desktop": "32px",
+                    "lg": "24px",
+                    "xs": "4px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "xl": "32px",
+                    "xxl": "48px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background text-on-surface">
+<!-- SideNavBar Anchor -->
+<aside class="h-screen w-72 fixed left-0 top-0 bg-surface border-r border-outline-variant flex flex-col py-xl px-lg z-50">
+<div class="mb-xxl">
+<h1 class="font-display-lg text-display-lg font-black text-primary">ChillPlace</h1>
+<p class="font-label-md text-label-md text-on-surface-variant">Khám phá không gian</p>
+</div>
+<nav class="flex-1 space-y-md">
+<!-- Home -->
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high p-sm rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Trang chủ</span>
+</a>
+<!-- Explore -->
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high p-sm rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-label-md text-label-md">Khám phá</span>
+</a>
+<!-- Map -->
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high p-sm rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-label-md text-label-md">Bản đồ</span>
+</a>
+<!-- Favorites -->
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high p-sm rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="font-label-md text-label-md">Yêu thích</span>
+</a>
+<!-- Settings - Active State Mockup (Since this is Management/Profile area) -->
+<a class="flex items-center gap-4 text-primary font-bold border-r-4 border-primary bg-surface-container-low p-sm rounded-l-xl active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="settings" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-label-md text-label-md">Cài đặt</span>
+</a>
+</nav>
+<div class="mt-auto pt-lg space-y-md">
+<button class="w-full bg-primary-container text-on-primary-container font-bold py-md px-xl rounded-xl shadow-sm hover:opacity-90 transition-opacity">
+                Đăng bài mới
+            </button>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-primary transition-colors p-sm" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-md text-label-md">Trợ giúp</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-72 min-h-screen">
+<!-- TopNavBar Execution -->
+<header class="sticky top-0 z-40 bg-surface/80 backdrop-blur-md border-b border-outline-variant px-margin-desktop py-md flex justify-between items-center shadow-sm">
+<div class="flex items-center gap-xl w-full max-w-3xl">
+<h2 class="font-headline-md text-headline-md text-primary shrink-0">Quản lý bài viết</h2>
+<!-- Search Bar Component -->
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-full py-sm pl-xl pr-md focus:ring-2 focus:ring-primary focus:border-primary transition-all font-body-md text-body-md" placeholder="Tìm kiếm bài viết của bạn..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<div class="flex gap-md">
+<button class="p-sm text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-sm text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+</button>
+</div>
+<div class="h-10 w-10 rounded-full overflow-hidden border-2 border-primary-fixed">
+<img alt="Ảnh đại diện" data-alt="A professional close-up studio portrait of a young man with a friendly expression. The lighting is soft and cinematic, characteristic of high-end corporate lifestyle photography. He has neat hair and is set against a clean, neutral studio background that fits a modern, light-themed tech application interface. The color palette is composed of natural skin tones and soft whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpDRZ9jDsdS84SAYdW6302vdYM9LF03i8usS3j8H3-NFs5AaQbGXHvSwhlR0STrwJtFvyiL99GOzgK4TYYwzER_WGR_krczsohKAbCsRIY87n5JnPZ18LDjZOvly9Nn_4o_hodk2ewHEyBjjEFO-H8yRh45XXty6ERoNw5MYKtqdR2gzsq4r7NG7pELs5z0Iv2MYtZkcXlM1u97GQu-VXSKdudgzQ_mMnEtBrzIEUFMtzvxJz8Sffrb7M3XvACLTxxIyQ-6YyFXFA"/>
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<div class="p-margin-desktop max-w-7xl mx-auto">
+<!-- Tabs Management -->
+<div class="flex items-center justify-between mb-xl border-b border-outline-variant">
+<div class="flex gap-xl">
+<button class="pb-md px-sm text-primary font-bold border-b-2 border-primary transition-all">
+                        Đã đăng (24)
+                    </button>
+<button class="pb-md px-sm text-on-surface-variant hover:text-primary font-semibold transition-all">
+                        Nháp (5)
+                    </button>
+<button class="pb-md px-sm text-on-surface-variant hover:text-primary font-semibold transition-all">
+                        Đang duyệt (2)
+                    </button>
+</div>
+<div class="flex gap-sm mb-md">
+<button class="flex items-center gap-xs px-md py-xs bg-surface-container border border-outline-variant rounded-lg text-label-sm font-label-sm hover:bg-surface-container-high">
+<span class="material-symbols-outlined text-[18px]">filter_list</span> Bộ lọc
+                    </button>
+<button class="flex items-center gap-xs px-md py-xs bg-surface-container border border-outline-variant rounded-lg text-label-sm font-label-sm hover:bg-surface-container-high">
+<span class="material-symbols-outlined text-[18px]">sort</span> Mới nhất
+                    </button>
+</div>
+</div>
+<!-- Posts Grid (Bento/Asymmetric Style) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
+<!-- Post Card 1 -->
+<div class="bg-surface-container-lowest rounded-xxl p-md border border-outline-variant shadow-sm hover:shadow-md transition-all group overflow-hidden">
+<div class="relative aspect-[16/10] rounded-xl overflow-hidden mb-md">
+<img alt="Cafe space" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A beautifully designed modern cafe interior with warm lighting, wooden furniture, and lush green plants hanging from the ceiling. The atmosphere is cozy and exuberant, captured in high-definition with a focus on vibrant, natural colors. Soft morning sunlight streams through large windows, creating a peaceful and community-driven vibe that appeals to Gen-Z and Millennial urban explorers." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCH_PgcPCzj8t3QxBGL0n88nAcHHeso_NBNANb7vX7JFgl3hEovw5BetTXmseDo7BX1F-yk35xPGfjow-V6snUEv1pGQdjKsf889RY5TCbhavtQPDv-NHJtMGWv3tGIbccV07RI5hOD3iEcUQXDrihqghg7Wy0rLXHGkATEAUAaWwG5bX1J2NbKA4peQARF2_1BoDp49x2RKK3X0Xj9gthOrojx0HbmxHdsVV8y2W1gUWWkSc9wSiMPkKCHARUi6w_e4K7WeKa50IY"/>
+<span class="absolute top-sm right-sm bg-tertiary text-on-tertiary px-sm py-xs rounded-full text-label-sm font-label-sm backdrop-blur-md opacity-90">Hoạt động</span>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-sm text-lg font-bold text-on-surface line-clamp-1">Chill Coffee &amp; Art Space</h3>
+<span class="text-label-sm font-label-sm text-on-surface-variant">12 Th10, 2023</span>
+</div>
+<p class="text-body-md text-on-surface-variant line-clamp-2">Không gian yên tĩnh lý tưởng để làm việc và thưởng thức cà phê nghệ thuật tại trung tâm...</p>
+<div class="flex items-center gap-md pt-sm border-t border-outline-variant">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">visibility</span>
+<span class="text-label-sm font-label-sm">1.2k</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="text-label-sm font-label-sm">458</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">comment</span>
+<span class="text-label-sm font-label-sm">32</span>
+</div>
+</div>
+<div class="flex gap-sm pt-md">
+<button class="flex-1 flex items-center justify-center gap-xs py-sm bg-secondary text-on-secondary rounded-xl text-label-sm font-label-sm hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">bar_chart</span> Thống kê
+                            </button>
+<button class="p-sm border border-outline-variant text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-sm border border-outline-variant text-error hover:bg-error-container/20 rounded-xl transition-colors">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Post Card 2 -->
+<div class="bg-surface-container-lowest rounded-xxl p-md border border-outline-variant shadow-sm hover:shadow-md transition-all group overflow-hidden">
+<div class="relative aspect-[16/10] rounded-xl overflow-hidden mb-md">
+<img alt="Street Photography" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A vibrant street photography shot capturing the bustling energy of a city at sunset. The scene is filled with golden hour light reflecting off modern buildings and glass facades. People are walking through a pedestrian plaza, creating a kinetic and social mapping feeling. The colors are highly saturated with warm oranges and cool blues, emphasizing a high-energy and modern urban lifestyle aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCy3cjy-ZSAzcJK6UWswI9LQAkoX5hQkDtoUz1mD6CVHweHfhWF8OQ1nJ4f8z2uY8v5q5r8cQOmDYeXrg_kTQgUyIetXxWxr-gr4VPVxjAHWwu9OZTHJyMBHg-_GHIIAnCjDVlQDYEr3Fqxi9qq5xFpbbMRAKUF-RPsM1R1Dyv2VCGO4kZVGs_tpTOU7emJWZCNuQ6mCc7_R0PDKtXICyDPWrMZjQcxdgz71LXkTu-hviouhteLOf9wusa79sSrFyJEuwykrCyMa60"/>
+<span class="absolute top-sm right-sm bg-tertiary text-on-tertiary px-sm py-xs rounded-full text-label-sm font-label-sm backdrop-blur-md opacity-90">Địa điểm mới</span>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-sm text-lg font-bold text-on-surface line-clamp-1">Khu phố đi bộ đêm Sài Gòn</h3>
+<span class="text-label-sm font-label-sm text-on-surface-variant">08 Th10, 2023</span>
+</div>
+<p class="text-body-md text-on-surface-variant line-clamp-2">Những góc check-in không thể bỏ qua khi dạo bước tại phố đi bộ vào những ngày cuối tuần...</p>
+<div class="flex items-center gap-md pt-sm border-t border-outline-variant">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">visibility</span>
+<span class="text-label-sm font-label-sm">3.4k</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="text-label-sm font-label-sm">1.1k</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">comment</span>
+<span class="text-label-sm font-label-sm">89</span>
+</div>
+</div>
+<div class="flex gap-sm pt-md">
+<button class="flex-1 flex items-center justify-center gap-xs py-sm bg-secondary text-on-secondary rounded-xl text-label-sm font-label-sm hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">bar_chart</span> Thống kê
+                            </button>
+<button class="p-sm border border-outline-variant text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-sm border border-outline-variant text-error hover:bg-error-container/20 rounded-xl transition-colors">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Post Card 3 -->
+<div class="bg-surface-container-lowest rounded-xxl p-md border border-outline-variant shadow-sm hover:shadow-md transition-all group overflow-hidden">
+<div class="relative aspect-[16/10] rounded-xl overflow-hidden mb-md">
+<img alt="Nature Getaway" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A breathtaking view of a lush pine forest shrouded in morning mist. The lighting is ethereal and soft, creating a calm and serene atmosphere. The predominant greens and earth tones provide a natural, tranquil mood that feels like a peaceful departure from city life. This high-contrast landscape shot is clear and sharp, perfectly capturing the essence of a hidden nature destination for Millennial travelers seeking quietude." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFGTQMPLkg1F1M5Os1RSQ0b-757cyMMb45VzUwCOOfSvvwcA98AclL9h7kF8xt7zaznxxVPkcN5gFoNJNFcaHoWMtpzVIeZ0e2Bgbn4-rVsicmn63sD0LMpPod3P1Ti_yia3pztmFL1FqUWHcMoEac-z6qv-mqHND_h4MjLQbE3J8vdf2_7uCieo78gh5X2mUsK76myW7_uTMjW9JOkkApOayjyUwJyZIOz0UNPr3mEYZTGjgdq8UJd8S2FbNj4QSwSoN2jlGV-TM"/>
+<span class="absolute top-sm right-sm bg-tertiary text-on-tertiary px-sm py-xs rounded-full text-label-sm font-label-sm backdrop-blur-md opacity-90">Du lịch</span>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-sm text-lg font-bold text-on-surface line-clamp-1">Camping tại Rừng Thông</h3>
+<span class="text-label-sm font-label-sm text-on-surface-variant">02 Th10, 2023</span>
+</div>
+<p class="text-body-md text-on-surface-variant line-clamp-2">Trải nghiệm ngủ dưới tán thông và đón bình minh rực rỡ tại vùng ngoại ô xanh mát...</p>
+<div class="flex items-center gap-md pt-sm border-t border-outline-variant">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">visibility</span>
+<span class="text-label-sm font-label-sm">820</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="text-label-sm font-label-sm">312</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">comment</span>
+<span class="text-label-sm font-label-sm">15</span>
+</div>
+</div>
+<div class="flex gap-sm pt-md">
+<button class="flex-1 flex items-center justify-center gap-xs py-sm bg-secondary text-on-secondary rounded-xl text-label-sm font-label-sm hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">bar_chart</span> Thống kê
+                            </button>
+<button class="p-sm border border-outline-variant text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-sm border border-outline-variant text-error hover:bg-error-container/20 rounded-xl transition-colors">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Post Card 4 -->
+<div class="bg-surface-container-lowest rounded-xxl p-md border border-outline-variant shadow-sm hover:shadow-md transition-all group overflow-hidden">
+<div class="relative aspect-[16/10] rounded-xl overflow-hidden mb-md">
+<img alt="Exhibition" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A modern art gallery featuring large-scale digital installations. The room is minimalist and dark, with bright neon red and blue lights projecting onto polished concrete floors. Visitors are seen as silhouettes against the glowing screens, creating a high-energy and technologically advanced social environment. The aesthetic is exuberant and kinetic, targeting a Gen-Z audience with its bold, high-contrast visual impact." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAV_aBHhPFUoy68tDIPVNrVXrxv20GHeDRmOB27LFeTaR1Xf-jF4XSF-F0WW2avyfPcclli-dDrjaG2GvxU431YYwi4eLj1gmwUyff183_Aeb7_agUtNoZ6jqHn_yym596mk5RPFczJCewJZBV5ZxLJk8ITIRMkycCuwsMNUSH-B4RmHf9ZH500jtJxRIj1-Vt_ucTSH8cOk5Sgge27lc6E9JLONyVZCo2KtI4_yAOhjeOngh584T5QoanziMo1rRqw9FQSok58IDs"/>
+<span class="absolute top-sm right-sm bg-tertiary text-on-tertiary px-sm py-xs rounded-full text-label-sm font-label-sm backdrop-blur-md opacity-90">Sự kiện</span>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-sm text-lg font-bold text-on-surface line-clamp-1">Triển lãm Digital Art 2023</h3>
+<span class="text-label-sm font-label-sm text-on-surface-variant">28 Th9, 2023</span>
+</div>
+<p class="text-body-md text-on-surface-variant line-clamp-2">Khám phá sự giao thoa giữa nghệ thuật và công nghệ tại triển lãm quy mô nhất năm...</p>
+<div class="flex items-center gap-md pt-sm border-t border-outline-variant">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">visibility</span>
+<span class="text-label-sm font-label-sm">5.1k</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="text-label-sm font-label-sm">2.4k</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">comment</span>
+<span class="text-label-sm font-label-sm">245</span>
+</div>
+</div>
+<div class="flex gap-sm pt-md">
+<button class="flex-1 flex items-center justify-center gap-xs py-sm bg-secondary text-on-secondary rounded-xl text-label-sm font-label-sm hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">bar_chart</span> Thống kê
+                            </button>
+<button class="p-sm border border-outline-variant text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-sm border border-outline-variant text-error hover:bg-error-container/20 rounded-xl transition-colors">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Post Card 5 -->
+<div class="bg-surface-container-lowest rounded-xxl p-md border border-outline-variant shadow-sm hover:shadow-md transition-all group overflow-hidden">
+<div class="relative aspect-[16/10] rounded-xl overflow-hidden mb-md">
+<img alt="Restaurant interior" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A luxurious high-end restaurant with a focus on modern Japanese design. The interior features dark wood accents, ambient warm spot lighting, and a long minimalist bar. The setting is sophisticated and professional, designed to feel fast yet high-quality. The color palette is composed of deep blacks, rich browns, and subtle golden highlights, creating a premium atmosphere that encourages social interaction and location discovery." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlIq1Y__C5nN1IYBV5lUgX11kwRI_F00NGn48lsldNxP-fb_JM5zwhFEhLo7KHS-O2YadpaVjHnG-wLYNrBSvnmB6d2Pn8VaHKj3V1MkWmLH_t72aF0Z8Qgk4W32Y3b1OE7HLt2fCR8PpSQFD6lwLIhBImSNyX3St4N4rSsU0QFZvBicIqU5xB66SNCDigt51QfKBEEif7CfpHFhne5w2FgRitgpypZvI0VoO-LDRIRtSSObqWnEmNOxZoULAkxJrn57flU2AOJbc"/>
+<span class="absolute top-sm right-sm bg-tertiary text-on-tertiary px-sm py-xs rounded-full text-label-sm font-label-sm backdrop-blur-md opacity-90">Ẩm thực</span>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-sm text-lg font-bold text-on-surface line-clamp-1">Omakase Experience</h3>
+<span class="text-label-sm font-label-sm text-on-surface-variant">20 Th9, 2023</span>
+</div>
+<p class="text-body-md text-on-surface-variant line-clamp-2">Hành trình vị giác tinh tế với những món ăn được chế biến trực tiếp từ đầu bếp hàng đầu...</p>
+<div class="flex items-center gap-md pt-sm border-t border-outline-variant">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">visibility</span>
+<span class="text-label-sm font-label-sm">2.1k</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="text-label-sm font-label-sm">840</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">comment</span>
+<span class="text-label-sm font-label-sm">62</span>
+</div>
+</div>
+<div class="flex gap-sm pt-md">
+<button class="flex-1 flex items-center justify-center gap-xs py-sm bg-secondary text-on-secondary rounded-xl text-label-sm font-label-sm hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">bar_chart</span> Thống kê
+                            </button>
+<button class="p-sm border border-outline-variant text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-sm border border-outline-variant text-error hover:bg-error-container/20 rounded-xl transition-colors">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Add New Post Card (Ghost/Placeholder style) -->
+<div class="bg-surface-container-low rounded-xxl p-md border-2 border-dashed border-outline-variant flex flex-col items-center justify-center gap-md group hover:bg-surface-container-high hover:border-primary transition-all cursor-pointer">
+<div class="w-16 h-16 rounded-full bg-primary-fixed flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-4xl">add</span>
+</div>
+<div class="text-center">
+<h3 class="font-headline-sm text-lg font-bold text-on-surface">Tạo bài viết mới</h3>
+<p class="text-body-md text-on-surface-variant">Chia sẻ không gian yêu thích của bạn</p>
+</div>
+</div>
+</div>
+<!-- Pagination or Footer Actions -->
+<div class="mt-xxl flex justify-between items-center">
+<p class="text-label-md text-on-surface-variant">Hiển thị 5 trên tổng số 24 bài viết đã đăng</p>
+<div class="flex gap-sm">
+<button class="p-sm border border-outline-variant rounded-xl hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 bg-primary text-on-primary rounded-xl font-bold">1</button>
+<button class="w-10 h-10 border border-outline-variant rounded-xl font-bold hover:bg-surface-container-high transition-colors">2</button>
+<button class="w-10 h-10 border border-outline-variant rounded-xl font-bold hover:bg-surface-container-high transition-colors">3</button>
+<button class="p-sm border border-outline-variant rounded-xl hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Micro-interaction Scripts -->
+<script>
+        document.querySelectorAll('button, a').forEach(elem => {
+            elem.addEventListener('mousedown', () => {
+                elem.style.transform = 'scale(0.98)';
+            });
+            elem.addEventListener('mouseup', () => {
+                elem.style.transform = 'scale(1)';
+            });
+            elem.addEventListener('mouseleave', () => {
+                elem.style.transform = 'scale(1)';
+            });
+        });
+
+        // Simple Tab Swapping Logic
+        const tabs = document.querySelectorAll('.flex.gap-xl button');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => {
+                    t.classList.remove('text-primary', 'font-bold', 'border-b-2', 'border-primary');
+                    t.classList.add('text-on-surface-variant', 'font-semibold');
+                });
+                tab.classList.remove('text-on-surface-variant', 'font-semibold');
+                tab.classList.add('text-primary', 'font-bold', 'border-b-2', 'border-primary');
+            });
+        });
+    </script>
+</body></html>

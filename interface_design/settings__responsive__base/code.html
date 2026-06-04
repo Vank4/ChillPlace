@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Cài đặt - ChillPlace</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#006b5f",
+                        "inverse-surface": "#2d3133",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-tint": "#ab3500",
+                        "on-secondary-fixed-variant": "#184974",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#e1bfb5",
+                        "surface-container-high": "#e6e8ea",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#f7f9fb",
+                        "on-surface": "#191c1e",
+                        "primary-fixed-dim": "#ffb59d",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#a0cafc",
+                        "secondary": "#35618d",
+                        "outline": "#8d7168",
+                        "primary": "#ab3500",
+                        "on-primary-fixed-variant": "#832600",
+                        "surface-dim": "#d8dadc",
+                        "on-tertiary-container": "#003832",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#a2cdff",
+                        "tertiary-fixed-dim": "#4fdbc8",
+                        "primary-container": "#ff6b35",
+                        "surface-container": "#eceef0",
+                        "on-primary": "#ffffff",
+                        "surface-container-low": "#f2f4f6",
+                        "secondary-fixed": "#d1e4ff",
+                        "surface-variant": "#e0e3e5",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#390c00",
+                        "on-surface-variant": "#594139",
+                        "primary-fixed": "#ffdbd0",
+                        "surface-container-highest": "#e0e3e5",
+                        "tertiary-fixed": "#71f8e4",
+                        "on-secondary-fixed": "#001d35",
+                        "background": "#f7f9fb",
+                        "on-secondary-container": "#2a5782",
+                        "on-tertiary-fixed": "#00201c",
+                        "on-tertiary-fixed-variant": "#005048",
+                        "on-primary-container": "#5f1900",
+                        "on-background": "#191c1e",
+                        "inverse-primary": "#ffb59d",
+                        "surface": "#f7f9fb",
+                        "tertiary-container": "#00ac9b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xxl": "48px",
+                        "margin-desktop": "32px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "margin-mobile": "16px",
+                        "sm": "8px",
+                        "gutter": "16px",
+                        "md": "16px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col pb-32">
+<!-- TopAppBar -->
+<nav class="w-full sticky top-0 z-50 bg-surface shadow-sm h-16 transition-all active:scale-95">
+<div class="flex items-center px-4 h-full w-full max-w-screen-xl mx-auto justify-between">
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-variant/50 transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md-mobile text-primary">Cài đặt</h1>
+</div>
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-variant/50 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-1 px-4 py-6 max-w-screen-xl mx-auto w-full space-y-6">
+<!-- User Quick Profile (Atmospheric Element) -->
+<div class="relative overflow-hidden rounded-[2rem] p-6 flex items-center gap-4 shadow-lg bg-surface-container-lowest">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full -mr-16 -mt-16 blur-3xl"></div>
+<div class="w-16 h-16 rounded-2xl overflow-hidden border-2 border-primary-container relative">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A close-up high-quality portrait of a stylish young person with a friendly expression. They are set against a soft-focus urban background with warm sunlight filtering through. The aesthetic is clean, modern, and high-energy, matching a social lifestyle brand. Soft natural lighting enhances the warm skin tones and vibrant environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAucRyzzIkFsbActWwLAi_fr20viPB70J-Sgtvur7zH7ODbbVyLvUivucU0jsarlf8B3gnV_Z4x_BYaXATbXP3zXA1m26l-XS0DceWwJzKgL7nI9qTH_6u3wd2W5Wh1X3Cy9BqU_g0jjxX8FrTGMNeFNvZv0vG2n65ccWbP_TSn7H3Uji53QvRyO6b-4pVg9V0-ZfQCmaSewcepBV2d-jqW9x5CQ0dRIa2zU-x68T4FtS0JX5p_RLb6h_aXjKsb3Sa-YkXEA4sNYR8"/>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md-mobile">Nguyễn Minh Chill</h2>
+<p class="font-label-md text-on-surface-variant">minhchill@chillplace.vn</p>
+</div>
+</div>
+<!-- Settings Groups -->
+<div class="space-y-6">
+<!-- Account Section -->
+<section class="space-y-3">
+<h3 class="px-4 font-label-md text-on-surface-variant tracking-wider uppercase">Tài khoản</h3>
+<div class="bg-surface rounded-[2rem] shadow-[0px_4px_20px_rgba(31,78,121,0.08)] overflow-hidden">
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-xl bg-primary/10 text-primary">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</div>
+<span class="font-body-md">Chỉnh sửa hồ sơ</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</button>
+<div class="h-px bg-outline-variant/30 mx-4"></div>
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-xl bg-primary/10 text-primary">
+<span class="material-symbols-outlined" data-icon="lock">lock</span>
+</div>
+<span class="font-body-md">Đổi mật khẩu</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</button>
+<div class="h-px bg-outline-variant/30 mx-4"></div>
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-xl bg-primary/10 text-primary">
+<span class="material-symbols-outlined" data-icon="link">link</span>
+</div>
+<span class="font-body-md">Liên kết mạng xã hội</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- Notifications Section -->
+<section class="space-y-3">
+<h3 class="px-4 font-label-md text-on-surface-variant tracking-wider uppercase">Thông báo</h3>
+<div class="bg-surface rounded-[2rem] shadow-[0px_4px_20px_rgba(31,78,121,0.08)] overflow-hidden">
+<div class="w-full flex items-center justify-between p-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-xl bg-primary/10 text-primary">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</div>
+<span class="font-body-md">Đẩy tin nhắn</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="h-px bg-outline-variant/30 mx-4"></div>
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-xl bg-primary/10 text-primary">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+</div>
+<span class="font-body-md">Email</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</button>
+<div class="h-px bg-outline-variant/30 mx-4"></div>
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-xl bg-primary/10 text-primary">
+<span class="material-symbols-outlined" data-icon="system_update">system_update</span>
+</div>
+<span class="font-body-md">Cập nhật hệ thống</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</div>
+</button>
+</div>
+</section>
+<!-- Privacy Section -->
+<section class="space-y-3">
+<h3 class="px-4 font-label-md text-on-surface-variant tracking-wider uppercase">Quyền riêng tư</h3>
+<div class="bg-surface rounded-[2rem] shadow-[0px_4px_20px_rgba(31,78,121,0.08)] overflow-hidden">
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-xl bg-primary/10 text-primary">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</div>
+<div class="text-left">
+<p class="font-body-md">Ai có thể xem bài viết</p>
+<p class="text-[12px] text-on-surface-variant">Bạn bè</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</button>
+<div class="h-px bg-outline-variant/30 mx-4"></div>
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-xl bg-primary/10 text-primary">
+<span class="material-symbols-outlined" data-icon="block">block</span>
+</div>
+<span class="font-body-md">Chặn người dùng</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</button>
+<div class="h-px bg-outline-variant/30 mx-4"></div>
+<div class="w-full flex items-center justify-between p-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-xl bg-primary/10 text-primary">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+</div>
+<span class="font-body-md">Vị trí</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Interface Section -->
+<section class="space-y-3">
+<h3 class="px-4 font-label-md text-on-surface-variant tracking-wider uppercase">Giao diện &amp; Ngôn ngữ</h3>
+<div class="bg-surface rounded-[2rem] shadow-[0px_4px_20px_rgba(31,78,121,0.08)] overflow-hidden">
+<div class="w-full flex items-center justify-between p-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-xl bg-primary/10 text-primary">
+<span class="material-symbols-outlined" data-icon="dark_mode">dark_mode</span>
+</div>
+<span class="font-body-md">Chế độ tối (Dark Mode)</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="h-px bg-outline-variant/30 mx-4"></div>
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-xl bg-primary/10 text-primary">
+<span class="material-symbols-outlined" data-icon="language">language</span>
+</div>
+<div class="text-left">
+<p class="font-body-md">Ngôn ngữ</p>
+<p class="text-[12px] text-on-surface-variant">Tiếng Việt</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</button>
+<div class="h-px bg-outline-variant/30 mx-4"></div>
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-xl bg-primary/10 text-primary">
+<span class="material-symbols-outlined" data-icon="format_size">format_size</span>
+</div>
+<span class="font-body-md">Cỡ chữ</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- Support Section -->
+<section class="space-y-3">
+<h3 class="px-4 font-label-md text-on-surface-variant tracking-wider uppercase">Hỗ trợ</h3>
+<div class="bg-surface rounded-[2rem] shadow-[0px_4px_20px_rgba(31,78,121,0.08)] overflow-hidden">
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-xl bg-primary/10 text-primary">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</div>
+<span class="font-body-md">Trung tâm trợ giúp</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</button>
+<div class="h-px bg-outline-variant/30 mx-4"></div>
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-xl bg-primary/10 text-primary">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+</div>
+<span class="font-body-md">Điều khoản dịch vụ</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</button>
+<div class="h-px bg-outline-variant/30 mx-4"></div>
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-xl bg-primary/10 text-primary">
+<span class="material-symbols-outlined" data-icon="shield">shield</span>
+</div>
+<span class="font-body-md">Chính sách bảo mật</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- Logout Button -->
+<button class="w-full py-5 px-6 rounded-[2rem] bg-error-container text-on-error-container font-headline-md text-headline-md-mobile flex items-center justify-center gap-3 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+                Đăng xuất
+            </button>
+<!-- Version Info -->
+<div class="text-center pb-12">
+<p class="font-label-sm text-on-surface-variant">ChillPlace Version v1.2.0</p>
+<p class="text-[10px] text-on-surface-variant mt-1 opacity-60">Made with ❤️ in Vietnam</p>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-surface dark:bg-inverse-surface shadow-[0px_-4px_20px_rgba(31,78,121,0.08)] rounded-t-xl py-3 pb-safe flex justify-around items-center px-4">
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-transform active:scale-90">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-label-sm text-label-sm">Map</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-transform active:scale-90">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-label-sm text-label-sm">Explore</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-transform active:scale-90">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-label-sm text-label-sm">Vibes</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-5 py-1 transition-transform active:scale-90">
+<span class="material-symbols-outlined" data-icon="settings" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</button>
+</nav>
+<script>
+        // Micro-interactions for toggles and settings buttons
+        document.querySelectorAll('input[type="checkbox"]').forEach(toggle => {
+            toggle.addEventListener('change', function() {
+                const parent = this.closest('.w-full');
+                if(this.checked) {
+                    parent.style.backgroundColor = 'rgba(255, 107, 53, 0.05)';
+                } else {
+                    parent.style.backgroundColor = 'transparent';
+                }
+            });
+        });
+
+        // Rippling effect simulation for list items
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const x = e.clientX - e.target.offsetLeft;
+                const y = e.clientY - e.target.offsetTop;
+                const ripple = document.createElement('span');
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                ripple.classList.add('absolute', 'w-2', 'h-2', 'bg-primary/20', 'rounded-full', 'animate-ping', 'pointer-events-none');
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+    </script>
+</body></html>

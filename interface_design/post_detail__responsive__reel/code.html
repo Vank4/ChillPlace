@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>ChillPlace - Urban Reel</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        .animate-pulse-soft { animation: pulse-soft 3s infinite ease-in-out; }
+
+        .glass-overlay {
+            background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0) 100%);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-on-surface": "#eff1f3",
+                      "on-secondary-container": "#2a5782",
+                      "primary-fixed": "#ffdbd0",
+                      "on-secondary-fixed": "#001d35",
+                      "secondary-container": "#a2cdff",
+                      "primary-fixed-dim": "#ffb59d",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary-fixed-variant": "#184974",
+                      "outline": "#8d7168",
+                      "surface": "#f7f9fb",
+                      "inverse-surface": "#2d3133",
+                      "tertiary-fixed-dim": "#4fdbc8",
+                      "error": "#ba1a1a",
+                      "primary-container": "#ff6b35",
+                      "on-surface-variant": "#594139",
+                      "tertiary": "#006b5f",
+                      "on-tertiary-container": "#003832",
+                      "error-container": "#ffdad6",
+                      "surface-container-high": "#e6e8ea",
+                      "on-primary-fixed": "#390c00",
+                      "on-primary": "#ffffff",
+                      "background": "#f7f9fb",
+                      "tertiary-fixed": "#71f8e4",
+                      "on-primary-container": "#5f1900",
+                      "inverse-primary": "#ffb59d",
+                      "surface-container": "#eceef0",
+                      "secondary-fixed-dim": "#a0cafc",
+                      "on-primary-fixed-variant": "#832600",
+                      "secondary-fixed": "#d1e4ff",
+                      "surface-tint": "#ab3500",
+                      "on-error-container": "#93000a",
+                      "primary": "#ab3500",
+                      "secondary": "#35618d",
+                      "surface-container-low": "#f2f4f6",
+                      "outline-variant": "#e1bfb5",
+                      "surface-bright": "#f7f9fb",
+                      "tertiary-container": "#00ac9b",
+                      "on-secondary": "#ffffff",
+                      "surface-dim": "#d8dadc",
+                      "surface-container-highest": "#e0e3e5",
+                      "on-tertiary-fixed-variant": "#005048",
+                      "on-tertiary-fixed": "#00201c",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-variant": "#e0e3e5",
+                      "on-background": "#191c1e",
+                      "on-surface": "#191c1e",
+                      "on-error": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "16px",
+                      "md": "16px",
+                      "margin-desktop": "32px",
+                      "lg": "24px",
+                      "xxl": "48px",
+                      "xs": "4px",
+                      "margin-mobile": "16px",
+                      "xl": "32px",
+                      "sm": "8px"
+              },
+              "fontFamily": {
+                      "label-md": ["Plus Jakarta Sans"],
+                      "headline-md": ["Plus Jakarta Sans"],
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "headline-lg": ["Plus Jakarta Sans"],
+                      "body-md": ["Plus Jakarta Sans"],
+                      "display-lg": ["Plus Jakarta Sans"],
+                      "label-sm": ["Plus Jakarta Sans"],
+                      "headline-lg-mobile": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-black overflow-hidden h-screen w-screen flex flex-col">
+<!-- Header Navigation (Hidden in Reel View mostly, but included for context) -->
+<header class="fixed top-0 w-full z-50 flex items-center justify-between px-md h-16 w-full pointer-events-none">
+<button class="pointer-events-auto p-2 rounded-full bg-black/20 backdrop-blur-md text-white active:scale-95 transition-transform" onclick="window.history.back()">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="pointer-events-auto flex gap-4">
+<button class="p-2 rounded-full bg-black/20 backdrop-blur-md text-white">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</header>
+<!-- Full Screen Reel Content -->
+<main class="relative flex-grow w-full bg-neutral-900 overflow-hidden">
+<!-- Background Media -->
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="A cinematic, vertical 9:16 high-definition shot of a vibrant urban night scene in a bustling city. Neon lights in shades of primary orange and electric blue reflect off rain-slicked pavement. Stylishly dressed young people are gathered around a glowing food truck. The atmosphere is energetic, social, and high-contrast, perfectly capturing an exuberant Gen-Z community vibe under soft, moody street lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrbH3e39ji87zUzNOIywozWsMpH21VPX8CHIyzI1YTd8RSU3FeEf55QOU1_rB9uDGOjvsRW5pgXTOFmDv6rX-sysarZo7_p8Y0M69qjj2elYt7bZpkw0qG50j_xfQ0Kr0RrqGmlma0CuDS5bXHv-RNCMHvuW3s7UyiqahELiKs99jxmenGB2qZjuOVqQOL0ek1eVuBjq6uRuXr-0SyVDS9kp76FDHd38hz8HtEmQ2cq2ezY_XgkI63W2c752uC7ibvjGVthKsWQto"/>
+</div>
+<!-- Glassmorphic Gradient Overlay -->
+<div class="absolute inset-0 z-10 glass-overlay"></div>
+<!-- Right Side Action Rail -->
+<div class="absolute right-4 bottom-32 z-30 flex flex-col items-center gap-6">
+<div class="flex flex-col items-center gap-1 group cursor-pointer" onclick="toggleLike(this)">
+<div class="w-12 h-12 rounded-full bg-white/10 backdrop-blur-lg flex items-center justify-center text-white active:scale-90 transition-transform shadow-lg border border-white/10">
+<span class="material-symbols-outlined text-3xl" data-icon="favorite" id="like-icon">favorite</span>
+</div>
+<span class="font-label-sm text-label-sm text-white drop-shadow-md">1.2k</span>
+</div>
+<div class="flex flex-col items-center gap-1 cursor-pointer" onclick="openComments()">
+<div class="w-12 h-12 rounded-full bg-white/10 backdrop-blur-lg flex items-center justify-center text-white active:scale-90 transition-transform shadow-lg border border-white/10">
+<span class="material-symbols-outlined text-3xl" data-icon="chat_bubble">chat_bubble</span>
+</div>
+<span class="font-label-sm text-label-sm text-white drop-shadow-md">84</span>
+</div>
+<div class="flex flex-col items-center gap-1 cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-white/10 backdrop-blur-lg flex items-center justify-center text-white active:scale-90 transition-transform shadow-lg border border-white/10">
+<span class="material-symbols-outlined text-3xl" data-icon="bookmark">bookmark</span>
+</div>
+<span class="font-label-sm text-label-sm text-white drop-shadow-md">Saved</span>
+</div>
+<div class="flex flex-col items-center gap-1 cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-white/10 backdrop-blur-lg flex items-center justify-center text-white active:scale-90 transition-transform shadow-lg border border-white/10">
+<span class="material-symbols-outlined text-3xl" data-icon="share">share</span>
+</div>
+<span class="font-label-sm text-label-sm text-white drop-shadow-md">Share</span>
+</div>
+</div>
+<!-- Bottom Caption Area -->
+<div class="absolute bottom-24 left-0 right-16 z-20 p-md flex flex-col gap-3">
+<!-- Creator Info -->
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full border-2 border-primary-container overflow-hidden shadow-xl">
+<img class="w-full h-full object-cover" data-alt="A portrait of a confident young urban explorer with a friendly smile, set against a blurred city background. The individual has an exuberant personality, wearing modern techwear in neutral tones. The lighting is high-contrast and warm, emphasizing a community-driven and kinetic lifestyle consistent with a premium SaaS social platform aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxG4Jn-A4ptwejYw83_KQFVWLy2Mx7r5piH_9BPUE7qVI23gFvmtJAMwOXWU8eygtv40JeIaNgc1i_UMm-sO7cV1--aPJjeL7LrO1ylEWEHPsT0UmbTzMMiLd90Q8fmc9sGoT8pOv8nLgCCs6PEG9C9SztBwJOba_Tq_V9KtNPup-cBC0spAtRf9FRkO6TbysNrAO26FWVrOv9TutkmiBLBHbr85DQrWHvMYaPJcS8kr5ygs1aTL8TA4JkLlkTFWr4oCAQBDTOPQw"/>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-white text-md drop-shadow-md">@urban_alex</span>
+<button class="bg-primary-container text-white px-3 py-1 rounded-full text-[12px] font-bold active:scale-95 transition-transform">FOLLOW</button>
+</div>
+<div class="flex items-center gap-1 bg-tertiary-container/80 backdrop-blur-sm w-fit px-2 py-0.5 rounded-full mt-1 border border-white/10">
+<span class="material-symbols-outlined text-[14px] text-white" data-icon="location_on">location_on</span>
+<span class="text-[10px] font-bold text-white tracking-wide">SHIBUYA CROSSING</span>
+</div>
+</div>
+</div>
+<!-- Description -->
+<div class="max-w-[85%]">
+<p class="font-body-md text-body-md text-white leading-snug drop-shadow-md">
+                    Testing the new night mode vibes in the heart of the city! This place never sleeps. ✨ 🏙️
+                    <span class="block mt-1 font-bold text-primary-fixed">#chill #foodie #tokyovibes #explorer</span>
+</p>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Persistent) -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface dark:bg-inverse-surface border-t border-outline-variant/30 shadow-[0px_-4px_20px_rgba(31,78,121,0.08)] flex justify-around items-center w-full px-2 py-3 pb-safe" id="bottom-nav">
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform duration-200 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-label-sm text-label-sm">Feed</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform duration-200 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-label-sm text-label-sm">Map</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed bg-primary-container/10 rounded-full py-1 px-3 active:scale-90 transition-transform duration-200 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span class="font-label-sm text-label-sm">Create</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform duration-200 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-label-sm text-label-sm">Explore</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform duration-200 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</div>
+</nav>
+<!-- Bottom Sheet (Comments) - Initially Hidden -->
+<div class="fixed inset-0 z-[60] flex items-end justify-center invisible transition-all duration-300" id="comment-sheet">
+<div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeComments()"></div>
+<div class="relative w-full max-w-2xl bg-surface rounded-t-3xl p-6 transition-transform translate-y-full duration-300 flex flex-col max-h-[618px]">
+<div class="w-12 h-1.5 bg-outline-variant/50 rounded-full mx-auto mb-6"></div>
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline-md text-headline-md text-on-surface">Comments (84)</h3>
+<button class="text-on-surface-variant" onclick="closeComments()">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<!-- Scrollable Comments -->
+<div class="flex-grow overflow-y-auto hide-scrollbar space-y-6">
+<!-- Single Comment -->
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex-shrink-0">
+<img class="w-full h-full object-cover rounded-full" data-alt="A smiling woman with stylish accessories in a brightly lit urban setting. The image uses a vibrant, high-contrast palette of teals and oranges, reflecting a modern social media aesthetic. The lighting is soft yet professional, creating a premium and approachable look." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoPemM7wj5i77bg57GUqFodpfdIJtvnL4Mi-ELCkwW48h3YzrKHbKiTu95ehRbg2a-V_p1e0yWYpzTsEUgket24FnI3WK_YRoh4pDhgS8xLMfHoLhOpsln2GJRDCpXVnJBHSEP-owcmfFN7TCpE9RlsGeB1LhWm6hAw3Ys8_KQ-NhqViAKmQxpOWPCAFSvQo6EJQYh4Rb3jTDdKcjzRpsFyGiDL6EqHoYy5GUQ3wffFQRS6BHgkc9KdVuODZ-_VVmLB58DOHGkBSg"/>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface">sarah_vibe</span>
+<span class="text-[11px] text-on-surface-variant">2h ago</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">This location looks absolutely insane! Adding it to my weekend map right now. 🔥</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-tertiary-container flex-shrink-0">
+<img class="w-full h-full object-cover rounded-full" data-alt="A portrait of a young man with a creative expression, styled in a contemporary urban aesthetic. The background features high-energy street art in neon colors. The overall mood is vibrant and social, fitting for a modern community-driven app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1lcurDhtRe6KXSp0mIMMD1LPjLvpVyehYvyVvh78-YHG2oYciqiZTjc5CPW1sxOg3k_zmYc-9ZBex6fwDfLpMf9pVMbNZG3UcsTyBPvja-NZ6gY8gA9ZYRvwGqVcJ-KUu2ZiBFl2CPPkB1YWGiSTkG647V3taj5hhxWczI1x2cdkL7-FbAP7Xytxq9uNAD0iMUAH1NgNIP8g__PY0PEi5wWt0XidKzC1ajPYfipQvhNELIrYvmL9PXgzpvCxXT3b-5qeSnY-B-Ys"/>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface">mike_tunes</span>
+<span class="text-[11px] text-on-surface-variant">4h ago</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">The lighting in this video is top tier. What camera did you use? #gear</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-container flex-shrink-0">
+<img class="w-full h-full object-cover rounded-full" data-alt="A creative professional in a sleek, minimalist studio with warm accent lighting. The image emphasizes high-end design quality with a palette of deep blues and oranges. The atmosphere is focused and modern, perfectly aligning with a professional SaaS platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJhFWOrYwRGIGal4o1lj_bgh9n43SKysjfjDuG8s7QsE1Aq5tKxRHUf47xhgdPfe6RE50cqXIkIFEwsqlQ4KR-clSZBDYZN-k4eoTLsGeVjcYAUouAisDPRkpJrCs1lNmqEM4e6wzUmvseGRtNv28ugyr3WmjbemANca3F1_G4edfDZsfLecqWjXR7I_B33a4fx7Lh23iwHUHG1v2NAcCYMqHe0Aw5-idCqnNmHfdO_jnb2LAVPrWjQkHZxbo8RXT-5BVq4SKr8DE"/>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface">design_junkie</span>
+<span class="text-[11px] text-on-surface-variant">5h ago</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Obsessed with the vibe here!</p>
+</div>
+</div>
+</div>
+<!-- Comment Input -->
+<div class="pt-6 border-t border-outline-variant mt-auto">
+<div class="flex items-center gap-3 bg-surface-container rounded-full px-4 py-2 border border-outline-variant focus-within:border-primary-container transition-colors">
+<input class="bg-transparent border-none focus:ring-0 flex-grow text-on-surface font-body-md text-body-md" placeholder="Add a comment..." type="text"/>
+<button class="text-primary-container font-bold">Post</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+        function openComments() {
+            const sheet = document.getElementById('comment-sheet');
+            const inner = sheet.querySelector('.relative');
+            sheet.classList.remove('invisible');
+            setTimeout(() => {
+                inner.classList.remove('translate-y-full');
+            }, 10);
+        }
+
+        function closeComments() {
+            const sheet = document.getElementById('comment-sheet');
+            const inner = sheet.querySelector('.relative');
+            inner.classList.add('translate-y-full');
+            setTimeout(() => {
+                sheet.classList.add('invisible');
+            }, 300);
+        }
+
+        function toggleLike(element) {
+            const icon = element.querySelector('#like-icon');
+            const isLiked = icon.style.fontVariationSettings.includes("'FILL' 1");
+            
+            if (isLiked) {
+                icon.style.fontVariationSettings = "'FILL' 0";
+                icon.classList.remove('text-red-500');
+            } else {
+                icon.style.fontVariationSettings = "'FILL' 1";
+                icon.classList.add('text-red-500');
+                element.classList.add('animate-bounce');
+                setTimeout(() => element.classList.remove('animate-bounce'), 500);
+            }
+        }
+
+        // Simulate some atmospheric drift/noise for better feel
+        document.addEventListener('mousemove', (e) => {
+            const moveX = (e.clientX - window.innerWidth / 2) / 100;
+            const moveY = (e.clientY - window.innerHeight / 2) / 100;
+            const bg = document.querySelector('main img');
+            if(bg) {
+                bg.style.transform = `scale(1.1) translate(${moveX}px, ${moveY}px)`;
+            }
+        });
+    </script>
+</body></html>

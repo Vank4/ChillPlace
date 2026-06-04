@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#00201c",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#eceef0",
+                        "on-secondary-fixed-variant": "#184974",
+                        "inverse-on-surface": "#eff1f3",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#e0e3e5",
+                        "background": "#f7f9fb",
+                        "tertiary-fixed-dim": "#4fdbc8",
+                        "surface-container-low": "#f2f4f6",
+                        "primary-fixed": "#ffdbd0",
+                        "primary-container": "#ff6b35",
+                        "outline-variant": "#e1bfb5",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#390c00",
+                        "inverse-primary": "#ffb59d",
+                        "secondary-container": "#a2cdff",
+                        "on-secondary-fixed": "#001d35",
+                        "on-primary-container": "#5f1900",
+                        "surface": "#f7f9fb",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-secondary-container": "#2a5782",
+                        "on-primary-fixed-variant": "#832600",
+                        "surface-dim": "#d8dadc",
+                        "secondary-fixed": "#d1e4ff",
+                        "on-tertiary-fixed-variant": "#005048",
+                        "primary": "#ab3500",
+                        "primary-fixed-dim": "#ffb59d",
+                        "on-tertiary-container": "#003832",
+                        "surface-container-high": "#e6e8ea",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#a0cafc",
+                        "surface-tint": "#ab3500",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#191c1e",
+                        "secondary": "#35618d",
+                        "tertiary-fixed": "#71f8e4",
+                        "on-surface-variant": "#594139",
+                        "tertiary-container": "#00ac9b",
+                        "surface-bright": "#f7f9fb",
+                        "on-surface": "#191c1e",
+                        "on-secondary": "#ffffff",
+                        "outline": "#8d7168",
+                        "tertiary": "#006b5f",
+                        "inverse-surface": "#2d3133"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "md": "16px",
+                        "margin-desktop": "32px",
+                        "xxl": "48px",
+                        "xs": "4px",
+                        "gutter": "16px",
+                        "margin-mobile": "16px",
+                        "xl": "32px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f7f9fb; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Sidebar: SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface dark:bg-on-background shadow-sm flex flex-col py-lg px-md z-50">
+<div class="mb-xxl">
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">ChillPlace</h1>
+<p class="font-label-md text-label-md text-on-surface-variant">Social Discovery</p>
+</div>
+<nav class="flex-1 space-y-sm">
+<!-- Active Tab: Explore -->
+<a class="flex items-center gap-md p-md rounded-lg transition-colors hover:bg-surface-variant dark:hover:bg-surface-container-highest text-on-surface-variant dark:text-surface-variant" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg transition-colors scale-95 active:scale-90 transition-transform text-primary dark:text-primary-fixed-dim font-bold border-r-4 border-primary bg-surface-variant/50" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-md text-label-md">Explore</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg transition-colors hover:bg-surface-variant dark:hover:bg-surface-container-highest text-on-surface-variant dark:text-surface-variant" href="#">
+<span class="material-symbols-outlined">map</span>
+<span class="font-label-md text-label-md">Map</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg transition-colors hover:bg-surface-variant dark:hover:bg-surface-container-highest text-on-surface-variant dark:text-surface-variant" href="#">
+<span class="material-symbols-outlined">favorite</span>
+<span class="font-label-md text-label-md">Favorites</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg transition-colors hover:bg-surface-variant dark:hover:bg-surface-container-highest text-on-surface-variant dark:text-surface-variant" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto flex items-center gap-md p-md">
+<img alt="ChillPlace Logo" class="w-10 h-10 rounded-full bg-primary-container" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPmr4HkDLbfazXb0yEu6kJytGrl-l5m8sEjh8XA6iFIVolra2n6V3Ttse3_o3BGNHOfvTjY6h7-GFVDuIGj6IeGnZQnOqh5uXQSVE30-VkeK3UPq77tvrlwiM-hC7O94OFOk7Sb_8BFuA6dJOQBmmmvbbV3Ip6r5yV6RTQ9b8W0UsO1BJB4Pejr2_2RG_RsuoIyPBmnW7YVVFj_PD9fHXUZrFPU_g139G4q5iO_6bNyPc5OK5jKsfuARuYgBWfma831yCtDCLQ4hA"/>
+<div class="hidden lg:block">
+<p class="font-label-md text-label-md font-bold">Chill Explorer</p>
+<p class="text-xs text-on-surface-variant">Pro Member</p>
+</div>
+</div>
+</aside>
+<!-- Top Navigation Placeholder (Integrated logic) -->
+<header class="fixed top-0 right-0 w-[calc(100%-256px)] z-40 bg-surface/80 dark:bg-on-background/80 backdrop-blur-md flex justify-between items-center h-16 px-margin-desktop ml-64">
+<div class="flex items-center bg-surface-container-low rounded-full px-md py-xs w-96 focus-within:ring-2 focus-within:ring-primary transition-all">
+<span class="material-symbols-outlined text-primary">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md w-full" placeholder="Search #hashtags, places..." type="text"/>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-sm hover:bg-surface-variant rounded-full transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<button class="p-sm hover:bg-surface-variant rounded-full transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Main Grid Layout -->
+<main class="ml-64 pt-16 grid grid-cols-12 gap-lg p-margin-desktop">
+<!-- Center Content: Hashtag Feed -->
+<div class="col-span-12 lg:col-span-8 space-y-lg">
+<!-- Hashtag Header Section -->
+<section class="bg-surface-container-lowest p-xl rounded-[24px] shadow-sm flex flex-col md:flex-row md:items-end justify-between gap-lg">
+<div class="flex items-start gap-lg">
+<div class="w-24 h-24 rounded-[24px] bg-gradient-to-br from-primary-container to-secondary flex items-center justify-center text-white shadow-lg">
+<span class="text-[40px] font-extrabold">#</span>
+</div>
+<div>
+<h2 class="font-display-lg text-display-lg text-on-surface">#SaigonChill</h2>
+<div class="flex gap-lg mt-sm">
+<div class="text-center md:text-left">
+<p class="font-headline-md text-headline-md text-primary">12.5k</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Posts</p>
+</div>
+<div class="text-center md:text-left">
+<p class="font-headline-md text-headline-md text-secondary">84.2k</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Followers</p>
+</div>
+</div>
+</div>
+</div>
+<button class="bg-[#FF6B35] text-white font-bold px-xxl py-md rounded-full hover:scale-105 active:scale-95 transition-transform shadow-md flex items-center gap-sm">
+<span class="material-symbols-outlined">add</span>
+                    Theo dõi
+                </button>
+</section>
+<!-- Related Tags (Chip List) -->
+<section class="space-y-md">
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Related Hashtags</h3>
+<div class="flex gap-sm overflow-x-auto hide-scrollbar pb-sm">
+<button class="whitespace-nowrap bg-white border border-outline px-lg py-sm rounded-full font-label-md text-label-md text-secondary hover:border-primary hover:text-primary transition-colors">#SaigonCoffee</button>
+<button class="whitespace-nowrap bg-white border border-outline px-lg py-sm rounded-full font-label-md text-label-md text-secondary hover:border-primary hover:text-primary transition-colors">#WorkFromCafe</button>
+<button class="whitespace-nowrap bg-white border border-outline px-lg py-sm rounded-full font-label-md text-label-md text-secondary hover:border-primary hover:text-primary transition-colors">#District1</button>
+<button class="whitespace-nowrap bg-white border border-outline px-lg py-sm rounded-full font-label-md text-label-md text-secondary hover:border-primary hover:text-primary transition-colors">#HiddenGem</button>
+<button class="whitespace-nowrap bg-white border border-outline px-lg py-sm rounded-full font-label-md text-label-md text-secondary hover:border-primary hover:text-primary transition-colors">#EveningVibes</button>
+<button class="whitespace-nowrap bg-white border border-outline px-lg py-sm rounded-full font-label-md text-label-md text-secondary hover:border-primary hover:text-primary transition-colors">#VietnamTravel</button>
+</div>
+</section>
+<!-- Post & Place Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
+<!-- Video Post Card (9:16) -->
+<div class="aspect-[9/16] relative rounded-[24px] overflow-hidden group shadow-md bg-surface-variant">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A vertical cinematic shot of a neon-lit Saigon street at dusk, capturing the kinetic energy of motorcycles passing by a modern cafe. The lighting is moody with vibrant orange and blue glows, creating a high-contrast urban aesthetic. The composition feels personal and immersive, consistent with a social media discovery app's premium visual style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBktZibIiW2D0AyXoPPj39Pk51xH6UU_ueqk2Fbgd5TH9dZE7z8ANoY5xSnmr00PX3Z2SC-_I8-opEnOYmQscbYDZ5Em-E2DEemeB_sip9n9YMemxAeDiXWnMcEFkw18n5Sy77MlkiNdTsS5b7IN_ciR3DLPFvI47MGCaBMoYpobqANJnFVUd9tFD29Zx85DnGPs2H2V7MtplRCrmRab_Z3yQSiNqdvuqmwMebHSqvegLtvL49Xf1hbUxh-3Tnd9JfmTar3yAdYdjY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-lg text-white">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+<span class="font-label-md">14.2k</span>
+</div>
+<p class="font-body-md line-clamp-2">Best sunset spot in D1! Hidden balcony vibes ✨</p>
+<div class="flex items-center gap-sm mt-md">
+<img class="w-8 h-8 rounded-full border-2 border-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpgNzdIzf-mJrkFQcrqu-BKhUaVuH5z0ig8qKGjiSzvLQQi3Fw94tlChRAdJgoeKs-cVepB6h1N0lyWI_xsqh8z4-vcc7QdxidRyAyKfMytP6zxD7ZxbirSqZrO15IaeyswvTKfO1LWZ-eGhr7dLJooQGmFQ5tVWpXOyK_tih2as5q9bKGxaWvAd7DYAILJmWuwJdP-hwDh1MQdFxBsYpM07_OUAuTUgec61Sng3aswX_Simsv2_bWUbH1eQ0OXIErXNZ_H6kF7WE"/>
+<span class="font-label-md">hanh_travels</span>
+</div>
+</div>
+</div>
+<!-- Place Card -->
+<div class="aspect-[9/16] bg-white rounded-[24px] overflow-hidden flex flex-col shadow-md">
+<div class="relative h-2/3 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A brightly lit, minimalist boutique cafe interior with lush tropical plants and artisanal coffee equipment. The scene is bathed in soft, natural daylight, reflecting a clean and modern high-contrast aesthetic. Warm wood textures contrast with clean white walls and subtle teal accents, conveying a premium community-driven destination vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiTDMZ1AJY1aXHN4zE6I-izuxU_bIjHbwv6GCgqsPaAqBJ3e9C6dzSgjM5tzC3eOujyA2aSoUhWC1inqyEAAq9NzOQcs9Bm0znbTF6cpQzyP5c9wLTgSBRbG1ETDs8MWy31XkA__J2O9jVYZrO0kshaSVnYle8HHVka6VmBhemskCq4rYxLLirslG5iQ72c-4NCmnvolZmbwoST440-tANFuKFPS26wxBaktRD0EFHVbtSxmkBCDVcSTbSJtiY4sIYXA1gckGzuKI"/>
+<div class="absolute top-md right-md bg-white/90 backdrop-blur-md px-md py-xs rounded-full shadow-sm">
+<div class="flex items-center gap-xs text-[#14B8A6]">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm">4.8</span>
+</div>
+</div>
+</div>
+<div class="p-lg flex flex-col flex-1">
+<span class="inline-block bg-[#14B8A6] text-white px-md py-xs rounded-full font-label-sm w-fit mb-sm">CAFE</span>
+<h4 class="font-headline-md text-on-surface">The Workshop</h4>
+<p class="font-body-md text-on-surface-variant flex items-center gap-xs mt-xs">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                            Dist 1, Saigon
+                        </p>
+<div class="mt-auto pt-md flex items-center justify-between">
+<p class="font-label-md text-primary">$8 - $15</p>
+<button class="text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Video Post Card (9:16) -->
+<div class="aspect-[9/16] relative rounded-[24px] overflow-hidden group shadow-md bg-surface-variant">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A vertical close-up of a beautifully garnished cocktail being served in a sleek rooftop bar overlooking the Saigon skyline at night. The city lights create a stunning bokeh effect in the background. The mood is sophisticated and energetic, dominated by deep blues and vibrant orange highlights, perfect for a high-end social discovery feed." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuwAyuucovnBuEDeopfwiXrf9PCIEXdNKobkpQtBLEFsWGMhwUCrLghpkvWRI5xaW8scSRCBMIckJXJXYLoMKBu4iTpMZtpSuTgza7Ktz6zmm-Ra3g_k1kamZo9PNdKCUYnvhWF516LOse8QzRHyBwLPlc66Wm54bvnSa_UEoFNtaAnsi1KjuSLf0df4cNZ3NwWkRWuGrnFBB2wdUwfeGnMcC4RZN3VNvySXkAs0antWHUHsoRrOZZDEYvrR-ZdTAB_va-uNlnDig"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-lg text-white">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+<span class="font-label-md">8.9k</span>
+</div>
+<p class="font-body-md line-clamp-2">Night out at Chill Skybar is always a good idea 🥂</p>
+<div class="flex items-center gap-sm mt-md">
+<img class="w-8 h-8 rounded-full border-2 border-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeuoADMQco6gJ-xD1JScUQ5dldnDjrFdDY6x0Sj7h49gG1RoNQ_PDo8oseeuSPucRiCd0mdJE35TlyqOMKSYzRRqa-Iqq1bYzfnJ2mO2JeHhi3VAQeZvxPGtyDHVwHJI9In-966ON_wCJctyqNQ7sFwkMcIlc26HyuWjkjq2324jmFTcD2DDTXzzpPoob_u4VYhav5GDvu5QgSWcAlCarN6Jw2jJ3rDTJj-MBc6t9OQIYLl2enRU3mTvlhoqZRWRCpOCwJhEvVbGo"/>
+<span class="font-label-md">kev_vibes</span>
+</div>
+</div>
+</div>
+<!-- Place Card -->
+<div class="aspect-[9/16] bg-white rounded-[24px] overflow-hidden flex flex-col shadow-md">
+<div class="relative h-2/3 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A contemporary art gallery interior with expansive white walls and sculptural installations. Large windows let in high-key daylight, creating a bright and airy atmosphere. The design is minimalist and high-contrast, featuring bold geometric forms that align with the exuberant and modern corporate style of the ChillPlace brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYjngevLKIXmm8MZvox7lmQmYSMkavJnCRCiBWxAppEZduFU_88xFFylftD5TKAsC1uVcUVBhOd8QklrnqR_WqhOFgHL8cePnuu-gJhh9FXeuHMEqr_V0kTivJ6CO6fTrTt4MO4orx1mQyZXs2UXcUhtnFVYFLkvHDh0EPChqgiVnDeKZ6fwCyh-7irc2ZTvROP1kn3g_WD1vWCx8rUGHxw-5dmu01Fyt3lZUeqefavB53FkkgwaOeU5LJhCulw-k16cTkY2oyoE8"/>
+<div class="absolute top-md right-md bg-white/90 backdrop-blur-md px-md py-xs rounded-full shadow-sm">
+<div class="flex items-center gap-xs text-[#14B8A6]">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm">4.9</span>
+</div>
+</div>
+</div>
+<div class="p-lg flex flex-col flex-1">
+<span class="inline-block bg-[#14B8A6] text-white px-md py-xs rounded-full font-label-sm w-fit mb-sm">ART</span>
+<h4 class="font-headline-md text-on-surface">The Factory Contemporary Arts Centre</h4>
+<p class="font-body-md text-on-surface-variant flex items-center gap-xs mt-xs">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                            Dist 2, Saigon
+                        </p>
+<div class="mt-auto pt-md flex items-center justify-between">
+<p class="font-label-md text-primary">Free Entrance</p>
+<button class="text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Video Post Card (9:16) -->
+<div class="aspect-[9/16] relative rounded-[24px] overflow-hidden group shadow-md bg-surface-variant">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A vertical, high-energy shot of a street performer playing an acoustic guitar in the middle of a crowded walking street. The background is filled with blurred people and colorful neon signs. The lighting is bright and saturated, emphasizing the kinetic and community-driven nature of the city's social discovery scene." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtYd0sHjWGrAklonojxtqI0RVq6e_tziMgLVYHxKYCiu55gWniRBRYBo_yPpCpKsTdxatoUIJWo15kx656cEcWjPSnoswI3L6L8YDhydhRvQUmPUH0G-qvja7cmMX34ZXjt9hNh_hqvS8YkmpYXxzoY_ZfDqR0MO1waSjunqp5uAzZkBmM3CCAQ227QNvr4MfTKKgyzqXJC2c6522Q5nAebw7RImwB4DsHbpSyIPG3hcy7oj5ubFYLXG_y_v7vstAgcLGq2susMXY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-lg text-white">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+<span class="font-label-md">25.1k</span>
+</div>
+<p class="font-body-md line-clamp-2">Bui Vien never sleeps! The energy is insane 🎸</p>
+<div class="flex items-center gap-sm mt-md">
+<img class="w-8 h-8 rounded-full border-2 border-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpjygCK2rlfqzYvwEVbS8BUIipBNnk-9OrG8i32khnF4GK6UKEWaqecEAKhHQN4nnOOicl3VkIUmdbe_26uUE_iVBtd_YmXiXNZ_0V1c3PNwJD6-MsRb4Xefb8XyB829zGo6F_wIRUUYs7suEWjPDXALExLIiHv7OrlSxtvBVA2mP_nnju-xDhmtXkhv6tvJUf8LdahbOtt2nWiK5uUr4osjAoa-RHDXozqI5gRwxbw3CMj5vNnnl85vi1WL1PumuwAGJZ5AwO7jA"/>
+<span class="font-label-md">linh_cityguide</span>
+</div>
+</div>
+</div>
+<!-- Video Post Card (9:16) -->
+<div class="aspect-[9/16] relative rounded-[24px] overflow-hidden group shadow-md bg-surface-variant">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A vertical aesthetic shot of a plate of vibrant, colorful Vietnamese street food being shared between friends at a low table on a bustling sidewalk. The lighting is warm and inviting, highlighting the textures of the fresh ingredients. The overall vibe is exuberant and kinetic, reflecting the vibrant social energy of the platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0Ro4PwsTJkkUN97vkgpNC66Y182z9VeTob5F1Wu3h919RuVKv3inkwJ3zdNLGPyriaMX4iRi3vp70Vh-S-Ylj8nRk5wcQcHGIGNMhS1zYU_zh6iz4cxtKrEc9jzAITvPPkcTIXvOyWchJ9U-RY3RZwjUAQfMeToaittVEn_nfGfq7U8e1O4iCLkVNwMDNYxFrRQDqAoNL_oGqWFMaK1klbkYb4R7RZGqQuORm8ojbiTlgacBnlMrtWltrSJjLrTnK5tJ12Yl1kKc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-lg text-white">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+<span class="font-label-md">5.4k</span>
+</div>
+<p class="font-body-md line-clamp-2">Found the best Banh Mi spot in District 3! 🥖</p>
+<div class="flex items-center gap-sm mt-md">
+<img class="w-8 h-8 rounded-full border-2 border-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxp7GTtvT0wFEScsOntkTern3Mju2RIYH_n96gfyCWcqX_JvWo0WcmhsJ2FON685ZD9-MemB_PMEdmJQVTpWaJ7gu586SQpSdPlv-iuK5VFrprtEMQegM760TvrXkzBY2ViWsG4JnXigMNdfrtVBxsy1Pt0Cb_UvpIFDxxesA_CE63jkbBAri65uRS0oRJup-qkOcg0y-IjqJM7IDfktScloHtGy3XDeG5fnk3OEb-D_Mu5fAQvAjXHMY7vdFbCWjboy5ZLmFKXb4"/>
+<span class="font-label-md">saigon_eats</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Panel: Trending Tags -->
+<aside class="hidden lg:block lg:col-span-4 space-y-lg sticky top-24 h-fit">
+<div class="bg-white p-xl rounded-[24px] shadow-sm space-y-lg border border-surface-container">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-md text-headline-md text-on-surface">Trending Tags</h3>
+<button class="text-primary font-label-md hover:underline">See All</button>
+</div>
+<div class="space-y-md">
+<!-- Trending Item -->
+<div class="flex items-center justify-between p-md rounded-xl hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-primary-fixed flex items-center justify-center text-primary font-bold">#1</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface group-hover:text-primary">#HanoiVibe</p>
+<p class="text-xs text-on-surface-variant">45.2k posts this week</p>
+</div>
+</div>
+<div class="flex items-center gap-xs text-green-600 font-bold">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="text-xs">12%</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-md rounded-xl hover:bg-surface-container-low transition-colors cursor-pointer group border-t border-surface-container">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-secondary-fixed flex items-center justify-center text-secondary font-bold">#2</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface group-hover:text-primary">#DalatMorning</p>
+<p class="text-xs text-on-surface-variant">32.8k posts this week</p>
+</div>
+</div>
+<div class="flex items-center gap-xs text-green-600 font-bold">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="text-xs">8%</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-md rounded-xl hover:bg-surface-container-low transition-colors cursor-pointer group border-t border-surface-container">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-variant flex items-center justify-center text-on-surface-variant font-bold">#3</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface group-hover:text-primary">#BeachLifeVN</p>
+<p class="text-xs text-on-surface-variant">12.1k posts this week</p>
+</div>
+</div>
+<div class="flex items-center gap-xs text-primary font-bold">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="text-xs">24%</span>
+</div>
+</div>
+</div>
+<div class="bg-primary-container p-lg rounded-[24px] text-white space-y-sm relative overflow-hidden">
+<div class="relative z-10">
+<p class="font-label-sm uppercase tracking-tighter opacity-80">Join the movement</p>
+<h4 class="font-headline-md">Host your own Chill Meetup!</h4>
+<button class="mt-md bg-white text-primary font-bold px-lg py-sm rounded-full text-sm hover:bg-primary-fixed transition-colors">Start a Group</button>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-20 transform rotate-12">
+<span class="material-symbols-outlined text-[100px]" style="font-variation-settings: 'FILL' 1;">groups</span>
+</div>
+</div>
+</div>
+<!-- Ad/Promo Card -->
+<div class="rounded-[24px] overflow-hidden shadow-sm relative group h-48">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A cinematic urban street photography shot of a bustling Asian night market, with warm glowing lanterns and vibrant street food stalls. The lighting is high-contrast and atmospheric, perfectly capturing the exuberance and kinetic social energy of a modern discovery platform. The image is professional and vibrant, using saturated oranges and deep blues." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBj1Igc3qow1rQe8SKMF-ynZCvWY-gPF6FabwBIDgLwDOqeDMMTI3CiHXSdlrQirVO-oz8pdMlU4nudA6TuBAOa89sD9xPvy00RmdCTYIl_zK_oUe4chkpgGgHKF5Ev_BD0zxrASatZDW6u4J0r-zmVaYEIR5wZGEieWWtP-EiIV_Y1_2tIDid3UtHcFYNvfxh6JVVKuF1mUS8JJdeShe7Ps7qilIEgMhhLG_LPAr7cyaytKi5BEU9puVg3ShzCaHY3oNLVXm-NuW0"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent p-lg flex flex-col justify-end text-white">
+<p class="font-label-sm text-primary-fixed uppercase">Sponsored</p>
+<h5 class="font-headline-md">Explore New Saigon Gems</h5>
+</div>
+</div>
+</aside>
+</main>
+<!-- Floating Action Button: Suppressed for Tag Detail per Instructions -->
+<!-- Contextual FAB Suppression logic applied -->
+<script>
+        // Interactive states for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.classList.add('scale-95');
+            });
+            button.addEventListener('mouseup', () => {
+                button.classList.remove('scale-95');
+            });
+        });
+
+        // Hover effect for side nav
+        const navItems = document.querySelectorAll('aside nav a');
+        navItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                if (!item.classList.contains('text-primary')) {
+                    item.classList.add('bg-surface-variant');
+                }
+            });
+            item.addEventListener('mouseleave', () => {
+                if (!item.classList.contains('text-primary')) {
+                    item.classList.remove('bg-surface-variant');
+                }
+            });
+        });
+    </script>
+</body></html>

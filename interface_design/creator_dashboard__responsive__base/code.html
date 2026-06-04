@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#f7f9fb",
+                        "secondary-container": "#a2cdff",
+                        "on-primary-fixed": "#390c00",
+                        "primary-container": "#ff6b35",
+                        "on-secondary-fixed-variant": "#184974",
+                        "surface-container-high": "#e6e8ea",
+                        "on-surface-variant": "#594139",
+                        "surface-container": "#eceef0",
+                        "on-secondary-fixed": "#001d35",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f2f4f6",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#2a5782",
+                        "tertiary-fixed-dim": "#4fdbc8",
+                        "outline": "#8d7168",
+                        "primary": "#ab3500",
+                        "on-tertiary-fixed-variant": "#005048",
+                        "surface-dim": "#d8dadc",
+                        "secondary-fixed": "#d1e4ff",
+                        "on-tertiary-fixed": "#00201c",
+                        "on-error": "#ffffff",
+                        "surface-bright": "#f7f9fb",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#e0e3e5",
+                        "surface-tint": "#ab3500",
+                        "inverse-primary": "#ffb59d",
+                        "outline-variant": "#e1bfb5",
+                        "inverse-surface": "#2d3133",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-container": "#003832",
+                        "surface-variant": "#e0e3e5",
+                        "secondary-fixed-dim": "#a0cafc",
+                        "on-background": "#191c1e",
+                        "primary-fixed-dim": "#ffb59d",
+                        "on-primary-container": "#5f1900",
+                        "inverse-on-surface": "#eff1f3",
+                        "tertiary": "#006b5f",
+                        "primary-fixed": "#ffdbd0",
+                        "secondary": "#35618d",
+                        "tertiary-container": "#00ac9b",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#832600",
+                        "background": "#f7f9fb",
+                        "on-surface": "#191c1e",
+                        "tertiary-fixed": "#71f8e4",
+                        "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "gutter": "16px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "xxl": "48px",
+                        "lg": "24px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(8px); }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-inverse-surface w-full sticky top-0 z-50 shadow-sm flex justify-between items-center px-margin-mobile h-16 w-full">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img alt="Creator Profile Picture" class="w-full h-full object-cover" data-alt="A close-up portrait of a stylish young creator with a warm smile, set against a blurred urban background with golden hour lighting. The image has a vibrant, energetic feel with high-contrast details and rich tones of orange and deep blue, fitting the Modern Corporate with a High-Contrast Edge aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9QhV9lFYkbqzNq7NW9_CPbg5fNqlFKyOsCYTnC28w7e8iDUHbPk8kaDXUvxmWtpz6c_n91CntQyMcCvsWW1Ky-hfw9hQ7XF8naryf7hYku4u5Er_R9OJJf2OxNOhQ99--7Xy3l6WqH9rUOE0DW1EDBm4CHrmNv382ysM9X-KBi0FsiUKwiec7MnfMQ3Ze1jc3iq7U7ZvShBXOG6BTgmEHgWiSoR2cQFiXTdcs-cJkFaSp_zUkFAl48lO46c4PkDxTcp7SAMPo5zo"/>
+</div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-container">CreatorHub</h1>
+</div>
+<button class="p-2 text-primary dark:text-inverse-primary active:scale-95 duration-150 hover:bg-surface-container-high transition-colors rounded-full">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</header>
+<main class="px-margin-mobile pt-lg space-y-xl">
+<!-- Greeting Section -->
+<section class="animate-fade-in">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-2">Chào, Minh! 👋</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Hôm nay của bạn thế nào?</p>
+</section>
+<!-- Summary Statistics Card -->
+<section class="bg-surface-container-lowest rounded-xl p-lg shadow-[0px_4px_20px_rgba(31,78,121,0.08)]">
+<div class="grid grid-cols-3 gap-xs">
+<div class="flex flex-col items-center text-center">
+<span class="text-primary font-bold text-headline-md">5.2k</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Tổng lượt xem</span>
+</div>
+<div class="flex flex-col items-center text-center border-x border-outline-variant">
+<span class="text-tertiary font-bold text-headline-md">+120</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Follow mới</span>
+</div>
+<div class="flex flex-col items-center text-center">
+<span class="text-primary-container font-bold text-headline-md">1.8k</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Lượt thích</span>
+</div>
+</div>
+</section>
+<!-- Action Grid -->
+<section>
+<h3 class="font-label-md text-label-md text-on-surface-variant mb-md uppercase tracking-wider">Hành động nhanh</h3>
+<div class="grid grid-cols-3 gap-md">
+<button class="flex flex-col items-center justify-center p-md bg-primary-fixed rounded-xl aspect-square shadow-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary mb-2 text-3xl">add_circle</span>
+<span class="font-label-sm text-label-sm text-on-primary-fixed-variant">Đăng bài</span>
+</button>
+<button class="flex flex-col items-center justify-center p-md bg-secondary-fixed rounded-xl aspect-square shadow-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-secondary mb-2 text-3xl">chat</span>
+<span class="font-label-sm text-label-sm text-on-secondary-fixed-variant">Tin nhắn</span>
+</button>
+<button class="flex flex-col items-center justify-center p-md bg-tertiary-fixed rounded-xl aspect-square shadow-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-tertiary mb-2 text-3xl">event</span>
+<span class="font-label-sm text-label-sm text-on-tertiary-fixed-variant">Sự kiện</span>
+</button>
+</div>
+</section>
+<!-- Top Performing Post -->
+<section>
+<div class="flex justify-between items-end mb-md">
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Bài viết hiệu quả nhất</h3>
+<button class="text-primary font-bold text-label-sm">Xem tất cả</button>
+</div>
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(31,78,121,0.08)] border border-surface-container-high">
+<div class="aspect-video relative overflow-hidden">
+<img alt="Top Performing Post Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A wide-angle shot of a vibrant underground music club with neon lights in orange and electric blue reflecting off urban industrial surfaces. The atmosphere is energetic and exuberant, with silhouettes of a community dancing under cinematic lighting. The visual style is high-contrast, modern, and perfectly aligned with the Urban Explorer brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD156H2d5ljqVYsiUeBjqKsqVcQKUmyOJaM9fd8v7-crVOwZpfVrUhIFaXMfOAzewuJdBaz5zJsM8YoIth9Fy6rKUaRr62mMu4BhU5-_7xsatGuFsLB6Ff_EdeT25uYeTUSMuGdFC4yYSMMa3vaM-5LjV3UwpuG_fABB6CtyVPchNjpxiQEHJsZCTEuyG3KPIS75r_U_QC8-Zzh34OXx5NhvEFmgajoVzU0_cxu_S_dfgLYY74Br_fO2gBxvejuo7vjNdY3NfQjwTQ"/>
+<div class="absolute top-md left-md">
+<span class="bg-primary-container text-white px-3 py-1 rounded-full font-label-sm text-label-sm shadow-lg">Trending #1</span>
+</div>
+</div>
+<div class="p-lg">
+<h4 class="font-headline-md text-headline-md text-on-surface mb-sm">Khám phá góc Chill mới tại Quận 1 🏮</h4>
+<div class="flex items-center gap-md mb-lg">
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">visibility</span>
+<span class="font-label-sm text-label-sm">2,402</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">favorite</span>
+<span class="font-label-sm text-label-sm">842</span>
+</div>
+</div>
+<button class="w-full py-md bg-primary text-white rounded-xl font-bold font-body-md text-body-md active:scale-[0.98] transition-all shadow-md">
+                        Xem chi tiết
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-surface dark:bg-inverse-surface fixed bottom-0 w-full rounded-t-xl z-50 shadow-lg bg-surface dark:bg-inverse-surface shadow-[0px_-4px_20px_rgba(31,78,121,0.08)] flex justify-around items-center h-20 pb-safe px-2">
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-3 py-1 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant opacity-70 hover:opacity-100 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-sm text-label-sm">Posts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-white bg-primary p-3 rounded-full -mt-10 shadow-xl active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">add_circle</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant opacity-70 hover:opacity-100 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-sm text-label-sm">Stats</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant opacity-70 hover:opacity-100 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for buttons
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('click', (e) => {
+                const ripple = document.createElement('div');
+                ripple.className = 'absolute bg-white/30 rounded-full scale-0 animate-ripple';
+                // Add logic for ripple if needed, for now just simple scale interaction via tailwind
+            });
+        });
+
+        // Dynamic greeting based on time of day
+        const greetingEl = document.querySelector('h2');
+        const hour = new Date().getHours();
+        let greetingPrefix = "Chào buổi sáng";
+        if (hour >= 12 && hour < 18) greetingPrefix = "Chào buổi chiều";
+        if (hour >= 18) greetingPrefix = "Chào buổi tối";
+        // Keeping "Chào, Minh!" as per JSON/Prompt priority
+        // greetingEl.textContent = `${greetingPrefix}, Minh! 👋`;
+    </script>
+</body></html>

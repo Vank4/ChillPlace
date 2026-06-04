@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ChillPlace Admin - Điều phối Nội dung</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed-variant": "#832600",
+                    "surface-container-low": "#f2f4f6",
+                    "surface-container": "#eceef0",
+                    "on-surface-variant": "#594139",
+                    "surface-container-high": "#e6e8ea",
+                    "inverse-primary": "#ffb59d",
+                    "on-secondary-fixed-variant": "#184974",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-container": "#2a5782",
+                    "on-primary-fixed": "#390c00",
+                    "secondary-fixed": "#d1e4ff",
+                    "tertiary-fixed": "#71f8e4",
+                    "on-surface": "#191c1e",
+                    "surface-container-highest": "#e0e3e5",
+                    "tertiary": "#006b5f",
+                    "surface-dim": "#d8dadc",
+                    "surface-tint": "#ab3500",
+                    "error-container": "#ffdad6",
+                    "primary-fixed": "#ffdbd0",
+                    "outline-variant": "#e1bfb5",
+                    "on-primary-container": "#5f1900",
+                    "background": "#f7f9fb",
+                    "tertiary-fixed-dim": "#4fdbc8",
+                    "on-tertiary-container": "#003832",
+                    "on-tertiary-fixed": "#00201c",
+                    "primary-fixed-dim": "#ffb59d",
+                    "tertiary-container": "#00ac9b",
+                    "secondary": "#35618d",
+                    "surface-variant": "#e0e3e5",
+                    "inverse-surface": "#2d3133",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "surface-bright": "#f7f9fb",
+                    "primary": "#ab3500",
+                    "on-error-container": "#93000a",
+                    "inverse-on-surface": "#eff1f3",
+                    "on-background": "#191c1e",
+                    "error": "#ba1a1a",
+                    "surface": "#f7f9fb",
+                    "secondary-container": "#a2cdff",
+                    "primary-container": "#ff6b35",
+                    "outline": "#8d7168",
+                    "on-tertiary-fixed-variant": "#005048",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed": "#001d35",
+                    "secondary-fixed-dim": "#a0cafc",
+                    "on-primary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "32px",
+                    "xs": "4px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "xl": "32px",
+                    "xxl": "48px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e0e3e5; border-radius: 10px; }
+        .glass-panel { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- SideNavBar Anchor -->
+<aside class="h-screen w-64 fixed left-0 top-0 flex flex-col py-xl px-md border-r border-outline-variant bg-surface-container-lowest shadow-sm z-50">
+<div class="mb-xxl">
+<h1 class="font-display-lg text-headline-md font-extrabold text-primary">ChillPlace Admin</h1>
+<p class="font-label-md text-label-md text-secondary opacity-70">System Control</p>
+</div>
+<nav class="flex-1 space-y-sm">
+<a class="flex items-center gap-md px-md py-sm text-secondary font-medium hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Overview</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-secondary font-medium hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-label-md">Users</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm bg-primary-container text-on-primary-container rounded-lg font-bold scale-[0.98]" href="#">
+<span class="material-symbols-outlined">security</span>
+<span class="font-label-md text-label-md">Moderation</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-secondary font-medium hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-md text-label-md">Content</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-secondary font-medium hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto space-y-sm pt-xl border-t border-outline-variant">
+<button class="w-full bg-secondary text-on-secondary py-sm rounded-lg font-bold hover:opacity-90 transition-all flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined">analytics</span>
+                Generate Report
+            </button>
+<a class="flex items-center gap-md px-md py-sm text-secondary font-medium hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-error font-medium hover:bg-error-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar Anchor -->
+<header class="flex justify-between items-center h-16 w-full pl-72 pr-margin-desktop fixed top-0 bg-surface border-b border-outline-variant z-40">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full pl-xl py-sm focus:ring-2 focus:ring-primary-container font-label-md text-label-md" placeholder="Tìm kiếm báo cáo, người dùng hoặc nội dung..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-lg ml-lg">
+<button class="relative p-sm hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined text-secondary">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<button class="p-sm hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined text-secondary">dark_mode</span>
+</button>
+<div class="flex items-center gap-sm pl-md border-l border-outline-variant">
+<div class="text-right">
+<p class="font-label-md text-label-md font-bold">Admin Tuấn</p>
+<p class="text-[10px] text-secondary uppercase tracking-wider font-bold">System Admin</p>
+</div>
+<img alt="Admin Profile" class="w-10 h-10 rounded-full border-2 border-primary-container object-cover" data-alt="A professional headshot of a young male administrator with a friendly yet focused expression, set against a clean, blurred office background. The lighting is bright and modern, emphasizing the high-contrast light mode aesthetic of the platform. The overall mood is reliable and corporate with a creative edge." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoPLS6Jfh16aDZtyneEroYF3rsMhzVpZklcwl8YetiEs_pZt7fw7OClXTryZ-ZOINeEPJiQLC-TLFstBcXJTp3FUhQ3ySl39E4BUuYQVpyKWB_R_CGrXaq6xhcS0CsnV-y7A3iUSDwTbTRlYXvwhJKD_FETYwNe7kQvgUcLfsVgQPvomLVB_RRVpe-LdICkAI5a4sK_IgKFOYtY8V85f2_S0oNd8WGrGVhJx1OFf2yZIe1xgal1EpNk8fZVjnegntrn5C9XkQ62tI"/>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="pl-72 pt-24 pr-margin-desktop min-h-screen pb-xxl">
+<div class="flex justify-between items-end mb-xl">
+<div>
+<nav class="flex gap-md mb-sm">
+<span class="text-secondary font-label-md text-label-md">Moderation</span>
+<span class="text-outline">/</span>
+<span class="text-primary font-label-md text-label-md font-bold">Content Queue</span>
+</nav>
+<h2 class="font-display-lg text-headline-lg text-on-surface">Kiểm duyệt Nội dung</h2>
+</div>
+<div class="flex bg-surface-container-low p-xs rounded-xl">
+<button class="px-lg py-sm rounded-lg bg-surface-container-lowest text-primary font-bold shadow-sm transition-all">Đang chờ</button>
+<button class="px-lg py-sm rounded-lg text-secondary font-medium hover:bg-surface-container-high transition-all">Đã giải quyết</button>
+<button class="px-lg py-sm rounded-lg text-secondary font-medium hover:bg-surface-container-high transition-all">Khiếu nại</button>
+</div>
+</div>
+<!-- Filter Bar -->
+<div class="flex flex-wrap gap-md mb-lg bg-surface-container-lowest p-md rounded-xxl shadow-sm border border-outline-variant/30">
+<div class="flex items-center gap-sm px-md py-sm bg-surface-container-low rounded-lg text-secondary font-label-md">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+<span>Lọc theo: Tất cả lý do</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</div>
+<div class="flex items-center gap-sm px-md py-sm bg-surface-container-low rounded-lg text-secondary font-label-md">
+<span class="material-symbols-outlined text-sm">category</span>
+<span>Loại: Bài viết &amp; Đánh giá</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</div>
+<div class="flex items-center gap-sm px-md py-sm bg-surface-container-low rounded-lg text-secondary font-label-md">
+<span class="material-symbols-outlined text-sm">priority_high</span>
+<span>Độ ưu tiên: Cao nhất</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</div>
+<div class="ml-auto text-label-sm font-label-sm text-secondary flex items-center gap-sm">
+<span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+                24 báo cáo mới trong 1 giờ qua
+            </div>
+</div>
+<!-- Moderation Grid -->
+<div class="grid grid-cols-1 xl:grid-cols-2 gap-lg">
+<!-- Report Card 1 -->
+<div class="bg-surface-container-lowest rounded-xxl border border-outline-variant overflow-hidden shadow-sm hover:shadow-md transition-shadow group">
+<div class="p-lg flex gap-lg">
+<!-- Media Preview -->
+<div class="w-40 h-40 flex-shrink-0 relative">
+<img alt="Reported content" class="w-full h-full object-cover rounded-xl" data-alt="A vibrant outdoor social gathering at a trendy urban cafe, captured with high saturation and kinetic energy. The photo shows diverse young people laughing and sharing food under warm evening string lights. The overall style is exuberant and community-driven, typical of a top-rated social post on a high-energy map-based platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfHg3OEhtGd5s8WNkdaRdRVN4x8NCWat7hXh9kR8FuqJ_pZxYtDYvLlqQaFqzZnuYoJoaRTT8C2Far7j1h56vNhLQJvu_eicZYj-OYrhO07Jo6t2bihdwKl51kdHkrZAmO_kgBJiGD3pI6-3Z7YYkG68emg9TcaqZJiycrns2YIaPeJmg_hGp7q6JWQ6jAZou0pa6u0H5yS-2Vlp9nrqFbsS6lc7gH-U9o3PgYmqR12S2pnDXJLeVHvBNJDdnCE3XCy2Q5kQmQOkU"/>
+<div class="absolute top-sm left-sm px-sm py-xs bg-error text-on-error text-[10px] font-bold rounded-full uppercase tracking-tighter">Phản cảm</div>
+</div>
+<!-- Details -->
+<div class="flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h4 class="font-headline-md text-body-lg text-on-surface line-clamp-1">Khai trương ChillBar Quận 1</h4>
+<p class="text-label-sm text-secondary">Đăng bởi <span class="text-primary font-bold">@minh_traveler</span> • 2 giờ trước</p>
+</div>
+<span class="px-sm py-xs bg-error-container text-on-error-container text-[10px] font-bold rounded-lg uppercase">Mức độ: Cao</span>
+</div>
+<p class="text-body-md text-on-surface-variant line-clamp-2 mb-md italic">"Chỗ này cực cháy, anh em qua ngay nhé, có mấy em xinh tươi phục vụ tận răng..."</p>
+<div class="mt-auto p-sm bg-surface-container rounded-lg flex items-center gap-sm">
+<img alt="Reporter" class="w-6 h-6 rounded-full object-cover" data-alt="A clean, minimalist profile avatar of a concerned user, presented in a circular frame. The portrait shows a professional individual with a neutral expression, lit with soft, natural light that aligns with the app's clean corporate aesthetic. The background is a simple, muted solid color to ensure focus on the identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQXIU3iUBXIBM9ZmPvGeNv-z3ykYMj0ik0SHAd2JI4Lp3QS7iNHBpg5GvGTSEv5eQDs64-k5UjPosnD_bYgr1dtpuq6xZZChhlKtCEzBIMAsxIfC1_JXzY_Qo05YjP9d_CYLJKIRsv4nF3q5AwFvHYEG2oPIy8Ccm-d4AVGqteAxBbHfZ6kRiEp2OdDlSVlIJ-Xuae21gF3bIyQ87JeEft6snks3VJmT-frTAc6-a3CBMAxbQC_YS97mZoHhulGlQTbsBh_vMFhss"/>
+<p class="text-label-sm text-secondary">Báo cáo bởi <span class="font-bold">@hoang_bao</span>: "Ngôn từ không phù hợp, gợi dục"</p>
+</div>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="px-lg py-md bg-surface-container-low flex gap-md border-t border-outline-variant">
+<button class="flex-1 py-sm bg-primary text-on-primary rounded-lg font-bold text-label-md flex items-center justify-center gap-sm hover:opacity-90 transition-all">
+<span class="material-symbols-outlined text-md">check_circle</span> Phê duyệt
+                    </button>
+<button class="flex-1 py-sm bg-inverse-surface text-inverse-on-surface rounded-lg font-bold text-label-md flex items-center justify-center gap-sm hover:opacity-90 transition-all">
+<span class="material-symbols-outlined text-md">delete</span> Gỡ bỏ
+                    </button>
+<button class="px-md py-sm border border-outline text-secondary rounded-lg font-bold text-label-md hover:bg-surface-container-high transition-all">
+                        Cảnh cáo
+                    </button>
+</div>
+</div>
+<!-- Report Card 2 -->
+<div class="bg-surface-container-lowest rounded-xxl border border-outline-variant overflow-hidden shadow-sm hover:shadow-md transition-shadow group">
+<div class="p-lg flex gap-lg">
+<!-- Media Preview -->
+<div class="w-40 h-40 flex-shrink-0 relative bg-surface-container flex items-center justify-center rounded-xl overflow-hidden">
+<span class="material-symbols-outlined text-xxl text-outline opacity-20">chat_bubble</span>
+<div class="absolute inset-0 p-md flex flex-col justify-center">
+<p class="text-[10px] font-bold text-secondary uppercase mb-xs">Đánh giá (Review)</p>
+<p class="text-xs font-medium text-on-surface line-clamp-4">"Cửa hàng lừa đảo nhé mọi người, nhận tiền xong không giao hàng, gọi điện thì thuê bao. Đừng ai vào đây..."</p>
+</div>
+<div class="absolute top-sm left-sm px-sm py-xs bg-secondary text-on-secondary text-[10px] font-bold rounded-full uppercase tracking-tighter">Spam/Lừa đảo</div>
+</div>
+<!-- Details -->
+<div class="flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h4 class="font-headline-md text-body-lg text-on-surface line-clamp-1">Đánh giá tại The Coffee House</h4>
+<p class="text-label-sm text-secondary">Đăng bởi <span class="text-primary font-bold">@user_9921</span> • 5 giờ trước</p>
+</div>
+<span class="px-sm py-xs bg-surface-container-high text-secondary text-[10px] font-bold rounded-lg uppercase">Mức độ: Trung bình</span>
+</div>
+<p class="text-body-md text-on-surface-variant line-clamp-2 mb-md">Nội dung tố cáo hành vi gian lận thương mại không kèm bằng chứng cụ thể.</p>
+<div class="mt-auto p-sm bg-surface-container rounded-lg flex items-center gap-sm">
+<img alt="Reporter" class="w-6 h-6 rounded-full object-cover" data-alt="A portrait of a young female professional with a confident, clean look. The lighting is bright and airy, capturing a high-key modern vibe. Her expression is helpful and attentive, fitting for a community reporter role. The style is sharp and colorful, matching the brand's vibrant and energetic identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_Q8uVcG4IT7HQHLmH5RSJZokzPgGC8kBRnQvgrXil0efab5VZnIIARdqNGAGwjyR92uxts5T_ljWrmeKO6ofqziOitfhLPFTlCbfol5q59KX73gAp1aAPeKZ-QWFIjvN_5QjfGeUNxFQiTPkeuPst_ydjFFqpKzo8oEsjfXvpHDTPmcepea1HK-NaFRNLwHy5KzUzXR6Y3_Va0Hh-Ht5CFne6tO4Wj6xkSe_ClOE1bXmA5BqKQQmW4V5l5j6XxBMgSjXJZF9JWmE"/>
+<p class="text-label-sm text-secondary">Báo cáo bởi <span class="font-bold">@linh_shop</span>: "Phỉ báng vô căn cứ"</p>
+</div>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="px-lg py-md bg-surface-container-low flex gap-md border-t border-outline-variant">
+<button class="flex-1 py-sm bg-primary text-on-primary rounded-lg font-bold text-label-md flex items-center justify-center gap-sm hover:opacity-90 transition-all">
+<span class="material-symbols-outlined text-md">check_circle</span> Phê duyệt
+                    </button>
+<button class="flex-1 py-sm bg-inverse-surface text-inverse-on-surface rounded-lg font-bold text-label-md flex items-center justify-center gap-sm hover:opacity-90 transition-all">
+<span class="material-symbols-outlined text-md">delete</span> Gỡ bỏ
+                    </button>
+<button class="px-md py-sm border border-outline text-secondary rounded-lg font-bold text-label-md hover:bg-surface-container-high transition-all">
+                        Cảnh cáo
+                    </button>
+</div>
+</div>
+<!-- Report Card 3 -->
+<div class="bg-surface-container-lowest rounded-xxl border border-outline-variant overflow-hidden shadow-sm hover:shadow-md transition-shadow group">
+<div class="p-lg flex gap-lg">
+<!-- Media Preview -->
+<div class="w-40 h-40 flex-shrink-0 relative">
+<img alt="Reported content" class="w-full h-full object-cover rounded-xl" data-alt="A high-contrast photo of a crowded nightclub scene with dramatic neon lighting in shades of deep blue and electric orange. The image captures the kinetic movement of the crowd under flashing lights, creating a high-energy and social atmosphere. The visual style is edgy and modern, emphasizing the nightlife discovery aspect of the platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8h1m6iv9HQkIIdaoEiUClsxl_-BtX-LPR4m-WSVlvTixMJAn1uccoaUIUzYyKdhh7NbUR2eo2Vr_nZ1Dp6uSdTpRd6LCnmD1JdrBLQIX1t-IsKSGyjfBaq4XVMWExfOJK87_YeYkmGousHLQ2efRgMaheGVYlEw-hf_0c7htBSMcoYjwcJOI5VpUT_V1wognmE2PqE4CQF1KdS3QR7W13DxekZtcISdSE86exRkzxV_dbGb3riAyisv7VRTf3DwAhMMFV2hks1-o"/>
+<div class="absolute top-sm left-sm px-sm py-xs bg-error text-on-error text-[10px] font-bold rounded-full uppercase tracking-tighter">Bạo lực</div>
+</div>
+<!-- Details -->
+<div class="flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h4 class="font-headline-md text-body-lg text-on-surface line-clamp-1">Hỗn chiến tại phố đi bộ</h4>
+<p class="text-label-sm text-secondary">Đăng bởi <span class="text-primary font-bold">@news_fast</span> • 15 phút trước</p>
+</div>
+<span class="px-sm py-xs bg-error-container text-on-error-container text-[10px] font-bold rounded-lg uppercase">Mức độ: Rất Cao</span>
+</div>
+<p class="text-body-md text-on-surface-variant line-clamp-2 mb-md italic">Video ghi lại cảnh ẩu đả giữa hai nhóm thanh niên trước quán bar...</p>
+<div class="mt-auto p-sm bg-surface-container rounded-lg flex items-center gap-sm">
+<img alt="Reporter" class="w-6 h-6 rounded-full object-cover" data-alt="A focused headshot of a community moderator or engaged citizen. The lighting is warm and directional, highlighting the features of a determined young man. The aesthetic is modern and high-contrast, with a clean background that maintains the platform's professional yet vibrant design language." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhyPuWsjQTR4cW1lNXOXh2qbcotecKtriSLUHR10UvAgRc2cH2HGZhlSk6T5vwL79LsRg2NxywGdohDqOQTi-usbZTgOvA7ISClef2wT9RdjPliRpdHJtCnzw_DvjeFbrPJCcKbUHHs0acWxeNFpsDOhmZFe39J58PzPAErs2o3Qc5sGEUvel6KrDR_BDNbzFdX3xRCDxhZSwLDFGr_yN3uFIkCbr44Wclu38TW4jXSvQwj0WNRt0C_TElQz27Aj-lOdegw4C4uYo"/>
+<p class="text-label-sm text-secondary">Hệ thống AI tự động phát hiện nội dung nhạy cảm</p>
+</div>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="px-lg py-md bg-surface-container-low flex gap-md border-t border-outline-variant">
+<button class="flex-1 py-sm bg-primary text-on-primary rounded-lg font-bold text-label-md flex items-center justify-center gap-sm hover:opacity-90 transition-all">
+<span class="material-symbols-outlined text-md">check_circle</span> Phê duyệt
+                    </button>
+<button class="flex-1 py-sm bg-inverse-surface text-inverse-on-surface rounded-lg font-bold text-label-md flex items-center justify-center gap-sm hover:opacity-90 transition-all">
+<span class="material-symbols-outlined text-md">delete</span> Gỡ bỏ
+                    </button>
+<button class="px-md py-sm border border-outline text-secondary rounded-lg font-bold text-label-md hover:bg-surface-container-high transition-all">
+                        Khóa TK
+                    </button>
+</div>
+</div>
+<!-- Empty State / Load More -->
+<div class="xl:col-span-2 flex flex-col items-center justify-center py-xxl bg-surface-container/30 rounded-xxl border-2 border-dashed border-outline-variant">
+<span class="material-symbols-outlined text-display-lg text-outline opacity-30 mb-md">inventory_2</span>
+<p class="font-headline-md text-on-surface-variant">Hết danh sách đang chờ</p>
+<p class="text-body-md text-secondary mb-lg">Bạn đã hoàn thành kiểm duyệt tất cả báo cáo mới nhất.</p>
+<button class="px-xl py-md bg-surface-container-high text-primary font-bold rounded-xl hover:bg-surface-container-highest transition-all">
+                    Xem lịch sử kiểm duyệt
+                </button>
+</div>
+</div>
+</main>
+<!-- Global FAB Anchor (Suppressed as per rules for Details/Settings/Moderation screens unless contextually critical) -->
+<!-- We skip the FAB here to prioritize the Content Moderation Canvas as requested -->
+<script>
+        // Micro-interactions for buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', () => {
+                btn.style.transform = 'scale(0.96)';
+            });
+            btn.addEventListener('mouseup', () => {
+                btn.style.transform = '';
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = '';
+            });
+        });
+
+        // Tab Switching Logic (Visual Only)
+        const tabs = document.querySelectorAll('.flex.bg-surface-container-low button');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => {
+                    t.classList.remove('bg-surface-container-lowest', 'text-primary', 'font-bold', 'shadow-sm');
+                    t.classList.add('text-secondary', 'font-medium', 'hover:bg-surface-container-high');
+                });
+                tab.classList.add('bg-surface-container-lowest', 'text-primary', 'font-bold', 'shadow-sm');
+                tab.classList.remove('text-secondary', 'font-medium', 'hover:bg-surface-container-high');
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>ChillPlace - Creator Analytics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#f7f9fb",
+                    "secondary-container": "#a2cdff",
+                    "on-primary-fixed": "#390c00",
+                    "primary-container": "#ff6b35",
+                    "on-secondary-fixed-variant": "#184974",
+                    "surface-container-high": "#e6e8ea",
+                    "on-surface-variant": "#594139",
+                    "surface-container": "#eceef0",
+                    "on-secondary-fixed": "#001d35",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#f2f4f6",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-container": "#2a5782",
+                    "tertiary-fixed-dim": "#4fdbc8",
+                    "outline": "#8d7168",
+                    "primary": "#ab3500",
+                    "on-tertiary-fixed-variant": "#005048",
+                    "surface-dim": "#d8dadc",
+                    "secondary-fixed": "#d1e4ff",
+                    "on-tertiary-fixed": "#00201c",
+                    "on-error": "#ffffff",
+                    "surface-bright": "#f7f9fb",
+                    "error": "#ba1a1a",
+                    "surface-container-highest": "#e0e3e5",
+                    "surface-tint": "#ab3500",
+                    "inverse-primary": "#ffb59d",
+                    "outline-variant": "#e1bfb5",
+                    "inverse-surface": "#2d3133",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-container": "#003832",
+                    "surface-variant": "#e0e3e5",
+                    "secondary-fixed-dim": "#a0cafc",
+                    "on-background": "#191c1e",
+                    "primary-fixed-dim": "#ffb59d",
+                    "on-primary-container": "#5f1900",
+                    "inverse-on-surface": "#eff1f3",
+                    "tertiary": "#006b5f",
+                    "primary-fixed": "#ffdbd0",
+                    "secondary": "#35618d",
+                    "tertiary-container": "#00ac9b",
+                    "on-primary": "#ffffff",
+                    "on-primary-fixed-variant": "#832600",
+                    "background": "#f7f9fb",
+                    "on-surface": "#191c1e",
+                    "tertiary-fixed": "#71f8e4",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "8px",
+                    "md": "16px",
+                    "xs": "4px",
+                    "gutter": "16px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "32px",
+                    "xxl": "48px",
+                    "lg": "24px",
+                    "xl": "32px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .chart-container { position: relative; height: 180px; width: 100%; }
+        .glass-effect { backdrop-filter: blur(8px); background: rgba(255, 255, 255, 0.8); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-inverse-surface w-full sticky top-0 z-50 shadow-sm flex justify-between items-center px-margin-mobile h-16 w-full">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-primary-container flex items-center justify-center">
+<img alt="Creator Profile Picture" class="w-full h-full object-cover" data-alt="A portrait of a trendy Gen-Z creator with colorful hair and urban fashion, shot in a vibrant outdoor setting with warm sunset lighting. The overall mood is confident and exuberant, matching a high-energy social media brand identity with saturated orange and blue tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYCGiJNWzNyrtwDw6m_yICJAhP7LZHWe5EeYQOL7B-mN_fo8Q1CwUZsPhTGMWfgy2IhuALQMSIFoPkceujUc7Yv2YRNWrhwXAsJ_PnfDdHxruVh-NqARKwJT6_WFJsZEnvtcwjH685yqMKrWwAQIjEnACSfwYu5MDqtdIg3HOcIZWyc36RcHnll5PtF_5wP23x9QyD7Sq-_scLLSv8qokklXG3NBRliDtmGnlOG6bYr0wiu-R3NSQ2k3bjiARrRtuJdAQfGY6Zma4"/>
+</div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-container">Phân tích</h1>
+</div>
+<button class="material-symbols-outlined text-primary dark:text-inverse-primary p-2 active:scale-95 duration-150 transition-colors hover:bg-surface-container-high rounded-full">
+            notifications
+        </button>
+</header>
+<main class="pb-24 pt-4 px-margin-mobile space-y-6">
+<!-- Date Range Picker & Filter -->
+<section class="flex items-center justify-between">
+<div class="flex items-center gap-2 bg-surface-container-low px-4 py-2 rounded-xl shadow-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">calendar_today</span>
+<span class="font-label-md text-on-surface-variant">7 ngày qua</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">expand_more</span>
+</div>
+<button class="material-symbols-outlined text-primary bg-primary-fixed p-2 rounded-xl active:scale-90 transition-transform">
+                tune
+            </button>
+</section>
+<!-- Main Analytics Chart Card -->
+<section class="bg-surface-container-lowest p-6 rounded-[24px] shadow-[0px_4px_20px_rgba(31,78,121,0.08)]">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h2 class="font-label-md text-on-surface-variant">Lượt xem video</h2>
+<p class="font-headline-md text-headline-md text-primary">128.4K</p>
+<div class="flex items-center gap-1 text-tertiary mt-1">
+<span class="material-symbols-outlined text-[16px] font-bold">trending_up</span>
+<span class="font-label-sm">+12.5% so với tuần trước</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-50">more_horiz</span>
+</div>
+<div class="chart-container flex items-end justify-between gap-2 px-1">
+<div class="w-full bg-primary-container/10 rounded-t-lg h-[40%] relative group">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-on-background text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">14K</div>
+</div>
+<div class="w-full bg-primary-container/20 rounded-t-lg h-[65%] relative group"></div>
+<div class="w-full bg-primary-container/30 rounded-t-lg h-[50%] relative group"></div>
+<div class="w-full bg-primary-container/50 rounded-t-lg h-[85%] relative group"></div>
+<div class="w-full bg-primary-container/40 rounded-t-lg h-[60%] relative group"></div>
+<div class="w-full bg-primary-container rounded-t-lg h-[95%] relative group"></div>
+<div class="w-full bg-primary-container/70 rounded-t-lg h-[75%] relative group"></div>
+</div>
+<div class="flex justify-between mt-4 px-1 font-label-sm text-on-surface-variant opacity-60">
+<span>T2</span><span>T3</span><span>T4</span><span>T5</span><span>T6</span><span>T7</span><span>CN</span>
+</div>
+</section>
+<!-- Stats Grid -->
+<section class="grid grid-cols-1 gap-4">
+<div class="bg-surface-container-lowest p-5 rounded-[24px] shadow-[0px_4px_20px_rgba(31,78,121,0.08)] flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container">timer</span>
+</div>
+<div>
+<p class="font-label-sm text-on-surface-variant">Thời gian xem trung bình</p>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md text-on-surface">1:45</span>
+<span class="text-tertiary text-xs font-bold">+0:12</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-lowest p-5 rounded-[24px] shadow-[0px_4px_20px_rgba(31,78,121,0.08)]">
+<div class="w-10 h-10 rounded-xl bg-tertiary-container/20 flex items-center justify-center mb-3">
+<span class="material-symbols-outlined text-tertiary">bolt</span>
+</div>
+<p class="font-label-sm text-on-surface-variant">Tỷ lệ tương tác</p>
+<p class="font-headline-md text-headline-md text-on-surface">8.4%</p>
+</div>
+<div class="bg-surface-container-lowest p-5 rounded-[24px] shadow-[0px_4px_20px_rgba(31,78,121,0.08)]">
+<div class="w-10 h-10 rounded-xl bg-primary-container/10 flex items-center justify-center mb-3">
+<span class="material-symbols-outlined text-primary">share</span>
+</div>
+<p class="font-label-sm text-on-surface-variant">Lượt chia sẻ</p>
+<p class="font-headline-md text-headline-md text-on-surface">2.1K</p>
+</div>
+</div>
+</section>
+<!-- Audience/Demographics Section -->
+<section class="space-y-4">
+<div class="flex justify-between items-center">
+<h3 class="font-headline-md text-on-surface">Nhân khẩu học</h3>
+<span class="font-label-md text-primary">Xem tất cả</span>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-[24px] shadow-[0px_4px_20px_rgba(31,78,121,0.08)] space-y-5">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-md text-on-surface-variant">Vị trí hàng đầu</span>
+<span class="material-symbols-outlined text-on-surface-variant opacity-40">public</span>
+</div>
+<!-- City Bars -->
+<div class="space-y-4">
+<div class="space-y-1">
+<div class="flex justify-between font-label-md">
+<span>Hồ Chí Minh</span>
+<span class="font-bold">45%</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 45%"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between font-label-md">
+<span>Hà Nội</span>
+<span class="font-bold">32%</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 32%"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between font-label-md">
+<span>Đà Nẵng</span>
+<span class="font-bold">18%</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-tertiary rounded-full" style="width: 18%"></div>
+</div>
+</div>
+</div>
+<!-- Small Map Placeholder for Vibe -->
+<div class="w-full h-32 rounded-2xl overflow-hidden relative mt-4 shadow-inner">
+<img alt="Location Map" class="w-full h-full object-cover opacity-80" data-alt="A stylized, minimalist map view of Vietnam highlighting major metropolitan hubs like Ho Chi Minh City and Hanoi with glowing orange data points. The map aesthetic is clean, with a light mode color palette of soft greys and vibrant teal accents, embodying a modern urban discovery theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGGYdmdraiaOj715ZUcnUYyy9_jWx6Pqbf-w6IvXopxIrddKGg81Rp7_BR1vaPtEzDvBXSxjF4gouCsa5yXU55k8PG9sMBzL2PApS6BzY0GIAp4EQZLkAOtxm58Fa7TVbLQBj_Ux0Kiot82NMvVf1wUf_n9OLvLnfRB1nS2qkxqq1mh-6fTiu2WOjYIq-lB7bieE3TC-P9UlSQtPaUaD8zk8f54qWtW0zBRcbELYaqhndNuPsh96lFp6mezFB4wPVpx0z1sfROPW8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/80 to-transparent"></div>
+<div class="absolute bottom-2 left-3 bg-surface-container-lowest/90 px-3 py-1 rounded-full text-[10px] font-bold border border-primary/20 flex items-center gap-1">
+<span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+                        Đang hoạt động: 1.2K
+                    </div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full rounded-t-xl z-50 bg-surface dark:bg-inverse-surface shadow-[0px_-4px_20px_rgba(31,78,121,0.08)] flex justify-around items-center h-20 pb-safe px-2">
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant opacity-70 hover:opacity-100 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant opacity-70 hover:opacity-100 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-sm text-label-sm">Posts</span>
+</a>
+<a class="flex flex-col items-center justify-center active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined text-white bg-primary-container p-3 rounded-full shadow-lg shadow-primary-container/30">add_circle</span>
+<!-- Hidden label for FAB per visual style sometimes, but including to follow JSON -->
+<span class="sr-only">Create</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-3 py-1 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-label-sm text-label-sm">Stats</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant opacity-70 hover:opacity-100 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for bar chart
+        document.querySelectorAll('.chart-container > div').forEach(bar => {
+            bar.addEventListener('touchstart', function() {
+                this.classList.add('scale-x-110');
+                this.style.transition = 'transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+            });
+            bar.addEventListener('touchend', function() {
+                this.classList.remove('scale-x-110');
+            });
+        });
+    </script>
+</body></html>

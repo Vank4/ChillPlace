@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-tab {
+            position: relative;
+        }
+        .active-tab::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: #ab3500;
+            border-radius: 99px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#00ac9b",
+                        "outline-variant": "#e1bfb5",
+                        "surface-tint": "#ab3500",
+                        "surface-variant": "#e0e3e5",
+                        "inverse-surface": "#2d3133",
+                        "on-tertiary-fixed": "#00201c",
+                        "secondary-fixed": "#d1e4ff",
+                        "on-primary-fixed-variant": "#832600",
+                        "background": "#f7f9fb",
+                        "outline": "#8d7168",
+                        "surface-container": "#eceef0",
+                        "surface-dim": "#d8dadc",
+                        "tertiary-fixed-dim": "#4fdbc8",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#001d35",
+                        "on-primary-fixed": "#390c00",
+                        "on-primary-container": "#5f1900",
+                        "secondary-fixed-dim": "#a0cafc",
+                        "primary": "#ab3500",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#ffdbd0",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#71f8e4",
+                        "error": "#ba1a1a",
+                        "tertiary": "#006b5f",
+                        "error-container": "#ffdad6",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-secondary-container": "#2a5782",
+                        "secondary": "#35618d",
+                        "primary-fixed-dim": "#ffb59d",
+                        "surface-bright": "#f7f9fb",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#eff1f3",
+                        "primary-container": "#ff6b35",
+                        "inverse-primary": "#ffb59d",
+                        "on-background": "#191c1e",
+                        "secondary-container": "#a2cdff",
+                        "on-tertiary-fixed-variant": "#005048",
+                        "surface-container-low": "#f2f4f6",
+                        "surface-container-high": "#e6e8ea",
+                        "on-tertiary-container": "#003832",
+                        "on-secondary-fixed-variant": "#184974",
+                        "surface": "#f7f9fb",
+                        "on-surface": "#191c1e",
+                        "on-surface-variant": "#594139"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "margin-mobile": "16px",
+                        "gutter": "16px",
+                        "xxl": "48px",
+                        "xl": "32px",
+                        "margin-desktop": "32px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md antialiased mb-20">
+<!-- Top AppBar -->
+<header class="fixed top-0 w-full z-50 shadow-sm bg-surface dark:bg-inverse-surface flex justify-between items-center px-margin-mobile h-16">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="explore">explore</span>
+<span class="text-headline-md font-headline-md text-primary dark:text-inverse-primary tracking-tight">ChillPlace</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="hover:bg-surface-container-high transition-colors p-2 rounded-full active:scale-95 duration-150">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+</button>
+<button class="hover:bg-surface-container-high transition-colors p-2 rounded-full active:scale-95 duration-150">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<main class="pt-16 max-w-screen-md mx-auto">
+<!-- Profile Header -->
+<section class="px-margin-mobile pt-lg pb-md bg-surface-container-lowest">
+<div class="flex flex-col items-center">
+<!-- Avatar -->
+<div class="relative mb-md">
+<div class="w-32 h-32 rounded-full overflow-hidden border-4 border-primary/10 p-1">
+<img alt="Minh Nguyễn" class="w-full h-full object-cover rounded-full" data-alt="A professional close-up portrait of a friendly young Vietnamese man named Minh Nguyễn with a stylish haircut, smiling warmly in a bright, airy studio environment. The image uses soft, high-key lighting to emphasize a modern and high-energy social vibe. The background is a clean, minimalist off-white, reflecting a premium light-mode aesthetic consistent with a social platform profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDajcqUKVr1xes3NrQelC9yqegPthDRcsXT1rVOS2kGCIqb8Fwxaler5B3rXuRus5GvY6P0_xmz83EVwk6hNE2_XQUEjOMck8bfiW1xajoMKpWKNs1Y4CFUdH4JrdOjIKgLJLUv4k0NCvHncPnVpu1GWspppdV3FI8FpZI4Q_yniQe0IUAv2vjRX29wzmfiZDyhiOUUbTX4Etbd_OEhIfBrdVS1rgLf-IVsdjEekdEg5Rike1jbF8j5YBafpywYUC8jaZ6OPMDPJWA"/>
+</div>
+<button class="absolute bottom-1 right-1 bg-primary text-on-primary p-2 rounded-full shadow-lg active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[18px]" data-icon="photo_camera">photo_camera</span>
+</button>
+</div>
+<!-- Info -->
+<div class="text-center mb-md">
+<h1 class="font-headline-md text-headline-md text-on-surface mb-1">Minh Nguyễn</h1>
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm">
+                        Thành viên
+                    </span>
+</div>
+<!-- Stats -->
+<div class="flex justify-around w-full max-w-sm mb-lg">
+<div class="text-center">
+<div class="font-headline-md text-headline-md text-primary">12</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Bài viết</div>
+</div>
+<div class="text-center">
+<div class="font-headline-md text-headline-md text-primary">1.2k</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Người theo dõi</div>
+</div>
+<div class="text-center">
+<div class="font-headline-md text-headline-md text-primary">850</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Đang theo dõi</div>
+</div>
+</div>
+<!-- CTA -->
+<button class="w-full py-3 px-8 rounded-xl border-2 border-secondary text-secondary font-bold text-body-md hover:bg-secondary/5 active:scale-[0.98] transition-all">
+                    Chỉnh sửa hồ sơ
+                </button>
+</div>
+</section>
+<!-- Tabs -->
+<nav class="sticky top-16 z-40 bg-surface flex justify-around border-b border-outline-variant/30">
+<button class="py-4 px-md font-label-md text-label-md text-primary active-tab">Bài viết</button>
+<button class="py-4 px-md font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors">Đã lưu</button>
+<button class="py-4 px-md font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors">Đánh giá</button>
+</nav>
+<!-- Content Grid (Asymmetric / Bento Style) -->
+<section class="p-margin-mobile">
+<div class="grid grid-cols-2 gap-4">
+<!-- Large Feature Card -->
+<div class="col-span-2 relative group overflow-hidden rounded-xl shadow-sm aspect-[16/9]">
+<img alt="Check-in" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A breathtaking panoramic view of a lush, emerald green valley at sunset, featuring dramatic limestone cliffs and a winding river. The lighting is golden and warm, casting long shadows and highlighting the vibrant textures of the landscape. The aesthetic is high-energy and adventurous, designed for a modern social mapping app where users share premium travel destinations." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCg3_ClU9QiIPgplX9KNas5gH3a7emTDs_VTM9BxZL4EUsLF8dKgBTidKLwVmgX_G8wAj38EgiNxRYzgNOTaactp1aO4DsYn8Rd9sZl8UhnerMoMjMc9Mbm6UQAIiLb9uOQVwsvlXf0ID9rNfFYwdiReV17Embmbe4UYFy6BGEwQ1evhTBeWyGJkXi7UsTNakpN5qDz-8iKXMdASoJMq0uW7RHV6hHGgNzkfuey1UfezyZxtb9skrvEMk2h9XLpBGvMApOda3dNYQI"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-4">
+<span class="inline-flex items-center text-white font-label-sm text-label-sm mb-1">
+<span class="material-symbols-outlined text-sm mr-1" data-icon="location_on">location_on</span> Ninh Bình, Việt Nam
+                        </span>
+<p class="text-white font-body-md line-clamp-1">Chuyến đi tuyệt vời nhất năm nay!</p>
+</div>
+</div>
+<!-- Secondary Cards -->
+<div class="relative group overflow-hidden rounded-xl shadow-sm aspect-square">
+<img alt="Food" class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="A top-down, high-contrast food photography shot of a vibrant, colorful brunch spread on a minimalist white table. Features include fresh avocado toast, artisanal coffee with latte art, and seasonal fruits. The lighting is bright and natural, creating a trendy cafe vibe with clean lines and saturated accents of green and orange." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiK-vspnk0dfPmJsKxCfTnmJPLDEZxiHqxXZuGkXjy_k3a6bH4NOgJR7aHv8ChmbH2kYvgcLV9bzxGb7g0mfGxJ7-IT9mk6CF0UFrIVaBhAkH3OuGyqYvnx3oOOZs0VITdG7CgtjJWQekfWRAh-fX4Tc8ateOLsuEkqwjViRJ2AkuAonslgpR4_VJzJqfcTSXUxmhvmBXrNvhku8qF2PlSvUrFj1UTwpnkJiuH08t2KzMtacgxudzMlomE73YWnRZ1m1TNdOVzwlE"/>
+</div>
+<div class="relative group overflow-hidden rounded-xl shadow-sm aspect-square">
+<img alt="Cafe" class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="A cozy, modern industrial cafe interior with hanging Edison bulbs, exposed brick walls, and plush leather seating. The mood is warm and inviting, illuminated by soft amber lighting. The scene captures a trendy urban social spot, perfect for a community-driven discovery app with a high-contrast corporate-edge style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJo18VpPzMzIfPDosPJ11gmILPJ1py3ueuZxxyX38h9_KTDTw_CjiYKLXRsewSGbt6Mi1LmR7QPwmxEbh9BBVyZDp3cmnpe3wFI7EdgTgPnz7HSeQf1xARsCZDMy99c8MFXIrwu17cQkm7ONGGk2G1UMfErNP8wBM3uyvXbwhl0JUr95lbLNLaccUZAi0Z4OA5RhAq62fik0IkAeKbsyTDaKB1bTDW8iaKn4roL6JeueaJoz073YTQhxphiTcvP16FL4iPt_5qpKQ"/>
+</div>
+<div class="col-span-2 relative group overflow-hidden rounded-xl shadow-sm aspect-[21/9]">
+<img alt="Nature" class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="An ethereal forest scene shrouded in light morning mist, with sunbeams piercing through the dense canopy of ancient trees. The color palette consists of deep forest greens and soft golden rays, creating a serene and mystical atmosphere. The image is crisp and professional, evoking a sense of wonder and quiet exploration." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTm3Z1vzXTiITpGDPHoC09DGih0hNBwS5AGH64sp-dvOkrBoYM2877waVwlNeGufzkhtSvFGZhFia8p9cF9JinhYPnitVUc9gf89CRISu_2cbbSl6_B6Uevf9i87egcTITGn74L7PcbWS0qDtEjlO4g4yWnFEl4g5abJAVzgpOhdt975jEjBXNNG-xrNtKcjHaWt48VH21UqTDMhnf_WkBXMMs0BOEUXF5NOA24mMG1KFbQNcBAQp-D22I6zaBoQswOLf5b5FrGX0"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+<div class="absolute top-3 right-3 bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded">MỚI</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-20 px-2 pb-safe bg-surface dark:bg-inverse-surface shadow-[0px_-4px_20px_rgba(31,78,121,0.08)] rounded-t-xl z-50">
+<div class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim hover:bg-surface-container-low transition-all p-2 rounded-xl active:scale-90 duration-200 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-label-sm font-label-sm">Trang chủ</span>
+</div>
+<div class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim hover:bg-surface-container-low transition-all p-2 rounded-xl active:scale-90 duration-200 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="text-label-sm font-label-sm">Khám phá</span>
+</div>
+<!-- FAB Floating Create Action -->
+<div class="relative -top-6">
+<button class="bg-primary-container text-on-primary-container w-14 h-14 rounded-full flex items-center justify-center shadow-lg active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[32px] font-bold" data-icon="add">add</span>
+</button>
+</div>
+<div class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim hover:bg-surface-container-low transition-all p-2 rounded-xl active:scale-90 duration-200 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+<span class="text-label-sm font-label-sm">Đã lưu</span>
+</div>
+<!-- Active Tab: Cá nhân -->
+<div class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary-fixed-dim text-on-primary-container dark:text-on-primary-fixed rounded-full px-4 py-1 active:scale-90 transition-transform duration-200 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="text-label-sm font-label-sm">Cá nhân</span>
+</div>
+</nav>
+<script>
+        // Simple Interaction Logic for tabs
+        document.querySelectorAll('nav button').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active classes
+                this.parentNode.querySelectorAll('button').forEach(btn => {
+                    btn.classList.remove('text-primary', 'active-tab');
+                    btn.classList.add('text-on-surface-variant');
+                });
+                // Add active classes to current
+                this.classList.add('text-primary', 'active-tab');
+                this.classList.remove('text-on-surface-variant');
+            });
+        });
+    </script>
+</body></html>

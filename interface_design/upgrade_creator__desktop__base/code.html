@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nâng Cấp Nhà Sáng Tạo | CreatorHub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "primary": "#ab3500",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#003832",
+                        "on-secondary-container": "#2a5782",
+                        "primary-container": "#ff6b35",
+                        "on-primary-fixed-variant": "#832600",
+                        "surface-bright": "#f7f9fb",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#ffb59d",
+                        "primary-fixed": "#ffdbd0",
+                        "tertiary-fixed": "#71f8e4",
+                        "surface-dim": "#d8dadc",
+                        "inverse-on-surface": "#eff1f3",
+                        "secondary-fixed": "#d1e4ff",
+                        "tertiary-fixed-dim": "#4fdbc8",
+                        "on-secondary-fixed": "#001d35",
+                        "on-surface-variant": "#594139",
+                        "outline": "#8d7168",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#ffb59d",
+                        "outline-variant": "#e1bfb5",
+                        "on-secondary-fixed-variant": "#184974",
+                        "surface-tint": "#ab3500",
+                        "secondary-container": "#a2cdff",
+                        "on-surface": "#191c1e",
+                        "surface-variant": "#e0e3e5",
+                        "on-tertiary-fixed-variant": "#005048",
+                        "tertiary-container": "#00ac9b",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#191c1e",
+                        "on-primary-fixed": "#390c00",
+                        "surface-container-low": "#f2f4f6",
+                        "surface": "#f7f9fb",
+                        "inverse-surface": "#2d3133",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-primary-container": "#5f1900",
+                        "secondary": "#35618d",
+                        "on-tertiary-fixed": "#00201c",
+                        "surface-container": "#eceef0",
+                        "secondary-fixed-dim": "#a0cafc",
+                        "error": "#ba1a1a",
+                        "background": "#f7f9fb",
+                        "surface-container-high": "#e6e8ea",
+                        "tertiary": "#006b5f",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "32px",
+                        "gutter": "16px",
+                        "xxl": "48px",
+                        "xs": "4px",
+                        "margin-mobile": "16px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .kinetic-gradient {
+            background: linear-gradient(135deg, #ff6b35 0%, #ab3500 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- TopAppBar Shell -->
+<header class="bg-surface dark:bg-inverse-surface shadow-sm w-full sticky top-0 z-50 flex justify-between items-center px-8 h-16">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-container">CreatorHub</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition-colors px-3 py-2 rounded-lg" href="#">Dashboard</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition-colors px-3 py-2 rounded-lg" href="#">Posts</a>
+<a class="text-primary font-bold font-label-md text-label-md px-3 py-2 rounded-lg" href="#">Upgrade</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition-colors px-3 py-2 rounded-lg" href="#">Stats</a>
+</nav>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-surface-container-high p-2 rounded-full transition-colors">notifications</span>
+<div class="w-10 h-10 rounded-full bg-primary-container overflow-hidden border-2 border-primary">
+<img alt="Creator Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhahP74VWxLc8F_fz3oriU__AV9j6PZAvMuor1TyijdH69vIsztVKziV-K7rS2oE1EBNU8-g5zTy2Jn3o8AEQMHRc60jz_1s7srga4EwWCYj8gBpjWXxCbZEWd1puX-wKHlgXJZGlpyuVflb0OU4QmJQtVad5UT3UkkEbzS8_-BZKNupmxMB6N_xddHjXTioxMpkqV5dXGPaj-2h_RhpCGD_kGxhkT6fSJinJeSOvbwITdM2B9fWVkVCacXo3e0XOJ1U-mn2Qd6ks"/>
+</div>
+</div>
+</header>
+<main class="max-w-[1440px] mx-auto px-margin-desktop py-xl">
+<div class="grid grid-cols-12 gap-lg items-start">
+<!-- Left Panel: Perks & Branding -->
+<div class="col-span-12 lg:col-span-5 space-y-lg">
+<section class="space-y-md">
+<span class="inline-block px-4 py-1 rounded-full bg-primary-container text-on-primary-container font-label-sm text-label-sm">CHƯƠNG TRÌNH ĐỐI TÁC</span>
+<h1 class="font-display-lg text-display-lg leading-tight">Mở khóa sức mạnh <span class="text-primary">Sáng tạo</span> đỉnh cao</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md">Nâng cấp tài khoản để tiếp cận những công cụ chuyên biệt giúp nội dung của bạn vươn xa hơn và xây dựng cộng đồng bền vững.</p>
+</section>
+<div class="grid grid-cols-1 gap-md">
+<!-- Perk Card 1 -->
+<div class="glass-card p-6 rounded-2xl shadow-sm flex items-start gap-4 hover:shadow-md transition-shadow">
+<div class="w-12 h-12 rounded-xl bg-primary-container/10 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">video_library</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-1">Đăng Reels Chất Lượng Cao</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Tải lên video 4K không nén, giữ trọn vẹn từng khung hình nghệ thuật của bạn.</p>
+</div>
+</div>
+<!-- Perk Card 2 -->
+<div class="glass-card p-6 rounded-2xl shadow-sm flex items-start gap-4 hover:shadow-md transition-shadow">
+<div class="w-12 h-12 rounded-xl bg-tertiary-container/10 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">analytics</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-tertiary mb-1">Phân Tích Chuyên Sâu</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Báo cáo chi tiết về nhân khẩu học, thời gian vàng và hành vi của người theo dõi.</p>
+</div>
+</div>
+<!-- Perk Card 3 -->
+<div class="glass-card p-6 rounded-2xl shadow-sm flex items-start gap-4 hover:shadow-md transition-shadow">
+<div class="w-12 h-12 rounded-xl bg-secondary-container/20 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-secondary mb-1">Huy Hiệu Verified</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Khẳng định uy tín và sự chuyên nghiệp với dấu tích xanh độc quyền bên cạnh tên.</p>
+</div>
+</div>
+</div>
+<div class="rounded-2xl overflow-hidden aspect-[16/9] relative shadow-lg group">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A modern, high-energy creative studio setup featuring professional lighting, a high-end camera on a gimbal, and large monitors showing cinematic video editing software. The lighting is warm and dramatic with orange and teal accents, reflecting the brand's vibrant energy. The atmosphere is professional, sleek, and inspiring for digital creators." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBR-jrq5uKb0bDjg_vilqWQtzEjVE1STU0DtYhM156nvIeuF3kFnBWldKejVsWKg4cG-eFWbXs9HD0HLtbn02KXTv-eJptIFSVzlCVsSFjU2qEQeMy3fWIMbgVwQs_Tpz9Zjstzgm0jzdyKqJ5s6VS_P4Cns5yd49gsG04N-ekVivX7Cq7OHlOrIkQmJIHRYMl8e7b2s6asIK9RzwuQPTT8-ipgIJJzanvZ1f50OnwS-MRFBB2E1R0Tthi8gX0dULdVgSW2zfKagQQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
+<p class="text-white font-label-md text-label-md italic">"Trở thành một phần của cộng đồng 10,000+ nhà sáng tạo hàng đầu."</p>
+</div>
+</div>
+</div>
+<!-- Right Panel: Application Form -->
+<div class="col-span-12 lg:col-span-7">
+<div class="bg-white p-xl rounded-[32px] shadow-lg border border-surface-variant/50">
+<div class="mb-xl text-center lg:text-left">
+<h2 class="font-headline-lg text-headline-lg mb-2">Đăng ký Nâng cấp</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Vui lòng điền đầy đủ thông tin bên dưới. Đội ngũ của chúng tôi sẽ xem xét hồ sơ của bạn trong vòng 48 giờ.</p>
+</div>
+<form class="space-y-lg" onsubmit="event.preventDefault(); alert('Đơn đăng ký của bạn đã được gửi!');">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="space-y-sm">
+<label class="font-label-md text-label-md text-on-surface block px-1">Họ và tên</label>
+<input class="w-full bg-surface-container-low border-2 border-transparent focus:border-primary-container focus:bg-white rounded-xl px-4 py-3 outline-none transition-all placeholder:text-on-surface-variant/50" placeholder="Nguyễn Văn A" type="text"/>
+</div>
+<div class="space-y-sm">
+<label class="font-label-md text-label-md text-on-surface block px-1">Lĩnh vực sáng tạo</label>
+<select class="w-full bg-surface-container-low border-2 border-transparent focus:border-primary-container focus:bg-white rounded-xl px-4 py-3 outline-none transition-all appearance-none cursor-pointer">
+<option value="photography">Nhiếp ảnh &amp; Phim</option>
+<option value="design">Thiết kế đồ họa</option>
+<option value="fashion">Thời trang &amp; Lifestyle</option>
+<option value="tech">Công nghệ &amp; Game</option>
+<option value="education">Giáo dục &amp; Kiến thức</option>
+</select>
+</div>
+</div>
+<div class="space-y-sm">
+<label class="font-label-md text-label-md text-on-surface block px-1">Link Portfolio / Social Media</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary">link</span>
+<input class="w-full bg-surface-container-low border-2 border-transparent focus:border-primary-container focus:bg-white rounded-xl pl-12 pr-4 py-3 outline-none transition-all placeholder:text-on-surface-variant/50" placeholder="https://instagram.com/yourname" type="url"/>
+</div>
+</div>
+<div class="space-y-sm">
+<label class="font-label-md text-label-md text-on-surface block px-1">Chứng minh năng lực (Portfolio PDF / CV)</label>
+<div class="border-2 border-dashed border-outline-variant rounded-2xl p-xl flex flex-col items-center justify-center gap-3 bg-surface-container-lowest hover:border-primary-container transition-colors group cursor-pointer" onclick="document.getElementById('file-upload').click()">
+<input class="hidden" id="file-upload" type="file"/>
+<div class="w-16 h-16 rounded-full bg-primary-container/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[32px]">upload_file</span>
+</div>
+<div class="text-center">
+<p class="font-label-md text-label-md text-on-surface">Nhấn để tải lên hoặc kéo thả tệp</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">PDF, PNG, JPG (Tối đa 10MB)</p>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3 p-4 bg-surface-container rounded-xl">
+<input class="w-5 h-5 rounded border-outline text-primary focus:ring-primary-container cursor-pointer" id="terms" type="checkbox"/>
+<label class="font-body-md text-body-md text-on-surface-variant cursor-pointer" for="terms">Tôi đồng ý với các <a class="text-primary font-bold" href="#">Điều khoản &amp; Chính sách</a> dành cho Nhà sáng tạo.</label>
+</div>
+<button class="kinetic-gradient w-full py-4 rounded-xl text-white font-headline-md text-headline-md shadow-lg shadow-primary/20 active:scale-95 transition-all flex items-center justify-center gap-2" type="submit">
+                            Gửi Hồ Sơ Ngay
+                            <span class="material-symbols-outlined">send</span>
+</button>
+</form>
+<div class="mt-lg pt-lg border-t border-surface-variant flex items-center justify-between">
+<div class="flex -space-x-3">
+<img alt="User 1" class="w-8 h-8 rounded-full border-2 border-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5ZcPcIpkW8ZK7EH71_uQfyPRB-wS_JFHS7MtxWWpenYKxPI5VEVxwdShZKX0kRBIpEWwlAwKFMflL5VPK6ppzFVx7YFPQGx3j0msumV97Z_bcvSHf_OoRCXfYDEJ2-aaojABCmQIMXNRxFflmRfhaWSxJ4xILBQUN1BW5UuQ3kjpV9M41qUFRwYlpVrgT360mJCwKmXWr_oLNBcgptxjZWIcNwM1vuhug6nZQbMoSd7QEWApYY7WtpWScNs2Mkdbb-kFpIHvOkQ4"/>
+<img alt="User 2" class="w-8 h-8 rounded-full border-2 border-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaIOqMz2Aav5xb-pbtyawcwQDvHWyO8Ve8c5L-KClzrGwCrJQWDQJbMSNXs4c_eAK7skd-cODUUM18P6tJrm7CHSkU2hqQZs08lN8yrtfdO4Z0sfSP3zw2fBIHRA8pvhERoHQOH2A9Vh7nt7OieR_VJJjsLe0CIC03QyaigrSYSt-Q1tjUU4r4V66Qp0T5E51MZn48wm-QXdbW3Fg0LETmwYmWcgxveYMI8uvrNXoC6-zX_7x019ASEyJbKBZdNLZSkfZEthUhyBA"/>
+<img alt="User 3" class="w-8 h-8 rounded-full border-2 border-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf5_eAqrhOrRviUti2q-Y5O8Ge0lftTNQ6dzf6tMpH3I0wy4ieqbfW8Fi_pDgnaDJrdiT4vTIb3WJddNT94rVPiVeVoMofd1GpgNqVhLd_dvefGK9uROLqoROzkW1XDNRSTrqCOmPCH8NqdKMg5lmjNOWEXW9Ar3iLsYkc1dBPnA5kJ4K-4aRkYue8FO9t6vbmVkmd5z_s9efsb2FGqIkFoXB9LF7HEgDmT1SqS6QPwrSXf7QKEzOYkovuCryrsOww8hOM_GdNRII"/>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border-2 border-white flex items-center justify-center text-[10px] font-bold">+5k</div>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Đang có 24 người nộp đơn hôm nay</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Area (Visual Only) -->
+<footer class="max-w-[1440px] mx-auto px-margin-desktop py-lg text-center opacity-60">
+<p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 CreatorHub Professional. All Rights Reserved.</p>
+</footer>
+<script>
+        // Micro-interaction for the file upload area
+        const dropZone = document.querySelector('.border-dashed');
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropZone.addEventListener(eventName, () => {
+                dropZone.classList.add('bg-primary-container/5', 'border-primary-container');
+            }, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, () => {
+                dropZone.classList.remove('bg-primary-container/5', 'border-primary-container');
+            }, false);
+        });
+
+        // Hover lift effect for perks
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-4px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body></html>

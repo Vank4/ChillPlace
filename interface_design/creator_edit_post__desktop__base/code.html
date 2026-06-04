@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Chỉnh sửa bài viết | ChillPlace Creator</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .preview-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+        .preview-scroll::-webkit-scrollbar-thumb {
+            background: #e0e3e5;
+            border-radius: 10px;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error-container": "#ffdad6",
+                      "primary": "#ab3500",
+                      "on-primary": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-container": "#003832",
+                      "on-secondary-container": "#2a5782",
+                      "primary-container": "#ff6b35",
+                      "on-primary-fixed-variant": "#832600",
+                      "surface-bright": "#f7f9fb",
+                      "on-error-container": "#93000a",
+                      "inverse-primary": "#ffb59d",
+                      "primary-fixed": "#ffdbd0",
+                      "tertiary-fixed": "#71f8e4",
+                      "surface-dim": "#d8dadc",
+                      "inverse-on-surface": "#eff1f3",
+                      "secondary-fixed": "#d1e4ff",
+                      "tertiary-fixed-dim": "#4fdbc8",
+                      "on-secondary-fixed": "#001d35",
+                      "on-surface-variant": "#594139",
+                      "outline": "#8d7168",
+                      "on-tertiary": "#ffffff",
+                      "primary-fixed-dim": "#ffb59d",
+                      "outline-variant": "#e1bfb5",
+                      "on-secondary-fixed-variant": "#184974",
+                      "surface-tint": "#ab3500",
+                      "secondary-container": "#a2cdff",
+                      "on-surface": "#191c1e",
+                      "surface-variant": "#e0e3e5",
+                      "on-tertiary-fixed-variant": "#005048",
+                      "tertiary-container": "#00ac9b",
+                      "on-secondary": "#ffffff",
+                      "on-background": "#191c1e",
+                      "on-primary-fixed": "#390c00",
+                      "surface-container-low": "#f2f4f6",
+                      "surface": "#f7f9fb",
+                      "inverse-surface": "#2d3133",
+                      "surface-container-highest": "#e0e3e5",
+                      "on-primary-container": "#5f1900",
+                      "secondary": "#35618d",
+                      "on-tertiary-fixed": "#00201c",
+                      "surface-container": "#eceef0",
+                      "secondary-fixed-dim": "#a0cafc",
+                      "error": "#ba1a1a",
+                      "background": "#f7f9fb",
+                      "surface-container-high": "#e6e8ea",
+                      "tertiary": "#006b5f",
+                      "on-error": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-desktop": "32px",
+                      "gutter": "16px",
+                      "xxl": "48px",
+                      "xs": "4px",
+                      "margin-mobile": "16px",
+                      "md": "16px",
+                      "lg": "24px",
+                      "sm": "8px",
+                      "xl": "32px"
+              },
+              "fontFamily": {
+                      "label-md": ["Plus Jakarta Sans"],
+                      "display-lg": ["Plus Jakarta Sans"],
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "headline-md": ["Plus Jakarta Sans"],
+                      "headline-lg": ["Plus Jakarta Sans"],
+                      "label-sm": ["Plus Jakarta Sans"],
+                      "body-md": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-surface">
+<!-- SideNavBar Component -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container-low dark:bg-inverse-surface shadow-md flex flex-col py-lg z-50">
+<div class="px-md mb-xl">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined">map</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">ChillPlace</h1>
+<p class="text-xs text-on-surface-variant opacity-70">Management Portal</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1 px-sm">
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-all hover:translate-x-1 duration-200 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-primary dark:text-primary-fixed-dim font-bold border-r-4 border-primary bg-surface-container-high transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">perm_media</span>
+                Media Library
+            </a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-highest transition-all hover:translate-x-1 duration-200 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">storefront</span>
+                Place Profile
+            </a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-highest transition-all hover:translate-x-1 duration-200 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">restaurant_menu</span>
+                Menu Management
+            </a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-highest transition-all hover:translate-x-1 duration-200 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">gavel</span>
+                Content Moderation
+            </a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-highest transition-all hover:translate-x-1 duration-200 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">verified_user</span>
+                User Requests
+            </a>
+</nav>
+<div class="mt-auto px-md space-y-lg">
+<button class="w-full py-md bg-primary text-on-primary font-bold rounded-xl shadow-lg hover:scale-[1.02] active:scale-95 transition-transform">
+                Upgrade Plan
+            </button>
+<div class="space-y-1">
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">help</span>
+                    Support
+                </a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">logout</span>
+                    Logout
+                </a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen flex flex-col">
+<!-- TopBar -->
+<header class="h-16 bg-surface shadow-sm flex justify-between items-center px-margin-desktop sticky top-0 z-40">
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined p-2 hover:bg-surface-container rounded-full transition-colors">arrow_back</button>
+<h2 class="font-headline-md text-headline-md text-on-surface">Chỉnh sửa bài viết</h2>
+</div>
+<div class="flex items-center gap-lg">
+<button class="px-lg py-2 border-2 border-outline-variant text-on-surface-variant rounded-full font-bold hover:bg-surface-container-low transition-colors">Lưu bản nháp</button>
+<button class="px-xl py-2 bg-primary text-on-primary rounded-full font-bold shadow-md hover:opacity-90 active:scale-95 transition-all">Đăng bài viết</button>
+</div>
+</header>
+<!-- Editor & Preview Grid -->
+<div class="flex-1 grid grid-cols-12 gap-lg p-lg max-w-[1600px] mx-auto w-full">
+<!-- LEFT: Editor (Column 1-7) -->
+<section class="col-span-7 space-y-lg">
+<!-- Media Upload Bento Section -->
+<div class="bg-white rounded-[24px] p-lg shadow-sm">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-headline-md text-headline-md">Hình ảnh &amp; Video</h3>
+<span class="text-label-sm text-on-surface-variant">Tối đa 10 tệp (16:9 hoặc 4:5)</span>
+</div>
+<div class="grid grid-cols-4 gap-sm">
+<!-- Main Upload Large -->
+<div class="col-span-2 row-span-2 aspect-square bg-surface-container-low border-2 border-dashed border-outline-variant rounded-[24px] flex flex-col items-center justify-center gap-sm cursor-pointer hover:bg-surface-container transition-colors group">
+<span class="material-symbols-outlined text-primary text-4xl group-hover:scale-110 transition-transform">cloud_upload</span>
+<p class="font-bold text-on-surface-variant">Kéo thả để tải lên</p>
+</div>
+<!-- Placeholder Thumbnails -->
+<div class="aspect-square relative rounded-xl overflow-hidden group">
+<img class="w-full h-full object-cover" data-alt="A stylish modern cafe interior with warm ambient lighting, wooden furniture, and lush green plants. The atmosphere is cozy and inviting, perfect for social gatherings. Soft natural light streams through large windows, highlighting the minimalist decor and high-contrast orange accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAD8Y4AtgC3ZwEdreFEvncexo3lHQ7uI0yzW1yhO0yevh6S2_efWoZguMO3vYYk32xZ20spAFqLdoWgzEh2HAEoCQ7I-He53PXmCuTTAanLHeZKnb3kP-bGWCj_3PeLqLYfHZ7bFG12cJDWWcLUSBifkvpSRd6BX7bi2tk_hS4rNOSoWerEr9VhI8GJmQ2Sh948izboS8RysXuYbxIHE-qAiD5Z7ALWi8GJA7Xtsw0rzBRYc4GmVHIsVl1RnUuRk38WipNqmlu9izA"/>
+<button class="absolute top-2 right-2 w-8 h-8 bg-black/50 text-white rounded-full material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity">close</button>
+</div>
+<div class="aspect-square relative rounded-xl overflow-hidden group">
+<img class="w-full h-full object-cover" data-alt="Close-up of a beautifully latte art coffee in a ceramic cup, sitting on a rustic wooden table. The lighting is soft and golden, creating a serene morning vibe. The overall aesthetic is clean, professional, and community-driven, focusing on the high-quality culinary experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3-3LrjccXIotUlBXPAi_RQ8UtausNX68T3cuJ13Y8nmR-Ppv15mxJt27cRSMW1jPleE1oJYWLD0cIZfZDlCujVMUb7ko3TRqusqZthSjF6kiWS62FgB4R8u3TE8QThx8LGXEVNuHVrI-B6LjhyPqq68V1P9mJshNNJsogim9h_PEHC-_U5XqrWDJe0KYnH8v2_iaf3PE3H-slXI6rfZgC_ojNAQp_zxzoPqUlkPk34EEjU2IY03wR8KCk4-pYFboeFhIypxTvLo8"/>
+<button class="absolute top-2 right-2 w-8 h-8 bg-black/50 text-white rounded-full material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity">close</button>
+</div>
+<div class="aspect-square bg-surface-container-low border-2 border-dashed border-outline-variant rounded-xl flex items-center justify-center cursor-pointer hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-outline">add</span>
+</div>
+<div class="aspect-square bg-surface-container-low border-2 border-dashed border-outline-variant rounded-xl flex items-center justify-center cursor-pointer hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-outline">add</span>
+</div>
+</div>
+</div>
+<!-- Text Content Section -->
+<div class="bg-white rounded-[24px] p-lg shadow-sm space-y-lg">
+<div class="space-y-sm">
+<label class="font-label-md text-on-surface">Tiêu đề bài viết</label>
+<input class="w-full px-lg py-md bg-surface-container-lowest border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary focus:border-primary outline-none font-body-lg" placeholder="Ví dụ: Một chiều cuối tuần tại quán cafe 'núp lùm'..." type="text"/>
+</div>
+<div class="space-y-sm">
+<label class="font-label-md text-on-surface">Nội dung Review</label>
+<div class="border border-outline-variant rounded-xl overflow-hidden">
+<div class="bg-surface-container-low px-md py-sm border-b border-outline-variant flex gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary">format_bold</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary">format_italic</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary">format_list_bulleted</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary">link</button>
+</div>
+<textarea class="w-full px-lg py-md bg-surface-container-lowest border-none focus:ring-0 outline-none font-body-md resize-none" placeholder="Chia sẻ cảm nhận của bạn về địa điểm này..." rows="8"></textarea>
+</div>
+</div>
+</div>
+<!-- Tags & Metadata -->
+<div class="grid grid-cols-2 gap-lg">
+<div class="bg-white rounded-[24px] p-lg shadow-sm space-y-sm">
+<label class="font-label-md text-on-surface flex items-center gap-sm">
+<span class="material-symbols-outlined text-tertiary">location_on</span> Gắn thẻ địa điểm
+                        </label>
+<div class="relative">
+<input class="w-full pl-xl pr-lg py-md bg-surface-container-lowest border border-outline-variant rounded-xl focus:border-primary outline-none font-body-md" placeholder="Tìm kiếm địa điểm..." type="text"/>
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">search</span>
+</div>
+<div class="flex flex-wrap gap-xs pt-sm">
+<span class="px-md py-1 bg-tertiary/10 text-tertiary rounded-full text-label-sm font-bold flex items-center gap-xs">
+                                District 1, HCMC <button class="material-symbols-outlined text-sm">close</button>
+</span>
+</div>
+</div>
+<div class="bg-white rounded-[24px] p-lg shadow-sm space-y-sm">
+<label class="font-label-md text-on-surface flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">tag</span> Hashtags
+                        </label>
+<div class="relative">
+<input class="w-full pl-xl pr-lg py-md bg-surface-container-lowest border border-outline-variant rounded-xl focus:border-primary outline-none font-body-md" placeholder="Thêm hashtag..." type="text"/>
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">add_circle</span>
+</div>
+<div class="flex flex-wrap gap-xs pt-sm">
+<span class="px-md py-1 bg-primary/10 text-primary rounded-full text-label-sm font-bold">#cafehopping</span>
+<span class="px-md py-1 bg-primary/10 text-primary rounded-full text-label-sm font-bold">#saigonvibe</span>
+</div>
+</div>
+</div>
+</section>
+<!-- RIGHT: Preview (Column 8-12) -->
+<aside class="col-span-5 sticky top-24 h-[calc(100vh-120px)] flex flex-col">
+<div class="flex items-center gap-sm mb-md px-md">
+<span class="material-symbols-outlined text-on-surface-variant">visibility</span>
+<h3 class="font-headline-md text-headline-md">Xem trước bài viết</h3>
+</div>
+<!-- Phone Mockup Frame -->
+<div class="flex-1 bg-[#121212] rounded-[48px] border-[8px] border-[#2d3133] shadow-2xl relative overflow-hidden mx-auto aspect-[9/19] max-h-full">
+<!-- Status Bar -->
+<div class="h-10 w-full flex justify-between items-center px-lg pt-sm">
+<span class="text-xs font-bold text-white">9:41</span>
+<div class="flex gap-1">
+<span class="material-symbols-outlined text-sm text-white">signal_cellular_4_bar</span>
+<span class="material-symbols-outlined text-sm text-white">wifi</span>
+<span class="material-symbols-outlined text-sm text-white">battery_full</span>
+</div>
+</div>
+<!-- App Content Container -->
+<div class="h-full w-full bg-white preview-scroll overflow-y-auto pb-xl">
+<!-- Post Header -->
+<div class="flex items-center justify-between p-md">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary">
+<img class="w-full h-full object-cover" data-alt="Professional portrait of a young female creator with a confident expression. She has long dark hair and is wearing stylish, modern apparel. The lighting is bright and high-key, suitable for a professional social media profile, set against a soft blurred urban background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXZTVGJheZDQv56SoL4NfXcdlJq9xSWkRFMmHlhI9eiRiLq0ZOjSXM1UWI8FUbXlk7RKhJl3vWpWFRiVlFMmFFM1xKrq1ahtgtvLk-V5cjo2wXkv1BbTKSHxHS_ck8JXlg6okLqDdvNo1EJclf37jyUL7J-hAkJBD77Dg7TUzyBz1fx5kLgsymoJciOwjRL2I5Qi9mUWN9XNQFtBnp4M9K8vUd9xplh3bfnU5lwBrme79mhedu40dhg1r8Tx_glxbKByoCybDhw4c"/>
+</div>
+<div>
+<h4 class="font-bold text-sm leading-tight">linh_chill_99</h4>
+<p class="text-[10px] text-tertiary flex items-center font-bold">
+<span class="material-symbols-outlined text-[12px]">location_on</span> District 1, HCMC
+                                    </p>
+</div>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant">more_horiz</button>
+</div>
+<!-- Post Image -->
+<div class="aspect-[4/5] bg-surface-container w-full relative">
+<img class="w-full h-full object-cover" data-alt="A striking interior photograph of a minimalist cafe with high ceilings and industrial-chic design. Sunlight creates dramatic shadows on the polished concrete floor. The color palette is dominated by warm wood tones and vibrant orange accents, creating an energetic yet cozy atmosphere for community engagement." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWTSWcFEVSJ3AvQAlo-ahxWNKUnhr9uRILvLObbYwP1FOop5-g6aadiwaxc68jV8LIW7n0C0GJD6MkVmfxQGmw5J7gKTWmDb4E6EOffJ9RiZQ15W-HtxPUnkwiozp977PUythnUq3Ilca1lcyT9oWSR3MdtiUYdeSzZqay8No4lrz0RP337ZCjNTEK2JARkdPNOBNfBd0Pab6XKKvZvB4TDiLAtMkuWhWW_yF9Zrx_ua5uHFMOs-ZVbV8BxCMzDFMJYRVVuRBLvOY"/>
+<div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1">
+<div class="w-1.5 h-1.5 bg-white rounded-full"></div>
+<div class="w-1.5 h-1.5 bg-white/50 rounded-full"></div>
+<div class="w-1.5 h-1.5 bg-white/50 rounded-full"></div>
+</div>
+</div>
+<!-- Action Bar -->
+<div class="flex justify-between items-center p-md">
+<div class="flex gap-md">
+<span class="material-symbols-outlined text-primary" data-weight="fill" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="material-symbols-outlined">send</span>
+</div>
+<span class="material-symbols-outlined">bookmark</span>
+</div>
+<!-- Content -->
+<div class="px-md space-y-1">
+<p class="text-[11px] font-bold">1,248 lượt thích</p>
+<p class="text-[13px] leading-relaxed">
+<span class="font-bold mr-1">linh_chill_99</span> Một chiều cuối tuần tại quán cafe 'núp lùm'... quán này view cực chill nha mọi người!
+                            </p>
+<div class="flex gap-2 pt-1">
+<span class="text-[12px] text-primary font-bold">#cafehopping</span>
+<span class="text-[12px] text-primary font-bold">#saigonvibe</span>
+</div>
+<p class="text-[10px] text-on-surface-variant pt-2 uppercase">2 phút trước</p>
+</div>
+<!-- Fake Bottom Nav -->
+<div class="sticky bottom-0 left-0 w-full h-16 glass-effect border-t border-surface-variant flex justify-around items-center px-md mt-4">
+<span class="material-symbols-outlined text-on-surface-variant">home</span>
+<span class="material-symbols-outlined text-on-surface-variant">explore</span>
+<div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white shadow-lg">
+<span class="material-symbols-outlined">add</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+<div class="w-6 h-6 rounded-full bg-surface-variant"></div>
+</div>
+</div>
+<!-- Notch -->
+<div class="absolute top-2 left-1/2 -translate-x-1/2 w-24 h-6 bg-[#2d3133] rounded-full"></div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Micro-interactions Script -->
+<script>
+        // Simple reactive preview logic could be added here
+        const textInputs = document.querySelectorAll('input, textarea');
+        textInputs.forEach(input => {
+            input.addEventListener('input', (e) => {
+                // Logic to sync with preview mockup
+            });
+        });
+
+        // Hover lift effect for buttons
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                if (!btn.classList.contains('scale-95')) {
+                    btn.classList.add('transition-transform');
+                }
+            });
+        });
+    </script>
+</body></html>

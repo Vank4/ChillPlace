@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ChillPlace Business - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#e6e8ea",
+                    "on-primary-fixed": "#390c00",
+                    "on-tertiary-fixed": "#00201c",
+                    "on-secondary": "#ffffff",
+                    "tertiary": "#006b5f",
+                    "on-error": "#ffffff",
+                    "primary-fixed-dim": "#ffb59d",
+                    "on-secondary-fixed": "#001d35",
+                    "inverse-surface": "#2d3133",
+                    "primary-container": "#ff6b35",
+                    "surface-container-highest": "#e0e3e5",
+                    "secondary-container": "#a2cdff",
+                    "secondary-fixed": "#d1e4ff",
+                    "on-tertiary": "#ffffff",
+                    "surface-container": "#eceef0",
+                    "secondary": "#35618d",
+                    "outline": "#8d7168",
+                    "on-tertiary-fixed-variant": "#005048",
+                    "tertiary-fixed": "#71f8e4",
+                    "on-primary-fixed-variant": "#832600",
+                    "on-tertiary-container": "#003832",
+                    "on-primary-container": "#5f1900",
+                    "surface-dim": "#d8dadc",
+                    "surface-container-low": "#f2f4f6",
+                    "on-secondary-fixed-variant": "#184974",
+                    "surface-bright": "#f7f9fb",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed-dim": "#4fdbc8",
+                    "background": "#f7f9fb",
+                    "surface-variant": "#e0e3e5",
+                    "surface-container-lowest": "#ffffff",
+                    "primary": "#ab3500",
+                    "surface-tint": "#ab3500",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#a0cafc",
+                    "inverse-primary": "#ffb59d",
+                    "on-secondary-container": "#2a5782",
+                    "outline-variant": "#e1bfb5",
+                    "primary-fixed": "#ffdbd0",
+                    "inverse-on-surface": "#eff1f3",
+                    "on-surface": "#191c1e",
+                    "on-background": "#191c1e",
+                    "error-container": "#ffdad6",
+                    "error": "#ba1a1a",
+                    "tertiary-container": "#00ac9b",
+                    "on-surface-variant": "#594139",
+                    "surface": "#f7f9fb"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "2xl": "1rem",
+                    "3xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "xs": "4px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "md": "16px",
+                    "margin-desktop": "32px",
+                    "xxl": "48px",
+                    "sm": "8px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .pulse-dot {
+            box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.7);
+            animation: pulse-green 2s infinite;
+        }
+        @keyframes pulse-green {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(20, 184, 166, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(20, 184, 166, 0); }
+        }
+        .line-chart-gradient {
+            background: linear-gradient(180deg, rgba(255, 107, 53, 0.1) 0%, rgba(255, 107, 53, 0) 100%);
+        }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-body-md text-on-surface antialiased min-h-screen pb-24">
+<!-- Top Navigation Placeholder (Hidden on Mobile) -->
+<header class="hidden md:flex justify-between items-center h-16 px-margin-desktop bg-surface border-b border-outline-variant fixed top-0 w-full z-50">
+<span class="font-headline-md text-headline-md font-bold text-primary">ChillPlace Business</span>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant">account_circle</span>
+</div>
+</header>
+<!-- Side Navigation Placeholder (Hidden on Mobile) -->
+<aside class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 bg-surface-container-low border-r border-outline-variant p-4 z-40">
+<div class="mb-8 p-2">
+<div class="font-headline-md text-headline-md font-bold text-primary">ChillPlace</div>
+<div class="font-body-md text-on-surface-variant">Venue Management</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary-container text-on-primary-container font-bold" href="#">
+<span class="material-symbols-outlined">dashboard</span>Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">storefront</span>Place Profile
+            </a>
+</nav>
+</aside>
+<!-- Mobile Main Content -->
+<main class="px-margin-mobile pt-sm md:ml-64 md:pt-24 max-w-lg mx-auto md:max-w-none">
+<!-- Header Greeting -->
+<header class="py-lg flex flex-col gap-xs">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface tracking-tight">
+                Chào buổi sáng, Chill Coffee Hub! 👋
+            </h1>
+<div class="flex items-center gap-2">
+<div class="w-2.5 h-2.5 rounded-full bg-[#14B8A6] pulse-dot"></div>
+<span class="font-label-md text-label-md text-[#14B8A6] tracking-wide">ĐANG MỞ CỬA</span>
+</div>
+</header>
+<!-- Key Stats Bento Grid -->
+<section class="grid grid-cols-2 gap-sm mb-lg">
+<div class="col-span-1 glass p-md rounded-3xl shadow-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">groups</span>
+<span class="text-xs text-on-surface-variant font-medium">+12%</span>
+</div>
+<div>
+<div class="font-display-lg text-[28px] leading-tight text-on-surface">1,284</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Khách ghé thăm</div>
+</div>
+</div>
+<div class="col-span-1 glass p-md rounded-3xl shadow-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs text-on-surface-variant font-medium">New</span>
+</div>
+<div>
+<div class="font-display-lg text-[28px] leading-tight text-on-surface">4,852</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Tổng đánh giá</div>
+</div>
+</div>
+<div class="col-span-2 bg-primary-container p-md rounded-3xl shadow-sm flex items-center justify-between overflow-hidden relative">
+<div class="z-10">
+<div class="font-label-sm text-label-sm text-on-primary-container opacity-80 uppercase tracking-widest">Active Ads</div>
+<div class="font-display-lg text-display-lg text-white">08</div>
+<div class="font-label-md text-label-md text-on-primary-fixed-variant">Khuyến mãi đang chạy</div>
+</div>
+<span class="material-symbols-outlined text-white text-8xl absolute -right-4 -bottom-4 opacity-20 rotate-12">campaign</span>
+</div>
+</section>
+<!-- Customer Trends Chart Section -->
+<section class="mb-lg bg-surface-container-lowest p-lg rounded-3xl shadow-sm">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-headline-md text-headline-md text-on-surface">Xu hướng</h3>
+<div class="flex bg-surface-container-low rounded-full p-1">
+<button class="px-4 py-1.5 rounded-full text-label-sm bg-white shadow-sm text-primary">Hàng tuần</button>
+<button class="px-4 py-1.5 rounded-full text-label-sm text-on-surface-variant">Hàng tháng</button>
+</div>
+</div>
+<div class="h-40 w-full relative overflow-hidden rounded-xl bg-surface-container-low/30">
+<!-- Mock Chart Visualization -->
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 100 100">
+<path class="fill-primary/10" d="M0 80 Q 25 70, 40 40 T 70 50 T 100 20 L 100 100 L 0 100 Z"></path>
+<path class="stroke-primary" d="M0 80 Q 25 70, 40 40 T 70 50 T 100 20" fill="none" stroke-linecap="round" stroke-width="3"></path>
+<circle class="fill-primary" cx="40" cy="40" r="4"></circle>
+<circle class="fill-primary" cx="100" cy="20" r="4"></circle>
+</svg>
+<div class="absolute inset-0 line-chart-gradient pointer-events-none"></div>
+</div>
+<div class="flex justify-between mt-sm text-xs text-on-surface-variant font-medium">
+<span>T2</span><span>T3</span><span>T4</span><span>T5</span><span>T6</span><span>T7</span><span>CN</span>
+</div>
+</section>
+<!-- New Reviews Section -->
+<section class="mb-lg">
+<div class="flex justify-between items-end mb-md">
+<h3 class="font-headline-md text-headline-md text-on-surface">Đánh giá mới nhất</h3>
+<a class="text-primary font-label-md hover:underline" href="#">Xem tất cả</a>
+</div>
+<div class="flex flex-col gap-sm">
+<!-- Review Card 1 -->
+<div class="bg-surface-container-lowest p-md rounded-2xl shadow-sm border border-outline-variant/30">
+<div class="flex justify-between items-start mb-sm">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A portrait of a trendy young man with a friendly smile, photographed in a high-contrast urban setting with warm sunset lighting. He has stylish hair and wears a modern minimalist jacket, embodying a vibrant urban explorer vibe. The image is crisp, professional, and fits perfectly into a modern social media aesthetic with a focus on youthful energy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzEFkCCit7WtASxX56PE7gZYBmSy5a_I6nDA0QCBuVbM_-b15NNQK-ZzuauFSUIAkOOLjwBAjrnswTBK_DMN2c-rYcuww949CqpH-3lO-JPWN-nxIU9sFpM21xoN_tMDNnjcXHU__WjvgOs8sPNiqc4nwO1tiX4lqXwBJJfP3G3w4LuEqBVBPy3ISgo8f2sdsWvYcgHFarqsE3lqj6aeEHeNUT_JcuUFRzqa8NoTbiN8-WOUfEBxU5UyrkmUjUuuWYjDjJxl00TPI"/>
+<div>
+<div class="font-label-md text-on-surface">Minh Nguyễn</div>
+<div class="flex text-primary">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star_half</span>
+</div>
+</div>
+</div>
+<span class="text-[10px] text-on-surface-variant font-medium">10 phút trước</span>
+</div>
+<p class="text-on-surface-variant font-body-md text-sm leading-relaxed mb-md italic">
+                        "Không gian cực chill, cà phê muối rất đậm đà. Sẽ quay lại!"
+                    </p>
+<button class="w-full py-2.5 rounded-xl border border-primary text-primary font-label-md hover:bg-primary/5 transition-colors">
+                        Phản hồi ngay
+                    </button>
+</div>
+<!-- Review Card 2 -->
+<div class="bg-surface-container-lowest p-md rounded-2xl shadow-sm border border-outline-variant/30">
+<div class="flex justify-between items-start mb-sm">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="Close-up portrait of a stylish young woman with a joyful expression, lit by bright daylight in a trendy outdoor cafe. She is wearing fashionable accessories and her look represents the urban millennial aesthetic. The lighting is high-key and optimistic, focusing on clear skin and vibrant energy against a blurred metropolitan background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZph4U_Y2dAvLzJqQ3Q7zvD5YxJCwO--M_gnUWHrVJ_4ccCu7Tw1UO_PeVFkvUAxu7RZVrK_9BcsxyNuR0VvP-WLnsbjk9uN67atPyrN2CXON021uUxvYZ5undyMtK79xKduI_RcdNPLs5lIJrE7huwgvgOYWkM8ytvESKYZ2lIBm0_ypexajx1jlsnc3x_KCwSiVCPa1TFxoif21EAqmvnn1DoGb4CXVgPgMFlgPjrKWxh7rQ8DMxIEQNcja6zo2kCyrV6h8CF-4"/>
+<div>
+<div class="font-label-md text-on-surface">Linh Chi</div>
+<div class="flex text-primary">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+</div>
+<span class="text-[10px] text-on-surface-variant font-medium">2 giờ trước</span>
+</div>
+<p class="text-on-surface-variant font-body-md text-sm leading-relaxed mb-md italic">
+                        "Nhân viên nhiệt tình, nhạc hay vãi. Thích nhất góc ban công."
+                    </p>
+<button class="w-full py-2.5 rounded-xl border border-primary text-primary font-label-md hover:bg-primary/5 transition-colors">
+                        Phản hồi ngay
+                    </button>
+</div>
+</div>
+</section>
+<!-- Promotion Banner -->
+<section class="mb-lg relative overflow-hidden rounded-3xl bg-secondary-container p-lg text-on-secondary-container">
+<div class="relative z-10 flex flex-col gap-md">
+<h4 class="font-headline-md text-headline-md leading-tight">Bạn muốn tăng lượng khách vào giờ thấp điểm?</h4>
+<p class="font-body-md text-sm opacity-90">Tạo mã giảm giá chớp nhoáng (Flash Sale) để thu hút khách hàng ngay bây giờ.</p>
+<button class="bg-[#FF6B35] text-white font-label-md py-3 px-6 rounded-2xl w-max shadow-lg shadow-primary/20 active:scale-95 transition-all">
+                    Tạo ngay
+                </button>
+</div>
+<!-- Decorative circle -->
+<div class="absolute -right-10 -bottom-10 w-40 h-40 bg-white/20 rounded-full blur-2xl"></div>
+</section>
+</main>
+<!-- Bottom Navigation (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-white border-t-0 shadow-[0_-4px_24px_rgba(0,0,0,0.06)] px-4 py-2 flex justify-around items-center z-[100] rounded-t-3xl">
+<a class="flex flex-col items-center gap-1 p-2 text-primary font-bold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="text-[10px]">Dashboard</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-on-surface-variant opacity-60" href="#">
+<span class="material-symbols-outlined">storefront</span>
+<span class="text-[10px]">Cửa hàng</span>
+</a>
+<!-- Floating Post Button Style from Guidelines -->
+<div class="relative -top-6">
+<button class="w-14 h-14 rounded-full bg-[#FF6B35] text-white shadow-lg shadow-primary/30 flex items-center justify-center active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+</div>
+<a class="flex flex-col items-center gap-1 p-2 text-on-surface-variant opacity-60" href="#">
+<span class="material-symbols-outlined">campaign</span>
+<span class="text-[10px]">Khuyến mãi</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-on-surface-variant opacity-60" href="#">
+<span class="material-symbols-outlined">reviews</span>
+<span class="text-[10px]">Đánh giá</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for cards
+        document.querySelectorAll('.glass').forEach(card => {
+            card.addEventListener('touchstart', () => {
+                card.style.transform = 'scale(0.98)';
+                card.style.transition = 'transform 0.1s ease-out';
+            });
+            card.addEventListener('touchend', () => {
+                card.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body></html>

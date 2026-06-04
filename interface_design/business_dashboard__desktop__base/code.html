@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ChillPlace Business Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error": "#ffffff",
+                    "background": "#f7f9fb",
+                    "tertiary-container": "#00ac9b",
+                    "on-tertiary-container": "#003832",
+                    "on-primary-container": "#5f1900",
+                    "secondary-fixed-dim": "#a0cafc",
+                    "tertiary-fixed-dim": "#4fdbc8",
+                    "on-tertiary": "#ffffff",
+                    "surface-dim": "#d8dadc",
+                    "surface-container-high": "#e6e8ea",
+                    "surface": "#f7f9fb",
+                    "primary-fixed-dim": "#ffb59d",
+                    "outline": "#8d7168",
+                    "primary-fixed": "#ffdbd0",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed": "#390c00",
+                    "surface-bright": "#f7f9fb",
+                    "inverse-surface": "#2d3133",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed": "#71f8e4",
+                    "on-tertiary-fixed-variant": "#005048",
+                    "secondary-fixed": "#d1e4ff",
+                    "on-surface-variant": "#594139",
+                    "on-secondary-fixed": "#001d35",
+                    "primary": "#ab3500",
+                    "on-secondary-fixed-variant": "#184974",
+                    "surface-variant": "#e0e3e5",
+                    "secondary-container": "#a2cdff",
+                    "secondary": "#35618d",
+                    "on-secondary": "#ffffff",
+                    "surface-container-highest": "#e0e3e5",
+                    "surface-container-low": "#f2f4f6",
+                    "primary-container": "#ff6b35",
+                    "surface-tint": "#ab3500",
+                    "on-background": "#191c1e",
+                    "on-secondary-container": "#2a5782",
+                    "outline-variant": "#e1bfb5",
+                    "on-tertiary-fixed": "#00201c",
+                    "on-surface": "#191c1e",
+                    "inverse-primary": "#ffb59d",
+                    "inverse-on-surface": "#eff1f3",
+                    "surface-container": "#eceef0",
+                    "error-container": "#ffdad6",
+                    "tertiary": "#006b5f",
+                    "on-primary-fixed-variant": "#832600",
+                    "on-primary": "#ffffff",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "margin-mobile": "16px",
+                    "xxl": "48px",
+                    "sm": "8px",
+                    "margin-desktop": "32px",
+                    "xs": "4px",
+                    "lg": "24px",
+                    "gutter": "16px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Sidebar Navigation -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container-low dark:bg-inverse-surface shadow-sm flex flex-col p-4 border-r border-outline-variant dark:border-outline z-50">
+<div class="mb-xl px-2">
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">ChillPlace Business</h1>
+<p class="font-label-md text-label-md text-on-surface-variant">Venue Management</p>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary-container text-on-primary-container font-bold scale-95 duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+<span class="font-label-md">Place Profile</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="campaign">campaign</span>
+<span class="font-label-md">Promotions</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="reviews">reviews</span>
+<span class="font-label-md">Reviews</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-outline-variant pt-4 space-y-2">
+<button class="w-full bg-primary text-on-primary font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 hover:opacity-90 transition-opacity mb-4">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+<span class="font-label-md">Create Promotion</span>
+</button>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-md">Support</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen">
+<!-- Top App Bar -->
+<header class="flex justify-between items-center h-16 px-margin-desktop sticky top-0 z-40 bg-surface dark:bg-background border-b border-outline-variant dark:border-outline">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-on-surface font-body-md w-64" placeholder="Tìm kiếm dữ liệu..." type="text"/>
+</div>
+<div class="flex items-center gap-6">
+<button class="relative hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-on-surface" data-icon="notifications">notifications</span>
+<span class="absolute -top-1 -right-1 bg-primary w-2 h-2 rounded-full"></span>
+</button>
+<div class="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity">
+<div class="text-right">
+<p class="font-label-md text-on-surface">Minh Tú</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-wider">Chủ sở hữu</p>
+</div>
+<img alt="User Profile" class="w-10 h-10 rounded-full border-2 border-primary-container" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCO_mQE-YM37z9VcbzkTZssgkp9knLlq7jzhLSTanvo1kM871EAJ6it3jpnK_5-obFFQrYZc03Fsy7AacwQFK6ut6_FfpXce8qfcfl5dY-3zoDYpvDLolctd3Jl3MxceWOtAFdTbHIJWEmaSgdXwnvz4HnX_KWSGbgoTCy4llThWr1qczwOgXrSM6e-OuA_UfTReDXIowu-STWcC3uCJlo2UW7Y75mgoQOZIesA_1evcHWui5l__IEEODrG4RAPKshpE0wb-B0a8a8"/>
+</div>
+</div>
+</header>
+<!-- Dashboard Content -->
+<section class="p-margin-desktop space-y-lg">
+<!-- Welcome Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Chào buổi sáng, Chill Coffee Hub! 👋</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Dưới đây là hoạt động của cửa hàng bạn hôm nay.</p>
+</div>
+<!-- Venue Status Card -->
+<div class="glass-card p-4 rounded-2xl border border-outline-variant shadow-sm flex items-center gap-4 min-w-[240px]">
+<div class="w-12 h-12 rounded-full bg-tertiary-container/20 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" data-icon="store" style="font-variation-settings: 'FILL' 1;">store</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Trạng thái cửa hàng</p>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-headline-md text-headline-md text-tertiary">ĐANG MỞ CỬA</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bento Grid Metrics -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<!-- Metric 1 -->
+<div class="bg-surface-container-lowest p-lg rounded-3xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow group">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 rounded-2xl bg-primary-container/10 text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+</div>
+<span class="text-tertiary font-bold text-label-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="trending_up">trending_up</span>
+                            +12%
+                        </span>
+</div>
+<p class="font-label-md text-on-surface-variant mb-1">Khách ghé thăm hôm nay</p>
+<h3 class="font-display-lg text-display-lg text-on-surface">1,284</h3>
+</div>
+<!-- Metric 2 -->
+<div class="bg-surface-container-lowest p-lg rounded-3xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow group">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 rounded-2xl bg-secondary-container/20 text-secondary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="text-tertiary font-bold text-label-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="check_circle">check_circle</span>
+                            Mới: 24
+                        </span>
+</div>
+<p class="font-label-md text-on-surface-variant mb-1">Tổng đánh giá</p>
+<h3 class="font-display-lg text-display-lg text-on-surface">4,852</h3>
+</div>
+<!-- Metric 3 -->
+<div class="bg-surface-container-lowest p-lg rounded-3xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow group">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 rounded-2xl bg-tertiary-container/10 text-tertiary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="local_activity">local_activity</span>
+</div>
+<span class="bg-primary text-on-primary px-3 py-1 rounded-full text-label-sm">Sắp hết hạn: 2</span>
+</div>
+<p class="font-label-md text-on-surface-variant mb-1">Khuyến mãi đang chạy</p>
+<h3 class="font-display-lg text-display-lg text-on-surface">08</h3>
+</div>
+</div>
+<!-- Chart and Reviews Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-lg">
+<!-- Trend Chart Placeholder -->
+<div class="lg:col-span-2 bg-surface-container-lowest p-lg rounded-3xl border border-outline-variant shadow-sm">
+<div class="flex justify-between items-center mb-xl">
+<h4 class="font-headline-md text-headline-md text-on-surface">Xu hướng khách hàng</h4>
+<div class="flex gap-2">
+<button class="px-4 py-1.5 rounded-full bg-primary-container text-on-primary-container text-label-md">Hàng tuần</button>
+<button class="px-4 py-1.5 rounded-full hover:bg-surface-container-high text-on-surface-variant text-label-md">Hàng tháng</button>
+</div>
+</div>
+<div class="h-64 flex items-end justify-between gap-4 px-4">
+<!-- Bar chart visualization -->
+<div class="w-full flex flex-col items-center gap-2 group">
+<div class="w-full bg-secondary-container rounded-t-lg group-hover:bg-primary-container transition-colors" style="height: 45%;"></div>
+<span class="text-label-sm text-on-surface-variant">T2</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2 group">
+<div class="w-full bg-secondary-container rounded-t-lg group-hover:bg-primary-container transition-colors" style="height: 60%;"></div>
+<span class="text-label-sm text-on-surface-variant">T3</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2 group">
+<div class="w-full bg-primary rounded-t-lg" style="height: 85%;"></div>
+<span class="text-label-sm text-on-surface font-bold">T4</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2 group">
+<div class="w-full bg-secondary-container rounded-t-lg group-hover:bg-primary-container transition-colors" style="height: 55%;"></div>
+<span class="text-label-sm text-on-surface-variant">T5</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2 group">
+<div class="w-full bg-secondary-container rounded-t-lg group-hover:bg-primary-container transition-colors" style="height: 70%;"></div>
+<span class="text-label-sm text-on-surface-variant">T6</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2 group">
+<div class="w-full bg-secondary-container rounded-t-lg group-hover:bg-primary-container transition-colors" style="height: 95%;"></div>
+<span class="text-label-sm text-on-surface-variant">T7</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2 group">
+<div class="w-full bg-secondary-container rounded-t-lg group-hover:bg-primary-container transition-colors" style="height: 40%;"></div>
+<span class="text-label-sm text-on-surface-variant">CN</span>
+</div>
+</div>
+</div>
+<!-- Recent Reviews -->
+<div class="bg-surface-container-lowest p-lg rounded-3xl border border-outline-variant shadow-sm flex flex-col h-full">
+<div class="flex justify-between items-center mb-lg">
+<h4 class="font-headline-md text-headline-md text-on-surface">Đánh giá mới</h4>
+<a class="text-primary font-bold text-label-md hover:underline" href="#">Xem tất cả</a>
+</div>
+<div class="space-y-6 overflow-y-auto max-h-[360px] pr-2">
+<!-- Review 1 -->
+<div class="space-y-2 pb-4 border-b border-outline-variant">
+<div class="flex items-center gap-3">
+<img alt="Reviewer" class="w-8 h-8 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1jgUEkevjwKfwnjMxPZd5a7I8KNDulIm5uNEiqAUzpB_qWLaM8OhEUt6HU7M4PuHl6xVJgVO6etopHkgmKRPUgyP4q-CiJf1e-noaGCQPIBSG6WRUeQMRXhAqXgHzYe4-XubONmXfA9_9c_xHYg0bpFGhjAwZ8MJraQI1qfZWZAEvnxj8uw9T3yPagcg-DQFl_mvDFEp84PD2YfWs_0J1-kxeSGq8C4BRQ7TpbjKo53W3C_-2JV3IJmS4RCc6DUeRBSgtO1EHXSY"/>
+<div>
+<p class="font-label-md text-on-surface leading-none">Hoàng Anh</p>
+<div class="flex text-primary text-[12px] mt-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<span class="ml-auto text-label-sm text-on-surface-variant">2h trước</span>
+</div>
+<p class="font-body-md text-on-surface-variant line-clamp-2 italic">"Không gian quán rất chill, nhạc hay và nhân viên nhiệt tình cực kỳ!"</p>
+<button class="text-primary font-bold text-label-sm flex items-center gap-1 hover:opacity-80">
+<span class="material-symbols-outlined text-[16px]" data-icon="reply">reply</span>
+                                Phản hồi ngay
+                            </button>
+</div>
+<!-- Review 2 -->
+<div class="space-y-2 pb-4 border-b border-outline-variant">
+<div class="flex items-center gap-3">
+<img alt="Reviewer" class="w-8 h-8 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpycNi7sKL9snHnptvPQxbgn9dfZ18Ugi778aB-GVC0EFRQqDy9sdg4FtDDyMNqMOF7nTz_TBvES3WyOSqKPrz_4sfnyejq7cX4EfgBJxTglhU7Ik1cw3eyUOZsV7twzNFTzvJMijQVNMS_FYasDZWDNm3wvsIiGJJi0_h5-hc-Lx5L7prYgGT3_5u2gFmQ7vGwL2pxzVNe0gS2FGX6ow18gmbICbZHDI5Waf6AQiDxcWBOXq2xvT4aszYEd4aeJVp8G0YQ60sFcI"/>
+<div>
+<p class="font-label-md text-on-surface leading-none">Mai Lan</p>
+<div class="flex text-primary text-[12px] mt-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]">star</span>
+</div>
+</div>
+<span class="ml-auto text-label-sm text-on-surface-variant">5h trước</span>
+</div>
+<p class="font-body-md text-on-surface-variant line-clamp-2 italic">"Nước uống ngon nhưng cuối tuần hơi đông khách, phải chờ lâu một chút."</p>
+<button class="text-primary font-bold text-label-sm flex items-center gap-1 hover:opacity-80">
+<span class="material-symbols-outlined text-[16px]" data-icon="reply">reply</span>
+                                Phản hồi ngay
+                            </button>
+</div>
+<!-- Review 3 -->
+<div class="space-y-2 pb-4">
+<div class="flex items-center gap-3">
+<img alt="Reviewer" class="w-8 h-8 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAb8tLtrmw2cRhc3UtSCLhJP3KWVsNA7JM8SR-CJCc7rAZlhBWIZU9P9NDS5vA3uxyTsyT_q5ix9wXXYPJNA0ixHEpcN0-YHc0ztPkfMHpJZUabeE1FoCQmrMRw6LIAPfdfmHxdyhOGnz0ZVUbFHFaZucG1K5tEF2ujaRhiFfHrgJArB3WIINQX8OOvDCqVQfvqiWFtMJzMNNoervt6kC2b_eroa3inOoI92mtgjR0B95lcNvMQuZEUfaOSXm604gI-qJYkHDMWvvo"/>
+<div>
+<p class="font-label-md text-on-surface leading-none">Quốc Duy</p>
+<div class="flex text-primary text-[12px] mt-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<span class="ml-auto text-label-sm text-on-surface-variant">10h trước</span>
+</div>
+<p class="font-body-md text-on-surface-variant line-clamp-2 italic">"View đẹp nhất quận 1 luôn, sẽ quay lại ủng hộ quán nhiều!"</p>
+<button class="text-primary font-bold text-label-sm flex items-center gap-1 hover:opacity-80">
+<span class="material-symbols-outlined text-[16px]" data-icon="reply">reply</span>
+                                Phản hồi ngay
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Promotion Spotlight (Featured Card) -->
+<div class="relative overflow-hidden rounded-[32px] min-h-[200px] flex items-center p-xl group">
+<img alt="Promo Background" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A professional, high-end photograph of a vibrant, trendy coffee shop interior with warm ambient lighting, modern furniture, and lush green plants. The image has a welcoming and social atmosphere, captured with a shallow depth of field to highlight the clean design and cozy textures of a contemporary urban meeting spot. The color palette is rich and saturated, emphasizing a community-driven, energetic vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbpiSPDnjKxy2eSVO0ytjFmKkhHOKzUwKUfUsuGO2GILVdrG2Oz9f6nKA7PK5Q4gqWBelgOR3fw1mFvEt3NobCKggmMB_yvTja_OzqR2gFph1TbVJWEhjK-vyYXaLwraYh_DwSfiemi3IhAQdQLsIKh6Jaxz3V-ExhJN9wUjr9s_gEl-VpMPALAPHOhPAX-ZocPGMNR2nTz38AEjLJ7V89RcTGrIkjsAUGm67Czf6fVXgvn1OWnUCMOoqnFVYo3eWimd0PNK2qxGM"/>
+<div class="absolute inset-0 bg-gradient-to-r from-primary/90 to-transparent"></div>
+<div class="relative z-10 max-w-xl space-y-4">
+<span class="bg-white/20 backdrop-blur-md text-white px-4 py-1 rounded-full font-label-md uppercase tracking-widest">Khuyến mãi đề xuất</span>
+<h3 class="font-headline-lg text-headline-lg text-white">Bạn muốn tăng lượng khách vào giờ thấp điểm?</h3>
+<p class="font-body-lg text-white/90">Hãy thử tạo chương trình "Happy Hour" giảm giá 20% các loại đồ uống từ 14h - 17h ngày thường.</p>
+<button class="bg-white text-primary font-bold px-8 py-3 rounded-xl hover:shadow-lg transition-all active:scale-95">Tạo ngay</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating Action Button for Mobile Context -->
+<button class="md:hidden fixed bottom-6 right-6 w-14 h-14 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center z-50">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+<script>
+        // Micro-interactions for navigation
+        document.querySelectorAll('aside nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                document.querySelectorAll('aside nav a').forEach(l => {
+                    l.classList.remove('bg-primary-container', 'text-on-primary-container', 'font-bold', 'scale-95');
+                    l.classList.add('text-on-surface-variant');
+                });
+                link.classList.add('bg-primary-container', 'text-on-primary-container', 'font-bold', 'scale-95');
+                link.classList.remove('text-on-surface-variant');
+            });
+        });
+
+        // Simple animation for numbers (atmospheric)
+        function animateValue(obj, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                obj.innerHTML = Math.floor(progress * (end - start) + start).toLocaleString();
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // Trigger animations after load
+        window.addEventListener('load', () => {
+            const numbers = document.querySelectorAll('h3');
+            if(numbers[0]) animateValue(numbers[0], 0, 1284, 1500);
+            if(numbers[1]) animateValue(numbers[1], 0, 4852, 1500);
+        });
+    </script>
+</body></html>

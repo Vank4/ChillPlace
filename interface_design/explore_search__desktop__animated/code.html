@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ChillPlace - Khám phá không gian</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#006b5f",
+                    "surface-variant": "#e0e3e5",
+                    "tertiary-fixed": "#71f8e4",
+                    "background": "#f7f9fb",
+                    "surface-container": "#eceef0",
+                    "surface": "#f7f9fb",
+                    "tertiary-fixed-dim": "#4fdbc8",
+                    "on-error-container": "#93000a",
+                    "error-container": "#ffdad6",
+                    "surface-dim": "#d8dadc",
+                    "surface-bright": "#f7f9fb",
+                    "on-surface-variant": "#594139",
+                    "surface-container-low": "#f2f4f6",
+                    "on-primary": "#ffffff",
+                    "primary-container": "#ff6b35",
+                    "on-error": "#ffffff",
+                    "secondary-fixed-dim": "#a0cafc",
+                    "on-secondary-fixed": "#001d35",
+                    "on-primary-container": "#5f1900",
+                    "inverse-primary": "#ffb59d",
+                    "tertiary-container": "#00ac9b",
+                    "secondary-fixed": "#d1e4ff",
+                    "primary": "#ab3500",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-tertiary-fixed-variant": "#005048",
+                    "on-primary-fixed-variant": "#832600",
+                    "secondary-container": "#a2cdff",
+                    "on-tertiary-container": "#003832",
+                    "surface-tint": "#ab3500",
+                    "on-primary-fixed": "#390c00",
+                    "outline": "#8d7168",
+                    "primary-fixed-dim": "#ffb59d",
+                    "on-secondary-container": "#2a5782",
+                    "primary-fixed": "#ffdbd0",
+                    "on-tertiary-fixed": "#00201c",
+                    "surface-container-lowest": "#ffffff",
+                    "outline-variant": "#e1bfb5",
+                    "inverse-on-surface": "#eff1f3",
+                    "error": "#ba1a1a",
+                    "surface-container-high": "#e6e8ea",
+                    "secondary": "#35618d",
+                    "on-surface": "#191c1e",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "on-background": "#191c1e",
+                    "on-secondary-fixed-variant": "#184974",
+                    "inverse-surface": "#2d3133"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "margin-mobile": "16px",
+                    "xs": "4px",
+                    "sm": "8px",
+                    "xl": "32px",
+                    "gutter": "16px",
+                    "md": "16px",
+                    "xxl": "48px",
+                    "margin-desktop": "32px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: #f7f9fb;
+      }
+      /* Custom Animations */
+      @keyframes cascadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(30px) scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      .reveal-card {
+        animation: cascadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        opacity: 0;
+      }
+      .chip-bounce:hover {
+        transform: scale(1.05);
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .search-glow:focus-within {
+        box-shadow: 0 0 0 4px rgba(171, 53, 0, 0.15), 0 4px 20px rgba(0, 0, 0, 0.1);
+        transform: scale(1.01);
+      }
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+</head>
+<body class="text-on-surface bg-surface overflow-x-hidden">
+<!-- SideNavBar Shell -->
+<aside class="h-screen w-72 fixed left-0 top-0 bg-surface dark:bg-inverse-surface border-r border-outline-variant shadow-sm flex flex-col py-xl px-lg z-50">
+<!-- Brand Header -->
+<div class="mb-xxl">
+<h1 class="font-display-lg text-display-lg font-black text-primary dark:text-primary-fixed-dim">ChillPlace</h1>
+<p class="font-label-md text-label-md text-on-surface-variant opacity-70">Khám phá không gian</p>
+</div>
+<!-- Navigation Links -->
+<nav class="flex flex-col gap-sm flex-grow">
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high p-md rounded-xl transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Trang chủ</span>
+</a>
+<!-- Active Tab: Khám phá -->
+<a class="flex items-center gap-4 text-primary dark:text-primary-fixed-dim font-bold border-r-4 border-primary bg-surface-container-high p-md rounded-xl active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="explore" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-label-md text-label-md">Khám phá</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high p-md rounded-xl transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-label-md text-label-md">Bản đồ</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high p-md rounded-xl transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="font-label-md text-label-md">Yêu thích</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high p-md rounded-xl transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Cài đặt</span>
+</a>
+</nav>
+<!-- Post CTA -->
+<button class="mt-lg mb-lg w-full bg-primary-container text-on-primary py-md px-xl rounded-full font-bold text-body-md shadow-lg hover:brightness-110 active:scale-95 transition-all">
+            Đăng bài mới
+        </button>
+<!-- Footer Tab -->
+<div class="mt-auto pt-lg border-t border-outline-variant">
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors p-md rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-md text-label-md">Trợ giúp</span>
+</a>
+</div>
+</aside>
+<!-- Main Dashboard Area -->
+<main class="ml-72 flex min-h-screen">
+<!-- Central Content Column (Grid & Search) -->
+<div class="flex-1 px-margin-desktop py-md">
+<!-- TopNavBar Integrated Shell -->
+<header class="sticky top-0 z-40 bg-surface/80 backdrop-blur-md pb-md">
+<div class="flex justify-between items-center mb-md">
+<div class="relative w-full max-w-xl search-glow transition-all duration-300 rounded-full">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-full py-3 pl-12 pr-4 focus:outline-none focus:ring-0 focus:border-primary font-body-md text-on-surface transition-all" placeholder="Tìm kiếm địa điểm, quán cafe, studio..." type="text"/>
+</div>
+<div class="flex items-center gap-lg ml-lg">
+<button class="text-on-surface-variant hover:text-primary relative active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute -top-1 -right-1 bg-primary text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full">3</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden border-2 border-surface shadow-sm">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByPiujrE6XfvxBfCOc1_A3BVfpL5LBLRDVVR3-qPVDf3fyAr1qdlS_PLOJdXy0wq7Lb4OvpfsRepf77cYMYAHO9kjPveliAHM0vRZLuErFbxTXv_V-4btnJJbaTrtKlsXwjGo9udZANLV4CMSfhv4J0Vi8Xj3Ba5x3ryv-a1GeO2HO7wvlVPZIhNvukzQmPf8-DeYjHFZ3D3Pfv7BsLQ7PEZr7Itt42fkTouadyYxhli8lQ3AAjf7j0n-PMkqNM-FCn3lqrWSuJeI"/>
+</div>
+</div>
+</div>
+<!-- Category Chips -->
+<div class="flex gap-sm overflow-x-auto no-scrollbar pb-sm">
+<button class="bg-primary text-white px-6 py-2 rounded-full font-label-md text-label-md whitespace-nowrap active:scale-95 transition-all chip-bounce">Tất cả</button>
+<button class="bg-white border border-outline-variant text-on-surface-variant px-6 py-2 rounded-full font-label-md text-label-md whitespace-nowrap hover:bg-primary-container/10 hover:border-primary hover:text-primary transition-all active:scale-95 chip-bounce">Cà phê</button>
+<button class="bg-white border border-outline-variant text-on-surface-variant px-6 py-2 rounded-full font-label-md text-label-md whitespace-nowrap hover:bg-primary-container/10 hover:border-primary hover:text-primary transition-all active:scale-95 chip-bounce">Triển lãm</button>
+<button class="bg-white border border-outline-variant text-on-surface-variant px-6 py-2 rounded-full font-label-md text-label-md whitespace-nowrap hover:bg-primary-container/10 hover:border-primary hover:text-primary transition-all active:scale-95 chip-bounce">Làm việc</button>
+<button class="bg-white border border-outline-variant text-on-surface-variant px-6 py-2 rounded-full font-label-md text-label-md whitespace-nowrap hover:bg-primary-container/10 hover:border-primary hover:text-primary transition-all active:scale-95 chip-bounce">Chụp ảnh</button>
+<button class="bg-white border border-outline-variant text-on-surface-variant px-6 py-2 rounded-full font-label-md text-label-md whitespace-nowrap hover:bg-primary-container/10 hover:border-primary hover:text-primary transition-all active:scale-95 chip-bounce">Sân thượng</button>
+</div>
+</header>
+<!-- Main Feed Grid -->
+<section class="mt-lg grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-lg" id="feed-grid">
+<!-- Place Card 1 -->
+<article class="reveal-card group bg-surface-container-lowest rounded-[24px] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-[1.02]" style="animation-delay: 0.1s;">
+<div class="relative aspect-[16/9] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A modern minimalist coffee shop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUaW0ew0deLBr2h8IhiFFdhqsIoEQ438LTE5SMdMugMbIJ9G6aiHIgD-y2JBRb5EZ6Yt8_Av11jGNCXs9jfEvjw0f9NnxUcc9x9c0pQf3yczIb7tIjEbmSPi41PhsQc9s9JOwvnEbKghBJ08nxUjHTmrV2WcWfMR_ltPHSEjtyend7um4cmqwEvkeXtmwderqUH_le90tlyrW8dOQkoEsh-1cJCY5DbAGZ_1_Ga9deuszDQGgNjLKnlau558klzY4dGqlrK-V_dGs"/>
+<div class="absolute top-4 left-4 bg-primary text-white text-[12px] font-bold px-3 py-1 rounded-full shadow-md uppercase tracking-wider">Xu hướng</div>
+<button class="absolute top-4 right-4 bg-white/20 backdrop-blur-md text-white p-2 rounded-full hover:bg-white hover:text-primary transition-all shadow-lg active:scale-90">
+<span class="material-symbols-outlined text-[20px]" data-icon="favorite">favorite</span>
+</button>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight transition-colors group-hover:text-primary">The Lab Coffee Studio</h3>
+<div class="flex items-center text-primary">
+<span class="material-symbols-outlined text-[18px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-label-md ml-1">4.9</span>
+</div>
+</div>
+<div class="flex items-center text-on-surface-variant gap-1 mb-4">
+<span class="material-symbols-outlined text-[16px] text-[#14B8A6]" data-icon="location_on">location_on</span>
+<span class="text-label-md">Quận 1, TP. Hồ Chí Minh</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="bg-surface-container text-on-surface-variant text-[12px] font-semibold px-3 py-1 rounded-full border border-outline-variant hover:bg-white hover:text-primary transition-colors cursor-default">Tối giản</span>
+<span class="bg-surface-container text-on-surface-variant text-[12px] font-semibold px-3 py-1 rounded-full border border-outline-variant hover:bg-white hover:text-primary transition-colors cursor-default">Yên tĩnh</span>
+</div>
+</div>
+</article>
+<!-- Place Card 2 -->
+<article class="reveal-card group bg-surface-container-lowest rounded-[24px] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-[1.02]" style="animation-delay: 0.2s;">
+<div class="relative aspect-[16/9] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Industrial-chic co-working space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCM53wD0-2bPqtHEFoW2SzVaLekaVsASkhgGwTCvZnW0C3oQgDScoPFQBV-rgLWrbFHXGJQXeg_Gwtu2Gpn4DkPq9WktXn_SvnPwfgOdVi8z1zlaIWrJ5qx227nswLcr-uWbvXDnJTd9KKunJc1OACFvd4YOsXejPP4JfR5cpGnqiaQAWuuVgHOYUErFChDSTHXaN_E3FwyFgK3c1bWCaUmUsD1ZH0sDd0ZwOpBDAVyhS4bwButyjEdD678yNwYlebbq52eD-CkdpI"/>
+<button class="absolute top-4 right-4 bg-white/20 backdrop-blur-md text-white p-2 rounded-full hover:bg-white hover:text-primary transition-all shadow-lg active:scale-90">
+<span class="material-symbols-outlined text-[20px]" data-icon="favorite">favorite</span>
+</button>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight transition-colors group-hover:text-primary">Workshop Hub 24</h3>
+<div class="flex items-center text-primary">
+<span class="material-symbols-outlined text-[18px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-label-md ml-1">4.7</span>
+</div>
+</div>
+<div class="flex items-center text-on-surface-variant gap-1 mb-4">
+<span class="material-symbols-outlined text-[16px] text-[#14B8A6]" data-icon="location_on">location_on</span>
+<span class="text-label-md">Hoàn Kiếm, Hà Nội</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="bg-surface-container text-on-surface-variant text-[12px] font-semibold px-3 py-1 rounded-full border border-outline-variant hover:bg-white hover:text-primary transition-colors">Workshop</span>
+<span class="bg-surface-container text-on-surface-variant text-[12px] font-semibold px-3 py-1 rounded-full border border-outline-variant hover:bg-white hover:text-primary transition-colors">Wifi mạnh</span>
+</div>
+</div>
+</article>
+<!-- Place Card 3 -->
+<article class="reveal-card group bg-surface-container-lowest rounded-[24px] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-[1.02]" style="animation-delay: 0.3s;">
+<div class="relative aspect-[16/9] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Noir Art Gallery" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpnXpX0FNGpTTXoai3bWsvQujaL10NpvwyNNLZqFyTjZjUpnnOuphqDY_RF6I6Gi_M0a4qt2VP_vxIQhz2uMqILXdDZXy9OId4SNO2TTV_6Ny-Ek2Mr3rFLL4j6IADPhE0gi_AM-cmJNnHolmf2UMAA5q1ff3_GTTOmo3Ci9qA7c5XUqzTVh9kOvLxrj9VjminXsAKkvuqmkcbghn5uRBAPX0LAqdtkJUALYGErioZRKxIB9tKreVmE8YEg40jiW7efuYY5dnpxAA"/>
+<div class="absolute top-4 left-4 bg-[#14B8A6] text-white text-[12px] font-bold px-3 py-1 rounded-full shadow-md uppercase tracking-wider">Mới nhất</div>
+<button class="absolute top-4 right-4 bg-white/20 backdrop-blur-md text-white p-2 rounded-full hover:bg-white hover:text-primary transition-all shadow-lg active:scale-90">
+<span class="material-symbols-outlined text-[20px]" data-icon="favorite">favorite</span>
+</button>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight transition-colors group-hover:text-primary">Noir Art Gallery</h3>
+<div class="flex items-center text-primary">
+<span class="material-symbols-outlined text-[18px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-label-md ml-1">4.5</span>
+</div>
+</div>
+<div class="flex items-center text-on-surface-variant gap-1 mb-4">
+<span class="material-symbols-outlined text-[16px] text-[#14B8A6]" data-icon="location_on">location_on</span>
+<span class="text-label-md">Đà Nẵng</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="bg-surface-container text-on-surface-variant text-[12px] font-semibold px-3 py-1 rounded-full border border-outline-variant hover:bg-white hover:text-primary transition-colors">Nghệ thuật</span>
+<span class="bg-surface-container text-on-surface-variant text-[12px] font-semibold px-3 py-1 rounded-full border border-outline-variant hover:bg-white hover:text-primary transition-colors">Check-in</span>
+</div>
+</div>
+</article>
+<!-- Place Card 4 -->
+<article class="reveal-card group bg-surface-container-lowest rounded-[24px] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-[1.02]" style="animation-delay: 0.4s;">
+<div class="relative aspect-[16/9] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Sunset Terrace Bar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjKJfkLZvXHh7PsopCIS0_PCIWMKuqT-VJmUg5OhYVHkkN4Kl1ClPfZAICBU6xxc4NvNHsK_-e1lhe2MqRyzhB-euqwnoZjQAa6Oi7Uf988fdtqPlx-a7tFMvtJC_mf1Ld7c5JzJq0dFHsQA08qCd8uOxOiW1dm7fxG9vFQlBFFB362yzzRWsOiUI5G8ekzY8Qvb6lECDafC0MjuCfTD12nPRqcgcYUAiGhT6hs2ZmVC_OBvBbVSCF3aHdNhfRToVYdUR95zZUYFo"/>
+<button class="absolute top-4 right-4 bg-white/20 backdrop-blur-md text-white p-2 rounded-full hover:bg-white hover:text-primary transition-all shadow-lg active:scale-90">
+<span class="material-symbols-outlined text-[20px]" data-icon="favorite">favorite</span>
+</button>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight transition-colors group-hover:text-primary">Sunset Terrace Bar</h3>
+<div class="flex items-center text-primary">
+<span class="material-symbols-outlined text-[18px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-label-md ml-1">4.8</span>
+</div>
+</div>
+<div class="flex items-center text-on-surface-variant gap-1 mb-4">
+<span class="material-symbols-outlined text-[16px] text-[#14B8A6]" data-icon="location_on">location_on</span>
+<span class="text-label-md">Thảo Điền, Quận 2</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="bg-surface-container text-on-surface-variant text-[12px] font-semibold px-3 py-1 rounded-full border border-outline-variant hover:bg-white hover:text-primary transition-colors">Sân thượng</span>
+<span class="bg-surface-container text-on-surface-variant text-[12px] font-semibold px-3 py-1 rounded-full border border-outline-variant hover:bg-white hover:text-primary transition-colors">Chill</span>
+</div>
+</div>
+</article>
+<!-- Place Card 5 -->
+<article class="reveal-card group bg-surface-container-lowest rounded-[24px] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-[1.02]" style="animation-delay: 0.5s;">
+<div class="relative aspect-[16/9] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="The Bookworm Oasis" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmefRQaff7N_LKUbFA1qkvEP4kWS3qZkjQN5g5cnmIX3AplXcVGc2VqYVNKHlipgXlqvaxz-t9mxUaFQvIDAShta1TIErG5hnCrD8mmQ-KzynUqnMRWIrPF-ZUod_CqDja_2p0A3j47aAK215sjUJNY80bHhDzjgX4rgNfRK5_rAR2m-YaRhPj18yATncAptxU8XtS7qgNJNCkgU3WnPs-2p-9gC5t9sGdYZftAl4W_a1h-tznVIaRxnDImvC4TKjcFG2wrY_Oqwc"/>
+<button class="absolute top-4 right-4 bg-white/20 backdrop-blur-md text-white p-2 rounded-full hover:bg-white hover:text-primary transition-all shadow-lg active:scale-90">
+<span class="material-symbols-outlined text-[20px]" data-icon="favorite">favorite</span>
+</button>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight transition-colors group-hover:text-primary">The Bookworm Oasis</h3>
+<div class="flex items-center text-primary">
+<span class="material-symbols-outlined text-[18px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-label-md ml-1">4.6</span>
+</div>
+</div>
+<div class="flex items-center text-on-surface-variant gap-1 mb-4">
+<span class="material-symbols-outlined text-[16px] text-[#14B8A6]" data-icon="location_on">location_on</span>
+<span class="text-label-md">Đống Đa, Hà Nội</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="bg-surface-container text-on-surface-variant text-[12px] font-semibold px-3 py-1 rounded-full border border-outline-variant hover:bg-white hover:text-primary transition-colors">Yên tĩnh</span>
+<span class="bg-surface-container text-on-surface-variant text-[12px] font-semibold px-3 py-1 rounded-full border border-outline-variant hover:bg-white hover:text-primary transition-colors">Làm việc</span>
+</div>
+</div>
+</article>
+<!-- Place Card 6 -->
+<article class="reveal-card group bg-surface-container-lowest rounded-[24px] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-[1.02]" style="animation-delay: 0.6s;">
+<div class="relative aspect-[16/9] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Hội Quán Gặp Gỡ" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxgos1xiTDlKDqJx9sibtRo22IJWLijpXhtDfVWP1CpsBKM9UWgX1ZRN790NHQIZey3m7LrpT9Z9UMu4X_-uGAXWon3Hjl6HYZ44CCC0ybpobpa96izJ9K_ZQXHj1mliWAJ9i7ZaDjDDmfL_Hn8ctY4LhOCYQvGAwCD-_8jdQ8nwlELOCzjMckBijcagk1n1DupRZog1iKpOuiMzCZV-TAK5To-3yKJdeGbwcqfUuRWDideF6-iGzzYLDhiAYLdP3WLfSlpwT4wpU"/>
+<button class="absolute top-4 right-4 bg-white/20 backdrop-blur-md text-white p-2 rounded-full hover:bg-white hover:text-primary transition-all shadow-lg active:scale-90">
+<span class="material-symbols-outlined text-[20px]" data-icon="favorite">favorite</span>
+</button>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight transition-colors group-hover:text-primary">Hội Quán Gặp Gỡ</h3>
+<div class="flex items-center text-primary">
+<span class="material-symbols-outlined text-[18px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-label-md ml-1">4.9</span>
+</div>
+</div>
+<div class="flex items-center text-on-surface-variant gap-1 mb-4">
+<span class="material-symbols-outlined text-[16px] text-[#14B8A6]" data-icon="location_on">location_on</span>
+<span class="text-label-md">Bình Thạnh, TP. HCM</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="bg-surface-container text-on-surface-variant text-[12px] font-semibold px-3 py-1 rounded-full border border-outline-variant hover:bg-white hover:text-primary transition-colors">Ẩm thực</span>
+<span class="bg-surface-container text-on-surface-variant text-[12px] font-semibold px-3 py-1 rounded-full border border-outline-variant hover:bg-white hover:text-primary transition-colors">Nhóm đông</span>
+</div>
+</div>
+</article>
+</section>
+</div>
+<!-- Right Recommendation Panel -->
+<aside class="w-96 px-lg py-xl border-l border-outline-variant sticky top-0 h-screen hidden 2xl:flex flex-col gap-xl bg-surface-container-lowest">
+<!-- Recommended Categories -->
+<section>
+<div class="flex justify-between items-center mb-md">
+<h2 class="font-headline-md text-headline-md text-on-surface">Danh mục gợi ý</h2>
+<a class="text-primary font-bold text-label-sm hover:underline" href="#">Xem tất cả</a>
+</div>
+<div class="grid grid-cols-2 gap-sm">
+<div class="bg-surface-container-low p-md rounded-2xl flex flex-col items-center gap-2 hover:bg-primary/10 transition-all cursor-pointer group active:scale-95">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform" data-icon="coffee">coffee</span>
+<span class="font-label-md text-label-md">Cafe sáng</span>
+</div>
+<div class="bg-surface-container-low p-md rounded-2xl flex flex-col items-center gap-2 hover:bg-primary/10 transition-all cursor-pointer group active:scale-95">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform" data-icon="palette">palette</span>
+<span class="font-label-md text-label-md">Nghệ thuật</span>
+</div>
+<div class="bg-surface-container-low p-md rounded-2xl flex flex-col items-center gap-2 hover:bg-primary/10 transition-all cursor-pointer group active:scale-95">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform" data-icon="camera">camera</span>
+<span class="font-label-md text-label-md">Studio</span>
+</div>
+<div class="bg-surface-container-low p-md rounded-2xl flex flex-col items-center gap-2 hover:bg-primary/10 transition-all cursor-pointer group active:scale-95">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform" data-icon="nightlife">nightlife</span>
+<span class="font-label-md text-label-md">Hẹn hò</span>
+</div>
+</div>
+</section>
+<!-- Trending Places -->
+<section>
+<div class="flex justify-between items-center mb-md">
+<h2 class="font-headline-md text-headline-md text-on-surface">Địa điểm nổi bật</h2>
+<button class="text-outline hover:text-primary transition-all active:rotate-180 duration-500">
+<span class="material-symbols-outlined" data-icon="refresh">refresh</span>
+</button>
+</div>
+<div class="flex flex-col gap-md">
+<!-- Trending Item 1 -->
+<div class="flex gap-md items-center group cursor-pointer hover:bg-surface-container-low p-2 rounded-xl transition-all">
+<div class="w-16 h-16 rounded-xl overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-125 transition-transform duration-500" data-alt="Hidden Gems Cafe" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8YTGyN7TyAwbfHWFE-0GR3SteLDkGQpJPbpUQ02TCuP0UoPZ-JYPXa3j4O5n7Z2m0V2N5N8kVHLBGs9LmRBfN8zM6yxyyYIyGiHSZan8A0U9NX0OslAJeOvbsPIopHT5GBEjq2zZbYv-VsTllCbBZgJDn-0E1FZj9pUtfqN0oGtgs_fMBmXUYgEj91ScbpKOTi5rLb7nD_50hhNrNDGFe02BO177un9QDxiYZ692kdU4GZlFxKQAeNkLEVt3rP20NJvmRK6mrTVQ"/>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-body-md text-on-surface group-hover:text-primary transition-colors">Hidden Gems Cafe</h4>
+<p class="text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="local_fire_department" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+                                2.4k lượt quan tâm
+                            </p>
+</div>
+</div>
+<!-- Trending Item 2 -->
+<div class="flex gap-md items-center group cursor-pointer hover:bg-surface-container-low p-2 rounded-xl transition-all">
+<div class="w-16 h-16 rounded-xl overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-125 transition-transform duration-500" data-alt="Creative Loft Space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBMKyoQ2cFOaPAc1NeYrY6X21yjetdmlQRFz4xxV7MDh1CmIwZ9kmVQ2z2hyGtM1LWkXZSpVgEs86I1JPKYQtTLgdJk_RB0U-mB_CxF_5uY2FroMTjqaLQPOc0YOcD2qEJT-xDfQmwsqSFQZMveLiqQdJO7FCdZT7Q8e1pkKgbmfTxgFhgNYtVGvbPEFUnJcoN_ZyK_VMJyz56c8qUsCAL5EGwWQX1nSuZiApILLfa8tcEe7fslrIFA6QIO6hLftE22u5C48Va3Bs"/>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-body-md text-on-surface group-hover:text-primary transition-colors">Creative Loft Space</h4>
+<p class="text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="local_fire_department" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+                                1.8k lượt quan tâm
+                            </p>
+</div>
+</div>
+<!-- Trending Item 3 -->
+<div class="flex gap-md items-center group cursor-pointer hover:bg-surface-container-low p-2 rounded-xl transition-all">
+<div class="w-16 h-16 rounded-xl overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-125 transition-transform duration-500" data-alt="Vibe Rooftop Lounge" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDslNL4P2bIxuHR3baxw5n4LD3O6R7np0HF064N1xEIBjtzZUKMdcynJ4ffmGhrdwyd3tYSqv-Z1WlE4JzEEhEbb9HYRy6oZGxfXDLGs5M627BS3pztU4fAAXJqDFh7pU8SxAFDycsRmxc3GkJCyTI7DvuqZoZgiy4NQ9EHfK460uGJ2ekRA5cycVN_AC_c40OT-d_Rx-u6UaGbSrjO76gOvizs-YrtLjgBVbclJMRZVTJjm-hEgUPeOZiMl-kZlWAZKJ6L-_1UgnU"/>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-body-md text-on-surface group-hover:text-primary transition-colors">Vibe Rooftop Lounge</h4>
+<p class="text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="local_fire_department" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+                                1.2k lượt quan tâm
+                            </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Map Mini Preview -->
+<section class="mt-auto">
+<div class="relative h-48 rounded-[24px] overflow-hidden shadow-lg group cursor-pointer">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Map preview" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8O0TuzaOqqPsbXxxdn2mha80jr4XAkN1QGFo8nVvDrzwFcifxgnMvirzxkLhg2v0F8IvfxRtQh_wXT6eyHvCxtSCHetNUP6aKD2kCHyCzqRN5IPwLSlUecvqqubw-A54yrGxDNVR4eMi19MiujBXvfIjL576Yab3w0Q6aJq6wz_3hyrVY7v0pzPyYbxjUCLlIXltAii9vakjgahHGkIsL68oU1d-Syoy08XnjiiOu3XlsKyKMcaHGUj2WmuRW1bvll6C3pHo3-t8"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+<div class="absolute bottom-4 left-4 right-4 glass-card p-3 rounded-xl flex items-center justify-between transform group-hover:translate-y-[-4px] transition-transform">
+<span class="font-bold text-label-md text-on-surface">Tìm quanh đây</span>
+<span class="material-symbols-outlined text-primary group-hover:rotate-45 transition-transform" data-icon="near_me">near_me</span>
+</div>
+</div>
+</section>
+</aside>
+</main>
+<!-- Floating Action Button for Post -->
+<button class="fixed bottom-8 right-8 bg-primary-container text-on-primary p-4 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all z-50 flex items-center gap-2 group overflow-hidden">
+<span class="material-symbols-outlined group-hover:rotate-90 transition-transform" data-icon="add">add</span>
+<span class="max-w-0 overflow-hidden group-hover:max-w-[150px] transition-all duration-300 font-bold whitespace-nowrap">Đăng trải nghiệm</span>
+</button>
+<script>
+        // Micro-interaction for search bar focus
+        const searchInput = document.querySelector('input[type="text"]');
+        const searchContainer = searchInput.parentElement;
+        
+        searchInput.addEventListener('focus', () => {
+            searchContainer.classList.add('max-w-2xl');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchContainer.classList.remove('max-w-2xl');
+        });
+
+        // Trigger entrance animations sequentially
+        window.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.reveal-card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${(index + 1) * 0.1}s`;
+            });
+        });
+
+        // Optional: Reset animation on category change simulation
+        const chips = document.querySelectorAll('.chip-bounce');
+        chips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                const grid = document.getElementById('feed-grid');
+                const cards = grid.querySelectorAll('article');
+                
+                cards.forEach(card => {
+                    card.classList.remove('reveal-card');
+                    void card.offsetWidth; // Trigger reflow
+                    card.classList.add('reveal-card');
+                });
+            });
+        });
+    </script>
+</body></html>

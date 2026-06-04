@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ChillPlace | Chi tiết không gian</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e1bfb5;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ab3500;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#35618d",
+                        "tertiary": "#006b5f",
+                        "on-tertiary-fixed-variant": "#005048",
+                        "surface-container-highest": "#e0e3e5",
+                        "primary-fixed-dim": "#ffb59d",
+                        "on-primary-container": "#5f1900",
+                        "tertiary-fixed-dim": "#4fdbc8",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#e0e3e5",
+                        "secondary-fixed-dim": "#a0cafc",
+                        "on-surface": "#191c1e",
+                        "outline-variant": "#e1bfb5",
+                        "outline": "#8d7168",
+                        "surface-container-high": "#e6e8ea",
+                        "surface-dim": "#d8dadc",
+                        "on-tertiary-container": "#003832",
+                        "primary": "#ab3500",
+                        "primary-fixed": "#ffdbd0",
+                        "tertiary-fixed": "#71f8e4",
+                        "primary-container": "#ff6b35",
+                        "on-tertiary-fixed": "#00201c",
+                        "inverse-primary": "#ffb59d",
+                        "on-secondary-fixed": "#001d35",
+                        "surface-tint": "#ab3500",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#d1e4ff",
+                        "surface": "#f7f9fb",
+                        "background": "#f7f9fb",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#832600",
+                        "inverse-surface": "#2d3133",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "surface-container": "#eceef0",
+                        "on-surface-variant": "#594139",
+                        "on-primary-fixed": "#390c00",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#f7f9fb",
+                        "on-background": "#191c1e",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#2a5782",
+                        "secondary-container": "#a2cdff",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#00ac9b",
+                        "on-secondary-fixed-variant": "#184974",
+                        "surface-container-low": "#f2f4f6",
+                        "inverse-on-surface": "#eff1f3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "margin-mobile": "16px",
+                        "gutter": "16px",
+                        "xl": "32px",
+                        "xxl": "48px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "margin-desktop": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface font-body-md text-on-surface min-h-screen">
+<!-- SideNavBar Anchor -->
+<aside class="h-screen w-72 fixed left-0 top-0 bg-surface dark:bg-inverse-surface border-r border-outline-variant flex flex-col h-full py-xl px-lg shadow-sm z-50">
+<div class="mb-xxl">
+<h1 class="font-display-lg text-display-lg font-black text-primary dark:text-primary-fixed-dim">ChillPlace</h1>
+<p class="font-label-md text-label-md text-on-surface-variant opacity-70">Khám phá không gian</p>
+</div>
+<nav class="flex-1 space-y-sm">
+<!-- Home -->
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high dark:hover:bg-surface-container-highest p-md rounded-xl group transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Trang chủ</span>
+</a>
+<!-- Explore - Active (as this is a detail view discovery) -->
+<a class="flex items-center gap-4 text-primary dark:text-primary-fixed-dim font-bold border-r-4 border-primary p-md rounded-xl bg-surface-container-low transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="explore" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-label-md text-label-md">Khám phá</span>
+</a>
+<!-- Map -->
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high dark:hover:bg-surface-container-highest p-md rounded-xl transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-label-md text-label-md">Bản đồ</span>
+</a>
+<!-- Favorite -->
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high dark:hover:bg-surface-container-highest p-md rounded-xl transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="font-label-md text-label-md">Yêu thích</span>
+</a>
+<!-- Settings -->
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high dark:hover:bg-surface-container-highest p-md rounded-xl transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Cài đặt</span>
+</a>
+</nav>
+<button class="bg-primary-container text-white font-bold py-md px-lg rounded-xl mb-lg hover:shadow-lg active:scale-95 transition-all">
+            Đăng bài mới
+        </button>
+<div class="mt-auto border-t border-outline-variant pt-lg">
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-primary transition-colors p-md" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-md text-label-md">Trợ giúp</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-72 min-h-screen flex flex-col md:flex-row">
+<!-- Left Section: High Quality Media (Reel/Carousel View) -->
+<section class="flex-1 h-screen bg-black relative flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0 opacity-40">
+<img class="w-full h-full object-cover blur-3xl scale-110" data-alt="A blurred background image showing a warm, cozy interior of a modern urban cafe with soft amber lighting, industrial brick walls, and scattered lush green plants. The aesthetic is high-energy yet intimate, featuring a blend of deep oranges and rich blues typical of the Vibrant Urban Explorer style. The atmosphere is inviting and sophisticated, creating a perfect canvas for the main foreground content." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBS-YxTJagMas4pSEMXeYi5O7tpbsTBt__rzCdG8ni8cLn8enE7VxKZJjwTxwXZDZkkn1tU9dgtCVOWFqi-B_bBmHHcd1Wd-Od4ETFkSruveBUcRVhbtrICnZGgs7kAEzkrx-rZ6mTn-yXmtVsqpHkOczQzARwHD5bGyMYKrt4cKLHBnkEeg6dQk6KYjjgVKrdTLrTwmEq_hlO4k832c4rqb97SLNLPj9HoYnw8VmD6QoR8P0OEK7R4VcJ_JhS8_O4XeiaE9oJ9EQ"/>
+</div>
+<!-- Main Content Container (4:5 or 16:9 Aspect Ratio) -->
+<div class="relative z-10 w-full max-w-4xl h-full flex flex-col justify-center px-xl">
+<div class="relative aspect-[9/16] max-h-[921px] mx-auto bg-surface-container-highest rounded-[32px] overflow-hidden shadow-2xl group border border-white/10">
+<img class="w-full h-full object-cover" data-alt="A high-quality, vertically oriented photograph of a stylish hidden cafe tucked away in an urban alleyway. The scene captures vibrant neon signs in primary orange and teal colors casting a glow on rustic wooden tables and concrete floors. The lighting is cinematic with high contrast, highlighting textures of weathered bricks and lush potted ferns. The vibe is adventurous and energetic, perfectly capturing the spirit of a modern urban explorer discovering a secret gem." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQsa-_zPn8uqtT80Qu-oMmnLIp2OfkOyzkpiMIIwhneSxCk48GUz6OaSci0CPcFBmsINUbpyHiUsC1SieCP7b4Vpa1ll5H4Q5y8c4JK72Q0WSBooEbNGlyxW0XgosW9cZhLP0YOdsKxQHBEvLtk_Qnc0fiLzR1AHtk1aMQqgUlX_GSc6VkfdIMnvAQfrLVAmyb52GtdB_jdLFbHeGv9xdBlnkQ64aeoSlzaRq6hg2x_FmSSduGx6CiMB9MRFN7SmglcOcYMxXOikI"/>
+<!-- Overlay Controls -->
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-lg">
+<div class="flex justify-end">
+<button class="bg-white/20 backdrop-blur-md p-sm rounded-full text-white hover:bg-white/40">
+<span class="material-symbols-outlined" data-icon="fullscreen">fullscreen</span>
+</button>
+</div>
+<div class="flex items-center gap-md">
+<div class="w-full bg-white/20 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-1/3"></div>
+</div>
+<span class="text-white font-label-sm">0:12 / 0:34</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Contextual Navigation for Carousel/Reels -->
+<button class="absolute left-md top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 backdrop-blur-md p-md rounded-full text-white transition-all z-20">
+<span class="material-symbols-outlined" data-icon="arrow_back_ios">arrow_back_ios</span>
+</button>
+<button class="absolute right-md top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 backdrop-blur-md p-md rounded-full text-white transition-all z-20">
+<span class="material-symbols-outlined" data-icon="arrow_forward_ios">arrow_forward_ios</span>
+</button>
+</section>
+<!-- Right Section: Post Info, Details, Comments -->
+<aside class="w-[480px] h-screen bg-surface-container-lowest border-l border-outline-variant flex flex-col">
+<!-- Header: Author Details -->
+<div class="p-lg border-b border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="relative w-12 h-12 rounded-full overflow-hidden border-2 border-primary p-0.5">
+<img class="w-full h-full object-cover rounded-full" data-alt="A professional portrait of a stylish young male urban explorer with a friendly expression. He is wearing a minimalist techwear jacket in deep navy blue. The background is a softly blurred modern cityscape with golden hour lighting. The lighting on his face is soft and flattering, emphasizing a trendy, high-end social media aesthetic suitable for a premium platform like ChillPlace." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNdV1NeDULjYg_1yYcn-fB_xGkgAEmVQoLwiBzz6DSOfPXdjqeqKDiQKqKkQRklE4T3EAL-kwi4E7aT8spMGPHNLNsTSdV-SqpKVjoLHUjSqT-a75JS9LR3P5p0LrKcdX-o_Rai8I1k4oJUpElORijJbjIlZeITwJKw9PR6l_ETLgm4VWASLy8SsQyZdPObc1SVm6jZ-0gQ1p-zPWxqvvotpbUuJGjCtONDfHW5aoBXckBl_Q_EEKMJnPeLrXvg3LSROhvWZSGAMQ"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface flex items-center gap-sm">
+                            Alex_Explorer
+                            <span class="material-symbols-outlined text-primary text-[18px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]" data-icon="location_on">location_on</span>
+                            Quận 1, TP. Hồ Chí Minh
+                        </p>
+</div>
+</div>
+<button class="bg-secondary text-white px-md py-sm rounded-lg font-label-md hover:opacity-90 transition-opacity">
+                    Theo dõi
+                </button>
+</div>
+<!-- Content: Description & Tags -->
+<div class="flex-1 overflow-y-auto">
+<div class="p-lg space-y-md">
+<p class="text-body-lg font-body-lg text-on-surface leading-relaxed">
+                        Vừa tìm thấy một quán cà phê "ẩn mình" cực chill ngay giữa lòng Sài Gòn. Không gian được thiết kế theo phong cách Cyberpunk pha lẫn chút cổ điển. Thích hợp cho những buổi tối cần sự yên tĩnh để làm việc hoặc tụ tập bạn bè. 🚀☕️
+                    </p>
+<div class="flex flex-wrap gap-sm">
+<span class="bg-primary text-white px-md py-xs rounded-full font-label-sm">#UrbanExplorer</span>
+<span class="bg-tertiary-container text-on-tertiary-container px-md py-xs rounded-full font-label-sm">#SaigonChill</span>
+<span class="border border-secondary text-secondary px-md py-xs rounded-full font-label-sm">#CoffeeLovers</span>
+<span class="bg-surface-container-high text-on-surface-variant px-md py-xs rounded-full font-label-sm">#SecretSpot</span>
+</div>
+<p class="text-label-sm text-on-surface-variant pt-sm">Đã đăng 2 giờ trước</p>
+</div>
+<!-- Action Bar -->
+<div class="px-lg py-md flex items-center justify-between border-y border-outline-variant bg-surface-container-low">
+<div class="flex items-center gap-lg">
+<button class="flex flex-col items-center gap-xs group">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="font-label-sm text-label-sm">2.4k</span>
+</button>
+<button class="flex flex-col items-center gap-xs group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-secondary group-hover:scale-110 transition-transform" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-label-sm text-label-sm">128</span>
+</button>
+<button class="flex flex-col items-center gap-xs group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-tertiary group-hover:scale-110 transition-transform" data-icon="share">share</span>
+<span class="font-label-sm text-label-sm">45</span>
+</button>
+</div>
+<button class="group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="bookmark">bookmark</span>
+</button>
+</div>
+<!-- Comments Section -->
+<div class="p-lg space-y-lg">
+<h4 class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Bình luận</h4>
+<!-- Comment 1 -->
+<div class="flex gap-md">
+<img class="w-10 h-10 rounded-full object-cover shrink-0" data-alt="A portrait of a cheerful young woman with a vibrant personality, wearing trendy spectacles and a colorful scarf. She has a warm smile and is set against a bright, airy background of a modern urban studio. The style is fresh and professional, emphasizing a community-driven social interaction feel for the ChillPlace platform user base." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAR402RdAr3806bgyFTCGOynDZQSoZkVWZ1nEyjn5QfpxtJGL0HPLzFeDKCGOTLPKJdLphWx7xEt8YJhYP6Pfw-E9GM3plLFn9z6lr1bs2F1u-zQT6kbUya5gHpGTYkx4z-bQ6HXMe-tS_aVGyOZtFeqG1QALY6ws5mnScWw6aiSu0qqPB-hyl9HXiP45WYotaYsRCxoZv2zEqoDkVt5Psy5j2JO-OeMgUjz1JCkdMLZ8wh70fo3ORZlhw2Ms_f4gx55xHsS19CxY8"/>
+<div class="space-y-xs flex-1">
+<div class="bg-surface-container-high p-md rounded-2xl rounded-tl-none">
+<span class="font-label-md text-label-md block mb-xs">minh_hang_98</span>
+<p class="text-body-md">Quán này tên gì vậy bạn ơi? Nhìn decor xịn xò quá đi mất! 😍</p>
+</div>
+<div class="flex items-center gap-md px-sm">
+<span class="text-label-sm text-on-surface-variant">12 phút trước</span>
+<button class="text-label-sm font-bold text-primary">Trả lời</button>
+<button class="flex items-center gap-xs text-on-surface-variant ml-auto">
+<span class="material-symbols-outlined text-[14px]" data-icon="thumb_up">thumb_up</span>
+<span class="text-label-sm">12</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Comment 2 -->
+<div class="flex gap-md">
+<img class="w-10 h-10 rounded-full object-cover shrink-0" data-alt="A close-up headshot of a mature, creative-looking man with a neatly trimmed beard and thoughtful eyes. He is wearing a simple black t-shirt, appearing as a professional designer or artist. The lighting is dramatic and side-lit, creating a sophisticated and serious tone for a community member engaged in meaningful social interaction on the platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1bIMsGJU8X0KV2f9shXfUswIeBmKHO-4OZ1wk7bEUW8Wld4qeWdb9CqHDAtoITAAjKAq39qq9xcHUQKjTWGtVbIU38u71lzPmL-LnLgzx9ekqBSwDUO5XOsKRCXkvuU6mc56ti5DyTzAMjm9A5bmeZ2PmmWnRG8vAb1u2YijmweOyZ5c1hw4EEMsklrmb_sQnoUytBc3YnkSm81slksgVxStMWq_UexJOoQxdcSDKc8tldG0vF5WCQui9GQ8tOJKdTUkLnAFZ_14"/>
+<div class="space-y-xs flex-1">
+<div class="bg-surface-container-high p-md rounded-2xl rounded-tl-none">
+<span class="font-label-md text-label-md block mb-xs">design_master</span>
+<p class="text-body-md">Góc chụp đỉnh thật sự, màu sắc rực rỡ đúng chất Urban Explorer luôn.</p>
+</div>
+<div class="flex items-center gap-md px-sm">
+<span class="text-label-sm text-on-surface-variant">45 phút trước</span>
+<button class="text-label-sm font-bold text-primary">Trả lời</button>
+<button class="flex items-center gap-xs text-on-surface-variant ml-auto">
+<span class="material-symbols-outlined text-[14px]" data-icon="thumb_up">thumb_up</span>
+<span class="text-label-sm">4</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer: Comment Input -->
+<div class="p-lg border-t border-outline-variant glass-panel">
+<div class="flex items-center gap-md bg-surface border border-outline-variant rounded-full px-md py-sm focus-within:border-primary transition-colors">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="mood">mood</span>
+</button>
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-body-md placeholder:text-on-surface-variant/50" placeholder="Thêm bình luận..." type="text"/>
+<button class="text-primary font-bold font-label-md px-sm disabled:opacity-50">
+                        Đăng
+                    </button>
+</div>
+</div>
+</aside>
+</main>
+<!-- Micro-interactions Script -->
+<script>
+        // Like animation effect
+        const likeBtn = document.querySelector('[data-icon="favorite"]');
+        likeBtn.parentElement.addEventListener('click', () => {
+            likeBtn.style.transform = 'scale(1.3)';
+            setTimeout(() => {
+                likeBtn.style.transform = 'scale(1)';
+            }, 200);
+        });
+
+        // Simple tab focus highlight for navigation
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                document.querySelectorAll('nav a').forEach(l => {
+                    l.classList.remove('text-primary', 'font-bold', 'border-r-4', 'border-primary', 'bg-surface-container-low');
+                    l.classList.add('text-on-surface-variant');
+                });
+                link.classList.add('text-primary', 'font-bold', 'border-r-4', 'border-primary', 'bg-surface-container-low');
+                link.classList.remove('text-on-surface-variant');
+            });
+        });
+    </script>
+</body></html>

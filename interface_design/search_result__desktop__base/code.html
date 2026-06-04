@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.5);
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#35618d",
+                        "tertiary": "#006b5f",
+                        "on-tertiary-fixed-variant": "#005048",
+                        "surface-container-highest": "#e0e3e5",
+                        "primary-fixed-dim": "#ffb59d",
+                        "on-primary-container": "#5f1900",
+                        "tertiary-fixed-dim": "#4fdbc8",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#e0e3e5",
+                        "secondary-fixed-dim": "#a0cafc",
+                        "on-surface": "#191c1e",
+                        "outline-variant": "#e1bfb5",
+                        "outline": "#8d7168",
+                        "surface-container-high": "#e6e8ea",
+                        "surface-dim": "#d8dadc",
+                        "on-tertiary-container": "#003832",
+                        "primary": "#ab3500",
+                        "primary-fixed": "#ffdbd0",
+                        "tertiary-fixed": "#71f8e4",
+                        "primary-container": "#ff6b35",
+                        "on-tertiary-fixed": "#00201c",
+                        "inverse-primary": "#ffb59d",
+                        "on-secondary-fixed": "#001d35",
+                        "surface-tint": "#ab3500",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#d1e4ff",
+                        "surface": "#f7f9fb",
+                        "background": "#f7f9fb",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#832600",
+                        "inverse-surface": "#2d3133",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "surface-container": "#eceef0",
+                        "on-surface-variant": "#594139",
+                        "on-primary-fixed": "#390c00",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#f7f9fb",
+                        "on-background": "#191c1e",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#2a5782",
+                        "secondary-container": "#a2cdff",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#00ac9b",
+                        "on-secondary-fixed-variant": "#184974",
+                        "surface-container-low": "#f2f4f6",
+                        "inverse-on-surface": "#eff1f3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "margin-mobile": "16px",
+                        "gutter": "16px",
+                        "xl": "32px",
+                        "xxl": "48px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "margin-desktop": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface overflow-x-hidden min-h-screen">
+<!-- SideNavBar (Authority Source: JSON) -->
+<aside class="h-screen w-72 fixed left-0 top-0 bg-surface dark:bg-inverse-surface border-r border-outline-variant shadow-sm flex flex-col py-xl px-lg z-50">
+<div class="mb-xxl">
+<h1 class="font-display-lg text-display-lg font-black text-primary dark:text-primary-fixed-dim">ChillPlace</h1>
+<p class="font-label-md text-label-md text-on-surface-variant">Khám phá không gian</p>
+</div>
+<nav class="flex-1 space-y-md">
+<!-- Explore is active for search results -->
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all duration-200 p-sm rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Trang chủ</span>
+</a>
+<a class="flex items-center gap-4 text-primary dark:text-primary-fixed-dim font-bold border-r-4 border-primary hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all duration-200 p-sm rounded-lg active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-label-md text-label-md">Khám phá</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all duration-200 p-sm rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-label-md text-label-md">Bản đồ</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all duration-200 p-sm rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="font-label-md text-label-md">Yêu thích</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all duration-200 p-sm rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Cài đặt</span>
+</a>
+</nav>
+<div class="mt-auto space-y-lg">
+<button class="w-full bg-primary-container text-on-primary py-md px-lg rounded-full font-bold hover:opacity-90 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                Đăng bài mới
+            </button>
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors p-sm rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-md text-label-md">Trợ giúp</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-72 min-h-screen">
+<!-- Top Search Bar & Filters Section -->
+<header class="sticky top-0 z-40 bg-surface/80 backdrop-blur-md border-b border-outline-variant px-margin-desktop py-lg">
+<div class="max-w-6xl mx-auto space-y-lg">
+<div class="flex items-center gap-lg">
+<div class="relative flex-1 group">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-primary font-bold" data-icon="search">search</span>
+<input class="w-full pl-xxl pr-md py-md bg-surface-container-lowest border-2 border-outline-variant rounded-full focus:border-primary focus:ring-0 text-on-surface font-body-md transition-all outline-none" placeholder="Tìm kiếm địa điểm, bài viết..." type="text" value="Quán cà phê vintage Sài Gòn"/>
+</div>
+<div class="flex items-center gap-md">
+<button class="bg-secondary text-on-secondary px-lg py-md rounded-full font-bold hover:opacity-90 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+                            Bộ lọc
+                        </button>
+<img alt="User Profile" class="w-12 h-12 rounded-full border-2 border-primary-container" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkk5JXYdIRwZOUqz4xrHrVgFhi_01pIPQkZgPw3S1Haw3TK4gxG9WOHvpabtRWjKcB_ZhyDIDs0Vt0dgaDqU6sBweSuxqGqueudnSrfPYRSJtXC4q5lWghwPcYPdWmKX6Ipkr42Q5-B7s6qeYw8yeGpuiuuYKPyKHXsGviAdX03dxAGd0vwuIvLH2cbTH0dZw3RVRKE-71r-oIXlBzuB00RSA4WFfQv6WNnGUEkCDZJdoq74N8jOgL2cXEL8LkCsL0loxz7yjh6B0"/>
+</div>
+</div>
+<!-- Filter Chips -->
+<div class="flex items-center gap-sm overflow-x-auto hide-scrollbar pb-xs">
+<span class="bg-primary text-on-primary px-lg py-xs rounded-full font-label-md whitespace-nowrap cursor-pointer">Tất cả</span>
+<span class="bg-surface-container-high text-on-surface-variant px-lg py-xs rounded-full font-label-md whitespace-nowrap hover:bg-outline-variant cursor-pointer transition-colors border border-outline-variant">Gần đây</span>
+<span class="bg-surface-container-high text-on-surface-variant px-lg py-xs rounded-full font-label-md whitespace-nowrap hover:bg-outline-variant cursor-pointer transition-colors border border-outline-variant">Đánh giá cao</span>
+<span class="bg-surface-container-high text-on-surface-variant px-lg py-xs rounded-full font-label-md whitespace-nowrap hover:bg-outline-variant cursor-pointer transition-colors border border-outline-variant">Mở cửa</span>
+<span class="bg-surface-container-high text-on-surface-variant px-lg py-xs rounded-full font-label-md whitespace-nowrap hover:bg-outline-variant cursor-pointer transition-colors border border-outline-variant">Phù hợp học tập</span>
+<span class="bg-surface-container-high text-on-surface-variant px-lg py-xs rounded-full font-label-md whitespace-nowrap hover:bg-outline-variant cursor-pointer transition-colors border border-outline-variant">Sân thượng</span>
+</div>
+</div>
+</header>
+<section class="px-margin-desktop py-xl max-w-6xl mx-auto">
+<!-- Tabs -->
+<div class="flex items-center gap-xl border-b border-outline-variant mb-xl">
+<button class="font-headline-md text-headline-md text-primary border-b-4 border-primary pb-md active:opacity-80 transition-all">Địa điểm</button>
+<button class="font-headline-md text-headline-md text-on-surface-variant hover:text-primary pb-md transition-all">Bài viết</button>
+<button class="font-headline-md text-headline-md text-on-surface-variant hover:text-primary pb-md transition-all">Hashtag</button>
+</div>
+<!-- Place Cards Grid (3-4 columns pattern) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-xl">
+<!-- Card 1 -->
+<div class="group flex flex-col bg-surface-container-lowest rounded-[24px] overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2">
+<div class="relative aspect-[4/5] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A cozy, atmospheric vintage cafe interior in Saigon with warm amber lighting reflecting off dark wooden furniture and antique decor. The scene is captured in a high-energy urban explorer style, featuring vibrant saturated tones and deep contrasts. Large windows allow soft daylight to mix with the indoor glow, creating a welcoming and nostalgic community-driven vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwhPfmQKn2AJuAdWiiGkgnmUd2rXA9vGc5aWM3XNzfsFsNXlIPyTDpoUmjSb-c83SGPnqxbJyj0_creJaAuc9uGbAnbPwpzggYqrczjeKR2-WmNgBw09XUpaLX6GOG5QuLnAymRxqOAt0eLCt_3xw7e9oupRYWAZogMq50SqWVnClnRjxdICxMZ_Dk0vUWhMeE7jXjIXyOU4EeVkfzPvLtzGoLOvwhWy7BQYf-07UV6BUT--j8tjYCPqrnIHxI69_DlDVsXrsFOoo"/>
+<div class="absolute top-md left-md bg-primary-container text-on-primary font-label-sm px-md py-xs rounded-full">Trending</div>
+<button class="absolute top-md right-md w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white/40 transition-colors">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</button>
+<div class="absolute bottom-md left-md">
+<span class="bg-tertiary text-on-tertiary px-md py-xs rounded-full font-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="location_on">location_on</span>
+                                Quận 1, TP.HCM
+                            </span>
+</div>
+</div>
+<div class="p-lg space-y-sm">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-headline-md text-on-surface line-clamp-1">Ký Ức Vintage Coffee</h3>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined fill text-[20px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md">4.8</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Không gian yên tĩnh phù hợp để làm việc và đọc sách giữa lòng thành phố nhộn nhịp.</p>
+<div class="flex flex-wrap gap-xs pt-sm">
+<span class="border border-secondary text-secondary font-label-sm px-sm py-1 rounded-lg">Cà phê muối</span>
+<span class="border border-secondary text-secondary font-label-sm px-sm py-1 rounded-lg">Yên tĩnh</span>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group flex flex-col bg-surface-container-lowest rounded-[24px] overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2">
+<div class="relative aspect-[4/5] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="An industrial-chic cafe with high ceilings, exposed brick walls, and vibrant neon signs in teal and orange. The space is filled with stylish young people socializing and working on laptops, embodying a kinetic, community-driven social-mapping hybrid vibe. The lighting is moody with dramatic highlights, creating a modern corporate aesthetic with a high-contrast edge suitable for a Gen-Z audience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAlOjFnCjFzqjnYVOJHkC8z6D2NmEzpH8_y3tIlJt_xx095sva2IqWckG4Nao9ijB4a7XjTiUp8KEO2yXHVLFl9XiabSLFAb2dfRGbuvl1wLTT5HSKjatV-2J9BhAsO7zbDqwRrbDJCRYY3dYQc8DLfot2HoKZS_uK5WZUIFAa794pydWOVW6eQPT7ZztfbBa__IcmZcyZeR0avyV2P-2r4HlRqJ115uIWvDijXNqpePsp2R1i7rF58FaX1BRp5-vuwlI8_vRIMhg"/>
+<div class="absolute bottom-md left-md">
+<span class="bg-tertiary text-on-tertiary px-md py-xs rounded-full font-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="location_on">location_on</span>
+                                Quận 3, TP.HCM
+                            </span>
+</div>
+</div>
+<div class="p-lg space-y-sm">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-headline-md text-on-surface line-clamp-1">The Industrial Lab</h3>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined fill text-[20px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md">4.9</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Kiến trúc công nghiệp hiện đại với những góc sống ảo cực chất cho giới trẻ.</p>
+<div class="flex flex-wrap gap-xs pt-sm">
+<span class="border border-secondary text-secondary font-label-sm px-sm py-1 rounded-lg">Cold Brew</span>
+<span class="border border-secondary text-secondary font-label-sm px-sm py-1 rounded-lg">Industrial</span>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group flex flex-col bg-surface-container-lowest rounded-[24px] overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2">
+<div class="relative aspect-[4/5] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A lush hidden garden cafe sanctuary tucked away in an urban alleyway, featuring cascading green plants and rustic stone textures. The scene is bathed in dappled golden sunlight filtering through leaves, creating a serene yet exuberant atmosphere. The visual style is modern corporate with a vibrant explorer twist, using Location Teal accents and organic shapes to highlight the natural environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdA32lCqUZs-AycldI5-QRMpvTcH1NgUwdp5SKxdJuMKW3KSH29Gi2odjPUc0oTj9x2CfqATkpx2cXHmo559bTIba3mvK-kNVC6HzjuiMawAayNg1cCTUDm400kv101IVIi1dpRtw92URpdbD6-MZfxZWhjKcsNBuGKOL7pDjN4kO88nzfAqZw-bkaIxuNIrEiwMUO5reiEN00LfVSLiCjDLlzV6FzpB7M8YuWybYpO83tVHa_4eVPv_E_daOHqoQd8NiGg-qhi9g"/>
+<div class="absolute bottom-md left-md">
+<span class="bg-tertiary text-on-tertiary px-md py-xs rounded-full font-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="location_on">location_on</span>
+                                Bình Thạnh, TP.HCM
+                            </span>
+</div>
+</div>
+<div class="p-lg space-y-sm">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-headline-md text-on-surface line-clamp-1">Secret Garden Coffee</h3>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined fill text-[20px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md">4.7</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Ốc đảo xanh mát giữa lòng thành phố, không gian mở thoáng đãng gần gũi thiên nhiên.</p>
+<div class="flex flex-wrap gap-xs pt-sm">
+<span class="border border-secondary text-secondary font-label-sm px-sm py-1 rounded-lg">Sống ảo</span>
+<span class="border border-secondary text-secondary font-label-sm px-sm py-1 rounded-lg">Sân vườn</span>
+</div>
+</div>
+</div>
+<!-- Card 4 (Asymmetric pattern helper) -->
+<div class="group flex flex-col bg-surface-container-lowest rounded-[24px] overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2">
+<div class="relative aspect-[4/5] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A minimalist aesthetic rooftop bar in Saigon at sunset, overlooking a glowing city skyline with trails of light from traffic. The design features clean lines, white seating, and vibrant orange neon accents that pop against the deep blue twilight sky. The mood is sophisticated and fast-paced, using high-contrast touch targets and a clear visual hierarchy to guide the viewer toward the social heart of the city." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCajE4VRbLO3KuIl1xmvqUavpOyrvSFfdmTDi1nINJN7MbumgJFwLk3ybqTbgLyhCSEnoWtRANU9VaVWUJ-OGQHGnGxbKB3c15i-82n9DtVLHFG_iqM7MDejnY2WTb1Y-NWKYsBF56C2Gw2kRU1-XgGyFiEgkTTSHMCpe9IEJdzBb7VE-UGdiRc62BtprI5-9Fvy_PEVNL23CFdnhZlXliLpoVJeDMaBYZi8GW5HsPnd7dHO1EVEyrdCrx7DmQQ2BTO8taT1J_h4X8"/>
+<div class="absolute bottom-md left-md">
+<span class="bg-tertiary text-on-tertiary px-md py-xs rounded-full font-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="location_on">location_on</span>
+                                Quận 2, TP.HCM
+                            </span>
+</div>
+</div>
+<div class="p-lg space-y-sm">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-headline-md text-on-surface line-clamp-1">Sky View Lounge</h3>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined fill text-[20px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md">4.5</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Ngắm toàn cảnh thành phố về đêm cực đẹp với menu đồ uống đa dạng và nhạc chill.</p>
+<div class="flex flex-wrap gap-xs pt-sm">
+<span class="border border-secondary text-secondary font-label-sm px-sm py-1 rounded-lg">Rooftop</span>
+<span class="border border-secondary text-secondary font-label-sm px-sm py-1 rounded-lg">View đẹp</span>
+</div>
+</div>
+</div>
+<!-- Bento Box for Related Searches/Promo -->
+<div class="lg:col-span-2 bg-gradient-to-br from-secondary to-primary p-xl rounded-[32px] flex flex-col justify-between text-white relative overflow-hidden">
+<div class="relative z-10">
+<h2 class="font-display-lg text-display-lg font-black mb-md">Mở rộng tìm kiếm?</h2>
+<p class="font-body-lg text-body-lg opacity-90 max-w-md">Khám phá bản đồ nhiệt để tìm những địa điểm đang 'hot' nhất trong khu vực của bạn ngay lúc này.</p>
+</div>
+<div class="mt-xl flex items-center gap-lg relative z-10">
+<button class="bg-white text-primary px-xl py-md rounded-full font-bold hover:scale-105 transition-transform">Xem bản đồ ngay</button>
+<div class="flex -space-x-4">
+<img alt="User 1" class="w-10 h-10 rounded-full border-2 border-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBo4H4OW9QZkWoAAK2DFQm03TpxageOX5dOycCcuffuOy_Bjy-OUGB8VTBScfrGMQIGf-O9fAM3D4HZ36Nt-PKyOPrdeMYh8QtCYwkMXInT3EvTB5-JRBOgUJle2DJoBsnF8fnWjPN7Exx6_4_P3veB-HHg2QqlF-KhvuAD6X6f57sE7SnraMqlTfEA1y4d4B8krh-9oYeXPP1ae15pe8OEC6Y00kmtwa-hWq5amcBRCAGPaqmdED1-5FrCBY7H5tyM3yfnc-HL7Pg"/>
+<img alt="User 2" class="w-10 h-10 rounded-full border-2 border-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlw4DVfSsw7e6NoOTjb3hLRnfAduldaIOja3aGMSHtmwQXjbf6frhdMDfLSdePt3woMU46755KvlV54udNkeiLeEw16eXDosQ5gEvXyLdlWIOoefiW5iZKVWK2vpH_R43sNm_lZjYr2IF3jpRo3-SIjYNf9AHKq7r-okkZJWGO-KGsHjSn88a7p-P1O7dkhRPXw58SVL9NSnlhYMcZ6N6SSyoO96efA6EjQl7OvlZR7WT2Tme3EOt8Y4mc1aMsnLMawyNtYSUWBkg"/>
+<img alt="User 3" class="w-10 h-10 rounded-full border-2 border-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCr5oh_FYpOf609e0TUq9SorjJlTEoHc9SdEyXsyzNgsocr4CHhK6XZd7apqJNPY-6d5Gh6X340prTdB_5oNXHNKKcCixqjdPil8ms8QyoG38bU5nr9_Z6NPnlTQ_kefGKshalIt4_AlddeBCwEFnaD2k704alhY5DAsBkzk92TvaroZCTbPARY8bmZz5uBZdtOJxRj6k860wv3Jl2rk4xBGuXeYTMVsSzCrhwml5heaWjGsN1I4g7NzYHZ2DtaDUSm8rSJuREKguM"/>
+<div class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center font-label-sm text-[10px]">+12k</div>
+</div>
+</div>
+<!-- Abstract Shape Background -->
+<div class="absolute -right-20 -bottom-20 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
+<div class="absolute top-0 right-0 p-lg">
+<span class="material-symbols-outlined text-[120px] opacity-10" data-icon="explore">explore</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<script>
+        // Micro-interaction: Active state logic for tabs
+        const tabs = document.querySelectorAll('button.font-headline-md');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => {
+                    t.classList.remove('text-primary', 'border-b-4', 'border-primary');
+                    t.classList.add('text-on-surface-variant');
+                });
+                tab.classList.add('text-primary', 'border-b-4', 'border-primary');
+                tab.classList.remove('text-on-surface-variant');
+            });
+        });
+
+        // Search focus effects
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('scale-[1.01]');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('scale-[1.01]');
+        });
+    </script>
+</body></html>

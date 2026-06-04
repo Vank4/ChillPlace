@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>404 - ChillPlace</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#d8dadc",
+                    "surface-container-high": "#e6e8ea",
+                    "on-error-container": "#93000a",
+                    "surface-container-highest": "#e0e3e5",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#00201c",
+                    "on-tertiary-container": "#003832",
+                    "inverse-surface": "#2d3133",
+                    "inverse-on-surface": "#eff1f3",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed-dim": "#4fdbc8",
+                    "primary-fixed": "#ffdbd0",
+                    "primary": "#ab3500",
+                    "on-error": "#ffffff",
+                    "outline-variant": "#e1bfb5",
+                    "on-surface": "#191c1e",
+                    "on-primary-fixed": "#390c00",
+                    "primary-container": "#ff6b35",
+                    "error": "#ba1a1a",
+                    "on-surface-variant": "#594139",
+                    "background": "#f7f9fb",
+                    "on-secondary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed": "#d1e4ff",
+                    "secondary": "#35618d",
+                    "surface-tint": "#ab3500",
+                    "on-secondary-fixed-variant": "#184974",
+                    "surface-container": "#eceef0",
+                    "surface-bright": "#f7f9fb",
+                    "primary-fixed-dim": "#ffb59d",
+                    "tertiary-fixed": "#71f8e4",
+                    "tertiary": "#006b5f",
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#f7f9fb",
+                    "secondary-container": "#a2cdff",
+                    "surface-container-low": "#f2f4f6",
+                    "on-secondary-container": "#2a5782",
+                    "on-background": "#191c1e",
+                    "on-secondary-fixed": "#001d35",
+                    "on-primary-container": "#5f1900",
+                    "inverse-primary": "#ffb59d",
+                    "outline": "#8d7168",
+                    "tertiary-container": "#00ac9b",
+                    "on-tertiary-fixed-variant": "#005048",
+                    "on-primary-fixed-variant": "#832600",
+                    "surface-variant": "#e0e3e5",
+                    "secondary-fixed-dim": "#a0cafc"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "md": "16px",
+                    "margin-desktop": "32px",
+                    "xxl": "48px",
+                    "gutter": "16px",
+                    "margin-mobile": "16px",
+                    "lg": "24px",
+                    "xs": "4px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .vibe-gradient {
+            background: radial-gradient(circle at 20% 20%, rgba(255, 107, 53, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(31, 78, 121, 0.05) 0%, transparent 50%);
+        }
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md shadow-sm flex items-center justify-between px-md h-16">
+<button class="text-primary active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-display-lg text-headline-lg-mobile tracking-tighter text-primary">ChillPlace</h1>
+<button class="text-primary active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col items-center justify-center px-md pt-24 pb-32 vibe-gradient overflow-hidden">
+<!-- Illustration Container -->
+<div class="relative w-full max-w-sm mb-lg">
+<!-- Background "Splash" effect -->
+<div class="absolute inset-0 bg-primary-container/10 blur-3xl rounded-full scale-110"></div>
+<div class="relative float-animation flex justify-center">
+<img alt="404 Error" class="w-64 h-64 object-cover rounded-3xl shadow-[0px_8px_24px_rgba(255,107,53,0.15)]" data-alt="A stylized 3D illustration of a vibrant, youthful urban explorer holding a holographic digital map that shows a large red question mark. The character is standing on a colorful neon-lit city sidewalk with closed cafe shutters in the background. The lighting is high-energy with warm orange glow and cool blue shadows, matching a modern social media aesthetic. The scene is playful, dynamic, and community-driven with a clean corporate edge." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoxEj9e9ND2TN-GmjbEvYT5poSnHWsevPlm7LpL8xF-zWvZibDXQAwEfh5F3x0tmV5PG_SN8hnif4zuOF29s0t382pe0RSUIcbbjdKCQpDtnE8AOkYmyPCtS0jk1SaAAHk0XnBnnRA9VgSlEyYhBD2YJsLgzQkaGfzTLDVdOxryk2hl5txtVSX3GYIuaI2MNQ085RfJkLQKA0XFSQDn9WPxPvWhNWC9hgI1NLMflRJ1kqpmd7J74QkXZbIee7r6PJMHaUmCg7Mq2I"/>
+<!-- Floating Elements -->
+<div class="absolute -top-4 -right-4 bg-primary text-on-primary p-3 rounded-xl shadow-lg rotate-12">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">location_off</span>
+</div>
+<div class="absolute -bottom-2 -left-6 bg-secondary text-on-secondary p-2 rounded-lg shadow-lg -rotate-12">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">sentiment_dissatisfied</span>
+</div>
+</div>
+</div>
+<!-- Text Content -->
+<div class="text-center space-y-md max-w-xs">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Ối! Bạn bị lạc rồi sao?</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Trang bạn đang tìm kiếm không tồn tại hoặc đã được di chuyển đi nơi khác.</p>
+</div>
+<!-- Action Buttons -->
+<div class="mt-xl w-full max-w-xs flex flex-col gap-sm">
+<button class="w-full bg-primary-container text-on-primary py-md px-xl rounded-xl font-headline-md text-body-lg shadow-[0px_8px_24px_rgba(255,107,53,0.15)] active:scale-95 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">home</span>
+                Về trang chủ
+            </button>
+<button class="w-full bg-transparent border-2 border-secondary text-secondary py-md px-xl rounded-xl font-headline-md text-body-lg active:scale-95 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">flag</span>
+                Báo cáo lỗi
+            </button>
+</div>
+<!-- Subtle Vibe Tag -->
+<div class="mt-lg flex gap-2 overflow-x-auto no-scrollbar pb-2">
+<span class="bg-primary/10 text-primary font-label-md px-3 py-1 rounded-full whitespace-nowrap">#LostInVibe</span>
+<span class="bg-secondary/10 text-secondary font-label-md px-3 py-1 rounded-full whitespace-nowrap">#ChillPlace</span>
+<span class="bg-tertiary/10 text-tertiary font-label-md px-3 py-1 rounded-full whitespace-nowrap">#NewPath</span>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface dark:bg-inverse-surface rounded-t-xl shadow-[0px_-4px_20px_rgba(31,78,121,0.08)] border-t border-outline-variant/30 flex justify-around items-center w-full px-2 py-3 pb-safe">
+<!-- Feed -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm mt-1">Feed</span>
+</a>
+<!-- Map -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">map</span>
+<span class="font-label-sm text-label-sm mt-1">Map</span>
+</a>
+<!-- Create (The Primary FAB style) -->
+<div class="relative -top-6">
+<button class="bg-primary-container text-on-primary w-14 h-14 rounded-full shadow-[0px_8px_24px_rgba(255,107,53,0.15)] flex items-center justify-center active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+</button>
+</div>
+<!-- Explore -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm mt-1">Explore</span>
+</a>
+<!-- Profile (Active State example - although on 404, usually no tab is active, we stay neutral or default) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm mt-1">Profile</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction: Log report click
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if(this.innerText.includes('Báo cáo lỗi')) {
+                    console.log('Error reported to ChillPlace team');
+                    this.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Đã báo cáo';
+                    this.classList.replace('text-secondary', 'text-tertiary');
+                    this.classList.replace('border-secondary', 'border-tertiary');
+                }
+            });
+        });
+
+        // Interactive "Glitch" effect on 404 text occasionally
+        setInterval(() => {
+            const h2 = document.querySelector('h2');
+            h2.style.transform = `translateX(${Math.random() * 2 - 1}px)`;
+            setTimeout(() => h2.style.transform = 'none', 100);
+        }, 3000);
+    </script>
+</body></html>

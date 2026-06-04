@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(225, 191, 181, 0.3);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "primary": "#ab3500",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#003832",
+                        "on-secondary-container": "#2a5782",
+                        "primary-container": "#ff6b35",
+                        "on-primary-fixed-variant": "#832600",
+                        "surface-bright": "#f7f9fb",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#ffb59d",
+                        "primary-fixed": "#ffdbd0",
+                        "tertiary-fixed": "#71f8e4",
+                        "surface-dim": "#d8dadc",
+                        "inverse-on-surface": "#eff1f3",
+                        "secondary-fixed": "#d1e4ff",
+                        "tertiary-fixed-dim": "#4fdbc8",
+                        "on-secondary-fixed": "#001d35",
+                        "on-surface-variant": "#594139",
+                        "outline": "#8d7168",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#ffb59d",
+                        "outline-variant": "#e1bfb5",
+                        "on-secondary-fixed-variant": "#184974",
+                        "surface-tint": "#ab3500",
+                        "secondary-container": "#a2cdff",
+                        "on-surface": "#191c1e",
+                        "surface-variant": "#e0e3e5",
+                        "on-tertiary-fixed-variant": "#005048",
+                        "tertiary-container": "#00ac9b",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#191c1e",
+                        "on-primary-fixed": "#390c00",
+                        "surface-container-low": "#f2f4f6",
+                        "surface": "#f7f9fb",
+                        "inverse-surface": "#2d3133",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-primary-container": "#5f1900",
+                        "secondary": "#35618d",
+                        "on-tertiary-fixed": "#00201c",
+                        "surface-container": "#eceef0",
+                        "secondary-fixed-dim": "#a0cafc",
+                        "error": "#ba1a1a",
+                        "background": "#f7f9fb",
+                        "surface-container-high": "#e6e8ea",
+                        "tertiary": "#006b5f",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "32px",
+                        "gutter": "16px",
+                        "xxl": "48px",
+                        "xs": "4px",
+                        "margin-mobile": "16px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container-lowest shadow-sm flex flex-col py-xl px-md border-r border-outline-variant z-50">
+<div class="mb-xxl">
+<h1 class="font-display-lg text-headline-md font-extrabold text-primary">ChillPlace Admin</h1>
+<p class="text-label-sm text-on-surface-variant opacity-70 mt-xs">System Control</p>
+</div>
+<nav class="flex-1 space-y-sm">
+<a class="flex items-center gap-md px-md py-sm text-secondary font-medium hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md">Overview</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm bg-primary-container text-on-primary-container rounded-lg font-bold" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-md">Content</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-secondary font-medium hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md">Users</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-secondary font-medium hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">security</span>
+<span class="font-label-md">Moderation</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-secondary font-medium hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-lg border-t border-outline-variant">
+<button class="w-full mb-lg bg-primary text-on-primary py-md px-lg rounded-xl font-bold flex items-center justify-center gap-sm active:scale-[0.98] transition-transform duration-150">
+<span class="material-symbols-outlined">description</span>
+<span>Generate Report</span>
+</button>
+<div class="space-y-sm">
+<a class="flex items-center gap-md px-md py-sm text-secondary font-medium hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-md">Support</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-error font-medium hover:bg-error-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md">Sign Out</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center h-16 w-full pl-lg pr-margin-desktop bg-surface border-b border-outline-variant sticky top-0 z-40">
+<div class="flex items-center gap-md flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-xxl pr-md py-sm bg-surface-container-low border border-outline-variant rounded-full focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent font-label-md" placeholder="Tìm kiếm địa điểm..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<button class="relative p-sm text-on-surface-variant hover:bg-surface-variant rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<button class="p-sm text-on-surface-variant hover:bg-surface-variant rounded-full transition-colors">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+<div class="flex items-center gap-sm cursor-pointer hover:bg-surface-variant px-sm py-xs rounded-full transition-colors">
+<img alt="Admin Profile" class="w-8 h-8 rounded-full border-2 border-primary-container" data-alt="A professional close-up portrait of a male system administrator in a high-tech corporate office. He is smiling warmly, conveying trust and reliability. The background features soft, blurred blue light and sleek office furniture, representing a modern SaaS environment. The overall lighting is soft and bright, emphasizing a clean and professional aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJsK6yvgPQ6-E9DmTJMLh1dPdGbXPRSwuH6CmQRj9OrgWO5VjNyl1W2GopB6U9mSuk8p2cppnDL9KMHQG7JM5Con3aRfSmjyKAJVF3kqabF8rM-H0ojDspN-jafzXernhuPq73l-fUKFRAL7QBgGm3XxT8NnOE6mmg5Qof1IxIccL82J4pwuxJO_FSF0iaeQW1SnkeruQgNhOwgJQcqTtY4EAX2ecqp1po_qufagenIutOiMODOMQ1mrzZdaFUj1IcRUMBELP7WLA"/>
+<span class="font-label-md text-on-surface">Admin</span>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<div class="p-margin-desktop space-y-xl">
+<!-- Statistics Overview -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
+<div class="bg-surface-container-lowest p-lg rounded-2xl shadow-sm border border-outline-variant flex items-center gap-lg">
+<div class="w-14 h-14 rounded-xl bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-headline-md">map</span>
+</div>
+<div>
+<p class="text-label-sm text-on-surface-variant">Tổng cộng</p>
+<h3 class="text-headline-md font-bold text-on-surface">1,284</h3>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-2xl shadow-sm border border-outline-variant flex items-center gap-lg">
+<div class="w-14 h-14 rounded-xl bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined text-headline-md">pending_actions</span>
+</div>
+<div>
+<p class="text-label-sm text-on-surface-variant">Chờ duyệt</p>
+<h3 class="text-headline-md font-bold text-on-surface">42</h3>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-2xl shadow-sm border border-outline-variant flex items-center gap-lg">
+<div class="w-14 h-14 rounded-xl bg-tertiary-container flex items-center justify-center text-on-tertiary">
+<span class="material-symbols-outlined text-headline-md">verified</span>
+</div>
+<div>
+<p class="text-label-sm text-on-surface-variant">Đã duyệt</p>
+<h3 class="text-headline-md font-bold text-on-surface">1,156</h3>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-2xl shadow-sm border border-outline-variant flex items-center gap-lg">
+<div class="w-14 h-14 rounded-xl bg-error-container flex items-center justify-center text-on-error-container">
+<span class="material-symbols-outlined text-headline-md">delete_forever</span>
+</div>
+<div>
+<p class="text-label-sm text-on-surface-variant">Bị gỡ</p>
+<h3 class="text-headline-md font-bold text-on-surface">86</h3>
+</div>
+</div>
+</section>
+<!-- Table Filters -->
+<section class="bg-surface-container-lowest p-md rounded-2xl shadow-sm border border-outline-variant flex flex-wrap items-center justify-between gap-md">
+<div class="flex flex-wrap items-center gap-md">
+<div class="flex items-center gap-sm">
+<span class="text-label-md text-on-surface-variant">Trạng thái:</span>
+<select class="bg-surface-container-low border border-outline-variant rounded-lg px-md py-sm font-label-md focus:ring-primary focus:border-primary">
+<option>Tất cả</option>
+<option>Chờ duyệt</option>
+<option>Đã duyệt</option>
+<option>Từ chối</option>
+</select>
+</div>
+<div class="flex items-center gap-sm">
+<span class="text-label-md text-on-surface-variant">Khu vực:</span>
+<select class="bg-surface-container-low border border-outline-variant rounded-lg px-md py-sm font-label-md focus:ring-primary focus:border-primary">
+<option>Toàn bộ Việt Nam</option>
+<option>Hà Nội</option>
+<option>TP. Hồ Chí Minh</option>
+<option>Đà Nẵng</option>
+</select>
+</div>
+</div>
+<div class="flex gap-sm">
+<button class="px-md py-sm flex items-center gap-xs font-label-md text-secondary border border-secondary rounded-lg hover:bg-secondary-fixed transition-colors">
+<span class="material-symbols-outlined text-body-md">filter_list</span>
+<span>Lọc nâng cao</span>
+</button>
+<button class="px-md py-sm flex items-center gap-xs font-label-md text-on-primary bg-primary rounded-lg hover:shadow-lg transition-all active:scale-95">
+<span class="material-symbols-outlined text-body-md">add</span>
+<span>Thêm địa điểm</span>
+</button>
+</div>
+</section>
+<!-- DataTable Container -->
+<section class="bg-surface-container-lowest rounded-2xl shadow-sm border border-outline-variant overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="px-lg py-md font-label-md text-on-surface-variant">Địa điểm</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant">Khu vực</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant">Người đăng</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant">Ngày tạo</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant">Trạng thái</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant text-right">Thao tác</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Table Row 1 -->
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="px-lg py-md">
+<div class="flex items-center gap-md">
+<img alt="Cafe Chill" class="w-12 h-12 rounded-lg object-cover" data-alt="A high-resolution photograph of a cozy, modern cafe in Hanoi with warm, golden hour sunlight streaming through large glass windows. The interior features minimalist wooden furniture, hanging greenery, and a polished concrete floor, reflecting a trendy Gen-Z aesthetic. The lighting is soft and inviting, with orange and teal color tones that create a vibrant social atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOFeo33M2c46biBsTzjZ4oTAUwjr1MXZ5bJ4bWL187fvNHAg_8o1Tikif1zG3_sjXldU--K8bZaCnPXlU0yCphfQz5ZMjDyh-dCRdHk5fbuthG_EtBQd2s8IBGFVAWY5CJW11nCSN3c7tmAp11KEdbu8CeLXU0dQOzWJ_iHBuoKwbRMcFHjdOTLswfBKo3mOm23JpS_rxEWTOFnW_CDOCtzItDB9TTjSNvSbadY0opaMxn9pwrFc4pvFQ5wWU16V-Tp-LCEWSKApQ"/>
+<div>
+<p class="font-label-md text-on-surface">The Coffee House - Q1</p>
+<p class="text-label-sm text-on-surface-variant">Coffee &amp; Bakery</p>
+</div>
+</div>
+</td>
+<td class="px-lg py-md font-body-md text-on-surface-variant">TP. Hồ Chí Minh</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="w-6 h-6 rounded-full bg-secondary-container flex items-center justify-center text-[10px] font-bold text-on-secondary-container">AL</div>
+<span class="text-label-md">An Lê</span>
+</div>
+</td>
+<td class="px-lg py-md font-body-md text-on-surface-variant">12/10/2023</td>
+<td class="px-lg py-md">
+<span class="px-md py-xs rounded-full bg-primary-container/20 text-primary font-label-sm">Chờ duyệt</span>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center justify-end gap-sm">
+<button class="w-8 h-8 flex items-center justify-center text-tertiary hover:bg-tertiary-fixed rounded-full transition-colors" title="Phê duyệt">
+<span class="material-symbols-outlined text-body-lg">check_circle</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center text-error hover:bg-error-container rounded-full transition-colors" title="Từ chối">
+<span class="material-symbols-outlined text-body-lg">cancel</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center text-secondary hover:bg-secondary-fixed rounded-full transition-colors" title="Sửa">
+<span class="material-symbols-outlined text-body-lg">edit</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Table Row 2 -->
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="px-lg py-md">
+<div class="flex items-center gap-md">
+<img alt="Restaurant" class="w-12 h-12 rounded-lg object-cover" data-alt="A wide-angle professional photograph of a premium fine-dining restaurant with dark teal walls and orange leather seating. Elegant pendant lights hang from the ceiling, casting a warm ambient glow on the tables. The scene is sophisticated and high-energy, with a clean and sharp focus that aligns with a high-contrast corporate SaaS design style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDR1vn7Xr0ICbS8ZLkWar4l3crTXWEuC8F6NXbV2eIPYXydB8kOtt8xv80VuXgQn23CyNay3IEKdV-4JQ_InBX7JXve0ga-DtiM6NCo3CE3N5J8JaOscBZYj5GrdM2BkOGP6AZM-rTzuF301QlffJ_fxDvsSgm5JRzbbTbglg4OdI8X_N3tZ05wYnJD6p27UsfUcC0AHSiM8paAr-3YhGwlGDApBL0E-71PDiLicF0G_gEJctBYy45BL_l78pBaFfiQRu2pFYwUqh0"/>
+<div>
+<p class="font-label-md text-on-surface">Nhà hàng Ngon - Hà Nội</p>
+<p class="text-label-sm text-on-surface-variant">Ẩm thực Việt</p>
+</div>
+</div>
+</td>
+<td class="px-lg py-md font-body-md text-on-surface-variant">Hà Nội</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="w-6 h-6 rounded-full bg-tertiary-container flex items-center justify-center text-[10px] font-bold text-on-tertiary">TM</div>
+<span class="text-label-md">Minh Trần</span>
+</div>
+</td>
+<td class="px-lg py-md font-body-md text-on-surface-variant">10/10/2023</td>
+<td class="px-lg py-md">
+<span class="px-md py-xs rounded-full bg-tertiary-container/20 text-tertiary font-label-sm">Đã duyệt</span>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center justify-end gap-sm">
+<button class="w-8 h-8 flex items-center justify-center text-error hover:bg-error-container rounded-full transition-colors" title="Gỡ bỏ">
+<span class="material-symbols-outlined text-body-lg">delete</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center text-secondary hover:bg-secondary-fixed rounded-full transition-colors" title="Sửa">
+<span class="material-symbols-outlined text-body-lg">edit</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Table Row 3 -->
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="px-lg py-md">
+<div class="flex items-center gap-md">
+<img alt="Cafe Minimalist" class="w-12 h-12 rounded-lg object-cover" data-alt="A minimalist white-themed coffee shop interior featuring clean lines, light wood accents, and abundant natural light. The space is uncluttered and feels airy, embodying a modern corporate aesthetic with a high-contrast edge. The lighting is bright and even, highlighting the pristine white surfaces and simple, elegant furniture. The mood is calm and productive." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqEztu9By8LF190s5E6ozrQLdN7QOxpXvUEBPTuXWZGrnWnEo5GF5zSTqtZGhEvyQyhgBbBenVpum31NzrxEPutwJ-G_uVp6lPiy5TNpECsqCIYW3iBrWCJSmGL0pbc2xq6IK3acSJ0glkFymwYZPZc_HsQ6vjtarXXxoi03IOKKNSM9kiuwMrw3g2YOp1vZAh5kDAME9W2EDQwiEn0NqWLusJZSXLa4wv5PVRfaBpHuIDyeT2spCyGYCq6bt1ZDcDQ-IqUWvOYE0"/>
+<div>
+<p class="font-label-md text-on-surface">Mê Coffee Đà Nẵng</p>
+<p class="text-label-sm text-on-surface-variant">Coffee &amp; Work</p>
+</div>
+</div>
+</td>
+<td class="px-lg py-md font-body-md text-on-surface-variant">Đà Nẵng</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="w-6 h-6 rounded-full bg-primary-container flex items-center justify-center text-[10px] font-bold text-on-primary-container">HH</div>
+<span class="text-label-md">Hoàng Huy</span>
+</div>
+</td>
+<td class="px-lg py-md font-body-md text-on-surface-variant">05/10/2023</td>
+<td class="px-lg py-md">
+<span class="px-md py-xs rounded-full bg-error-container/20 text-error font-label-sm">Bị gỡ</span>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center justify-end gap-sm">
+<button class="w-8 h-8 flex items-center justify-center text-primary hover:bg-primary-fixed rounded-full transition-colors" title="Khôi phục">
+<span class="material-symbols-outlined text-body-lg">restore_from_trash</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center text-secondary hover:bg-secondary-fixed rounded-full transition-colors" title="Sửa">
+<span class="material-symbols-outlined text-body-lg">edit</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="p-lg bg-surface border-t border-outline-variant flex items-center justify-between">
+<p class="text-label-md text-on-surface-variant">Hiển thị 1-10 trên 1,284 địa điểm</p>
+<div class="flex items-center gap-xs">
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-surface-container transition-colors disabled:opacity-50">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary text-on-primary font-bold">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-surface-container transition-colors font-medium">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-surface-container transition-colors font-medium">3</button>
+<span class="px-sm text-on-surface-variant">...</span>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-surface-container transition-colors font-medium">128</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+</main>
+<script>
+        // Micro-interactions for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.style.transform = 'scale(0.96)';
+            });
+            button.addEventListener('mouseup', () => {
+                button.style.transform = 'scale(1)';
+            });
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = 'scale(1)';
+            });
+        });
+
+        // Search bar interaction
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('ring-2', 'ring-primary');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('ring-2', 'ring-primary');
+        });
+    </script>
+</body></html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(225, 191, 181, 0.3);
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #f7f9fb 0%, #ffdbd0 100%);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "primary": "#ab3500",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#003832",
+                        "on-secondary-container": "#2a5782",
+                        "primary-container": "#ff6b35",
+                        "on-primary-fixed-variant": "#832600",
+                        "surface-bright": "#f7f9fb",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#ffb59d",
+                        "primary-fixed": "#ffdbd0",
+                        "tertiary-fixed": "#71f8e4",
+                        "surface-dim": "#d8dadc",
+                        "inverse-on-surface": "#eff1f3",
+                        "secondary-fixed": "#d1e4ff",
+                        "tertiary-fixed-dim": "#4fdbc8",
+                        "on-secondary-fixed": "#001d35",
+                        "on-surface-variant": "#594139",
+                        "outline": "#8d7168",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#ffb59d",
+                        "outline-variant": "#e1bfb5",
+                        "on-secondary-fixed-variant": "#184974",
+                        "surface-tint": "#ab3500",
+                        "secondary-container": "#a2cdff",
+                        "on-surface": "#191c1e",
+                        "surface-variant": "#e0e3e5",
+                        "on-tertiary-fixed-variant": "#005048",
+                        "tertiary-container": "#00ac9b",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#191c1e",
+                        "on-primary-fixed": "#390c00",
+                        "surface-container-low": "#f2f4f6",
+                        "surface": "#f7f9fb",
+                        "inverse-surface": "#2d3133",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-primary-container": "#5f1900",
+                        "secondary": "#35618d",
+                        "on-tertiary-fixed": "#00201c",
+                        "surface-container": "#eceef0",
+                        "secondary-fixed-dim": "#a0cafc",
+                        "error": "#ba1a1a",
+                        "background": "#f7f9fb",
+                        "surface-container-high": "#e6e8ea",
+                        "tertiary": "#006b5f",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "32px",
+                        "gutter": "16px",
+                        "xxl": "48px",
+                        "xs": "4px",
+                        "margin-mobile": "16px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background">
+<!-- Top Navigation Anchor -->
+<header class="flex justify-between items-center h-16 px-margin-desktop ml-64 bg-surface dark:bg-background border-b border-outline-variant dark:border-outline sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">ChillPlace Business</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center gap-6 text-on-surface-variant font-label-md">
+<a class="hover:text-primary transition-colors" href="#">Tài liệu</a>
+<a class="hover:text-primary transition-colors" href="#">Hỗ trợ</a>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</header>
+<!-- Side Navigation Anchor -->
+<aside class="h-screen w-64 fixed left-0 top-0 flex flex-col p-4 border-r border-outline-variant dark:border-outline bg-surface-container-low dark:bg-inverse-surface shadow-sm z-50">
+<div class="mb-8 px-4">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">ChillPlace</div>
+<div class="font-body-md text-body-md text-on-surface-variant">Venue Management</div>
+</div>
+<nav class="flex-grow flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high transition-colors font-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span> Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high transition-colors font-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span> Place Profile
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary-container text-on-primary-container font-bold font-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="campaign">campaign</span> Promotions
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high transition-colors font-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="reviews">reviews</span> Reviews
+            </a>
+</nav>
+<div class="mt-auto flex flex-col gap-2 pt-4 border-t border-outline-variant">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high font-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span> Settings
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high font-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span> Support
+            </a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 min-h-screen">
+<div class="max-w-[1440px] mx-auto p-margin-desktop">
+<!-- Hero & Grid Section -->
+<div class="grid grid-cols-12 gap-lg mb-xxl">
+<!-- Left Content: Introduction -->
+<div class="col-span-7 space-y-xl">
+<section>
+<span class="inline-block px-4 py-1 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm mb-4">DÀNH CHO ĐỐI TÁC</span>
+<h1 class="font-display-lg text-display-lg text-on-surface mb-6">Nâng Tầm Doanh Nghiệp Của Bạn Với <span class="text-primary">ChillPlace Pro</span></h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                            Trở thành đối tác chính thức để tiếp cận hàng triệu khách hàng trẻ, tối ưu hóa quy trình quản lý và bùng nổ doanh số với bộ công cụ chuyên nghiệp.
+                        </p>
+</section>
+<!-- Bento Grid Benefits -->
+<div class="grid grid-cols-2 gap-md">
+<div class="p-lg rounded-xl bg-surface-container-lowest shadow-sm border border-outline-variant hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-primary text-4xl mb-4" data-icon="monitoring">monitoring</span>
+<h3 class="font-headline-md text-headline-md mb-2">Quản lý chuyên nghiệp</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Theo dõi số liệu thực tế, hành vi khách hàng và hiệu suất kinh doanh qua dashboard thông minh.</p>
+</div>
+<div class="p-lg rounded-xl bg-surface-container-lowest shadow-sm border border-outline-variant hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-tertiary text-4xl mb-4" data-icon="rocket_launch">rocket_launch</span>
+<h3 class="font-headline-md text-headline-md mb-2">Quảng cáo ưu tiên</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Địa điểm của bạn luôn xuất hiện ở vị trí hàng đầu khi khách hàng tìm kiếm các "vibe" tương ứng.</p>
+</div>
+<div class="p-lg rounded-xl bg-surface-container-lowest shadow-sm border border-outline-variant hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-secondary text-4xl mb-4" data-icon="local_activity">local_activity</span>
+<h3 class="font-headline-md text-headline-md mb-2">Sự kiện &amp; Voucher</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Tự tạo chiến dịch khuyến mãi, phát hành voucher điện tử và quản lý sự kiện dễ dàng.</p>
+</div>
+<div class="p-lg rounded-xl bg-surface-container-lowest shadow-sm border border-outline-variant hover:shadow-md transition-shadow overflow-hidden relative min-h-[200px]">
+<img class="absolute inset-0 w-full h-full object-cover opacity-20" data-alt="A modern, high-tech corporate office space with large windows and ergonomic furniture. The atmosphere is vibrant and collaborative, filled with natural light that reflects a professional yet high-energy business environment. The color scheme is a mix of bright whites and warm wooden accents, perfectly aligning with a sophisticated modern corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBANHq4N_bwRb_y18d-hTesVV0zRjKFUrYjpp0ZShBwZ2CDSGBhr3SX9t1EZw9CYFXvUq8RNC1ipDsZrjAeCg_Cgqe_c1RFkZB9NapfxDrJbQc2YgOnku70IgEKA6GtXKChr5sg8vL5TZNuItJ6xrUHhpYzZozPcVU2B_2iIgH4Udf8RLhuYizbxU5h0B4KXLOTSdyJzzH2HLF3HxZD3W2pAOAwrawhMF-CHxV2kbd7VuEm67NxIcO9hQqGu7bU1LGBPkIzat4sj5c"/>
+<div class="relative z-10">
+<span class="material-symbols-outlined text-primary-container text-4xl mb-4" data-icon="verified_user">verified_user</span>
+<h3 class="font-headline-md text-headline-md mb-2">Xác thực uy tín</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Nhận tích xanh chính chủ, tăng 85% tỉ lệ tin tưởng từ cộng đồng ChillPlace.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Content: Registration Form -->
+<div class="col-span-5">
+<div class="glass-card p-xl rounded-[24px] shadow-lg sticky top-lg">
+<div class="mb-lg">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Đăng ký Business</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Điền thông tin để bắt đầu hành trình cùng chúng tôi</p>
+</div>
+<form class="space-y-md">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">Tên doanh nghiệp</label>
+<input class="w-full px-4 py-3 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all font-body-md bg-white" placeholder="VD: Chill Coffee &amp; Lounge" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">Lĩnh vực</label>
+<select class="w-full px-4 py-3 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all font-body-md bg-white">
+<option>Cà phê</option>
+<option>Nhà hàng</option>
+<option>Bar/Lounge</option>
+<option>Giải trí</option>
+</select>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">Mã số thuế</label>
+<input class="w-full px-4 py-3 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all font-body-md bg-white" placeholder="Số MST 10 chữ số" type="text"/>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">Địa chỉ kinh doanh</label>
+<input class="w-full px-4 py-3 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all font-body-md bg-white" placeholder="Số nhà, tên đường, quận/huyện..." type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">Tài liệu xác thực (GPKD)</label>
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-lg text-center hover:border-primary transition-colors cursor-pointer bg-white/50">
+<span class="material-symbols-outlined text-primary text-3xl mb-2" data-icon="upload_file">upload_file</span>
+<p class="font-label-md text-label-md text-on-surface-variant">Kéo thả hoặc nhấn để tải lên</p>
+<p class="text-[10px] text-outline uppercase tracking-wider mt-1">PDF, JPG, PNG (Max 5MB)</p>
+</div>
+</div>
+<div class="flex items-start gap-3 py-2">
+<input class="mt-1 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Tôi đồng ý với <a class="text-primary underline" href="#">Điều khoản dịch vụ</a> và <a class="text-primary underline" href="#">Chính sách bảo mật</a> của ChillPlace.</p>
+</div>
+<button class="w-full py-4 bg-primary text-on-primary font-bold rounded-xl hover:scale-[1.02] active:scale-95 transition-all shadow-md" type="submit">
+                                Gửi yêu cầu nâng cấp
+                            </button>
+</form>
+</div>
+</div>
+</div>
+<!-- Trust Section -->
+<section class="bg-secondary-container rounded-[32px] p-xl flex items-center justify-between overflow-hidden relative">
+<div class="relative z-10 max-w-lg">
+<h2 class="font-headline-lg text-headline-lg text-on-secondary-container mb-4">Hơn 2,000+ doanh nghiệp đã tin tưởng</h2>
+<p class="font-body-md text-body-md text-on-secondary-container/80 mb-6">Gia nhập cộng đồng kinh doanh sôi động nhất hiện nay và đón đầu xu hướng tiêu dùng của thế hệ mới.</p>
+<div class="flex -space-x-3">
+<img class="w-10 h-10 rounded-full border-2 border-secondary-container object-cover" data-alt="Close-up portrait of a young professional man with a confident smile, set against a blurred city background. The lighting is warm and natural, suggesting a successful entrepreneur. The overall tone is professional yet approachable, fitting into a clean, modern UI design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5nNL60Lo0fJyL4LLt8uK-SohFSVnMddkx3uNBbSkzd2UkOqu9iyPHDlsAZki4LMjZzemeMa6uoQD68Vb2Cg0gNvrUuXV4aMNV8ZZAYbN8RNrtLMEYXYrwiY9aGNJFGgneS7sU-RJB1vAwuaapz3EzIHG7oRHjUPM-b8OZVsGpTqhCBbrJ0qkowRGPVGrWl4XzScEJmTSe3bE64tos-wIe2dee508f6Vqab8Cs6Edd3to7ljojKaMiz9RH41WtfiNrSvZv6dH4wNY"/>
+<img class="w-10 h-10 rounded-full border-2 border-secondary-container object-cover" data-alt="Close-up portrait of a smiling young professional woman with a clean, minimalist aesthetic. The lighting is high-key and soft, creating a bright and energetic mood. The image communicates trustworthiness and community leadership within a professional corporate framework." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHC8_BE0m554ZubL0mk1KYqJDg-UnCbt3UPKytSgkaslVLbVUJxXFlqI70QSpc3EQ9oYw6tRlfzNrB6l7hvralAlIURFi31Hio9le4mmbpqOOBslhfQ5pLup8SNZqvT_jknrnzakb0w-xDSQIGAgmMZyLiQ1Lcf4r8v7H4TLKq4P15yB35C1zmGofwhBc9n2H69e4ubiGuD7wonfA5OBPE_ibzIvyeVKgGNyJ7KuqdK3u1AtgYefENqtPmEhvggXUYAdqDwzkzYbA"/>
+<img class="w-10 h-10 rounded-full border-2 border-secondary-container object-cover" data-alt="Close-up portrait of a mature professional male with a kind, successful expression. Soft studio lighting highlights clear features against a neutral background. The visual style is refined and trustworthy, ideal for a business-oriented platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8hqsMhXpVyxAfXm1i5V_VCA35mTnsxjGTNmY5ALpo8YLinFZO3yO2YHqCe5yllYRZoBbiRlXXe83X3dArBeQe_JWrXXQJcASBO_XzQfheggTtzY77MYmxor3gyCSB6EqlooTlBn5qTkMgU1EFPV7lQ7EJRIDUBQ6ugdV3yvo56HHJ7EtPeg0uPOjvBC3DlaVMhSk__vuh2gWLeNLC1o0scITMfckF4u-Q_ieNWV8Uag6NFfMczsUCuwDJodoX6_O9rAig6JnwHEA"/>
+<div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-sm border-2 border-secondary-container">+1k</div>
+</div>
+</div>
+<div class="hidden lg:block w-1/3 aspect-video rounded-2xl overflow-hidden shadow-2xl rotate-3">
+<img class="w-full h-full object-cover" data-alt="A clean, professional business dashboard displayed on a high-resolution tablet screen. The interface shows vibrant data visualizations, colorful charts, and analytical graphs using a palette of primary orange and trust blue. The background is a sleek, modern workstation with minimalist decor, conveying a sense of efficiency and advanced technology." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD42cRadp5bWH7u7qUBYwUufS8PtlapnsG2kcIo6DGwmn_a3o-lyq9jGC-8jHU57ohL9i41kjYZw0tifDVqjvNC1EBx2wE0Jcasv-TyXuwdMW8kTL7jsdY7fyml542FmLXpr1zzIQ7x_VlEQWjSgbhmhIqwYK75q413rbvNXUqZ_qRl8I1ZQckJl4h1R2GmEt-N6mXwYuHVQi0usHZvlPkO4Am-MnQlouIPs6cb9eM0pYoDcKMofEh49VAbs753lB0uKb9OWkwibA4"/>
+</div>
+</section>
+</div>
+</main>
+<!-- Floating Atmosphere -->
+<div class="fixed bottom-8 right-8 z-50">
+<button class="bg-primary-container text-on-primary-container p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="support_agent">support_agent</span>
+</button>
+</div>
+<script>
+        // Micro-interactions for form focus
+        document.querySelectorAll('input, select').forEach(element => {
+            element.addEventListener('focus', () => {
+                element.parentElement.querySelector('label').classList.add('text-primary');
+            });
+            element.addEventListener('blur', () => {
+                element.parentElement.querySelector('label').classList.remove('text-primary');
+            });
+        });
+
+        // Simple file upload preview logic
+        const dropzone = document.querySelector('.border-dashed');
+        if(dropzone) {
+            dropzone.addEventListener('click', () => {
+                const input = document.createElement('input');
+                input.type = 'file';
+                input.onchange = e => {
+                    const file = e.target.files[0];
+                    if(file) {
+                        dropzone.innerHTML = `<span class="material-symbols-outlined text-tertiary text-3xl mb-2" data-icon="check_circle">check_circle</span>
+                                            <p class="font-label-md text-on-surface">Đã nhận: ${file.name}</p>`;
+                    }
+                };
+                input.click();
+            });
+        }
+    </script>
+</body></html>

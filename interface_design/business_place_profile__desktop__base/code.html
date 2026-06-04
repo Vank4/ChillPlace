@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#ffffff",
+                        "background": "#f7f9fb",
+                        "tertiary-container": "#00ac9b",
+                        "on-tertiary-container": "#003832",
+                        "on-primary-container": "#5f1900",
+                        "secondary-fixed-dim": "#a0cafc",
+                        "tertiary-fixed-dim": "#4fdbc8",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#d8dadc",
+                        "surface-container-high": "#e6e8ea",
+                        "surface": "#f7f9fb",
+                        "primary-fixed-dim": "#ffb59d",
+                        "outline": "#8d7168",
+                        "primary-fixed": "#ffdbd0",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#390c00",
+                        "surface-bright": "#f7f9fb",
+                        "inverse-surface": "#2d3133",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#71f8e4",
+                        "on-tertiary-fixed-variant": "#005048",
+                        "secondary-fixed": "#d1e4ff",
+                        "on-surface-variant": "#594139",
+                        "on-secondary-fixed": "#001d35",
+                        "primary": "#ab3500",
+                        "on-secondary-fixed-variant": "#184974",
+                        "surface-variant": "#e0e3e5",
+                        "secondary-container": "#a2cdff",
+                        "secondary": "#35618d",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#e0e3e5",
+                        "surface-container-low": "#f2f4f6",
+                        "primary-container": "#ff6b35",
+                        "surface-tint": "#ab3500",
+                        "on-background": "#191c1e",
+                        "on-secondary-container": "#2a5782",
+                        "outline-variant": "#e1bfb5",
+                        "on-tertiary-fixed": "#00201c",
+                        "on-surface": "#191c1e",
+                        "inverse-primary": "#ffb59d",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-container": "#eceef0",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#006b5f",
+                        "on-primary-fixed-variant": "#832600",
+                        "on-primary": "#ffffff",
+                        "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "margin-mobile": "16px",
+                        "xxl": "48px",
+                        "sm": "8px",
+                        "margin-desktop": "32px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface">
+<!-- SideNavBar Anchor -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container-low shadow-sm border-r border-outline-variant flex flex-col p-4 z-50">
+<div class="mb-8 px-2">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">ChillPlace Business</h1>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-70">Venue Management</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary-container text-on-primary-container font-bold font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+                Place Profile
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="campaign">campaign</span>
+                Promotions
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="reviews">reviews</span>
+                Reviews
+            </a>
+</nav>
+<div class="mt-auto space-y-1 border-t border-outline-variant pt-4">
+<button class="w-full mb-4 py-3 px-4 bg-primary text-on-primary rounded-xl font-bold font-label-md text-label-md flex items-center justify-center gap-2 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                Create Promotion
+            </button>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                Settings
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+                Support
+            </a>
+</div>
+</aside>
+<!-- Main Content Shell -->
+<main class="ml-64 min-h-screen">
+<!-- TopAppBar Anchor -->
+<header class="sticky top-0 z-40 bg-surface border-b border-outline-variant h-16 flex justify-between items-center px-margin-desktop">
+<div class="flex items-center gap-4">
+<h2 class="font-headline-md text-headline-md text-primary">Thông tin địa điểm</h2>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="bg-surface-container rounded-full py-2 pl-10 pr-4 border-none focus:ring-2 focus:ring-primary w-64 text-label-md font-label-md" placeholder="Tìm kiếm nội dung..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant" data-icon="account_circle">account_circle</button>
+</div>
+</div>
+</header>
+<!-- Profile Content Canvas -->
+<div class="p-margin-desktop space-y-lg">
+<!-- Hero Map Section (Bento Grid) -->
+<div class="grid grid-cols-12 gap-gutter">
+<div class="col-span-8 bg-surface-container-lowest rounded-3xl overflow-hidden shadow-sm border border-outline-variant relative group h-[400px]">
+<div class="absolute inset-0 z-0 bg-surface-variant" data-location="Ho Chi Minh City" style="">
+<img class="w-full h-full object-cover grayscale-[20%] opacity-80" data-alt="A clean, top-down minimalist vector-style map of a bustling city center in Ho Chi Minh City, featuring bright orange location pins and teal green parks. The lighting is bright and airy, consistent with a modern light-mode user interface. The aesthetic is high-contrast and professional, with clear street layouts and subtle typography for landmark names." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKZPnUN3vTpCrhrQ2-dmlaXSJiQQMLmRNtsmS_HWp0m21aQqPN2qLH1963QEcbt6HaDRuCB4s-f8k26gOxFCdVjr7Xw261zL-SFoDAw6TxcZ0H0KEV4q0B7Srd83kLkmS36HqxUF_W2wvruL-ab73z-ppipFtjyhJoC4cohc9hbBAoKwa26twT7IqWQjmQDjWYzjuV6eRri2zWiM1A9kkG1vl8U7ijtq-JnEvpNoAZD2_3x7RUl_gATpidmdHxzI34XLQDsozAL0g"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+</div>
+<!-- Map Pin Interaction Overlay -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center shadow-2xl animate-bounce pointer-events-auto cursor-grab">
+<span class="material-symbols-outlined text-white text-3xl" data-icon="location_on" data-weight="fill" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+</div>
+<div class="absolute bottom-4 left-4 right-4 glass-panel p-4 rounded-2xl flex items-center justify-between">
+<div>
+<p class="font-label-sm text-label-sm text-primary uppercase tracking-wider">Vị trí hiện tại</p>
+<p class="font-body-md text-body-md font-semibold">123 Đường Lê Lợi, Quận 1, TP. HCM</p>
+</div>
+<button class="bg-primary text-white px-6 py-2 rounded-xl font-bold font-label-md transition-transform active:scale-95 shadow-md">
+                            Xác nhận vị trí
+                        </button>
+</div>
+</div>
+<!-- Contact & Hours Quick Card -->
+<div class="col-span-4 flex flex-col gap-gutter">
+<div class="bg-surface-container-lowest p-lg rounded-3xl border border-outline-variant shadow-sm flex-1">
+<h3 class="font-headline-md text-headline-md mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="schedule">schedule</span>
+                            Giờ mở cửa
+                        </h3>
+<ul class="space-y-3 font-body-md text-body-md">
+<li class="flex justify-between border-b border-outline-variant pb-2">
+<span class="text-on-surface-variant">Thứ 2 - Thứ 6</span>
+<span class="font-bold">08:00 - 22:00</span>
+</li>
+<li class="flex justify-between border-b border-outline-variant pb-2">
+<span class="text-on-surface-variant">Thứ 7</span>
+<span class="font-bold">09:00 - 23:00</span>
+</li>
+<li class="flex justify-between text-primary font-bold">
+<span>Chủ nhật</span>
+<span>Đóng cửa</span>
+</li>
+</ul>
+</div>
+<div class="bg-secondary text-white p-lg rounded-3xl shadow-sm">
+<h3 class="font-headline-md text-headline-md mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span>
+                            Liên hệ
+                        </h3>
+<div class="space-y-2 font-body-md text-body-md">
+<p class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-container" data-icon="phone">phone</span>
+                                +84 901 234 567
+                            </p>
+<p class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-container" data-icon="mail">mail</span>
+                                hello@chillplace.vn
+                            </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Detailed Edit Section -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Info Editor -->
+<div class="col-span-7 space-y-lg">
+<section class="bg-surface-container-lowest p-xl rounded-3xl border border-outline-variant shadow-sm">
+<div class="flex justify-between items-center mb-8">
+<h3 class="font-headline-md text-headline-md">Thông tin cơ bản</h3>
+<button class="text-primary font-bold flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined" data-icon="edit">edit</span> Sửa nhanh
+                            </button>
+</div>
+<div class="space-y-6">
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Tên địa điểm</label>
+<input class="w-full bg-surface border-outline-variant rounded-xl p-4 focus:border-primary focus:ring-primary text-body-lg font-body-lg" type="text" value="Chill Garden Coffee &amp; Tea"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Hạng mục</label>
+<select class="w-full bg-surface border-outline-variant rounded-xl p-4 focus:border-primary focus:ring-primary text-body-md font-body-md">
+<option>Cà phê &amp; Trà</option>
+<option>Nhà hàng</option>
+<option>Bar &amp; Pub</option>
+<option>Không gian làm việc</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Phân khúc giá</label>
+<div class="flex gap-2 p-2 bg-surface rounded-xl border border-outline-variant h-[60px] items-center justify-center">
+<button class="flex-1 rounded-lg py-2 font-bold bg-primary text-white">VNĐ</button>
+<button class="flex-1 rounded-lg py-2 font-bold hover:bg-surface-container">VNĐ+</button>
+<button class="flex-1 rounded-lg py-2 font-bold hover:bg-surface-container">VNĐ++</button>
+</div>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Mô tả địa điểm</label>
+<textarea class="w-full bg-surface border-outline-variant rounded-xl p-4 focus:border-primary focus:ring-primary text-body-md font-body-md" rows="4">Chill Garden là không gian xanh mát giữa lòng thành phố, chuyên phục vụ các loại trà thảo mộc và cà phê pha máy thủ công. Một nơi lý tưởng để làm việc và thư giãn cùng bạn bè.</textarea>
+</div>
+</div>
+</section>
+</div>
+<!-- Gallery Manager -->
+<div class="col-span-5">
+<section class="bg-surface-container-lowest p-xl rounded-3xl border border-outline-variant shadow-sm h-full">
+<div class="flex justify-between items-center mb-8">
+<h3 class="font-headline-md text-headline-md">Thư viện ảnh</h3>
+<button class="bg-tertiary-container text-on-tertiary-container px-4 py-2 rounded-xl font-bold flex items-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined" data-icon="upload">upload</span> Tải lên
+                            </button>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="aspect-square rounded-2xl overflow-hidden relative group cursor-pointer border-2 border-primary">
+<img class="w-full h-full object-cover" data-alt="A warm and inviting interior shot of a modern Vietnamese coffee shop with wooden furniture, lush hanging plants, and soft ambient lighting. The atmosphere is energetic yet cozy, reflecting a high-end social mapping vibe. The color palette features warm wood tones and vibrant green foliage against a clean light-mode background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeY60eyJJFt6QShlL6eGy2qoYNDFGyT2_lejVzo5LukBRbX_pRee8UlHyeGgXL7j_NTEDCyelUhyhkH0m69ZilSKKK4e7dWVYNDpycFp0GPCCUloDuLeIYTNAKOC6cIgFLtkN-0yf-nIX4i4idSDhfLENBWLfaBS4hjWeLJTZJx5gZHMEl3DGDP1Sc3VKFSDTHYcL5etQTlQy1rgdo-fJzBIGU1Xx6EVrAjUSS7xHZUdB1M8E-ytHDalQkc-FdP-WVoVVktNQDTQY"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+<span class="text-white font-bold text-label-md">Ảnh chính</span>
+</div>
+<div class="absolute top-2 left-2 bg-primary text-white text-[10px] px-2 py-1 rounded font-bold uppercase">Cover</div>
+</div>
+<div class="aspect-square rounded-2xl overflow-hidden relative group cursor-pointer">
+<img class="w-full h-full object-cover" data-alt="A close-up aesthetic shot of a specialty latte and a matcha tea on a marble table in a brightly lit, modern cafe. The lighting is high-key and fresh, emphasizing a lifestyle-driven community vibe. The colors are vibrant and saturated, consistent with a premium Gen-Z oriented social discovery platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHwPbUjlCJEZ2zeR9opa2GGhDHnZJBwHyA6r0IlmLsUgI-N_wW3Wfq54K9qCAdTcQjrir9zW2YeLjTD1hI-wNujh6zsFdabNOwa2m1QQYhOTPbmrnl9afbpw7Tcn21VCOtgW0My6S9IqdtgIEH8C1O7MrQCPTbZnTTr4FRQPFJ4fqqOIhYZwl_MsXJKthD5KyYetWwZsglmDaLTQd_fA29VOed73dZax_4OZbOCOyHJ9u9JBqm2nAiAnVxN8hzaOV16I2v9L__Zj4"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+<span class="material-symbols-outlined text-white" data-icon="delete">delete</span>
+</div>
+</div>
+<div class="aspect-square rounded-2xl overflow-hidden relative group cursor-pointer">
+<img class="w-full h-full object-cover" data-alt="An outdoor seating area of a trendy cafe featuring minimalist metal chairs and small round tables under a canopy of green trees. The scene is illuminated by natural afternoon sunlight, creating a bright and exuberant mood. The design follows a modern corporate aesthetic with high-contrast edge details." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBssysMHFrq1H7Ggz_PT6xGk_MdAPQGacZ2kz0UXRBWT2U1RfAVVga9doVwuqylYiITJ9VPuz-mOI2FL1kotyABwf2oNGyPM19P3Rdj60eT7yZ0wHenkIuLr6O4m60icl4FdWUjCCDteuAWxUXfOlvNcs7eLPB3oNWzI8NgIMLHxGanU4O2vFZlToYSbQYDYOpXvYUSil8nuK7DrHaU6e4Bw5Zt4CI0L2puwEF-PJV_7cqewBz29ie3oG3X0ed_ezitDrdvYVe2SQg"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+<span class="material-symbols-outlined text-white" data-icon="delete">delete</span>
+</div>
+</div>
+<div class="aspect-square rounded-2xl border-2 border-dashed border-outline-variant flex flex-col items-center justify-center gap-2 text-on-surface-variant hover:border-primary hover:text-primary transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-4xl group-hover:scale-110 transition-transform" data-icon="add_photo_alternate">add_photo_alternate</span>
+<span class="font-label-md text-label-md">Thêm ảnh</span>
+</div>
+</div>
+<div class="mt-8 p-4 bg-surface-container rounded-2xl border border-outline-variant">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="info">info</span> Mẹo tối ưu
+                            </p>
+<p class="font-body-md text-body-md italic text-on-surface-variant opacity-80">"Ảnh chân thực về không gian và món uống giúp tăng tỉ lệ khách đến hơn 40%."</p>
+</div>
+</section>
+</div>
+</div>
+<!-- Action Bar -->
+<div class="flex justify-end items-center gap-4 pt-8">
+<button class="px-8 py-3 rounded-xl font-bold font-label-md text-secondary border-2 border-secondary hover:bg-secondary/5 transition-colors">
+                    Hủy thay đổi
+                </button>
+<button class="px-12 py-3 rounded-xl font-bold font-label-md bg-primary text-white shadow-xl shadow-primary/30 hover:scale-[1.02] transition-transform active:scale-95">
+                    Lưu thông tin
+                </button>
+</div>
+</div>
+</main>
+<script>
+        // Simple micro-interaction for the map pin
+        const pin = document.querySelector('.animate-bounce');
+        if(pin) {
+            pin.addEventListener('mousedown', () => {
+                pin.classList.remove('animate-bounce');
+                pin.style.cursor = 'grabbing';
+            });
+            window.addEventListener('mouseup', () => {
+                pin.style.cursor = 'grab';
+            });
+        }
+
+        // Active state navigation logic handled in HTML through background/text classes as per JSON instructions.
+    </script>
+</body></html>

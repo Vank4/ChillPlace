@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Quản lý Media &amp; Thực đơn | ChillPlace</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#35618d",
+                        "inverse-surface": "#2d3133",
+                        "surface-dim": "#d8dadc",
+                        "primary-container": "#ff6b35",
+                        "secondary-fixed": "#d1e4ff",
+                        "surface": "#f7f9fb",
+                        "on-secondary-fixed": "#001d35",
+                        "tertiary-fixed-dim": "#4fdbc8",
+                        "primary-fixed-dim": "#ffb59d",
+                        "background": "#f7f9fb",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#a0cafc",
+                        "surface-container": "#eceef0",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#a2cdff",
+                        "outline-variant": "#e1bfb5",
+                        "tertiary-fixed": "#71f8e4",
+                        "on-surface": "#191c1e",
+                        "tertiary": "#006b5f",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#ffdbd0",
+                        "on-primary-fixed": "#390c00",
+                        "outline": "#8d7168",
+                        "surface-tint": "#ab3500",
+                        "on-primary-container": "#5f1900",
+                        "surface-container-high": "#e6e8ea",
+                        "on-tertiary-container": "#003832",
+                        "primary": "#ab3500",
+                        "on-tertiary-fixed-variant": "#005048",
+                        "tertiary-container": "#00ac9b",
+                        "surface-variant": "#e0e3e5",
+                        "on-background": "#191c1e",
+                        "surface-container-low": "#f2f4f6",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#594139",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-tertiary-fixed": "#00201c",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-primary-fixed-variant": "#832600",
+                        "on-secondary-container": "#2a5782",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#184974",
+                        "surface-bright": "#f7f9fb",
+                        "inverse-primary": "#ffb59d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "24px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "32px",
+                        "xxl": "48px",
+                        "margin-mobile": "16px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "gutter": "16px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e0e3e5;
+            border-radius: 10px;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- Sidebar Navigation -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container-low flex flex-col py-lg shadow-md z-50">
+<div class="px-md mb-xl">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined">map</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-primary">ChillPlace</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant opacity-70">Management Portal</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-sm space-y-sm overflow-y-auto custom-scrollbar">
+<a class="flex items-center gap-md px-md py-sm rounded-xl text-on-surface-variant hover:bg-surface-container-highest transition-all hover:translate-x-1 duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-xl text-on-surface-variant hover:bg-surface-container-highest transition-all hover:translate-x-1 duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">storefront</span>
+<span class="font-label-md text-label-md">Place Profile</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-xl text-primary font-bold border-r-4 border-primary bg-surface-container-highest group" href="#">
+<span class="material-symbols-outlined">perm_media</span>
+<span class="font-label-md text-label-md">Media Library</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-xl text-on-surface-variant hover:bg-surface-container-highest transition-all hover:translate-x-1 duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">restaurant_menu</span>
+<span class="font-label-md text-label-md">Menu Management</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-xl text-on-surface-variant hover:bg-surface-container-highest transition-all hover:translate-x-1 duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">gavel</span>
+<span class="font-label-md text-label-md">Content Moderation</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-xl text-on-surface-variant hover:bg-surface-container-highest transition-all hover:translate-x-1 duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">verified_user</span>
+<span class="font-label-md text-label-md">User Requests</span>
+</a>
+</nav>
+<div class="px-md mt-auto pt-lg space-y-sm">
+<button class="w-full bg-primary-container text-on-primary font-bold py-md rounded-2xl shadow-sm hover:opacity-90 active:scale-95 transition-all">
+                Upgrade Plan
+            </button>
+<a class="flex items-center gap-md px-md py-sm rounded-xl text-on-surface-variant hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-xl text-on-surface-variant hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="w-full h-16 sticky top-0 bg-surface shadow-sm z-40 flex justify-between items-center px-margin-desktop">
+<div class="flex items-center gap-md flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full pl-10 pr-4 py-2 focus:ring-2 focus:ring-primary transition-all font-body-md text-body-md" placeholder="Tìm kiếm nội dung..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<button class="text-on-surface-variant hover:bg-surface-container-high p-2 rounded-full transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container-high p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="flex items-center gap-sm cursor-pointer hover:opacity-80 transition-opacity">
+<img alt="User profile" class="w-10 h-10 rounded-full border-2 border-primary-fixed" data-alt="A professional headshot of a smiling young male restaurant owner in a clean white shirt, standing in a brightly lit modern office with warm wooden accents and soft sunlight streaming in. The image is clean, high-contrast, and embodies the vibrant ChillPlace brand identity with professional polish." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiZPGoozvAOJLo22I4ayVEpYdot8FUlXVnSWPPwDHdpTj7RQgUM-MseGzS_6ZUeySauqnq4zHHfldUINe8ElN8caEOt4mmTHeUtoLdeNwDddL0sVbn1kaAiS-uvwQJwHdmDTUGAd-BO5M15VXTks7TN6rqHYirWVZUgaelUcpSF-z_a8iBdr8L6v9x16Vek_CydsNpL9BrBPXMnWVnZuzceMIdd8viesulqYffLHEPIGUrFxfVxnXpIM6TbOTnsbSwLjuTOzbvEKA"/>
+<div class="hidden lg:block">
+<p class="font-label-md text-label-md leading-none">Admin Chill</p>
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-wider">Pro Account</p>
+</div>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="p-margin-desktop space-y-xl max-w-[1400px] mx-auto">
+<!-- Page Header -->
+<section class="flex flex-col md:flex-row md:items-center justify-between gap-md">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-secondary">Quản lý Media &amp; Thực đơn</h1>
+<p class="text-on-surface-variant font-body-md text-body-md">Cập nhật hình ảnh và danh sách món ăn cho cơ sở của bạn</p>
+</div>
+<button class="bg-primary text-on-primary px-xl py-md rounded-2xl flex items-center gap-sm font-bold shadow-lg hover:scale-[1.02] active:scale-95 transition-transform">
+<span class="material-symbols-outlined">cloud_upload</span>
+                    Tải lên media mới
+                </button>
+</section>
+<!-- Media Gallery Section -->
+<section class="space-y-lg">
+<div class="flex items-center justify-between border-b border-surface-variant pb-sm">
+<h3 class="font-headline-md text-headline-md flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">gallery_thumbnail</span>
+                        Thư viện Media
+                    </h3>
+<div class="flex gap-sm">
+<button class="flex items-center gap-xs px-md py-2 bg-surface-container-high rounded-xl text-on-surface-variant font-label-md text-label-md hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[18px]">sort</span> Sắp xếp
+                        </button>
+<button class="flex items-center gap-xs px-md py-2 bg-surface-container-high rounded-xl text-on-surface-variant font-label-md text-label-md hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[18px]">filter_list</span> Lọc
+                        </button>
+</div>
+</div>
+<!-- Bento Grid for Media -->
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-lg">
+<!-- Media Card 1 -->
+<div class="relative group aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all cursor-move">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A vibrant shot of a modern urban cafe interior with hanging Edison bulbs, warm wooden furniture, and lush green plants. The atmosphere is energetic and social, captured in bright daylight with high-contrast colors and a lively Gen-Z vibe that reflects the community-driven mapping app aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdPLv45u9kDePB3Q2LUfJ5s8YIXZkXAsbjh7ITMh0DyVvikxP_zkAgxUUDOyU3hSqGS3NXMHk_Ij0i0N3sgCdAqYofDf92dEJdq305GD4djA7ke4XTwYCVlizXqFWbln0uKdYd-e07g7jQf_ftPqzlp6vxhNRX-GzIegPitKhZBhGt_qxRq_hyITfd2DjofsKzC19P6GSj3OHWN5wSws7MvNJiMS4vhZwH6hDBaK341rKYosUdqRPw1ehg0ylIiZKpGh9SKHXbdtM"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-md">
+<button class="w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center hover:bg-white/40 transition-colors">
+<span class="material-symbols-outlined text-white">drag_indicator</span>
+</button>
+<button class="w-10 h-10 bg-error/80 backdrop-blur-md rounded-full flex items-center justify-center hover:bg-error transition-colors">
+<span class="material-symbols-outlined text-white">delete</span>
+</button>
+</div>
+<div class="absolute bottom-2 left-2 bg-secondary/80 backdrop-blur-sm px-sm py-xs rounded-lg">
+<span class="text-white text-[10px] font-bold">ẢNH CHÍNH</span>
+</div>
+</div>
+<!-- Media Card 2 -->
+<div class="relative group aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all cursor-move">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A close-up artistic shot of a colorful tropical cocktail topped with fresh fruit and a decorative umbrella, sitting on a polished marble bar top. The lighting is dramatic and warm, with vibrant oranges and deep blues creating a high-energy social scene typical of a premium nightlife destination." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3p6jMaozUmIDOEgWrrzmuooQey5u7dyAUHAm8pZXkQdtMTcsguu5QyVPmNqhnjAD0uhkY1qw4uwWbEJ8L8fe37woTZ1vvEt_qExHs_HZ_kpmhNvfLVBoymkbVkoOr7P_OyTHRNpif5bPdQagn6NQkjT1gkYmpx7Y0DtQACqfcf13HtRKfGAJXjYaX6EMBKgV1j41Y6oHk2VLIwWw2NTw01skcj1fK0t4RQk2BKwr-0Kbx_abeAOce6auZrleineRyweEgyyBsyPw"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-md">
+<button class="w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center hover:bg-white/40 transition-colors">
+<span class="material-symbols-outlined text-white">drag_indicator</span>
+</button>
+<button class="w-10 h-10 bg-error/80 backdrop-blur-md rounded-full flex items-center justify-center hover:bg-error transition-colors">
+<span class="material-symbols-outlined text-white">delete</span>
+</button>
+</div>
+</div>
+<!-- Media Card 3 -->
+<div class="relative group aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all cursor-move">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A professional overhead food photography shot of a gourmet platter featuring grilled meats, fresh vegetables, and dipping sauces. The setting is a rustic yet modern restaurant table with warm lighting that emphasizes textures and colors, designed for a high-end SaaS management interface focused on media discovery." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMoglMC9qaACRBpgRibYKkDfCULyU_1H9OoLy-SKkOLdazt9alkzWjdraa1KRKikQ9j4nTkYIwG1485psWAztYaiiiGYLilysKOyam3nZE7B7jSiD_5q1q9AsOqqIaY25yv0Z2g3oK7rx-fR2ka6C6TWB_jStMOGHkXskL7RfgpxKTH2AEX3PRVzEu9bFobauPy9qcdUy5r_Z68QR0giZuuNDtg4c7hLV2SN7l57m2lqQIRvLbdH1D69HR1XgT7KmcHZrBLmKyHoo"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-md">
+<button class="w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center hover:bg-white/40 transition-colors">
+<span class="material-symbols-outlined text-white">drag_indicator</span>
+</button>
+<button class="w-10 h-10 bg-error/80 backdrop-blur-md rounded-full flex items-center justify-center hover:bg-error transition-colors">
+<span class="material-symbols-outlined text-white">delete</span>
+</button>
+</div>
+</div>
+<!-- Empty State Placeholder -->
+<div class="aspect-square rounded-2xl border-2 border-dashed border-outline-variant flex flex-col items-center justify-center text-center gap-sm p-md hover:bg-surface-container-low transition-colors group cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center group-hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary">add_photo_alternate</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Thêm hình ảnh khác</p>
+</div>
+<!-- Empty State Example (Large) -->
+<div class="col-span-2 aspect-[2/1] rounded-2xl bg-surface-container-low border border-surface-variant flex flex-col items-center justify-center text-center p-xl">
+<span class="material-symbols-outlined text-[48px] text-outline-variant mb-md">videocam_off</span>
+<h4 class="font-headline-md text-headline-md text-on-surface-variant">Chưa có Video</h4>
+<p class="text-on-surface-variant font-body-md text-body-md max-w-[200px]">Hãy tải lên video không gian quán để thu hút thêm 40% lượt khách.</p>
+</div>
+</div>
+</section>
+<!-- Menu Management Section -->
+<section class="space-y-lg">
+<div class="flex items-center justify-between border-b border-surface-variant pb-sm">
+<h3 class="font-headline-md text-headline-md flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">menu_book</span>
+                        Danh sách Thực đơn
+                    </h3>
+<div class="flex gap-sm">
+<div class="flex bg-surface-container-high p-1 rounded-xl">
+<button class="px-md py-1 bg-white rounded-lg shadow-sm font-label-md text-label-md text-primary">Tất cả</button>
+<button class="px-md py-1 font-label-md text-label-md text-on-surface-variant">Đồ uống</button>
+<button class="px-md py-1 font-label-md text-label-md text-on-surface-variant">Thức ăn</button>
+</div>
+<button class="bg-secondary text-on-primary px-lg py-2 rounded-xl flex items-center gap-xs font-bold hover:bg-opacity-90 transition-all">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                            Thêm món
+                        </button>
+</div>
+</div>
+<!-- Menu Table -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden border border-surface-variant">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-md text-label-md">
+<th class="px-lg py-md">Tên món</th>
+<th class="px-lg py-md">Phân loại</th>
+<th class="px-lg py-md">Giá niêm yết</th>
+<th class="px-lg py-md">Trạng thái</th>
+<th class="px-lg py-md text-right">Hành động</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant">
+<!-- Item 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-lg py-md">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-xl overflow-hidden bg-surface-container">
+<img alt="Coffee" class="w-full h-full object-cover" data-alt="A high-resolution, stylized photo of a creamy latte with detailed foam art, served in a sleek charcoal grey ceramic cup. The background is a clean, modern cafe environment with soft bokeh and vibrant orange highlights, perfectly aligning with the high-energy and corporate mapping UI style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQ7NXZ8zPkK4IYv7rNLFWWldii1MFbG6T0OrMNe9aaPBwCde5kuk5mEuMEE4hZxIfCB9hx2DHAJfz7RLWkzFupaq3DYQZlbbDNYYqsFWIop9aVjZX_ZZPkj3tlVvwnohvoWTbzALFcJrFm2XWs7cFRIUMvjy6QfmA9jKO7mygyJyhi1Zr1zWQvjlT0dRV6_LjgD8f6TQK3mtdAzUT4QvfGRy2BjafKtWo7Ykpuhkm0VO1-oNsVwFHtq2Nq3hdiNBUMhnj96x7bMoc"/>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Cà phê Muối</p>
+<p class="text-[12px] text-on-surface-variant">Món đặc trưng của quán</p>
+</div>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="px-sm py-1 bg-secondary-fixed text-on-secondary-fixed-variant rounded-full text-[12px] font-bold uppercase">Đồ uống</span>
+</td>
+<td class="px-lg py-md font-bold text-on-surface">45.000đ</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-xs text-tertiary">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-label-sm text-label-sm">Còn hàng</span>
+</div>
+</td>
+<td class="px-lg py-md text-right">
+<div class="flex items-center justify-end gap-sm opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container-highest rounded-lg text-secondary">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-2 hover:bg-error-container/20 rounded-lg text-error">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Item 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-lg py-md">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-xl overflow-hidden bg-surface-container">
+<img alt="Salad" class="w-full h-full object-cover" data-alt="A vibrant, colorful bowl of healthy mediterranean salad with fresh avocados, cherry tomatoes, and olives. The lighting is bright and natural, set against a minimalist white tabletop with clean lines, conveying a sense of health and freshness consistent with a modern SaaS food management platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzaUeCjae7mwr0O85mE_bv3YJz_UBIGKmv-btSLqDNyXHJKXonsk3mpwI3J7NRvKQV2PWQCgSvtM_vyOUsIhcXjFxVJFr-ju1qHbZ5EMxFPa2gQl-J3rKpk8vF1mnH8wz9AqbmenJ_SlwHY24Pmam5NFVX3S_S_lLTkKySdPkREgGjRTX8A-jqZpQK-I2MJ1_Zaimq9B8tmTO79PojbTqHypyvsl7c4VTeEIPPI942CyUf34fR5gIg__xiRYdZBvk9vmK_FcAGn2M"/>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Salad Ức gà</p>
+<p class="text-[12px] text-on-surface-variant">Sốt mè rang Nhật Bản</p>
+</div>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="px-sm py-1 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded-full text-[12px] font-bold uppercase">Thức ăn</span>
+</td>
+<td class="px-lg py-md font-bold text-on-surface">89.000đ</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-xs text-tertiary">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-label-sm text-label-sm">Còn hàng</span>
+</div>
+</td>
+<td class="px-lg py-md text-right">
+<div class="flex items-center justify-end gap-sm opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container-highest rounded-lg text-secondary">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-2 hover:bg-error-container/20 rounded-lg text-error">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Item 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-lg py-md">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-xl overflow-hidden bg-surface-container bg-surface-dim flex items-center justify-center">
+<span class="material-symbols-outlined text-outline-variant">restaurant</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Trà đào Cam sả</p>
+<p class="text-[12px] text-on-surface-variant">Vị truyền thống</p>
+</div>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="px-sm py-1 bg-secondary-fixed text-on-secondary-fixed-variant rounded-full text-[12px] font-bold uppercase">Đồ uống</span>
+</td>
+<td class="px-lg py-md font-bold text-on-surface">55.000đ</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-xs text-error">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="font-label-sm text-label-sm">Hết hàng</span>
+</div>
+</td>
+<td class="px-lg py-md text-right">
+<div class="flex items-center justify-end gap-sm opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container-highest rounded-lg text-secondary">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-2 hover:bg-error-container/20 rounded-lg text-error">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="p-md flex items-center justify-between bg-surface-container-low border-t border-surface-variant">
+<p class="text-on-surface-variant font-label-sm text-label-sm">Hiển thị 1-3 trong số 12 món</p>
+<div class="flex gap-xs">
+<button class="p-1 rounded-lg border border-surface-variant hover:bg-white transition-colors disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="px-3 py-1 rounded-lg bg-primary text-on-primary font-bold">1</button>
+<button class="px-3 py-1 rounded-lg hover:bg-white transition-colors">2</button>
+<button class="px-3 py-1 rounded-lg hover:bg-white transition-colors">3</button>
+<button class="p-1 rounded-lg border border-surface-variant hover:bg-white transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Floating Action Button (FAB) - Contextual for adding media/menu -->
+<button class="fixed bottom-margin-desktop right-margin-desktop w-14 h-14 bg-primary rounded-full shadow-2xl flex items-center justify-center text-on-primary hover:scale-110 active:scale-90 transition-all z-50 group" id="main-fab">
+<span class="material-symbols-outlined text-[28px] group-hover:rotate-90 transition-transform duration-300">add</span>
+<!-- Tooltip -->
+<div class="absolute right-16 bg-inverse-surface text-inverse-on-surface px-md py-sm rounded-xl text-label-sm whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity">
+            Tạo nội dung mới
+        </div>
+</button>
+<script>
+        // Micro-interactions for hovering states and active management
+        document.addEventListener('DOMContentLoaded', () => {
+            const mediaCards = document.querySelectorAll('.group.aspect-square');
+            mediaCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    // Soft lift effect handled by Tailwind shadow-xl
+                });
+            });
+
+            // Demo logic for status toggle
+            const tableRows = document.querySelectorAll('tbody tr');
+            tableRows.forEach(row => {
+                row.addEventListener('click', (e) => {
+                    if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'SPAN') {
+                        // Logic to open item detail could go here
+                    }
+                });
+            });
+        });
+    </script>
+</body></html>

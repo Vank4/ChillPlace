@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar { display: none; }
+        body { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#f7f9fb",
+                        "secondary-container": "#a2cdff",
+                        "on-primary-fixed": "#390c00",
+                        "primary-container": "#ff6b35",
+                        "on-secondary-fixed-variant": "#184974",
+                        "surface-container-high": "#e6e8ea",
+                        "on-surface-variant": "#594139",
+                        "surface-container": "#eceef0",
+                        "on-secondary-fixed": "#001d35",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f2f4f6",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#2a5782",
+                        "tertiary-fixed-dim": "#4fdbc8",
+                        "outline": "#8d7168",
+                        "primary": "#ab3500",
+                        "on-tertiary-fixed-variant": "#005048",
+                        "surface-dim": "#d8dadc",
+                        "secondary-fixed": "#d1e4ff",
+                        "on-tertiary-fixed": "#00201c",
+                        "on-error": "#ffffff",
+                        "surface-bright": "#f7f9fb",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#e0e3e5",
+                        "surface-tint": "#ab3500",
+                        "inverse-primary": "#ffb59d",
+                        "outline-variant": "#e1bfb5",
+                        "inverse-surface": "#2d3133",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-container": "#003832",
+                        "surface-variant": "#e0e3e5",
+                        "secondary-fixed-dim": "#a0cafc",
+                        "on-background": "#191c1e",
+                        "primary-fixed-dim": "#ffb59d",
+                        "on-primary-container": "#5f1900",
+                        "inverse-on-surface": "#eff1f3",
+                        "tertiary": "#006b5f",
+                        "primary-fixed": "#ffdbd0",
+                        "secondary": "#35618d",
+                        "tertiary-container": "#00ac9b",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#832600",
+                        "background": "#f7f9fb",
+                        "on-surface": "#191c1e",
+                        "tertiary-fixed": "#71f8e4",
+                        "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "gutter": "16px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "xxl": "48px",
+                        "lg": "24px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md antialiased">
+<!-- TopAppBar -->
+<header class="w-full sticky top-0 z-50 bg-surface dark:bg-inverse-surface shadow-sm flex justify-between items-center px-margin-mobile h-16">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-primary-container flex items-center justify-center">
+<img alt="Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNSutTqJ2ySRhKSywQlQbTpSOrcg1UbATgtKrA3VSkboy3z6jWaHgWUHQO7Ev-MEwkCb-fkjjBl4_Hp-F63YxR_kEYRQB21mW6Etsra5YCwGKr57zDtcXsMI9F6J7ikZ_yL2NjDJKpNOgvRrq9hvENL1lLp9JwkCC4oHv6BeXW8oPlcyxHcsJLoo8iQSooLQ_OYkfhKuycg_pZDtF8cgAlhAgPFe0zhIPvBMxBJ2bt30fjGQhQaHu7-kG-1GhdJC6E9GaAZAyML5s"/>
+</div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-container">Quản lý bài đăng</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-primary dark:text-inverse-primary" data-icon="notifications">notifications</span>
+</button>
+</header>
+<main class="pb-24">
+<!-- Search & Filters -->
+<div class="px-margin-mobile pt-lg pb-md">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary font-bold">search</span>
+<input class="w-full h-14 pl-12 pr-4 rounded-xl border-none bg-surface-container shadow-sm focus:ring-2 focus:ring-primary-container text-body-md transition-all placeholder:text-on-surface-variant/50" placeholder="Tìm kiếm bài đăng của bạn..." type="text"/>
+</div>
+</div>
+<!-- Sticky Tabs -->
+<div class="sticky top-16 z-40 bg-surface/80 backdrop-blur-md px-margin-mobile py-sm mb-md">
+<div class="flex gap-2 p-1 bg-surface-container-high rounded-xl overflow-x-auto no-scrollbar">
+<button class="flex-1 whitespace-nowrap px-4 py-2.5 rounded-lg text-label-md font-bold transition-all bg-primary-container text-on-primary-container shadow-sm" onclick="switchTab(this)">Đã đăng</button>
+<button class="flex-1 whitespace-nowrap px-4 py-2.5 rounded-lg text-label-md font-semibold text-on-surface-variant hover:bg-surface-container transition-colors" onclick="switchTab(this)">Nháp</button>
+<button class="flex-1 whitespace-nowrap px-4 py-2.5 rounded-lg text-label-md font-semibold text-on-surface-variant hover:bg-surface-container transition-colors" onclick="switchTab(this)">Đang duyệt</button>
+</div>
+</div>
+<!-- Post List (Asymmetric Layout / Bento Hybrid) -->
+<div class="px-margin-mobile space-y-lg">
+<!-- Post Item 1 -->
+<div class="relative group">
+<div class="bg-surface-container-lowest rounded-[24px] shadow-[0px_4px_20px_rgba(31,78,121,0.08)] overflow-hidden transition-transform duration-300 hover:scale-[1.01] active:scale-[0.99]">
+<div class="flex flex-col sm:flex-row">
+<div class="w-full sm:w-1/3 aspect-[16/10] sm:aspect-square relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A high-energy photograph of a neon-lit rooftop party in a futuristic Ho Chi Minh City setting. The scene is filled with vibrant orange and teal light trails, capturing the exuberant urban explorer vibe. The atmosphere is kinetic and community-driven, featuring modern architecture in the background with a high-contrast, saturated color palette and cinematic lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLu5jB-uyo7MF18uNWaQ9enea9bVhSUDoGcaZQfWw-JsCBTGCmINPmS0y3llhqPY4bN4VTNcqwSh_mXfMsOeksNpIIptvTjrcNVJnFJgJFRGJcXlVT4XfVUWy4Q1eBdcyGNx1G2wtCd-FT7UikKy_wZhOKWMuEFq4V5wDBkgO4aD9ivAv7YxKJmn-5T_qzh8CWw3-Er3td5Ymf-5ZvXGXrP8ngRjC2laT9hjL6f8X76R-1eRdVadjJv8vulGI_AsdRfGuwU_LDZQw"/>
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="bg-primary-container text-on-primary-container px-3 py-1 rounded-full text-label-sm font-bold shadow-lg">Trending</span>
+<span class="bg-[#14B8A6] text-white px-3 py-1 rounded-full text-label-sm font-bold shadow-lg">Quận 1</span>
+</div>
+</div>
+<div class="p-md flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1 leading-tight line-clamp-2">Cà phê Rooftop "Chill Phết" ngắm toàn cảnh Sài Gòn</h3>
+<div class="flex items-center gap-2 text-on-surface-variant opacity-70 mb-4">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span class="text-label-sm">12/10/2023</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-surface-container-high">
+<div class="flex items-center gap-4">
+<button class="flex flex-col items-center gap-1 group/btn active:scale-90 transition-transform">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed-variant group-hover/btn:bg-primary-container group-hover/btn:text-white transition-colors">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">Thống kê</span>
+</button>
+<button class="flex flex-col items-center gap-1 group/btn active:scale-90 transition-transform">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant group-hover/btn:bg-primary-container group-hover/btn:text-white transition-colors">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">Sửa</span>
+</button>
+</div>
+<button class="w-10 h-10 rounded-full bg-error-container/30 flex items-center justify-center text-error hover:bg-error hover:text-white transition-all active:scale-90">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Post Item 2 -->
+<div class="relative group">
+<div class="bg-surface-container-lowest rounded-[24px] shadow-[0px_4px_20px_rgba(31,78,121,0.08)] overflow-hidden transition-transform duration-300 hover:scale-[1.01] active:scale-[0.99]">
+<div class="flex flex-col sm:flex-row">
+<div class="w-full sm:w-1/3 aspect-[16/10] sm:aspect-square relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A vibrant street food stall in a bustling night market, captured with a wide-angle lens. The lighting is dominated by warm golden glows from hanging bulbs and neon signs reflecting off rainy pavement. The scene is saturated with high-contrast colors like primary orange and deep blues, reflecting a modern corporate yet exuberant urban lifestyle for a Gen-Z audience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjqZ2tXavhAxZkoa-XSRz6Q-MrGoe1DaRmPCuESQbArK-sho-tT3YGu-xOok2FxXWvttsF5aVF1eeN4Yb-KvZJd6dKAhmGMzeT7C3SiLVSeGxw6UMMqCTAe3a1SDlzvrcDHDyEH3LzMoRiSx-0KiyzWSfsDNCvoVjibeLxfFZKBSDCUTG1b_MWSC-rpfCzj7cWS3RgFJ7g1xn88KTcni8hbDBAnBxnhIFcjEHxVXpyYoRQ8Mvwi0PCHh_J-kyYb5vk86WTrbj-nkM"/>
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="bg-primary-container text-on-primary-container px-3 py-1 rounded-full text-label-sm font-bold shadow-lg">Mới</span>
+<span class="bg-[#14B8A6] text-white px-3 py-1 rounded-full text-label-sm font-bold shadow-lg">Ẩm thực</span>
+</div>
+</div>
+<div class="p-md flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1 leading-tight line-clamp-2">Top 5 quán hủ tiếu gõ "ẩn mình" cực ngon</h3>
+<div class="flex items-center gap-2 text-on-surface-variant opacity-70 mb-4">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span class="text-label-sm">08/10/2023</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-surface-container-high">
+<div class="flex items-center gap-4">
+<button class="flex flex-col items-center gap-1 group/btn active:scale-90 transition-transform">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed-variant group-hover/btn:bg-primary-container group-hover/btn:text-white transition-colors">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">Thống kê</span>
+</button>
+<button class="flex flex-col items-center gap-1 group/btn active:scale-90 transition-transform">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant group-hover/btn:bg-primary-container group-hover/btn:text-white transition-colors">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">Sửa</span>
+</button>
+</div>
+<button class="w-10 h-10 rounded-full bg-error-container/30 flex items-center justify-center text-error hover:bg-error hover:text-white transition-all active:scale-90">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Post Item 3 (Small card for variety) -->
+<div class="bg-primary-container p-6 rounded-[24px] text-on-primary shadow-xl flex items-center justify-between group overflow-hidden relative">
+<div class="relative z-10">
+<h4 class="font-headline-md text-white mb-1">Cần thêm cảm hứng?</h4>
+<p class="text-white/80 text-label-md">Xem bản đồ các địa điểm đang hot nhất tuần này.</p>
+<button class="mt-4 bg-white text-primary px-6 py-2 rounded-full font-bold text-label-md hover:shadow-lg transition-all active:scale-95">Khám phá ngay</button>
+</div>
+<span class="material-symbols-outlined text-[120px] absolute -right-4 -bottom-4 opacity-20 rotate-12 group-hover:scale-110 transition-transform duration-500" data-icon="map">map</span>
+</div>
+</div>
+</main>
+<!-- FAB for Create -->
+<button class="fixed right-6 bottom-24 z-50 w-16 h-16 bg-primary-container text-white rounded-2xl flex items-center justify-center shadow-[0px_8px_24px_rgba(255,107,53,0.3)] active:scale-90 transition-all">
+<span class="material-symbols-outlined text-[32px]" data-icon="add_circle">add_circle</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full rounded-t-xl z-50 bg-surface dark:bg-inverse-surface shadow-[0px_-4px_20px_rgba(31,78,121,0.08)] flex justify-around items-center h-20 pb-safe px-2">
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant opacity-70 hover:opacity-100 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-3 py-1 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-label-sm text-label-sm">Posts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant opacity-70 hover:opacity-100 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span class="font-label-sm text-label-sm">Create</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant opacity-70 hover:opacity-100 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-sm text-label-sm">Stats</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant opacity-70 hover:opacity-100 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<script>
+        function switchTab(el) {
+            const container = el.parentElement;
+            const buttons = container.querySelectorAll('button');
+            
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-primary-container', 'text-on-primary-container', 'shadow-sm', 'font-bold');
+                btn.classList.add('text-on-surface-variant', 'font-semibold');
+            });
+            
+            el.classList.add('bg-primary-container', 'text-on-primary-container', 'shadow-sm', 'font-bold');
+            el.classList.remove('text-on-surface-variant', 'font-semibold');
+        }
+
+        // Add simple scroll effect for header shadow
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 10) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body></html>

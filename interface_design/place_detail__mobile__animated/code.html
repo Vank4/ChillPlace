@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .header-bg-transition {
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .header-title-transition {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateY(10px);
+        }
+        .header-scrolled .header-title-transition {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .header-scrolled {
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .primary-gradient {
+            background: linear-gradient(135deg, #ab3500 0%, #ff6b35 100%);
+        }
+
+        /* Animations */
+        @keyframes revealUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal-item {
+            opacity: 0;
+            animation: revealUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.8); }
+            70% { transform: scale(1.05); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .pop-in {
+            opacity: 0;
+            animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            animation-delay: 0.8s;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(171, 53, 0, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(171, 53, 0, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(171, 53, 0, 0); }
+        }
+
+        .map-pin-pulse {
+            animation: pulse-ring 2s infinite;
+        }
+
+        @keyframes star-burst {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.4); color: #ffb59d; }
+            100% { transform: scale(1); }
+        }
+
+        .star-active {
+            animation: star-burst 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-variation-settings: 'FILL' 1 !important;
+        }
+
+        .hero-image-zoom {
+            transition: transform 8s ease-out;
+        }
+        .active-slide .hero-image-zoom {
+            transform: scale(1.1);
+        }
+
+        .snap-x-mandatory {
+            scroll-snap-type: x mandatory;
+        }
+        .snap-center {
+            scroll-snap-align: center;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#832600",
+                        "tertiary-container": "#00ac9b",
+                        "surface-container": "#eceef0",
+                        "surface-variant": "#e0e3e5",
+                        "tertiary-fixed-dim": "#4fdbc8",
+                        "surface-container-low": "#f2f4f6",
+                        "on-tertiary-container": "#003832",
+                        "on-tertiary": "#ffffff",
+                        "outline": "#8d7168",
+                        "primary-container": "#ff6b35",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#390c00",
+                        "secondary-fixed-dim": "#a0cafc",
+                        "surface": "#f7f9fb",
+                        "on-tertiary-fixed-variant": "#005048",
+                        "on-surface-variant": "#594139",
+                        "inverse-on-surface": "#eff1f3",
+                        "background": "#f7f9fb",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#006b5f",
+                        "secondary": "#35618d",
+                        "surface-container-high": "#e6e8ea",
+                        "primary-fixed": "#ffdbd0",
+                        "on-tertiary-fixed": "#00201c",
+                        "surface-container-highest": "#e0e3e5",
+                        "primary": "#ab3500",
+                        "surface-dim": "#d8dadc",
+                        "on-secondary-fixed": "#001d35",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#71f8e4",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#5f1900",
+                        "on-surface": "#191c1e",
+                        "on-secondary-fixed-variant": "#184974",
+                        "secondary-container": "#a2cdff",
+                        "surface-bright": "#f7f9fb",
+                        "inverse-primary": "#ffb59d",
+                        "outline-variant": "#e1bfb5",
+                        "on-secondary-container": "#2a5782",
+                        "primary-fixed-dim": "#ffb59d",
+                        "surface-tint": "#ab3500",
+                        "secondary-fixed": "#d1e4ff",
+                        "inverse-surface": "#2d3133",
+                        "error-container": "#ffdad6",
+                        "on-background": "#191c1e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "margin-mobile": "16px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "margin-desktop": "32px",
+                        "lg": "24px",
+                        "xxl": "48px",
+                        "md": "16px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Top Navigation Bar with Sticky Transition -->
+<header class="fixed top-0 w-full z-[60] flex justify-between items-center px-margin-mobile h-16 header-bg-transition" id="main-header">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-on-surface-variant active:scale-90 transition-transform" onclick="window.history.back()">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="opacity-0 header-title-transition font-label-md text-label-md text-on-surface pointer-events-none" id="header-title">
+        ChillPlace Studio
+    </div>
+<div class="flex gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-on-surface-variant active:scale-95 transition-transform">
+<span class="material-symbols-outlined">share</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-on-surface-variant active:scale-95 transition-transform">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</header>
+<main class="pb-32">
+<!-- Hero Media Carousel -->
+<section class="relative h-[397px] md:h-[530px] overflow-hidden" id="hero-section">
+<div class="flex h-full transition-transform duration-700 ease-in-out snap-x-mandatory overflow-x-auto hide-scrollbar" id="hero-carousel">
+<div class="min-w-full h-full relative snap-center active-slide">
+<img class="w-full h-full object-cover hero-image-zoom" data-alt="A lush and vibrantly lit modern cafe interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGdwLd-WiyL8fAU64UwKJfOs4Pvfu3ZtZpOTivnKgKd5nsaL23WOUWhYRmtn2dznX4_2eeth0PR_CopNrt20rJVX86EY8Hj5qWroDAcfUcxCDqyjmN4TRxD5UaUCBUQWAIFi586vvcG8XRdLYjIudxMUEyJADk_7nADAinnDeOX1BUTrzH_9YCHmom7Ep5ld4H6V29Aqgh8ApSVLqszmP1qBAsWx8iIDfMNksRB9XsFTfXgF1lG2wNe18z3QqmdvmNfF1VClqw2E0"/>
+</div>
+<div class="min-w-full h-full relative snap-center">
+<img class="w-full h-full object-cover hero-image-zoom" data-alt="Detailed view of handcrafted espresso coffee" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjJeyttKLxN9kTKx4d5oZinP2l9H9WRYiEAqpODD2dr9Cj1UVFak6u13ZPEPo8tfrDPgZGRbJVD5rYV79bBGze5GWGjG7zomQV1l1giYr4zs0Pw5O0-fsv2pdMURMsitiOANU8lr5YjX3RoGcaVsme6nuNtfLocnuUvhwRxJJ_AMVYkmEQYuiwSf2sXg50mOUwXMs0NjqdwQUNggc2LoxykXBYIlCvyCqXZTqcxdSIsoQbxOAyFdvniRRSicLe_AfRZ21n10mEJsk"/>
+</div>
+<div class="min-w-full h-full relative snap-center">
+<img class="w-full h-full object-cover hero-image-zoom" data-alt="Cozy cafe environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFYrKwKE2V0q0iTFCvUMqJr6BKohmc5kjx6WaYBSvrrkgWJ4y68Ym1Zq2x3_birTHQFUYMYIzSRl24UVwLsG1ICOn7mbohuZh8fjYudPLvpC_z_pLbqtGmwKvZTw56Ptb7Bhk2_09h_gwpK80tFu_B4mjwqrLZW2am4YJkFoSWW1Zc_RIZnJzl6JXZFfEP-PI9qGfhzOLvqbYehUmMa8vWhN559x81Pdu7p7ER_5-tFDbe1qMUOyJPIryd9HVwm8H5xHA3hx2Kjuo"/>
+</div>
+</div>
+<!-- Smooth Indicators -->
+<div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 px-3 py-2 rounded-full glass-effect">
+<div class="w-2 h-2 rounded-full bg-primary transition-all duration-300" id="dot-0"></div>
+<div class="w-2 h-2 rounded-full bg-on-surface-variant/30 transition-all duration-300" id="dot-1"></div>
+<div class="w-2 h-2 rounded-full bg-on-surface-variant/30 transition-all duration-300" id="dot-2"></div>
+</div>
+<div class="absolute bottom-6 right-margin-mobile px-3 py-1 rounded-lg glass-effect text-label-sm font-label-sm text-primary">
+<span id="slide-counter">1</span>/3
+        </div>
+</section>
+<div class="px-margin-mobile -mt-8 relative z-10">
+<!-- Main Info Card -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-[0px_4px_24px_rgba(31,78,121,0.12)] border border-surface-container reveal-item stagger-1">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<span class="inline-flex items-center gap-1 bg-tertiary-container text-on-tertiary-container px-2 py-0.5 rounded-full text-label-sm font-label-sm mb-2">
+<span class="material-symbols-outlined text-[14px]">local_cafe</span>
+                        Coffee Shop
+                    </span>
+<h1 class="font-headline-md text-headline-md text-on-surface tracking-tight">ChillPlace Studio</h1>
+</div>
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-0.5 text-primary">
+<span class="material-symbols-outlined fill rating-star cursor-pointer" onclick="handleStarClick(this)" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md">4.8</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">2.4k đánh giá</span>
+</div>
+</div>
+<div class="flex items-start gap-2 text-on-surface-variant mb-md">
+<span class="material-symbols-outlined text-secondary text-lg">location_on</span>
+<p class="font-body-md text-body-md">123 Đường Nguyễn Huệ, Phường Bến Nghé, Quận 1, TP. Hồ Chí Minh</p>
+</div>
+<div class="grid grid-cols-[1fr_auto_1fr] gap-4 mb-md border-t border-surface-variant pt-md">
+<div class="text-center">
+<p class="text-label-sm font-label-sm text-on-surface-variant mb-0.5">Giờ mở cửa</p>
+<p class="text-label-md font-label-md text-on-surface">07:00 - 22:30</p>
+</div>
+<div class="w-[1px] bg-surface-variant"></div>
+<div class="text-center">
+<p class="text-label-sm font-label-sm text-on-surface-variant mb-0.5">Giá trung bình</p>
+<p class="text-label-md font-label-md text-on-surface">45k - 120k</p>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 flex items-center justify-center gap-2 primary-gradient text-on-primary py-3.5 rounded-xl font-label-md text-label-md active:scale-95 transition-all shadow-md shadow-primary/20">
+<span class="material-symbols-outlined">directions</span>
+                    Chỉ đường
+                </button>
+<button class="w-14 h-14 flex items-center justify-center rounded-xl bg-secondary-container text-on-secondary-container active:scale-95 transition-all">
+<span class="material-symbols-outlined">bookmark</span>
+</button>
+</div>
+</div>
+<div class="h-[1px] bg-surface-variant my-lg opacity-50 reveal-item stagger-2"></div>
+<!-- Mini Map Section -->
+<section class="reveal-item stagger-2">
+<div class="flex justify-between items-center mb-sm">
+<h2 class="font-headline-md text-headline-md text-on-surface">Vị trí</h2>
+<button class="text-primary font-label-md text-label-md active:opacity-60 transition-opacity">Xem bản đồ lớn</button>
+</div>
+<div class="rounded-xl overflow-hidden h-44 relative shadow-sm border border-surface-variant">
+<img class="w-full h-full object-cover" data-alt="Stylized digital map of Ho Chi Minh City" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGw4OpeCKd9GRTGX2b2ILi0igbWwlL05AxlF8-oP9rDmHmdh42oKd2kLBtqsOYqbnIQ7G9z7X9rRIdGTDgwWGelxBC95qVQMN5rL5aSSuzEjo8hK3LPPqXeSyYXxtlX-yVwujsifnHVDVemrGGI7YVl_ijIDG0E2XqMVWuBFc7_FSxUulQ9HfoJbRjeifE0ZXEYXskWRWfKFKDx4eZEeVs5sX7QPQGvkY_QlvVScd2HnzNktCB6CGSzb91JBOS5Ud1EClg53WezKA"/>
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="w-10 h-10 bg-primary rounded-full border-4 border-on-primary shadow-lg flex items-center justify-center text-on-primary map-pin-pulse">
+<span class="material-symbols-outlined">navigation</span>
+</div>
+</div>
+</div>
+</section>
+<div class="h-[1px] bg-surface-variant my-lg opacity-50 reveal-item stagger-3"></div>
+<!-- Description -->
+<section class="reveal-item stagger-3">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-sm">Thông tin quán</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-md">
+                ChillPlace Studio là không gian cafe kết hợp nghệ thuật đương đại, tọa lạc ngay trung tâm Sài Gòn. Với thiết kế tối giản nhưng không kém phần ấm cúng, đây là nơi lý tưởng để làm việc, gặp gỡ bạn bè.
+            </p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 bg-surface-container-high rounded-full text-label-sm font-label-sm text-on-surface-variant">#WifiMạnh</span>
+<span class="px-3 py-1.5 bg-surface-container-high rounded-full text-label-sm font-label-sm text-on-surface-variant">#LàmViệc</span>
+<span class="px-3 py-1.5 bg-surface-container-high rounded-full text-label-sm font-label-sm text-on-surface-variant">#SpecialtyCoffee</span>
+</div>
+</section>
+<div class="h-[1px] bg-surface-variant my-lg opacity-50 reveal-item stagger-4"></div>
+<!-- Menu Section -->
+<section class="reveal-item stagger-4">
+<div class="flex justify-between items-center mb-sm">
+<h2 class="font-headline-md text-headline-md text-on-surface">Thực đơn</h2>
+<button class="text-primary font-label-md text-label-md active:opacity-60 transition-opacity">Xem tất cả (24)</button>
+</div>
+<div class="flex gap-md overflow-x-auto hide-scrollbar pb-2">
+<!-- Menu Item 1 -->
+<div class="min-w-[140px] flex-shrink-0 active:scale-95 transition-transform">
+<div class="aspect-square rounded-xl overflow-hidden mb-2 bg-surface-variant shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Signature Latte" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8Ub5JUly1jx14YOvRvSuWzvo-BOEAw46MqNX0Vqbgiil6UaiMEVYzY-uHhZl5hy3aB6X6Sy2-FDxzuIaeq-57_TM78aqEDqMDwhZoiQHovWDcxm8Kse2YVUc8mxc_gnk23p_f77umzbSLyq7ZFXH6kqvHOKC9ZMkFVdqarrI5F2XaE4UGaieL0lxBzE40TDoghnvhBHPJ5mzW-AEcRzocqTsnqlREKIGVgsWmMGINbzI1z2YNL2Q0trnDIW0lUQpZCEtBS3sO6OA"/>
+</div>
+<p class="font-label-md text-label-md text-on-surface truncate">Signature Latte</p>
+<p class="text-label-sm font-label-sm text-primary">55,000đ</p>
+</div>
+<!-- Menu Item 2 -->
+<div class="min-w-[140px] flex-shrink-0 active:scale-95 transition-transform">
+<div class="aspect-square rounded-xl overflow-hidden mb-2 bg-surface-variant shadow-sm">
+<img class="w-full h-full object-cover" data-alt="V60 Ethiopia" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjS1ludNDBMtUQLcdhRgY2qhhkBbIlQval_1m2Oemm2DyLuqocLSWx6tUVriUeCTgvE8PgfxTGuLvE_4GkLOJg8gwmcdT1QwZPdnLkcadqL7PV9XwVYaQZcVquxXSKIC0UQ4MqologHeszovSHiJRzaDYt_QnE-Mqd0dXzRMQLiLVe9T5btcnZF-yy-SR88j1Q4936TtFO9JoAiuU6LQJRgivEOk-G5fSP8_63Zw1xgWEXxedUJV9X4xHkN1UBG6MbWCsO9i1Koz0"/>
+</div>
+<p class="font-label-md text-label-md text-on-surface truncate">V60 Ethiopia</p>
+<p class="text-label-sm font-label-sm text-primary">85,000đ</p>
+</div>
+<!-- Menu Item 3 -->
+<div class="min-w-[140px] flex-shrink-0 active:scale-95 transition-transform">
+<div class="aspect-square rounded-xl overflow-hidden mb-2 bg-surface-variant shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Hibiscus Tea" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYDZbToJvDOH77uu-ztv7vGuS5a23TvyjQo2U5aBVYb7wX72AL9Rk2nMtWuC1AbNg4Y6TJMtZ4JCTgRHN5Cpw-MB6krXywGusftcJUgTZmMoEyuTJaWQmQuZg8ZsTKM9Y6MuFnNkGc-EieeH4a1i4IgLu5aHeRZ3U_RInJC0h7Zn9fDpq1RBiuKUn31iMn6O9TnURigLOtOEAXoz8-euHfcMrrfbqCU2U1BfPbq-cCFIiI864UBgyffhyQScNPoaO36cYcucfqB1U"/>
+</div>
+<p class="font-label-md text-label-md text-on-surface truncate">Hibiscus Tea</p>
+<p class="text-label-sm font-label-sm text-primary">60,000đ</p>
+</div>
+</div>
+</section>
+<div class="h-[1px] bg-surface-variant my-lg opacity-50 reveal-item stagger-4"></div>
+<!-- Reviews Section -->
+<section class="reveal-item stagger-4">
+<div class="flex justify-between items-center mb-sm">
+<h2 class="font-headline-md text-headline-md text-on-surface">Đánh giá từ cộng đồng</h2>
+<button class="text-primary font-label-md text-label-md active:opacity-60 transition-opacity">Viết đánh giá</button>
+</div>
+<div class="space-y-lg">
+<!-- Review Item 1 -->
+<div class="pb-md">
+<div class="flex items-center gap-3 mb-sm">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-bold text-sm">AN</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">An Nguyễn</p>
+<div class="flex items-center gap-1">
+<span class="flex text-[12px] text-primary">
+<span class="material-symbols-outlined text-[14px] fill rating-star cursor-pointer" onclick="handleStarClick(this)" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px] fill rating-star cursor-pointer" onclick="handleStarClick(this)" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px] fill rating-star cursor-pointer" onclick="handleStarClick(this)" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px] fill rating-star cursor-pointer" onclick="handleStarClick(this)" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px] fill rating-star cursor-pointer" onclick="handleStarClick(this)" style="font-variation-settings: 'FILL' 1;">star</span>
+</span>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-wider">• 2 ngày trước</span>
+</div>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-sm leading-relaxed">Cà phê ngon, không gian yên tĩnh rất hợp để tập trung làm việc. Sẽ quay lại!</p>
+<div class="flex gap-2 overflow-x-auto hide-scrollbar">
+<img class="w-24 h-24 rounded-lg object-cover shadow-sm active:scale-95 transition-transform" data-alt="Cafe seat" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFYrKwKE2V0q0iTFCvUMqJr6BKohmc5kjx6WaYBSvrrkgWJ4y68Ym1Zq2x3_birTHQFUYMYIzSRl24UVwLsG1ICOn7mbohuZh8fjYudPLvpC_z_pLbqtGmwKvZTw56Ptb7Bhk2_09h_gwpK80tFu_B4mjwqrLZW2am4YJkFoSWW1Zc_RIZnJzl6JXZFfEP-PI9qGfhzOLvqbYehUmMa8vWhN559x81Pdu7p7ER_5-tFDbe1qMUOyJPIryd9HVwm8H5xHA3hx2Kjuo"/>
+<img class="w-24 h-24 rounded-lg object-cover shadow-sm active:scale-95 transition-transform" data-alt="Croissants" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTJQcVXdb3wm8RY2tVqJ6-6UwkL7f_tTpByA16zqHdDABIqhHsvwi4_BZoQD-Iv2QtjPACo46t1JAofHkFkX-AZ_ZINYZ6JwMhDqwzkhMUmgPWbtOcXvixVMY8oJj7XAkt1_sffrKK5UX6g77Y3B_tx8ge0Td6W5OG7eNAc59edJug5lcprbVDyn9GJG9P9ukiW9Nh8QGC9t-n8A5b11HR6s7yVyTteVrSiCeL_xzXgZ3EAIvyhXwRUPZuDTSjU1SVziLimh50q2w"/>
+</div>
+</div>
+</div>
+<button class="w-full mt-md py-3.5 rounded-xl border border-surface-variant text-secondary font-label-md text-label-md active:bg-surface-container-low transition-all">
+                Xem tất cả 240 đánh giá
+            </button>
+</section>
+</div>
+</main>
+<!-- Sticky Bottom CTA -->
+<div class="fixed bottom-0 left-0 w-full bg-white/90 backdrop-blur-xl px-margin-mobile py-4 shadow-[0px_-4px_24px_rgba(0,0,0,0.06)] flex gap-3 z-[70] rounded-t-2xl border-t border-surface-container transition-transform duration-300" id="sticky-bottom">
+<button class="flex-1 flex flex-col items-center justify-center gap-1 bg-surface-container-high py-3 rounded-2xl text-on-surface-variant pop-in active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[20px]">bookmark</span>
+<span class="text-[10px] font-bold tracking-widest">LƯU</span>
+</button>
+<button class="flex-[3] flex items-center justify-center gap-2 primary-gradient text-on-primary py-3.5 rounded-2xl font-headline-md text-headline-md pop-in active:scale-95 transition-all shadow-lg shadow-primary/25">
+<span class="material-symbols-outlined">directions</span>
+        Chỉ đường
+    </button>
+<button class="flex-1 flex flex-col items-center justify-center gap-1 bg-surface-container-high py-3 rounded-2xl text-on-surface-variant pop-in active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[20px]">calendar_today</span>
+<span class="text-[10px] font-bold tracking-widest">ĐẶT</span>
+</button>
+</div>
+<script>
+    // Hero Carousel Logic
+    let currentSlide = 0;
+    const totalSlides = 3;
+    const carousel = document.getElementById('hero-carousel');
+    const counter = document.getElementById('slide-counter');
+
+    function updateCarousel() {
+        const slides = carousel.querySelectorAll('.min-w-full');
+        slides.forEach((slide, index) => {
+            if (index === currentSlide) {
+                slide.classList.add('active-slide');
+            } else {
+                slide.classList.remove('active-slide');
+            }
+        });
+
+        // Use scroll for native snap feel if possible, or fallback to transform
+        carousel.scrollTo({
+            left: currentSlide * carousel.offsetWidth,
+            behavior: 'smooth'
+        });
+        
+        // Update dots
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.getElementById(`dot-${i}`);
+            if (i === currentSlide) {
+                dot.classList.remove('bg-on-surface-variant/30', 'w-2');
+                dot.classList.add('bg-primary', 'w-6');
+            } else {
+                dot.classList.remove('bg-primary', 'w-6');
+                dot.classList.add('bg-on-surface-variant/30', 'w-2');
+            }
+        }
+        counter.innerText = currentSlide + 1;
+    }
+
+    // Manual scroll listener to sync dots
+    carousel.addEventListener('scroll', () => {
+        const index = Math.round(carousel.scrollLeft / carousel.offsetWidth);
+        if (index !== currentSlide) {
+            currentSlide = index;
+            updateCarousel();
+        }
+    });
+
+    // Auto-advance
+    let autoPlay = setInterval(() => {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateCarousel();
+    }, 5000);
+
+    // Pause autoplay on touch
+    carousel.addEventListener('touchstart', () => clearInterval(autoPlay));
+
+    // Star Click Micro-interaction
+    function handleStarClick(el) {
+        el.classList.remove('star-active');
+        void el.offsetWidth; // Trigger reflow
+        el.classList.add('star-active');
+    }
+
+    // Header & Sticky CTA Transition Logic
+    const header = document.getElementById('main-header');
+    const heroSection = document.getElementById('hero-section');
+    const stickyBottom = document.getElementById('sticky-bottom');
+    let lastScrollTop = 0;
+
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const heroHeight = heroSection.offsetHeight;
+
+        // Header Fade Transition
+        if (scrollTop > heroHeight - 80) {
+            header.classList.add('header-scrolled');
+        } else {
+            header.classList.remove('header-scrolled');
+        }
+
+        // Sticky Bottom Hide/Show on Scroll
+        if (scrollTop > lastScrollTop && scrollTop > 300) {
+            // Scrolling down
+            stickyBottom.style.transform = 'translateY(110%)';
+        } else {
+            // Scrolling up
+            stickyBottom.style.transform = 'translateY(0)';
+        }
+        
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    }, { passive: true });
+</script>
+</body></html>

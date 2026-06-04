@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-tab {
+            color: #ab3500;
+            border-bottom: 3px solid #ab3500;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#eff1f3",
+                        "on-secondary-container": "#2a5782",
+                        "primary-fixed": "#ffdbd0",
+                        "on-secondary-fixed": "#001d35",
+                        "secondary-container": "#a2cdff",
+                        "primary-fixed-dim": "#ffb59d",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#184974",
+                        "outline": "#8d7168",
+                        "surface": "#f7f9fb",
+                        "inverse-surface": "#2d3133",
+                        "tertiary-fixed-dim": "#4fdbc8",
+                        "error": "#ba1a1a",
+                        "primary-container": "#ff6b35",
+                        "on-surface-variant": "#594139",
+                        "tertiary": "#006b5f",
+                        "on-tertiary-container": "#003832",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#e6e8ea",
+                        "on-primary-fixed": "#390c00",
+                        "on-primary": "#ffffff",
+                        "background": "#f7f9fb",
+                        "tertiary-fixed": "#71f8e4",
+                        "on-primary-container": "#5f1900",
+                        "inverse-primary": "#ffb59d",
+                        "surface-container": "#eceef0",
+                        "secondary-fixed-dim": "#a0cafc",
+                        "on-primary-fixed-variant": "#832600",
+                        "secondary-fixed": "#d1e4ff",
+                        "surface-tint": "#ab3500",
+                        "on-error-container": "#93000a",
+                        "primary": "#ab3500",
+                        "secondary": "#35618d",
+                        "surface-container-low": "#f2f4f6",
+                        "outline-variant": "#e1bfb5",
+                        "surface-bright": "#f7f9fb",
+                        "tertiary-container": "#00ac9b",
+                        "on-secondary": "#ffffff",
+                        "surface-dim": "#d8dadc",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-tertiary-fixed-variant": "#005048",
+                        "on-tertiary-fixed": "#00201c",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-variant": "#e0e3e5",
+                        "on-background": "#191c1e",
+                        "on-surface": "#191c1e",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "md": "16px",
+                        "margin-desktop": "32px",
+                        "lg": "24px",
+                        "xxl": "48px",
+                        "xs": "4px",
+                        "margin-mobile": "16px",
+                        "xl": "32px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-body-md text-on-surface overflow-x-hidden pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md shadow-sm h-16 flex items-center justify-between px-md">
+<div class="flex items-center gap-4">
+<button class="active:scale-95 transition-transform duration-200 text-primary">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-display-lg text-headline-lg-mobile tracking-tighter text-primary">ChillPlace</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="active:scale-95 transition-transform duration-200 text-primary">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="active:scale-95 transition-transform duration-200 text-primary">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="mt-16 px-gutter max-w-7xl mx-auto py-lg">
+<!-- Header Section -->
+<div class="flex flex-col gap-sm mb-lg">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Đã lưu của bạn</h2>
+<p class="text-on-surface-variant font-body-md">Lưu giữ những địa điểm và bài viết bạn yêu thích nhất tại thành phố.</p>
+</div>
+<!-- Dynamic Tabs -->
+<nav class="flex border-b border-outline-variant/30 mb-lg sticky top-16 bg-background z-40">
+<button class="flex-1 py-4 font-label-md text-label-md active-tab transition-all" id="tab-places" onclick="switchTab('places')">
+                Địa điểm
+            </button>
+<button class="flex-1 py-4 font-label-md text-label-md text-on-surface-variant transition-all" id="tab-articles" onclick="switchTab('articles')">
+                Bài viết
+            </button>
+</nav>
+<!-- Places Content Section -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg" id="content-places">
+<!-- Place Card 1 -->
+<div class="group relative overflow-hidden bg-surface rounded-[24px] shadow-[0px_4px_20px_rgba(31,78,121,0.08)] transition-all hover:shadow-[0px_8px_24px_rgba(255,107,53,0.15)]">
+<div class="aspect-[16/9] w-full overflow-hidden">
+<img alt="Cafe Sân Thượng" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A vibrant rooftop cafe in a bustling Asian city at sunset. The lighting is golden and warm, highlighting the high-energy urban atmosphere. Stylish young people are seen socializing in the background. The aesthetic is clean and modern with lush greenery and sleek furniture, captured in a high-fidelity cinematic style that reflects the ChillPlace brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeoPSMGQDtgW1YvBlfkVgopT_jOPdh0vTMlPzeRFFEeeiMzFSijB7ARJwrQnuWyteJ7KEml3juOxXr1FmCpOYGSSEpds9TU4PXVAbWGYqXDvIMtwSci04jS5CC4aS6Gn5VlvEJHUsPmjWAs3D6OkJPLyJW85PAzCZrZx-SbO00u1iVkcLJeDZDWDiTIU52pvf5zVV8TOOkWf0HVh8jIM-HjmdJNLQhrVpuQDuGC6ndjZWXPUJ9zMgs_2b2-DSpkopg6-P_oJgB3h0"/>
+<div class="absolute top-4 left-4">
+<span class="bg-primary px-3 py-1 rounded-full text-white font-label-sm text-label-sm shadow-md">Cafe</span>
+</div>
+<button class="absolute top-4 right-4 bg-white/20 backdrop-blur-md p-2 rounded-full text-white hover:bg-white/40 transition-colors">
+<span class="material-symbols-outlined" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="p-md">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Skyline Brew &amp; Chill</h3>
+<div class="flex items-center gap-1 text-on-surface-variant mb-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="location_on">location_on</span>
+<span class="font-label-md text-label-md">Quận 1, TP. Hồ Chí Minh</span>
+</div>
+<div class="flex justify-between items-center mt-md">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md">4.9 (128)</span>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-xl font-label-md text-label-md shadow-sm active:scale-95 transition-transform">Xem chi tiết</button>
+</div>
+</div>
+</div>
+<!-- Place Card 2 -->
+<div class="group relative overflow-hidden bg-surface rounded-[24px] shadow-[0px_4px_20px_rgba(31,78,121,0.08)] transition-all hover:shadow-[0px_8px_24px_rgba(255,107,53,0.15)]">
+<div class="aspect-[16/9] w-full overflow-hidden">
+<img alt="Urban Hidden Library" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A hidden architectural gem of a library in a modern concrete building. The space features large glass windows reflecting city lights, with warm accent lighting on rows of colorful books. The atmosphere is quiet yet energetic, using deep trust blue and soft orange highlights. High-contrast photography with a clean, corporate modern edge." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAO2EiLXh3v5KzRqsLaln6FeqrvL2wZtDcUPJw4ZHZU0sb0CCfWBuKzv03X8Wuk82CSX3BRUtV6cc4rLr5Idy2xnCfB2krEWhEX0rTqJaJnuu7wLqDMJ2DiyTkjgY57wE1eOQIzijN5c8r5MaEDB0pXz19Lcjo3J4c1XGtCQE4vIjBWgI8N7kl422GrXDs-MpfHiL9Xf5OMwAm2oQXnj33X7RXuV0k3P00YH-nV0fw4a7Cx8WSCvy4VninNQ7d21WTq0-Ut_xXIVjU"/>
+<div class="absolute top-4 left-4">
+<span class="bg-[#14B8A6] px-3 py-1 rounded-full text-white font-label-sm text-label-sm shadow-md">Thư viện</span>
+</div>
+<button class="absolute top-4 right-4 bg-white/20 backdrop-blur-md p-2 rounded-full text-white hover:bg-white/40 transition-colors">
+<span class="material-symbols-outlined" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="p-md">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">The Reading Nook</h3>
+<div class="flex items-center gap-1 text-on-surface-variant mb-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="location_on">location_on</span>
+<span class="font-label-md text-label-md">Ba Đình, Hà Nội</span>
+</div>
+<div class="flex justify-between items-center mt-md">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md">4.7 (85)</span>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-xl font-label-md text-label-md shadow-sm active:scale-95 transition-transform">Xem chi tiết</button>
+</div>
+</div>
+</div>
+<!-- Place Card 3 -->
+<div class="group relative overflow-hidden bg-surface rounded-[24px] shadow-[0px_4px_20px_rgba(31,78,121,0.08)] transition-all hover:shadow-[0px_8px_24px_rgba(255,107,53,0.15)]">
+<div class="aspect-[16/9] w-full overflow-hidden">
+<img alt="Yoga Studio Urban" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A minimalist yoga studio with large panoramic windows overlooking a vibrant city park. Morning soft light fills the space, creating a serene and community-driven mood. The palette uses soft whites and teal accents. Professional high-end photography focusing on the tranquility of the space within the kinetic city environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCI1z77V022M4GlyerbTT_qmJEnv-lrbY9x53nSmReaFODuyQW5nz5GHre6TCFMVY6oNAu9-MnS3woVOwutG9oxRTaEExjDlWWqM9_t-hbhXSSDWpxEMva3Nl5qPLjaB7MgBPL3YofmxczDxPATb9nYwMF5ijXrOoUX52-ReGfm3rZR8cxNOk5sYEy_8n0044m35BSaHjY-JmU8cDvQiXyokNgHFhbJ_u_73WNn5EHocJYMsWNHFEHThr0Iy3hw6OkgaOT4wpt6PQs"/>
+<div class="absolute top-4 left-4">
+<span class="bg-secondary px-3 py-1 rounded-full text-white font-label-sm text-label-sm shadow-md">Wellness</span>
+</div>
+<button class="absolute top-4 right-4 bg-white/20 backdrop-blur-md p-2 rounded-full text-white hover:bg-white/40 transition-colors">
+<span class="material-symbols-outlined" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="p-md">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Zen Urban Space</h3>
+<div class="flex items-center gap-1 text-on-surface-variant mb-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="location_on">location_on</span>
+<span class="font-label-md text-label-md">Quận 3, TP. Hồ Chí Minh</span>
+</div>
+<div class="flex justify-between items-center mt-md">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md">5.0 (42)</span>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-xl font-label-md text-label-md shadow-sm active:scale-95 transition-transform">Xem chi tiết</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Articles Content Section (Hidden by default) -->
+<section class="hidden flex flex-col items-center justify-center py-24 text-center" id="content-articles">
+<div class="mb-lg relative">
+<div class="w-48 h-48 bg-primary/10 rounded-full flex items-center justify-center animate-pulse">
+<span class="material-symbols-outlined text-[80px] text-primary/40" data-icon="article">article</span>
+</div>
+<div class="absolute -bottom-4 -right-4 bg-surface-container p-4 rounded-2xl shadow-lg transform rotate-12">
+<span class="material-symbols-outlined text-secondary" data-icon="edit_note">edit_note</span>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-sm">Bạn chưa lưu bài viết nào</h3>
+<p class="text-on-surface-variant max-w-sm mb-lg">Khám phá những chia sẻ thú vị từ cộng đồng và lưu lại để đọc sau nhé!</p>
+<button class="bg-primary-container text-on-primary-container px-8 py-4 rounded-full font-headline-md text-body-lg shadow-lg hover:shadow-xl active:scale-95 transition-all">
+                Khám phá ngay
+            </button>
+</section>
+</main>
+<!-- FAB for Create -->
+<div class="fixed bottom-24 right-6 z-50">
+<button class="w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center shadow-[0px_8px_24px_rgba(255,107,53,0.3)] active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[32px]" data-icon="add">add</span>
+</button>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface border-t border-outline-variant/30 shadow-[0px_-4px_20px_rgba(31,78,121,0.08)] rounded-t-xl px-2 py-3 pb-safe flex justify-around items-center">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-label-sm text-label-sm">Feed</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-label-sm text-label-sm">Map</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span class="font-label-sm text-label-sm">Create</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-label-sm text-label-sm">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary bg-primary-container/10 rounded-full py-1 px-3 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<script>
+        function switchTab(tab) {
+            const placesTab = document.getElementById('tab-places');
+            const articlesTab = document.getElementById('tab-articles');
+            const placesContent = document.getElementById('content-places');
+            const articlesContent = document.getElementById('content-articles');
+
+            if (tab === 'places') {
+                placesTab.classList.add('active-tab');
+                placesTab.classList.remove('text-on-surface-variant');
+                articlesTab.classList.remove('active-tab');
+                articlesTab.classList.add('text-on-surface-variant');
+                
+                placesContent.classList.remove('hidden');
+                articlesContent.classList.add('hidden');
+            } else {
+                articlesTab.classList.add('active-tab');
+                articlesTab.classList.remove('text-on-surface-variant');
+                placesTab.classList.remove('active-tab');
+                placesTab.classList.add('text-on-surface-variant');
+
+                articlesContent.classList.remove('hidden');
+                placesContent.classList.add('hidden');
+            }
+        }
+    </script>
+</body></html>

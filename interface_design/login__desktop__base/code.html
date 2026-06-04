@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Đăng nhập | ChillPlace</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#006b5f",
+                    "primary-container": "#ff6b35",
+                    "inverse-on-surface": "#eff1f3",
+                    "tertiary-fixed": "#71f8e4",
+                    "inverse-surface": "#2d3133",
+                    "secondary-container": "#a2cdff",
+                    "secondary": "#35618d",
+                    "background": "#f7f9fb",
+                    "surface-bright": "#f7f9fb",
+                    "error-container": "#ffdad6",
+                    "outline-variant": "#e1bfb5",
+                    "on-error-container": "#93000a",
+                    "on-primary": "#ffffff",
+                    "surface-variant": "#e0e3e5",
+                    "error": "#ba1a1a",
+                    "surface-container-high": "#e6e8ea",
+                    "on-primary-container": "#5f1900",
+                    "primary-fixed-dim": "#ffb59d",
+                    "primary-fixed": "#ffdbd0",
+                    "on-tertiary": "#ffffff",
+                    "surface-container": "#eceef0",
+                    "on-tertiary-container": "#003832",
+                    "on-surface-variant": "#594139",
+                    "on-background": "#191c1e",
+                    "tertiary-fixed-dim": "#4fdbc8",
+                    "surface-container-highest": "#e0e3e5",
+                    "secondary-fixed-dim": "#a0cafc",
+                    "tertiary-container": "#00ac9b",
+                    "on-primary-fixed": "#390c00",
+                    "on-secondary": "#ffffff",
+                    "surface-container-low": "#f2f4f6",
+                    "on-secondary-fixed-variant": "#184974",
+                    "primary": "#ab3500",
+                    "surface-tint": "#ab3500",
+                    "on-secondary-fixed": "#001d35",
+                    "outline": "#8d7168",
+                    "on-secondary-container": "#2a5782",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface": "#191c1e",
+                    "on-primary-fixed-variant": "#832600",
+                    "surface-dim": "#d8dadc",
+                    "secondary-fixed": "#d1e4ff",
+                    "inverse-primary": "#ffb59d",
+                    "on-tertiary-fixed": "#00201c",
+                    "on-error": "#ffffff",
+                    "surface": "#f7f9fb",
+                    "on-tertiary-fixed-variant": "#005048"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "xxl": "48px",
+                    "margin-desktop": "32px",
+                    "margin-mobile": "16px",
+                    "gutter": "16px",
+                    "lg": "24px",
+                    "md": "16px",
+                    "sm": "8px",
+                    "xl": "32px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        input:focus {
+            box-shadow: 0 0 0 2px rgba(171, 53, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-background overflow-hidden h-screen">
+<main class="flex h-full w-full">
+<!-- Left Side: Lifestyle Image Section -->
+<section class="hidden lg:flex lg:w-3/5 relative overflow-hidden bg-inverse-surface">
+<div class="absolute inset-0 z-0">
+<img alt="ChillPlace Lifestyle" class="w-full h-full object-cover opacity-80" data-alt="A cinematic, high-energy scene of a sun-drenched modern cafe interior with high ceilings and lush indoor plants. Young professionals and creators are seen in soft-focus motion, interacting within a space defined by warm wood textures and vibrant orange accents. The lighting is golden and exuberant, capturing a sophisticated yet kinetic atmosphere consistent with a community-driven lifestyle brand. Deep shadows and bright highlights create a high-contrast, premium aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1dR-mfL_wBZClInudz1drnkFstUWEeSZfRyzzDjjxIH0QGsTBKdJEesejBzzk3eNK8uLJUrCGra8VNtOdg_wAZ8lEq8VQJkLqvSHNayZg6qfO5dcjYQuOeRJ6anfwECaATMGbh00Twg5kDMeJSufP7yxbviwcp3NbiPN2rGpNiGpThk3vOinNYrp-yPxTz2BEVx5RAYaM9VcnVsfACVpzxnxAE8YUSsymjUXKyw_UQ48J-V6rS2-rns1El8nrDpZY0Itn6IPMJjU"/>
+<!-- Brand Overlay Gradient -->
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+</div>
+<!-- Content Overlay -->
+<div class="relative z-10 w-full h-full flex flex-col justify-between p-xl">
+<!-- Logo -->
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-fixed text-4xl" style="font-variation-settings: 'FILL' 1;">landscape</span>
+<span class="font-display-lg text-headline-lg text-white">ChillPlace</span>
+</div>
+<!-- Narrative -->
+<div class="max-w-xl">
+<h1 class="font-display-lg text-display-lg text-white mb-md leading-tight">
+                        Khám phá không gian<br/>thuộc về chính bạn.
+                    </h1>
+<p class="font-body-lg text-white/90 mb-xl max-w-lg">
+                        Tham gia cộng đồng ChillPlace để tìm kiếm, chia sẻ và trải nghiệm những địa điểm tuyệt vời nhất xung quanh bạn.
+                    </p>
+<!-- Floating Quote/Status Card -->
+<div class="glass-effect p-md rounded-xl inline-flex items-center gap-md animate-pulse">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary-fixed">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="Close-up portrait of a smiling young adult with a trendy aesthetic, wearing a mustard yellow beanie. The lighting is warm and natural, suggesting an outdoor or sunlit indoor environment. The image is crisp and professional, reflecting the high-energy social-mapping vibe of the brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsKlP3tnd8fEl7fkd_639bwBPNl7bYru79H1wZpreqAyPCoCwE6juLo1-33AIxiA6G6Q4XgxOT6_pAGmNE9F3irKOaEbkedCDq5Yv6Gir57tduPK8B1t-QQACboGgPfx7CGuGylZ2fTTPqKqzrCVbN0KPFdJ0LTUsaqrNIdhviT2BRPiqtXv-4_ah_p2GfFy81LQ2cZBheUFcjuBBO2GhxtaBgrR_KqGTntwvuu4_n7arUbrebtpyKB_f5wQQXq9KYHdac7L372eA"/>
+</div>
+<div>
+<p class="font-label-md text-white">Minh Anh vừa check-in</p>
+<p class="text-white/70 text-sm">Cà phê Workshop, Quận 1</p>
+</div>
+</div>
+</div>
+<!-- Footer Info -->
+<div class="flex gap-xl text-white/60 text-sm font-label-sm">
+<span>© 2024 ChillPlace Inc.</span>
+<a class="hover:text-white transition-colors" href="#">Điều khoản</a>
+<a class="hover:text-white transition-colors" href="#">Bảo mật</a>
+</div>
+</div>
+</section>
+<!-- Right Side: Login Form Section -->
+<section class="w-full lg:w-2/5 flex flex-col justify-center items-center px-margin-mobile md:px-margin-desktop bg-surface-lowest">
+<div class="w-full max-w-[440px]">
+<!-- Mobile Logo (Hidden on Desktop) -->
+<div class="lg:hidden flex items-center gap-2 mb-xl">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">landscape</span>
+<span class="font-display-lg text-headline-lg text-primary">ChillPlace</span>
+</div>
+<div class="mb-xl">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-sm">Chào mừng trở lại</h2>
+<p class="font-body-md text-on-surface-variant">Vui lòng nhập thông tin để đăng nhập vào tài khoản của bạn.</p>
+</div>
+<!-- Social Logins -->
+<div class="grid grid-cols-2 gap-md mb-xl">
+<button class="flex items-center justify-center gap-sm py-md px-lg border border-outline-variant rounded-xl font-label-md text-on-surface hover:bg-surface-container-low transition-all active:scale-[0.98]">
+<svg class="w-5 h-5" viewbox="0 0 24 24">
+<path d="M12.48 10.92v3.28h7.84c-.24 1.84-.9 3.14-1.92 4.16-1.2 1.2-3.08 2.4-6.32 2.4-5.12 0-9.12-4.14-9.12-9.26s4-9.26 9.12-9.26c2.8 0 4.94 1.1 6.64 2.72l2.32-2.32C18.8 1.48 15.96 0 12.48 0 5.86 0 .3 5.38.3 12s5.56 12 12.18 12c3.56 0 6.24-1.18 8.32-3.36 2.16-2.16 2.84-5.22 2.84-7.66 0-.74-.06-1.42-.18-2.06H12.48z" fill="#EA4335"></path>
+</svg>
+                        Google
+                    </button>
+<button class="flex items-center justify-center gap-sm py-md px-lg border border-outline-variant rounded-xl font-label-md text-on-surface hover:bg-surface-container-low transition-all active:scale-[0.98]">
+<svg class="w-5 h-5" viewbox="0 0 24 24">
+<path d="M17.05 20.28c-.96.95-2.1 1.72-3.4 1.72-1.31 0-1.85-.81-3.64-.81-1.79 0-2.39.8-3.64.8-1.26 0-2.43-.78-3.38-1.74C1.04 18.25 0 15.27 0 12.57c0-2.73 1.05-5.32 2.87-6.85 1.02-.85 2.31-1.3 3.61-1.3 1.34 0 2.06.51 3.52.51 1.43 0 1.93-.5 3.55-.5 1.33 0 2.58.46 3.59 1.3 1.01.83 1.74 1.94 2.1 3.19-2.58 1.07-2.16 4.67.43 5.76-.55 1.43-1.42 2.77-2.62 3.6zm-3.04-16.82c0-1.04.41-2.04 1.12-2.75.72-.71 1.72-1.13 2.74-1.13.01.07.02.15.02.22 0 1.02-.41 2.01-1.12 2.72-.72.72-1.73 1.14-2.76 1.14-.01-.07-.02-.14-.02-.2z" fill="currentColor"></path>
+</svg>
+                        Apple
+                    </button>
+</div>
+<div class="relative mb-xl">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-outline-variant"></div>
+</div>
+<div class="relative flex justify-center text-sm">
+<span class="px-md bg-surface-lowest text-on-surface-variant font-label-sm uppercase tracking-wider">Hoặc sử dụng email</span>
+</div>
+</div>
+<!-- Login Form -->
+<form class="space-y-lg" id="loginForm">
+<div class="space-y-sm">
+<label class="font-label-md text-on-surface" for="email">Địa chỉ Email</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">mail</span>
+<input class="w-full pl-[48px] pr-md py-md bg-surface-container-low border border-outline-variant rounded-xl focus:ring-primary focus:border-primary transition-all text-on-surface outline-none" id="email" placeholder="name@example.com" type="email"/>
+</div>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between">
+<label class="font-label-md text-on-surface" for="password">Mật khẩu</label>
+<a class="font-label-md text-primary hover:text-on-primary-fixed-variant transition-colors" href="#">Quên mật khẩu?</a>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">lock</span>
+<input class="w-full pl-[48px] pr-[48px] py-md bg-surface-container-low border border-outline-variant rounded-xl focus:ring-primary focus:border-primary transition-all text-on-surface outline-none" id="password" placeholder="••••••••" type="password"/>
+<button class="absolute right-md top-1/2 -translate-y-1/2 text-outline hover:text-on-surface transition-colors" onclick="togglePassword()" type="button">
+<span class="material-symbols-outlined" id="toggleIcon">visibility</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<input class="w-5 h-5 text-primary border-outline-variant rounded-md focus:ring-primary" id="remember" type="checkbox"/>
+<label class="font-label-md text-on-surface-variant cursor-pointer select-none" for="remember">Ghi nhớ đăng nhập</label>
+</div>
+<button class="w-full bg-primary text-white font-label-md py-md rounded-xl hover:bg-on-primary-fixed-variant shadow-lg shadow-primary/20 transition-all active:scale-[0.98] mt-md" type="submit">
+                        Đăng nhập
+                    </button>
+</form>
+<p class="mt-xl text-center font-body-md text-on-surface-variant">
+                    Chưa có tài khoản? 
+                    <a class="text-primary font-label-md hover:underline underline-offset-4 ml-xs" href="#">Đăng ký ngay</a>
+</p>
+</div>
+</section>
+</main>
+<script>
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.getElementById('toggleIcon');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.textContent = 'visibility_off';
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.textContent = 'visibility';
+            }
+        }
+
+        // Simple form interaction
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            
+            btn.disabled = true;
+            btn.innerHTML = '<span class="flex items-center justify-center gap-sm"><span class="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></span> Đang xử lý...</span>';
+            
+            setTimeout(() => {
+                btn.disabled = false;
+                btn.textContent = originalText;
+                alert('Chào mừng bạn đến với ChillPlace! Tính năng đăng nhập đang được phát triển.');
+            }, 1500);
+        });
+
+        // Add some atmospheric parallax on the image for a high-end feel
+        document.addEventListener('mousemove', (e) => {
+            const img = document.querySelector('section img');
+            if (!img) return;
+            const x = (window.innerWidth - e.pageX) / 100;
+            const y = (window.innerHeight - e.pageY) / 100;
+            img.style.transform = `scale(1.1) translate(${x}px, ${y}px)`;
+        });
+    </script>
+</body></html>

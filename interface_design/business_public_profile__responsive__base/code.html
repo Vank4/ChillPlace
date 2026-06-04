@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ChillPlace - Hồ sơ doanh nghiệp</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-on-surface": "#eff1f3",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff",
+                    "outline-variant": "#e1bfb5",
+                    "on-surface": "#191c1e",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-high": "#e6e8ea",
+                    "secondary": "#35618d",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#2d3133",
+                    "on-background": "#191c1e",
+                    "on-secondary-fixed-variant": "#184974",
+                    "on-tertiary-container": "#003832",
+                    "secondary-container": "#a2cdff",
+                    "outline": "#8d7168",
+                    "surface-tint": "#ab3500",
+                    "on-primary-fixed": "#390c00",
+                    "on-secondary-fixed": "#001d35",
+                    "primary-fixed": "#ffdbd0",
+                    "primary-fixed-dim": "#ffb59d",
+                    "on-tertiary-fixed": "#00201c",
+                    "primary-container": "#ff6b35",
+                    "on-error": "#ffffff",
+                    "surface-bright": "#f7f9fb",
+                    "on-surface-variant": "#594139",
+                    "surface-container-low": "#f2f4f6",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#a0cafc",
+                    "on-secondary-fixed": "#001d35",
+                    "on-primary-container": "#5f1900",
+                    "primary": "#ab3500",
+                    "inverse-primary": "#ffb59d",
+                    "tertiary-container": "#00ac9b",
+                    "secondary-fixed": "#d1e4ff",
+                    "on-tertiary-fixed-variant": "#005048",
+                    "on-primary-fixed-variant": "#832600",
+                    "surface-container-highest": "#e0e3e5",
+                    "tertiary": "#006b5f",
+                    "surface-variant": "#e0e3e5",
+                    "tertiary-fixed": "#71f8e4",
+                    "surface-container": "#eceef0",
+                    "background": "#f7f9fb",
+                    "tertiary-fixed-dim": "#4fdbc8",
+                    "on-error-container": "#93000a",
+                    "error-container": "#ffdad6",
+                    "surface": "#f7f9fb",
+                    "surface-dim": "#d8dadc"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "32px",
+                    "xxl": "48px",
+                    "md": "16px",
+                    "xl": "32px",
+                    "gutter": "16px",
+                    "xs": "4px",
+                    "sm": "8px",
+                    "margin-mobile": "16px",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-surface-dim shadow-sm flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary font-bold" data-icon="explore">explore</span>
+<h1 class="font-headline-lg text-headline-lg font-black text-primary dark:text-primary-fixed">ChillPlace</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:opacity-80 transition-opacity" data-icon="search">search</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img alt="User profile" data-alt="A professional headshot of a young adult with a friendly expression, set against a clean, softly blurred urban background. The lighting is natural and bright, emphasizing a modern and approachable personality consistent with a high-end social networking application. The color palette is warm and inviting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqmJw5xhHnbY0GdWJy8dnytglaErKIyZdhqzcGWwP0X5X9ISI9QyTmQkdDNsnYwa5VwV7MapuC3-2EsX9Z1ZAlFFL3QKwScUKHtO6aV-exU2T0_uaeR4gRgSGS6uC9-PK6QccXdOSosIUNlPDMsXilyts8peF0Z4r9IFW6BZ9VS-Cn_KJewMFaUuEkufnuW3cK7ARBU6LEgWRzFNCt7sSHhKX3Gc-UwKp-7fO9uxqrehJmZhm2pFmvD_b8jNjUWDjKX4yaxcuC424"/>
+</div>
+</div>
+</header>
+<main class="pt-16 pb-24">
+<!-- Hero Media Section (Asymmetric) -->
+<section class="relative h-[353px] md:h-[530px] overflow-hidden">
+<div class="absolute inset-0 grid grid-cols-4 md:grid-cols-12 h-full">
+<div class="col-span-3 md:col-span-8 h-full relative">
+<img class="w-full h-full object-cover" data-alt="The interior of a high-end modern cafe with floor-to-ceiling windows, minimalist furniture, and lush green plants. The lighting is warm and kinetic, capturing the vibrant atmosphere of a busy afternoon. The aesthetic is clean, corporate, and exuberantly professional with a high-contrast edge." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3QuCEgo72dE7w6BqoW0X3Tlc252JUBXu_DTi-IOl4-I5nIB3hX00HeTlFIyF6eS3O8QpotKvxeFShOFGUjqiLk23iNT1jWWye-SxKpJYvtIguR0ubYC5_vL49KIybsRs33PwYvXLCmJQOr4XYIzUYiiKBHdwbLzLVsWG0ByTW9E8iP0z0CHPFEr-Lt5kljytTqcaKQCOTtFwhPZWIWnoDiNTHrWjysGOFNZ1-608bRTpNzbkpblA-PsOkBqBNTdoQbu9zZ84Gr-I"/>
+</div>
+<div class="col-span-1 md:col-span-4 grid grid-rows-2 h-full">
+<img class="w-full h-full object-cover border-l-4 border-surface" data-alt="A close-up shot of a specialty latte with intricate latte art, served on a textured ceramic saucer. The background features a soft bokeh of a busy cafe. The colors are rich and saturated, emphasizing the premium quality of the beverage and the community-driven vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4p9DcwQSZoZMES7yShpKY8-pGv5qyp0f_PrJtlS1vB8hhoaKt337ze3LsGMYKW1tFKdPaIGnq3GlsJFv4siaCLS2RcyiE5fuGcTejbjb8-PgzQFFalMT8FUHiIR6fkZiKpUpqzj19O1at8Gv1rkVIXEs2m7FSuNFxw4XFlxSuHQWQ8K_EcK62s2zceRcv8jIRxozlF9nYdIujMA7UIp4hInrEsBFx-T8KWxyLGVxPd5DNfq0zwOKCZ51h6PFuWxjX1qbqlJw9G-Y"/>
+<img class="w-full h-full object-cover border-l-4 border-t-4 border-surface" data-alt="A group of diverse young adults laughing and talking in a stylish coffee shop setting. The scene is candid and high-energy, reflecting a kinetic social environment. The lighting is high-key and bright, aligned with a modern corporate light-mode design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDn_jDRQuXnCc5cI8ruAZD2rJ7tZRz8iQLbHNe7kWk2F5rIlwqvQH962hGuV-0OpK03tBCesI_Lug9JgR40si8lntD4mVPjCOXjknDUBHJgVmuDX0vFORJs27o1Qih0Ux6EINbh8Th9GV8qb-MzV6gIWGoAxcnS-KG3cV8-s-OQQMGsCB3rBOtT2YwKzCbukK1hW-jGp4j08uw8iGz7AoH_VjXtTGUJyutcYFBE86NgtyCP2QkIbRPmAFt9Uz1g30kRZrprcX1Grhg"/>
+</div>
+</div>
+<div class="absolute bottom-md left-margin-mobile md:left-margin-desktop">
+<span class="inline-flex items-center px-sm py-xs bg-tertiary text-on-tertiary rounded-full font-label-sm text-label-sm mb-sm">
+<span class="material-symbols-outlined text-[14px] mr-1" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+                    Verified Partner
+                </span>
+</div>
+</section>
+<!-- Profile Info Overlay -->
+<section class="px-margin-mobile md:px-margin-desktop -mt-12 relative z-10">
+<div class="bg-surface p-lg rounded-xl shadow-xl border border-surface-container-highest flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div class="flex flex-col gap-xs">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">ChillPlace Business</h2>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary" data-icon="location_on">location_on</span>
+                        123 Đường Láng, Đống Đa, Hà Nội
+                    </p>
+<div class="flex items-center gap-md mt-sm">
+<div class="flex items-center text-primary-container">
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md ml-1">4.9 (1.2k đánh giá)</span>
+</div>
+<span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+<span class="font-label-md text-label-md text-tertiary">Đang mở cửa</span>
+</div>
+</div>
+<div class="flex gap-sm">
+<button class="bg-primary-container text-on-primary-container font-label-md text-label-md px-xl py-md rounded-xl hover:opacity-90 active:scale-95 transition-all shadow-lg flex items-center gap-sm">
+<span class="material-symbols-outlined" data-icon="directions">directions</span>
+                        Chỉ đường
+                    </button>
+<button class="bg-secondary text-on-secondary font-label-md text-label-md px-md py-md rounded-xl hover:opacity-90 active:scale-95 transition-all shadow-md">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Bento Grid Content -->
+<section class="px-margin-mobile md:px-margin-desktop mt-xl grid grid-cols-1 md:grid-cols-12 gap-lg">
+<!-- Left Column: About & Map -->
+<div class="md:col-span-4 space-y-lg">
+<div class="bg-surface-container-low p-lg rounded-xl shadow-sm border border-surface-container">
+<h3 class="font-headline-md text-headline-md mb-md">Giới thiệu</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                        ChillPlace Business là không gian sáng tạo kết hợp giữa cà phê đặc sản và trạm làm việc hiện đại. Chúng tôi mang đến trải nghiệm "vibe-heavy" cho cộng đồng Gen-Z và những người yêu thích sự chuyển động.
+                    </p>
+<div class="mt-lg space-y-sm">
+<div class="flex items-center gap-md text-on-surface-variant">
+<span class="material-symbols-outlined text-primary" data-icon="schedule">schedule</span>
+<span class="font-body-md text-body-md">08:00 - 22:30</span>
+</div>
+<div class="flex items-center gap-md text-on-surface-variant">
+<span class="material-symbols-outlined text-primary" data-icon="call">call</span>
+<span class="font-body-md text-body-md">098 765 4321</span>
+</div>
+</div>
+</div>
+<div class="rounded-xl overflow-hidden shadow-sm border border-surface-container h-64 relative">
+<img class="w-full h-full object-cover" data-alt="A stylized digital map interface showing a specific location in Hanoi, Vietnam. The map uses a modern dark-mode aesthetic with vibrant orange and teal accents for points of interest. It is designed to look like a high-end SaaS navigation component with clear, high-contrast markers." data-location="Hanoi" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXGkJjc1Dd3kpJfyspe7Y4uwren24yxCmd4l-PQ7FW8WrpPHFpZJx6YL-areyULLKSQuhFk-uwt3Db556IpS2fQL0w6dTJOc0XpZUvKK1SG1vv1xLFJEfRvHRbNtWYy_fYGfDfxWLyh-5FPf4QIWTiwvAHiDRuoDbSlVrxhWng0djLlH12t_h_kWyQgD47KeaqgWrrUadf5alGRk2lNknrLwEwjeBVxVj7zl1YhaoDIwSB_uvgIElHpvzOUWBOulgzxi74WMH7WX4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-md">
+<span class="text-white font-label-md text-label-md flex items-center gap-xs">
+<span class="material-symbols-outlined" data-icon="near_me">near_me</span>
+                            Cách bạn 1.2km
+                        </span>
+</div>
+</div>
+</div>
+<!-- Right Column: Menu & Reviews -->
+<div class="md:col-span-8 space-y-lg">
+<!-- Menu Horizontal Scroll -->
+<div class="space-y-md">
+<div class="flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md">Thực đơn nổi bật</h3>
+<button class="text-primary font-label-md text-label-md flex items-center gap-xs">
+                            Xem tất cả
+                            <span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<div class="flex gap-md overflow-x-auto no-scrollbar pb-sm">
+<!-- Menu Item 1 -->
+<div class="min-w-[200px] bg-surface rounded-xl border border-surface-container overflow-hidden group">
+<div class="h-32 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A macro shot of a creamy espresso tonic garnished with a slice of orange and a sprig of rosemary. The lighting is moody and sophisticated, highlighting the textures of the liquid and garnish. The aesthetic is clean and high-contrast, perfect for a modern cafe menu." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAejkvMCeL94gkx12uujNe20KHBUow17h71dzEGaUaUKh941PwChg0AlD2pwbMIyISMkM0emCc5GdKxYBDXn1IBzDyg8aTo5PZgSzXnzjKrmr7VtnWZTzeFGUaGTOxcckMBorn7UKiKTGAYyyvfpd2AhcXJxWLMnp6ZAuOeN1KX-r1LLw-0qWttRUM_c95te0AySzU7S0lKL_UxSzJTEpW2v12XqkgKp7IKMEjMg4rmbpAXAAsVOeCcPWneeo7VL4vZZ2sZ3t5iIMU"/>
+</div>
+<div class="p-sm">
+<h4 class="font-label-md text-label-md">Espresso Tonic</h4>
+<p class="text-primary font-bold">65.000đ</p>
+</div>
+</div>
+<!-- Menu Item 2 -->
+<div class="min-w-[200px] bg-surface rounded-xl border border-surface-container overflow-hidden group">
+<div class="h-32 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A stack of fluffy Japanese pancakes topped with fresh berries and maple syrup. The background is a bright, sunlit cafe. The overall mood is exuberant and inviting, using a palette of warm, natural tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0aezak0AyhjTGR4fhDr5U1CxGKm7Ywp3jvsAUAzrbdpecnSA8T7jkF0utf2bd0CDojsDXwD0y4XPcjn56aabpjpC-M1Q8sgl92-YAkjBCQbw2al0mExtdZS2iVYbkJEZzMFu7yIsePcC_5rVWDBDBHqjTTPdxSs7ZyZ7pK0ad7Ynvmb-QEmRuVHkpHWuRs0l8INktkzwUg-A9rv7oFHdqhUN6AdO-ZXPsldIUzVy17Q-nfeJ8Apv-LPrd3uKT9LMM_R9lY9mjaSw"/>
+</div>
+<div class="p-sm">
+<h4 class="font-label-md text-label-md">Bánh Pancake</h4>
+<p class="text-primary font-bold">85.000đ</p>
+</div>
+</div>
+<!-- Menu Item 3 -->
+<div class="min-w-[200px] bg-surface rounded-xl border border-surface-container overflow-hidden group">
+<div class="h-32 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A minimalist cup of matcha latte with a vibrant green swirl on top. The ceramic cup is placed on a light wood surface, bathed in soft, natural morning light. The style is modern corporate with a high-contrast edge, focusing on clean lines." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCu3wDOkgRYLnNhETqJMa4GwxvXYp0UoEJg2p7_0zH7KDiXRBeh5DLWDuVm7p4cpZfhIsDA5dLxx3WJYd6K4qhKhixoQXvfm5M7O-rytkVC7VuyQaOudSqUhue1BW0a0qthYPh-lpF5tvvXSTV0uL88JcxBdZohwB6JbG_k191FmTSKbVdFx5Ahp1g1FurONGuPtt2bi70z47GKZHyWLJFPAtppMIPyQ3yheB1wBXLXx0gCD2Tk3rNk1fc5ObYzkR3_1VX1UUNDEi8"/>
+</div>
+<div class="p-sm">
+<h4 class="font-label-md text-label-md">Matcha Latte</h4>
+<p class="text-primary font-bold">55.000đ</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Trending Reviews -->
+<div class="space-y-md">
+<h3 class="font-headline-md text-headline-md">Đánh giá từ cộng đồng</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="bg-surface p-md rounded-xl border border-surface-container-highest shadow-sm">
+<div class="flex items-center gap-sm mb-sm">
+<img class="w-8 h-8 rounded-full" data-alt="A portrait of a young man with a modern hairstyle and a friendly smile. He is wearing a minimalist denim jacket. The lighting is bright and outdoor-focused, consistent with a social discovery platform's user-generated content style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPKJMZDmIIP1yRKv6GC307LV-8WxV92QEFm6bfmM20xhe25pfYiHAn0i9px4c-L7uvxAEZJlVFdiIveMKvW231FW4p-z2ramS3Vkyl3BF7ciovA4lFPLHpS6GUJgRHnBXIo4to4egHLNrVtWpUA5ABXbQnFbTrnwjcJyKPAOgvNss4uRsJ-aIMh6OE_DwZIgv4bv7T-F-HaiQSEJW4570fDj_OnKCo47e3wSgJErA6Widf6lAYpsIj645rcpgXlE0NX3LdKHwrCjc"/>
+<div>
+<p class="font-label-md text-label-md">Minh Tú</p>
+<div class="flex text-primary-container scale-75 origin-left">
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant italic">"Không gian cực chill, cà phê ngon. Rất thích hợp để làm việc chiều cuối tuần."</p>
+</div>
+<div class="bg-surface p-md rounded-xl border border-surface-container-highest shadow-sm">
+<div class="flex items-center gap-sm mb-sm">
+<img class="w-8 h-8 rounded-full" data-alt="A cheerful young woman with curly hair and stylish glasses laughing heartily. She is in a colorful, energetic environment. The image uses a high-contrast, high-energy aesthetic that matches a community-driven social app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDb0VoOV4mYfW34qIVwxX-sGKO9uJuiF-p8dirlYKxnWsotf7WRrEKesbRhEBg-FSLbKyzQAjR0khSuWKcowbqrVrFIg3ECOs6YNTIHeFBwGF1BZIqXUrsdZi6jamDmwWeu5MdJrhLThvNPGl9LxwncM1jCCWo9EDJTd7RoNzjao7RPIq36xUby-zpNu-RwmDtnd0bBcoKGxsetpEz8Ozfv33dfubKro9S7NglALzovgMF5sbdjuByJyX7J_xpFR21VrPDFa6O-tDo"/>
+<div>
+<p class="font-label-md text-label-md">Lan Anh</p>
+<div class="flex text-primary-container scale-75 origin-left">
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 0;">star</span>
+</div>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant italic">"Nhân viên nhiệt tình, menu đa dạng. Sẽ quay lại nhiều lần nữa!"</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 rounded-t-xl bg-surface dark:bg-surface-container-lowest shadow-[0px_-4px_20px_rgba(31,78,121,0.08)] flex justify-around items-center py-sm px-xs pb-safe">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 hover:text-primary dark:hover:text-primary-fixed active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-label-sm text-label-sm mt-1">Khám phá</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 hover:text-primary dark:hover:text-primary-fixed active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="event">event</span>
+<span class="font-label-sm text-label-sm mt-1">Sự kiện</span>
+</a>
+<button class="bg-primary-container text-on-primary-container w-14 h-14 rounded-full flex items-center justify-center shadow-lg active:scale-95 transition-all -mt-8 border-4 border-surface">
+<span class="material-symbols-outlined text-[32px]" data-icon="add_circle" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+</button>
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-xl px-3 py-1 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm mt-1">Hồ sơ</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 hover:text-primary dark:hover:text-primary-fixed active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-sm text-label-sm mt-1">Quản lý</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions for horizontal scrolling buttons
+        const scrollContainer = document.querySelector('.no-scrollbar');
+        if (scrollContainer) {
+            scrollContainer.addEventListener('wheel', (evt) => {
+                evt.preventDefault();
+                scrollContainer.scrollLeft += evt.deltaY;
+            });
+        }
+
+        // Like button interaction logic
+        const bookmarkBtn = document.querySelector('button .material-symbols-outlined[data-icon="bookmark"]').parentElement;
+        bookmarkBtn.addEventListener('click', () => {
+            const icon = bookmarkBtn.querySelector('.material-symbols-outlined');
+            const isFilled = icon.style.fontVariationSettings.includes("'FILL' 1");
+            icon.style.fontVariationSettings = isFilled ? "'FILL' 0" : "'FILL' 1";
+            bookmarkBtn.classList.toggle('text-primary');
+        });
+    </script>
+</body></html>

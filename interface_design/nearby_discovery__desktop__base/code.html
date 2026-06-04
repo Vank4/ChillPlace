@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ChillPlace - Nearby Discovery</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-fixed": "#00201c",
+                      "on-primary": "#ffffff",
+                      "surface-container": "#eceef0",
+                      "on-secondary-fixed-variant": "#184974",
+                      "inverse-on-surface": "#eff1f3",
+                      "error": "#ba1a1a",
+                      "surface-variant": "#e0e3e5",
+                      "background": "#f7f9fb",
+                      "tertiary-fixed-dim": "#4fdbc8",
+                      "surface-container-low": "#f2f4f6",
+                      "primary-fixed": "#ffdbd0",
+                      "primary-container": "#ff6b35",
+                      "outline-variant": "#e1bfb5",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-fixed": "#390c00",
+                      "inverse-primary": "#ffb59d",
+                      "secondary-container": "#a2cdff",
+                      "on-secondary-fixed": "#001d35",
+                      "on-primary-container": "#5f1900",
+                      "surface": "#f7f9fb",
+                      "error-container": "#ffdad6",
+                      "on-error-container": "#93000a",
+                      "surface-container-highest": "#e0e3e5",
+                      "on-secondary-container": "#2a5782",
+                      "on-primary-fixed-variant": "#832600",
+                      "surface-dim": "#d8dadc",
+                      "secondary-fixed": "#d1e4ff",
+                      "on-tertiary-fixed-variant": "#005048",
+                      "primary": "#ab3500",
+                      "primary-fixed-dim": "#ffb59d",
+                      "on-tertiary-container": "#003832",
+                      "surface-container-high": "#e6e8ea",
+                      "on-error": "#ffffff",
+                      "secondary-fixed-dim": "#a0cafc",
+                      "surface-tint": "#ab3500",
+                      "on-tertiary": "#ffffff",
+                      "on-background": "#191c1e",
+                      "secondary": "#35618d",
+                      "tertiary-fixed": "#71f8e4",
+                      "on-surface-variant": "#594139",
+                      "tertiary-container": "#00ac9b",
+                      "surface-bright": "#f7f9fb",
+                      "on-surface": "#191c1e",
+                      "on-secondary": "#ffffff",
+                      "outline": "#8d7168",
+                      "tertiary": "#006b5f",
+                      "inverse-surface": "#2d3133"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "2xl": "1.5rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sm": "8px",
+                      "md": "16px",
+                      "margin-desktop": "32px",
+                      "xxl": "48px",
+                      "xs": "4px",
+                      "gutter": "16px",
+                      "margin-mobile": "16px",
+                      "xl": "32px",
+                      "lg": "24px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Plus Jakarta Sans"],
+                      "body-md": ["Plus Jakarta Sans"],
+                      "label-sm": ["Plus Jakarta Sans"],
+                      "display-lg": ["Plus Jakarta Sans"],
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "label-md": ["Plus Jakarta Sans"],
+                      "headline-md": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-surface text-on-surface overflow-hidden">
+<!-- Layout Container -->
+<div class="flex h-screen w-full">
+<!-- Column 1: SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface dark:bg-on-background shadow-sm flex flex-col h-full py-lg px-md z-50">
+<div class="flex items-center gap-md mb-xxl px-sm">
+<div class="w-10 h-10 bg-primary-container rounded-xl flex items-center justify-center text-white">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">cloudy_snowing</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim leading-tight">ChillPlace</h1>
+<p class="text-xs text-on-surface-variant opacity-70">Social Discovery</p>
+</div>
+</div>
+<nav class="flex-1 space-y-sm">
+<a class="flex items-center gap-md p-md rounded-2xl text-on-surface-variant dark:text-surface-variant hover:bg-surface-variant dark:hover:bg-surface-container-highest transition-colors scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-2xl text-primary dark:text-primary-fixed-dim font-bold border-r-4 border-primary hover:bg-surface-variant dark:hover:bg-surface-container-highest transition-colors scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="explore" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-label-md text-label-md">Explore</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-2xl text-on-surface-variant dark:text-surface-variant hover:bg-surface-variant dark:hover:bg-surface-container-highest transition-colors scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-label-md text-label-md">Map</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-2xl text-on-surface-variant dark:text-surface-variant hover:bg-surface-variant dark:hover:bg-surface-container-highest transition-colors scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="font-label-md text-label-md">Favorites</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-2xl text-on-surface-variant dark:text-surface-variant hover:bg-surface-variant dark:hover:bg-surface-container-highest transition-colors scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-lg border-t border-outline-variant/30 px-sm">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-secondary-container overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBd_SJ-tTgJ1ITBtkERPBRGd9YYTSGfAsTwQTNJSoikcmqDru2M1o0sPPdRrjUbtYQStaVvT0ZWxcPDPy2TSXqVsBOlh0inxaKQba-sSpZ4Eeq7Lfp3cdHxyH_Ya_O-VujMVrCwQzszVDEXLvemAZN_Gp2lj5h9DroH6LzZssOpX2c82wXumJ9imdkx3IUSY_WtDDWKOEvDRH6Ig2LDAR0eqL2IJc69UBWJuDztDlNnxaNd76v10P30RQ869pLoq60-qt3o0JneV_E"/>
+</div>
+<div>
+<p class="font-label-md text-label-md">Alex Nguyen</p>
+<p class="text-xs text-on-surface-variant">Pro Explorer</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Column 2: Main Content Area -->
+<main class="ml-64 flex-1 h-screen overflow-y-auto custom-scrollbar px-margin-desktop py-lg">
+<!-- Header Section -->
+<header class="mb-xl">
+<div class="flex justify-between items-end mb-lg">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-background mb-xs">Gần bạn</h2>
+<div class="flex items-center gap-xs text-secondary font-medium">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+<span class="text-body-md">Thành phố Hồ Chí Minh, VN</span>
+</div>
+</div>
+<div class="flex gap-md">
+<button class="p-sm rounded-full bg-surface-container hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="p-sm rounded-full bg-surface-container hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</div>
+<!-- Location Permission Banner -->
+<div class="bg-primary-fixed/30 border border-primary-fixed rounded-2xl p-lg flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-primary-container rounded-xl flex items-center justify-center text-white shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">my_location</span>
+</div>
+<div>
+<p class="font-body-lg text-body-lg text-on-primary-fixed font-bold">Bật định vị để khám phá?</p>
+<p class="text-on-surface-variant font-body-md">Cho phép truy cập vị trí để tìm các địa điểm chill nhất quanh bạn</p>
+</div>
+</div>
+<button class="bg-primary-container text-white px-xl py-md rounded-2xl font-bold hover:shadow-lg transition-all active:scale-95">
+                        Cho phép
+                    </button>
+</div>
+</header>
+<!-- Category Chips -->
+<section class="mb-xl">
+<div class="flex gap-md overflow-x-auto pb-sm no-scrollbar">
+<button class="whitespace-nowrap px-lg py-sm bg-primary-container text-white rounded-full font-bold shadow-md shadow-primary-container/20">Tất cả</button>
+<button class="whitespace-nowrap px-lg py-sm bg-white border border-outline-variant text-on-surface-variant rounded-full font-semibold hover:border-primary-container hover:text-primary transition-all">Cafe</button>
+<button class="whitespace-nowrap px-lg py-sm bg-white border border-outline-variant text-on-surface-variant rounded-full font-semibold hover:border-primary-container hover:text-primary transition-all">Nhà hàng</button>
+<button class="whitespace-nowrap px-lg py-sm bg-white border border-outline-variant text-on-surface-variant rounded-full font-semibold hover:border-primary-container hover:text-primary transition-all">Sự kiện</button>
+<button class="whitespace-nowrap px-lg py-sm bg-white border border-outline-variant text-on-surface-variant rounded-full font-semibold hover:border-primary-container hover:text-primary transition-all">Workplace</button>
+<button class="whitespace-nowrap px-lg py-sm bg-white border border-outline-variant text-on-surface-variant rounded-full font-semibold hover:border-primary-container hover:text-primary transition-all">Chill Out</button>
+</div>
+</section>
+<!-- Place Cards Grid -->
+<section class="grid grid-cols-2 gap-lg pb-xl">
+<!-- Place Card 1 -->
+<div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-surface-container-highest cursor-pointer">
+<div class="relative aspect-[16/10] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A trendy, modern urban cafe interior with high ceilings, warm wooden furniture, and lush green hanging plants. The lighting is golden and inviting, suggesting a cozy afternoon atmosphere. High-contrast social mapping aesthetic with saturated colors and sharp details." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDspGuh08s4bZVfp4taS00QJIBnUO2lVVgpXV_MvG0BRXzWhgYX64KRKzGM4WlgCj0HwGfgnD2midb4VraRte4REHWbLdhmFt2w4G1jI11pSQp3UHs3h5OT0m_QUTX8ojiECYNcUJROK30KpLYYvltRRjblG6HJsYsvAbE0V6w7plLOBwEcu2bpkfoYizCcRcB3fH0oEAV57ByHv4Ky-AB_IodUNAI112CcLDKm9toIrzHMSsnv6-Wgqe27SY4XKC1tHIK0o1856Cc"/>
+<div class="absolute top-md right-md bg-white/90 backdrop-blur-sm px-sm py-xs rounded-lg flex items-center gap-xs shadow-sm">
+<span class="material-symbols-outlined text-primary text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-sm">4.8</span>
+</div>
+<div class="absolute bottom-md left-md bg-primary-container text-white px-sm py-xs rounded-lg font-bold text-xs">
+                            CAFE
+                        </div>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start mb-xs">
+<h3 class="font-headline-md text-lg text-on-surface">The Workshop Coffee</h3>
+<span class="text-primary font-bold text-sm">0.5km</span>
+</div>
+<p class="text-on-surface-variant text-sm mb-md line-clamp-1">27 Ngô Đức Kế, Quận 1, TP. HCM</p>
+<div class="flex items-center gap-md text-xs font-semibold">
+<span class="flex items-center gap-xs text-tertiary">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+                                Trending
+                            </span>
+<span class="flex items-center gap-xs text-secondary">
+<span class="material-symbols-outlined text-[14px]">wifi</span>
+                                Wifi mạnh
+                            </span>
+</div>
+</div>
+</div>
+<!-- Place Card 2 -->
+<div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-surface-container-highest cursor-pointer">
+<div class="relative aspect-[16/10] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A sophisticated upscale restaurant with dark moody lighting and elegant table settings. Large floor-to-ceiling windows reveal a sparkling city skyline at night. The vibe is premium and exuberant, with vibrant blue and orange lighting accents reflected in polished surfaces." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLZAoiumiUVbdvVGOO5yzz6fIuqpG9ir9pH9O0kgyFPM_V04Xny4ljuxqszlfR1mVwu8wx_ILMraxZDkb_yXvo7yrXOfIbBoHeuci2gKtB-lUohnxQ231gzEGU4VHmQhu-EXU4HBRZg84HXgS7aOJn-zsvrXkj-jkrIXJ3tAV84_qLbKa_aMhs9cF55M8p9J1FLvgTOs72nNKF-SxE_mzhkRxhiPmX26M18fMSBEwatAYS0j3LKSI0tvHcl8jFrG8HAMBSrPHDs0g"/>
+<div class="absolute top-md right-md bg-white/90 backdrop-blur-sm px-sm py-xs rounded-lg flex items-center gap-xs shadow-sm">
+<span class="material-symbols-outlined text-primary text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-sm">4.9</span>
+</div>
+<div class="absolute bottom-md left-md bg-secondary text-white px-sm py-xs rounded-lg font-bold text-xs">
+                            NHÀ HÀNG
+                        </div>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start mb-xs">
+<h3 class="font-headline-md text-lg text-on-surface">Cloud 9 Rooftop</h3>
+<span class="text-primary font-bold text-sm">1.2km</span>
+</div>
+<p class="text-on-surface-variant text-sm mb-md line-clamp-1">Tầng 9, Bitexco Tower, Quận 1</p>
+<div class="flex items-center gap-md text-xs font-semibold">
+<span class="flex items-center gap-xs text-on-tertiary-fixed-variant">
+<span class="material-symbols-outlined text-[14px]">visibility</span>
+                                View đẹp
+                            </span>
+<span class="flex items-center gap-xs text-error">
+<span class="material-symbols-outlined text-[14px]">local_fire_department</span>
+                                Hot
+                            </span>
+</div>
+</div>
+</div>
+<!-- Place Card 3 -->
+<div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-surface-container-highest cursor-pointer">
+<div class="relative aspect-[16/10] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A vibrant outdoor community event at night with colorful string lights illuminating a crowd of happy young people. The atmosphere is energetic and social, with food stalls and a small stage in the background. The color palette is rich with festive oranges and deep twilight blues." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPhssGazXEfI3LjX5c_AZsVZVkN63Bkz9hJOWv1VVQslVR8Ojfo3q7Xa-Zi2dy6yyA7d7-xs11Htm-XqKXXaeL4xyb5JHySkryc-REpnSQ_VJo4G0rj05JBrTOpN9lMB2z_rUjmb9KbVmiD-cWsL4bmYaRqhFGuTVmpPB_UjLOEJgAGI1xfqdd20UPQxYgC2XbQ00dkhhf5-jpWPhgzDiA4e-y-46aCU2vP8ADvqdt2GxdJys-j3O2qLIjEH3RVj8TZH4Bmil2K84"/>
+<div class="absolute top-md right-md bg-white/90 backdrop-blur-sm px-sm py-xs rounded-lg flex items-center gap-xs shadow-sm">
+<span class="material-symbols-outlined text-primary text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-sm">4.5</span>
+</div>
+<div class="absolute bottom-md left-md bg-tertiary text-white px-sm py-xs rounded-lg font-bold text-xs">
+                            SỰ KIỆN
+                        </div>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start mb-xs">
+<h3 class="font-headline-md text-lg text-on-surface">Chill Fest Weekend</h3>
+<span class="text-primary font-bold text-sm">2.1km</span>
+</div>
+<p class="text-on-surface-variant text-sm mb-md line-clamp-1">Sân vận động Quân khu 7</p>
+<div class="flex items-center gap-md text-xs font-semibold">
+<span class="flex items-center gap-xs text-primary">
+<span class="material-symbols-outlined text-[14px]">confirmation_number</span>
+                                Còn vé
+                            </span>
+</div>
+</div>
+</div>
+<!-- Place Card 4 -->
+<div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-surface-container-highest cursor-pointer">
+<div class="relative aspect-[16/10] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A bright, minimalist co-working space with floor-to-ceiling windows and clean white furniture. Young professionals are focused on their laptops. The space is filled with natural daylight, emphasizing a high-energy yet calm productivity vibe with pops of teal and light grey." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqkCoY_uCPbl1Es4oSvltJm4enkyX50gWJ4ff4KTzB9nlZUlhrvopUvAXkBpofh6zNbpchfqiBBnvzQ0VhVeZchhhhfOkYrT5_BzTgsNNFUYN5XgcOvVT3cHi73oEuGJTR0Dim6Sbf8DHunRwtcpL6BCpDShkMiWPXa-WWBVGDofvltodlAAleGDCwkxfV0DBA3Frz6OoJGAuSzIC5CcSQaoGtptvZIfWV6zMOJdA3cN09RteaCfyfh4-h3SSW6-h42RGF2qef_bA"/>
+<div class="absolute top-md right-md bg-white/90 backdrop-blur-sm px-sm py-xs rounded-lg flex items-center gap-xs shadow-sm">
+<span class="material-symbols-outlined text-primary text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-sm">4.7</span>
+</div>
+<div class="absolute bottom-md left-md bg-secondary-container text-on-secondary-container px-sm py-xs rounded-lg font-bold text-xs">
+                            WORKPLACE
+                        </div>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start mb-xs">
+<h3 class="font-headline-md text-lg text-on-surface">Dreamplex Co-working</h3>
+<span class="text-primary font-bold text-sm">0.8km</span>
+</div>
+<p class="text-on-surface-variant text-sm mb-md line-clamp-1">195 Điện Biên Phủ, Bình Thạnh</p>
+<div class="flex items-center gap-md text-xs font-semibold">
+<span class="flex items-center gap-xs text-secondary">
+<span class="material-symbols-outlined text-[14px]">quiet_time</span>
+                                Yên tĩnh
+                            </span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Column 3: Right Panel (Map View) -->
+<aside class="w-[380px] h-screen bg-white border-l border-surface-container-highest p-md flex flex-col">
+<div class="flex-1 rounded-2xl overflow-hidden relative shadow-inner">
+<!-- Mock Map Background -->
+<div class="absolute inset-0 bg-slate-200 overflow-hidden">
+<img class="w-full h-full object-cover opacity-80 mix-blend-multiply" data-alt="A stylized aerial satellite view of a dense metropolitan grid with prominent rivers and green spaces. The map features modern UI aesthetic with clean lines and soft pastel colors, emphasizing a 'discovery' feel with vibrant location pins scattered throughout." data-location="Ho Chi Minh City" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCExlTCbvMjeHdxpowJF7ZFER-0ewaeZsc6zP1u70QdSXXF9R7agUntQ-AdZtKJaOrN_4XuqpwPT4Arzkxk46nBtU4djzx8-QcXhtQhFhsnV-MtjhO-FfOGY4_4es-2LHQGSyhqopMBCyZrESi_QTnUk5Sd0xkTW3-xrfRUY00AQTP6mJboTHqmlJ7Wa0T0Dq96c6ojOKQcXNVd4ROTVH2kIWc_LX-HMHONmzculABanrfTyTb7Eb1HWWxkvn6lcsjA9t80f_NrVbM"/>
+<!-- Floating Map Pins -->
+<div class="absolute top-1/4 left-1/3 group cursor-pointer">
+<div class="bg-primary-container text-white p-xs rounded-lg shadow-lg flex items-center gap-xs scale-100 hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">coffee</span>
+<span class="text-[10px] font-bold pr-xs">The Workshop</span>
+</div>
+<div class="w-0.5 h-4 bg-primary-container mx-auto"></div>
+</div>
+<div class="absolute bottom-1/3 right-1/4 group cursor-pointer">
+<div class="bg-secondary text-white p-xs rounded-lg shadow-lg flex items-center gap-xs scale-100 hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+<span class="text-[10px] font-bold pr-xs">Cloud 9</span>
+</div>
+<div class="w-0.5 h-4 bg-secondary mx-auto"></div>
+</div>
+<div class="absolute top-1/2 right-1/2 group cursor-pointer">
+<div class="bg-tertiary text-white p-xs rounded-lg shadow-lg flex items-center gap-xs scale-100 hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">event</span>
+<span class="text-[10px] font-bold pr-xs">Chill Fest</span>
+</div>
+<div class="w-0.5 h-4 bg-tertiary mx-auto"></div>
+</div>
+<!-- Map Controls -->
+<div class="absolute right-md bottom-md flex flex-col gap-sm">
+<button class="w-10 h-10 bg-white shadow-lg rounded-xl flex items-center justify-center text-on-surface hover:bg-primary-container hover:text-white transition-all">
+<span class="material-symbols-outlined">add</span>
+</button>
+<button class="w-10 h-10 bg-white shadow-lg rounded-xl flex items-center justify-center text-on-surface hover:bg-primary-container hover:text-white transition-all">
+<span class="material-symbols-outlined">remove</span>
+</button>
+</div>
+</div>
+<!-- Open Large Map Button -->
+<div class="absolute bottom-lg left-1/2 -translate-x-1/2 w-[80%]">
+<button class="w-full bg-white/90 backdrop-blur-md text-on-surface px-lg py-md rounded-2xl font-bold shadow-xl border border-white hover:bg-white transition-all active:scale-95 flex items-center justify-center gap-md">
+<span class="material-symbols-outlined">map</span>
+                        Mở bản đồ lớn
+                    </button>
+</div>
+</div>
+<!-- Suggested for you section in right panel -->
+<div class="mt-lg">
+<h3 class="font-label-md text-label-md text-on-surface mb-md">Gợi ý cho bạn</h3>
+<div class="space-y-md">
+<div class="flex gap-md items-center p-sm rounded-xl hover:bg-surface transition-colors cursor-pointer border border-transparent hover:border-surface-container-highest">
+<div class="w-14 h-14 rounded-xl overflow-hidden bg-slate-100">
+<img class="w-full h-full object-cover" data-alt="A close up of a perfectly poured latte art in a ceramic cup, sitting on a rustic wooden table. The surrounding environment is a modern, light-filled cafe. The style is bright and clean with a focus on artisanal quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyLqDSJ1bviz5vKM5YmJICQa7L_gfp9aHLl4ABymWoJKhfg-fF0j7aoQqFX4x7NUrpyDZCbseiou1alUsT5Q83AYv9dDJajnXrzP6-jaj1u53mIlgR3bKuZNbjeuevEXukLgkv-toYxLgqqzZnSze1cUj737TGFHNTrcsxBD3cOjk0FGWQqqaROW-AcJiBQm8Mc-lr5PXcFwOTSkIQsJuoBi3VsZyrlBQgVVxsURiYhPOhKrmXwCRpi_Fo9sUSkkWGJs-Dtr_90no"/>
+</div>
+<div class="flex-1">
+<p class="font-bold text-sm">Lacàph Space</p>
+<p class="text-xs text-on-surface-variant">Thưởng thức cafe pha phin...</p>
+</div>
+<span class="text-primary material-symbols-outlined text-[18px]">chevron_right</span>
+</div>
+<div class="flex gap-md items-center p-sm rounded-xl hover:bg-surface transition-colors cursor-pointer border border-transparent hover:border-surface-container-highest">
+<div class="w-14 h-14 rounded-xl overflow-hidden bg-slate-100">
+<img class="w-full h-full object-cover" data-alt="A delicious modern Vietnamese fusion dish presented on a minimalist ceramic plate. The setting is a chic restaurant with soft, warm lighting. High-end food photography style with rich colors and sharp focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAutum28PYXM1aBYAkaYfAOxNjeU6voSfYElVMSRFpA8Jr0iOIfFJRjpPGPRNlDSqkGe3KEKpayYw4VpAzMCgF3M1h2k9mNXPpLmNsP5BLwI-liBNKt8seDDGW-bo5cDXKS1gYGAgM3ny4Hpr594PEYSTIMu3x-kUmQPikBn8nQ58PMoO0wILZSN3bYaNP8u1vsZ16CtXkf58A-XYdX2tA94r7VVDw9hdWcE0jMi84T2po_Mf_7uCFl-cDBAJJpaJtfC_ixGrt6xQE"/>
+</div>
+<div class="flex-1">
+<p class="font-bold text-sm">Anan Saigon</p>
+<p class="text-xs text-on-surface-variant">Ẩm thực đường phố nâng tầm</p>
+</div>
+<span class="text-primary material-symbols-outlined text-[18px]">chevron_right</span>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<!-- Floating Action Button (Contextual for Home/Explore) -->
+<button class="fixed bottom-margin-desktop right-[400px] w-14 h-14 bg-primary-container text-white rounded-2xl shadow-xl shadow-primary-container/30 flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-40">
+<span class="material-symbols-outlined text-[32px]">add</span>
+</button>
+<script>
+        // Micro-interactions and atmospheric effects
+        document.querySelectorAll('.group').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                // Subtle lift effect logic could go here
+            });
+        });
+
+        // Category chip selection toggle
+        const chips = document.querySelectorAll('section button');
+        chips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                chips.forEach(c => {
+                    c.classList.remove('bg-primary-container', 'text-white', 'shadow-md', 'shadow-primary-container/20');
+                    c.classList.add('bg-white', 'border', 'border-outline-variant', 'text-on-surface-variant');
+                });
+                chip.classList.remove('bg-white', 'border', 'border-outline-variant', 'text-on-surface-variant');
+                chip.classList.add('bg-primary-container', 'text-white', 'shadow-md', 'shadow-primary-container/20');
+            });
+        });
+    </script>
+</body></html>

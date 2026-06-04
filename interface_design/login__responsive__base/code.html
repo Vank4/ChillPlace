@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Đăng nhập - ChillPlace</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#00ac9b",
+                        "outline-variant": "#e1bfb5",
+                        "surface-tint": "#ab3500",
+                        "surface-variant": "#e0e3e5",
+                        "inverse-surface": "#2d3133",
+                        "on-tertiary-fixed": "#00201c",
+                        "secondary-fixed": "#d1e4ff",
+                        "on-primary-fixed-variant": "#832600",
+                        "background": "#f7f9fb",
+                        "outline": "#8d7168",
+                        "surface-container": "#eceef0",
+                        "surface-dim": "#d8dadc",
+                        "tertiary-fixed-dim": "#4fdbc8",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#001d35",
+                        "on-primary-fixed": "#390c00",
+                        "on-primary-container": "#5f1900",
+                        "secondary-fixed-dim": "#a0cafc",
+                        "primary": "#ab3500",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#ffdbd0",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#71f8e4",
+                        "error": "#ba1a1a",
+                        "tertiary": "#006b5f",
+                        "error-container": "#ffdad6",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-secondary-container": "#2a5782",
+                        "secondary": "#35618d",
+                        "primary-fixed-dim": "#ffb59d",
+                        "surface-bright": "#f7f9fb",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#eff1f3",
+                        "primary-container": "#ff6b35",
+                        "inverse-primary": "#ffb59d",
+                        "on-background": "#191c1e",
+                        "secondary-container": "#a2cdff",
+                        "on-tertiary-fixed-variant": "#005048",
+                        "surface-container-low": "#f2f4f6",
+                        "surface-container-high": "#e6e8ea",
+                        "on-tertiary-container": "#003832",
+                        "on-secondary-fixed-variant": "#184974",
+                        "surface": "#f7f9fb",
+                        "on-surface": "#191c1e",
+                        "on-surface-variant": "#594139"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "margin-mobile": "16px",
+                        "gutter": "16px",
+                        "xxl": "48px",
+                        "xl": "32px",
+                        "margin-desktop": "32px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .floating-label-group {
+            position: relative;
+        }
+        .floating-label-group input:focus ~ label,
+        .floating-label-group input:not(:placeholder-shown) ~ label {
+            top: -0.5rem;
+            left: 0.75rem;
+            font-size: 0.75rem;
+            background-color: white;
+            padding: 0 0.25rem;
+            color: #ff6b35;
+        }
+        .floating-label-group label {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            transition: all 0.2s ease-out;
+            pointer-events: none;
+        }
+        .glass-bg {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col items-center justify-center overflow-x-hidden">
+<!-- Background Decoration -->
+<div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+<div class="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-primary-container/20 rounded-full blur-[120px]"></div>
+<div class="absolute top-[40%] -right-[5%] w-[30%] h-[30%] bg-tertiary-container/10 rounded-full blur-[100px]"></div>
+</div>
+<!-- Main Container -->
+<main class="w-full max-w-[440px] px-margin-mobile md:px-lg flex flex-col items-center justify-center min-h-screen py-xl">
+<!-- Brand Logo Area -->
+<header class="flex flex-col items-center mb-xxl text-center">
+<div class="w-20 h-20 bg-primary-container rounded-[24px] flex items-center justify-center shadow-lg mb-md">
+<span class="material-symbols-outlined text-[48px] text-white" style="font-variation-settings: 'FILL' 1;">explore</span>
+</div>
+<h1 class="font-headline-md text-headline-md text-primary tracking-tight">ChillPlace</h1>
+</header>
+<!-- Welcome Text -->
+<section class="w-full mb-xl text-center md:text-left">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-xs">Chào mừng trở lại!</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Hãy đăng nhập để tiếp tục hành trình khám phá.</p>
+</section>
+<!-- Login Form -->
+<form class="w-full flex flex-col gap-md" onsubmit="return false">
+<!-- Email Input -->
+<div class="floating-label-group">
+<input class="w-full h-14 px-md rounded-xl border-outline text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container bg-surface-container-lowest transition-all" id="email" placeholder=" " type="email"/>
+<label class="font-label-md text-label-md text-on-surface-variant" for="email">Email</label>
+</div>
+<!-- Password Input -->
+<div class="floating-label-group">
+<input class="w-full h-14 px-md rounded-xl border-outline text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container bg-surface-container-lowest transition-all" id="password" placeholder=" " type="password"/>
+<label class="font-label-md text-label-md text-on-surface-variant" for="password">Mật khẩu</label>
+<button class="absolute right-md top-4 text-on-surface-variant" onclick="togglePassword()" type="button">
+<span class="material-symbols-outlined" id="passIcon">visibility</span>
+</button>
+</div>
+<!-- Forgot Password -->
+<div class="flex justify-end">
+<a class="font-label-md text-label-md text-primary hover:underline transition-all" href="#">Quên mật khẩu?</a>
+</div>
+<!-- Login Button -->
+<button class="w-full h-14 mt-sm bg-primary-container text-white font-headline-md text-headline-md rounded-xl shadow-[0px_8px_24px_rgba(255,107,53,0.15)] active:scale-[0.98] transition-transform duration-150">
+                Đăng nhập
+            </button>
+</form>
+<!-- Divider -->
+<div class="w-full flex items-center my-xl">
+<div class="flex-grow h-[1px] bg-outline-variant"></div>
+<span class="mx-md font-label-sm text-label-sm text-on-surface-variant">Hoặc đăng nhập bằng</span>
+<div class="flex-grow h-[1px] bg-outline-variant"></div>
+</div>
+<!-- Social Login Options -->
+<div class="w-full flex flex-col md:flex-row gap-md">
+<button class="flex-1 h-14 flex items-center justify-center gap-sm bg-surface-container-lowest border border-outline-variant rounded-xl hover:bg-surface-container-low transition-colors shadow-sm">
+<div class="w-6 h-6 flex items-center justify-center">
+<svg height="24" viewbox="0 0 24 24" width="24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+</svg>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Google</span>
+</button>
+<button class="flex-1 h-14 flex items-center justify-center gap-sm bg-surface-container-lowest border border-outline-variant rounded-xl hover:bg-surface-container-low transition-colors shadow-sm">
+<span class="material-symbols-outlined text-on-surface" style="font-variation-settings: 'FILL' 1;">ios</span>
+<span class="font-label-md text-label-md text-on-surface">Apple</span>
+</button>
+</div>
+<!-- Footer / Sign Up Link -->
+<footer class="mt-xl text-center">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                Chưa có tài khoản? 
+                <a class="font-label-md text-label-md text-primary font-bold hover:underline" href="#">Đăng ký ngay</a>
+</p>
+</footer>
+<!-- Decorative Map Background Card (Asymmetric Layout Example) -->
+<div class="hidden md:block absolute -right-32 top-1/2 -translate-y-1/2 w-[400px] h-[600px] rotate-6 opacity-40 pointer-events-none">
+<div class="relative w-full h-full rounded-[40px] overflow-hidden shadow-2xl border-8 border-white">
+<img class="w-full h-full object-cover" data-alt="A stylized aerial high-resolution map of a modern coastal city with clean white streets, lush green parks, and vibrant orange markers indicating popular social spots. The overall aesthetic is bright, airy, and high-energy with a professional corporate edge. Sunlight glints off the water, creating a serene but active atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXsbkwzpBi8ZNXGdyfqffp1xbHVTxBDJamfUpx7e66HrfC5C7Vtbz3Fwadls9vFu3G2EBnUzAbLBouOWG_nCVhyIh7PZ7a6uJZCsGZoEfWk9pyutOhSTUqN1oedQQPk8KUu_wNKMOQ-tzHryWYy_YpEoXtBeKmP114KmANalW2nbNpCsREp9GjSioaJ6FYd6lmFiIVJ2-aq-bUzr2pOOEch-0tmCfTG1WJQ4XfSocvjfjBPAOnQgwlB-mo3eqA0DMXwcFRtehIX04"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
+</div>
+</div>
+</main>
+<script>
+        function togglePassword() {
+            const passInput = document.getElementById('password');
+            const icon = document.getElementById('passIcon');
+            if (passInput.type === 'password') {
+                passInput.type = 'text';
+                icon.innerText = 'visibility_off';
+            } else {
+                passInput.type = 'password';
+                icon.innerText = 'visibility';
+            }
+        }
+
+        // Add subtle hover lift effect to the primary button
+        const loginBtn = document.querySelector('button.bg-primary-container');
+        loginBtn.addEventListener('mouseenter', () => {
+            loginBtn.style.transform = 'translateY(-2px)';
+        });
+        loginBtn.addEventListener('mouseleave', () => {
+            loginBtn.style.transform = 'translateY(0)';
+        });
+    </script>
+</body></html>

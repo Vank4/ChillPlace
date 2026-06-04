@@ -1,0 +1,321 @@
+<!DOCTYPE html><html class="light" lang="vi" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(225, 191, 181, 0.3);
+        }
+        .profile-tab-active {
+            border-bottom: 3px solid #ab3500;
+            color: #ab3500;
+            font-weight: 700;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "tertiary": "#006b5f",
+                "primary-container": "#ff6b35",
+                "inverse-on-surface": "#eff1f3",
+                "tertiary-fixed": "#71f8e4",
+                "inverse-surface": "#2d3133",
+                "secondary-container": "#a2cdff",
+                "secondary": "#35618d",
+                "background": "#f7f9fb",
+                "surface-bright": "#f7f9fb",
+                "error-container": "#ffdad6",
+                "outline-variant": "#e1bfb5",
+                "on-error-container": "#93000a",
+                "on-primary": "#ffffff",
+                "surface-variant": "#e0e3e5",
+                "error": "#ba1a1a",
+                "surface-container-high": "#e6e8ea",
+                "on-primary-container": "#5f1900",
+                "primary-fixed-dim": "#ffb59d",
+                "primary-fixed": "#ffdbd0",
+                "on-tertiary": "#ffffff",
+                "surface-container": "#eceef0",
+                "on-tertiary-container": "#003832",
+                "on-surface-variant": "#594139",
+                "on-background": "#191c1e",
+                "tertiary-fixed-dim": "#4fdbc8",
+                "surface-container-highest": "#e0e3e5",
+                "secondary-fixed-dim": "#a0cafc",
+                "tertiary-container": "#00ac9b",
+                "on-primary-fixed": "#390c00",
+                "on-secondary": "#ffffff",
+                "surface-container-low": "#f2f4f6",
+                "on-secondary-fixed-variant": "#184974",
+                "primary": "#ab3500",
+                "surface-tint": "#ab3500",
+                "on-secondary-fixed": "#001d35",
+                "outline": "#8d7168",
+                "on-secondary-container": "#2a5782",
+                "surface-container-lowest": "#ffffff",
+                "on-surface": "#191c1e",
+                "on-primary-fixed-variant": "#832600",
+                "surface-dim": "#d8dadc",
+                "secondary-fixed": "#d1e4ff",
+                "inverse-primary": "#ffb59d",
+                "on-tertiary-fixed": "#00201c",
+                "on-error": "#ffffff",
+                "surface": "#f7f9fb",
+                "on-tertiary-fixed-variant": "#005048"
+              },
+              "spacing": {
+                "xs": "4px", "xxl": "48px", "margin-desktop": "32px", "margin-mobile": "16px", "gutter": "16px", "lg": "24px", "md": "16px", "sm": "8px", "xl": "32px"
+              },
+              "fontSize": {
+                "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}],
+                "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Left Sidebar (Shared Component) -->
+<aside class="h-screen w-72 fixed left-0 top-0 bg-surface dark:bg-inverse-surface border-r border-outline-variant flex flex-col py-xl px-lg z-50">
+<div class="mb-xxl">
+<h1 class="font-display-lg text-display-lg font-black text-primary">choChillPlace</h1>
+<p class="font-label-md text-label-md text-on-surface-variant">Khám phá không gian</p>
+</div>
+<nav class="flex-1 space-y-md">
+<!-- Navigation items with style_inactive_navigation mapping -->
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high p-md rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Trang chủ</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high p-md rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-label-md text-label-md">Khám phá</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high p-md rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-label-md text-label-md">Bản đồ</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high p-md rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="font-label-md text-label-md">Yêu thích</span>
+</a>
+<!-- Active Profile Tab -->
+<a class="flex items-center gap-4 text-primary font-bold border-r-4 border-primary p-md rounded-l-xl bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="settings" style="font-variation-settings: &quot;FILL&quot; 1;">settings</span>
+<span class="font-label-md text-label-md">Cài đặt</span>
+</a>
+</nav>
+<div class="mt-auto space-y-md">
+<button class="w-full bg-primary-container text-on-primary py-md px-xl rounded-full font-bold shadow-md hover:scale-95 transition-transform">
+                Đăng bài mới
+            </button>
+<div class="flex items-center gap-4 text-on-surface-variant hover:text-primary p-md rounded-xl">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-md text-label-md">Trợ giúp</span>
+</div>
+</div>
+</aside>
+<!-- Top Navigation (Shared Component) -->
+<header class="flex justify-between items-center w-full px-margin-desktop py-md ml-72 max-w-[calc(100%-18rem)] bg-surface/80 backdrop-blur-md sticky top-0 z-40 border-b border-outline-variant">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary">search</span>
+<input class="w-full bg-surface-container-low border-outline-variant focus:border-primary-container focus:ring-0 rounded-full py-sm pl-xl pr-md text-body-md transition-all" placeholder="Tìm kiếm địa điểm, người dùng..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-lg ml-xl">
+<div class="flex gap-md">
+<button class="p-sm rounded-full hover:bg-surface-container-high transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-sm rounded-full hover:bg-surface-container-high transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+</button>
+</div>
+<div class="h-10 w-10 rounded-full overflow-hidden border-2 border-primary ring-2 ring-primary-fixed ring-offset-2 cursor-pointer transition-transform active:scale-90">
+<img alt="Ảnh đại diện" data-alt="A professional close-up headshot of a friendly young Vietnamese man with a stylish, modern haircut, wearing a minimalist off-white linen shirt. The lighting is soft and natural, coming from a large window to the side, creating a high-energy yet sophisticated corporate modern vibe. The background is a softly blurred modern interior with plants and high-contrast wooden accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPYkqYSE17tiSFLD2r9TBaFEMv2tLY_-nFRgO2fcaFCkyqIGJ71Uo-4bW7oeYybP-3FDomv5elXYK0dFhcgG2wqNyIuSfWThBwgmAmCU47oSAQDOS2uXEHtp12kwUHvZM_kJnyCXDkGSwb4hiRwjN0db62XEyR__XPBAcrxF5T1WXg6UVfJmtB6KzWBfDw3hQwoDAZ9Y42YIVhgrkneQfKxGaM43OPHXBh_zA2MzLDbNt4ZoDYheWy3WfQY7_GZctbRB7bTmh5_tU" class="">
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-72 min-h-screen p-xl">
+<!-- Profile Header Section -->
+<section class="max-w-5xl mx-auto">
+<div class="relative mb-xxl">
+<!-- Cover Image (Simulated) -->
+<div class="h-64 w-full rounded-xxl overflow-hidden bg-gradient-to-r from-primary/20 to-secondary/20 shadow-inner">
+<img class="w-full h-full object-cover opacity-80" data-alt="A panoramic wide-angle landscape photograph of a serene mountain lake at sunrise, featuring mist rolling over crystal clear water and vibrant orange-tinged clouds. The aesthetic is high-contrast and atmospheric, following the ChillPlace brand's kinetic and community-driven feel with deep blues and glowing morning light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFu4UNjEx8YRRlkTBLtHFKTV0-8TjyaSMPIihzVZNF44d9zmNGyyAK6kqklbwAfYYEuevD4-q_R8V1Xb8qaAHYcleXABoextHVuTq531gJM15zfd-WcIHGHf_IcuwFVXWzNxIg1pk7Ehsj3Itp9Wck-ZkdQRC3JxXp8sfnDtk2pTYwrBrsHaVY8xvOfGeW8DOVysuJ8hla-H8mH-RVLg4uFd0FmJPMZg-JIfCMnfYMH5VzwTMamAGIFr94qvl9qfsbjvVPrqmrMt4">
+</div>
+<!-- Profile Identity Overlay -->
+<div class="absolute -bottom-16 left-margin-desktop flex items-end gap-lg">
+<div class="relative">
+<div class="h-40 w-40 rounded-xxl border-[6px] border-background overflow-hidden shadow-xl bg-surface">
+<img class="w-full h-full object-cover" data-alt="A highly detailed close-up of a charismatic young creative professional with a friendly expression. He has short dark hair and is wearing a stylish terracotta-colored jacket that matches the brand's primary color palette. The lighting is bright and cheerful, highlighting a clean-shaven face and warm eyes in a modern studio setting with a soft-focus architectural background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRp4ayW64EZBjM_3EuFNBQm85qnKcQ_h56YLOdisvjr0eJs8lQRA7E69WLS6i8GGc9Oe-u6x6fqzuYyk5KWJVUnMW78SPx5HqRFECefwhTPLEnN-cl2WVhiIl2E6P5P3dpW4LUrSBd0YuYFuy4HU1ZfUcTpBfweBKxev7nNZCcXYA4ufXeYwc1hrG0OtCgGBDZe5QVtVFN9woS4RZMXQ9X0ON5qy13S5FrfILChATOWbuSj8cwHCMqij_x9ERHj7YwLWupyMD7GbM">
+</div>
+<div class="absolute bottom-2 right-2 bg-tertiary-container text-white p-xs rounded-lg shadow-lg">
+<span class="material-symbols-outlined text-[20px]" data-icon="verified" style="font-variation-settings: &quot;FILL&quot; 1;">verified</span>
+</div>
+</div>
+<div class="pb-sm mb-4">
+<div class="flex items-center gap-md">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Minh Tú Chill</h2>
+<span class="bg-primary-fixed text-on-primary-fixed px-md py-xs rounded-full font-label-sm text-label-sm">Thành viên Kim cương</span>
+</div>
+<p class="text-on-surface-variant font-body-md mt-xs">"Tìm kiếm những góc chill bí ẩn giữa lòng Sài Gòn ☕️"</p>
+<div class="flex gap-xl mt-md">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-primary">128</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Bài viết</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">12.5k</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Người theo dõi</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">342</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Đang theo dõi</span>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute bottom-4 right-4 flex flex-col-reverse gap-3 items-end">
+<button class="group bg-white/90 backdrop-blur-md text-secondary border border-secondary p-3 rounded-xl font-bold flex items-center gap-0 hover:gap-2 hover:px-lg transition-all duration-300 shadow-md">
+<span class="material-symbols-outlined text-[20px] shrink-0" data-icon="edit">edit</span>
+<span class="max-w-0 overflow-hidden group-hover:max-w-[100px] transition-all duration-300 whitespace-nowrap">Sửa hồ sơ</span>
+</button>
+<button class="bg-primary text-white px-lg py-3 rounded-xl font-bold shadow-lg hover:scale-105 transition-transform flex items-center gap-2 w-full justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="share">share</span>
+                        Chia sẻ
+                    </button>
+</div>
+</div>
+<!-- Tab System -->
+<div class="mt-24">
+<div class="flex border-b border-outline-variant mb-xl gap-xxl overflow-x-auto scrollbar-hide">
+<button class="profile-tab-active flex items-center gap-md py-md px-sm transition-all whitespace-nowrap">
+<span class="material-symbols-outlined" data-icon="grid_view" style="font-variation-settings: &quot;FILL&quot; 1;">grid_view</span>
+<span class="font-label-md text-label-md">Bài viết</span>
+</button>
+<button class="flex items-center gap-md py-md px-sm text-on-surface-variant hover:text-primary transition-all whitespace-nowrap">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+<span class="font-label-md text-label-md">Đã lưu</span>
+</button>
+<button class="flex items-center gap-md py-md px-sm text-on-surface-variant hover:text-primary transition-all whitespace-nowrap">
+<span class="material-symbols-outlined" data-icon="star">star</span>
+<span class="font-label-md text-label-md">Đánh giá</span>
+</button>
+<button class="flex items-center gap-md py-md px-sm text-on-surface-variant hover:text-primary transition-all whitespace-nowrap">
+<span class="material-symbols-outlined" data-icon="tag">tag</span>
+<span class="font-label-md text-label-md">Được gắn thẻ</span>
+</button>
+</div>
+<!-- Media Content Grid (Asymmetric Bento-like feel) -->
+<div class="grid grid-cols-12 gap-lg">
+<!-- Large Card Item -->
+<div class="col-span-8 group relative overflow-hidden rounded-[24px] aspect-video shadow-md hover:shadow-xl transition-all cursor-pointer">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A breathtaking luxury resort infinity pool overlooking a tropical coastline at sunset. The sky is painted with deep purples and oranges. The composition is wide and cinematic, capturing a sense of ultimate relaxation and high-end lifestyle. The image has a clean, saturated, and exuberant visual style consistent with a modern social mapping platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3jhEulQX4NfVhA8dcLPve2VJHd4NwOykoyj6fRyF_ysE3N0Un34uOH2EJSpYmYFKUd09EwSPoBE9MBAmF2hpkmanCNX-gFukqdnIi0Hul946KcP3x8wle0TZOL6YqEqybtefJBnWXYSVIch-8uAnyr6rD291X6YDruLXW4ogTiCzZQo25Kzay4BqcSlg-Y0h8D90Wq3dKbVRlnOsohHK88L-06XSa-XPkGogyOu1YwstpHlf2oIQVrBJNTxFI3A3UY0Z_dN2LZyo">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-xl flex flex-col justify-end">
+<h3 class="text-white font-headline-md text-headline-md">Hồ bơi vô cực tại Đà Nẵng</h3>
+<p class="text-white/80 flex items-center gap-xs font-label-md">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+                                Da Nang, Vietnam
+                            </p>
+</div>
+<div class="absolute top-4 right-4 bg-white/20 backdrop-blur-md px-md py-xs rounded-full text-white flex items-center gap-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="favorite" style="font-variation-settings: &quot;FILL&quot; 1;">favorite</span>
+<span class="font-label-sm">2.4k</span>
+</div>
+</div>
+<!-- Column for smaller cards -->
+<div class="col-span-4 flex flex-col gap-lg">
+<div class="group relative overflow-hidden rounded-[24px] h-[calc(50%-12px)] shadow-md hover:shadow-xl transition-all cursor-pointer">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A cozy, minimalist café interior with warm wood accents, large windows letting in bright natural light, and lush green indoor plants. The atmosphere is quiet and creative, perfect for a chill afternoon. Shot with a high-contrast edge, the image highlights the inviting texture of a artisanal latte on a marble table." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBt53zoPz5yuHwit_wJx7x7QXcoxbnivdA3ERLvw5NOuMH-np-bZ3svj3er6YItntSt39Kld6sy3anPu4dA3cGW_axswpkx7pN2sxrLZ23CHj4ukIUVbczivadZiD6wmvTKUNK-jTXCtqrccIyfBj0MNoB1CTXRtOVfL4sDL1NnawZmMeFb_FWIssSmPhcAXkqL-LBzeRlCSu--pcdVc5q4yX_JsRKeUEkmhPMZnZGYKcy052Y6sixyHmaM1obD8fQX0pgLlS5VBlg">
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-xl text-white">
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-[28px]" data-icon="comment">comment</span>
+<span class="font-label-sm">45</span>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-[24px] h-[calc(50%-12px)] shadow-md hover:shadow-xl transition-all cursor-pointer">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A vibrant outdoor food market scene at night, illuminated by warm string lights and colorful neon signs. People are gathered around social benches, creating a lively community-driven atmosphere. The image is rich in color and motion, capturing the kinetic energy of a Gen-Z night out in a bustling city." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLXLFVlTikw_zNzIQug6kMoQVtVxbrAc9HYk6ATgm4HRtyIb3k4x8ICWkuVjCMPY3ubD8RhLK3ZBVMcV1cHXCizwRj5aNnUm_u7uRWVPTB90mgUWkmJ6T61Dj-maqq5i79_ra0w3rdYrmCO9wPHKaqnXhv8gtEn4Q6-RB9Kx7tTdhfQEqgRwI8VRbBFBEKEgqyQvQFZPWNnQGTK66z1R8DQLTZ2dWoENoH_OzCoxWr6zB_ejzARJ3_QbmdFj9pXH4PRfxG7mBpDEQ">
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-xl text-white">
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-[28px]" data-icon="favorite">favorite</span>
+<span class="font-label-sm">892</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Row of 3 equal columns -->
+<div class="col-span-4 group relative overflow-hidden rounded-[24px] aspect-square shadow-md hover:shadow-xl transition-all cursor-pointer">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A modern architectural hotel facade with sleek glass windows reflecting a bright blue sky. The building is surrounded by well-manicured gardens and contemporary outdoor furniture. The visual style is high-energy and professional, emphasizing the structural reliability and beauty of luxury destinations in a sunny, high-key setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDG90FVz9gqaTcA1SkW9yD-DxhbNC2Um56fud6h-UgcfhjW6fwLnQiYfNXe_cEHe_eDi_iBTAMMK_TYGCz0oc7ptst1Tcz9Tx5d5r57H37aVcarfdEwBmn0vzD0R3xSBFL3CncUaV9RQP2lKw_sXDV5dMqRU7JUqca57YFsHySXdkKgf-iyOwvb3l59oDF-ebeYIHs96Hnkma7m4iq_WMRi87939M06AXBZ5X32UsKNn9TwnPqPm2015wrO_Vc8V8hoDbnfkeAuTBE">
+</div>
+<div class="col-span-4 group relative overflow-hidden rounded-[24px] aspect-square shadow-md hover:shadow-xl transition-all cursor-pointer">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A high-end restaurant interior featuring a central glowing bar, plush velvet seating, and sophisticated dim lighting. The mood is intimate and trendy, with a focus on modern social interaction. The color palette is dominated by rich jewel tones and warm amber highlights, following the exuberant brand personality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8xOHwbmNMEtDkB9uayXQUnS5mNVcxvKxVrXon5A8zbdXKUo7y7CUt53A1pungD_hysOxjLqk8ICrkaOGG6-_zbmoJRjxblrUtDI4T5dnbK0UxFhzDOSIfiEt4ECG9Z-arXpfXhXtjhoiCYhWvkh8711m7DwWiagwkQkz8TsTBJa70kI_q2jdbrfgWFzOFRQePexVqAsQWQ7HP3IiEDMG4oNsLDPQaozPA9JkLKt3cDcDZiiAQc6hNu1_ZnGKwrZ6_WO3Jfuo8gAk">
+</div>
+<div class="col-span-4 group relative overflow-hidden rounded-[24px] aspect-square shadow-md hover:shadow-xl transition-all cursor-pointer">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A top-down view of a colorful healthy brunch spread on a rustic wooden table. Multiple plates with vibrant salads, poached eggs, and fresh juices are arranged artistically. The lighting is bright and crisp, showcasing the fresh ingredients and social nature of dining out in a lifestyle-oriented community." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdjKYeTdDpi_9O6VqU5-vtBC8_vN1z8mOZdeM0hauoVY0lr35Ytktq9nSPtLDykvM4wWFi2r3_1dcg5hfEyAoNHmCcMDahI-SGSak5PFBmLzZD85PPqYpq_w7t0Ken-zqNPyHFJtE3vKy4d1zr2rG8-A6CjWv_XOLmvlH7ZUziWa2kUgrFMMA476eEFS0dLsG1I4HeJF9c8RvB1WFcgOPDWpFtzQbKHqWKdRHwKNubgwKUpcZvgUfl4WSI12Bp-RsEC4SrqUkmCTk">
+</div>
+</div>
+<!-- Load More / End of content -->
+<div class="mt-xxl flex justify-center pb-xxl">
+<button class="flex flex-col items-center gap-sm text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined animate-bounce text-[32px]" data-icon="expand_more">expand_more</span>
+<span class="font-label-md">Xem thêm bài viết</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Contextual Map Floating Element (Secondary/Ghost Map action) -->
+<div class="fixed bottom-margin-desktop right-margin-desktop z-40 group">
+<div class="absolute bottom-full right-0 mb-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+<div class="bg-surface shadow-xl p-md rounded-xl border border-outline-variant w-48 text-center">
+<p class="font-label-md text-on-surface">Khám phá vị trí của tôi</p>
+</div>
+</div>
+<button class="h-16 w-16 bg-secondary text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform active:scale-95">
+<span class="material-symbols-outlined text-[32px]" data-icon="map">map</span>
+</button>
+</div>
+<script>
+        // Simple Interaction logic for tabs
+        document.querySelectorAll('.profile-tab-active').forEach(tab => {
+            // Logic can be added here to switch content if needed
+        });
+
+        // Search bar micro-interaction
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('scale-[1.02]');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('scale-[1.02]');
+        });
+    </script>
+
+
+</body></html>

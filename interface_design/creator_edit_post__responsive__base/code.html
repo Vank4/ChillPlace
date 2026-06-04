@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Chỉnh sửa bài viết | ChillPlace</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "inverse-on-surface": "#eff1f3",
+                "error": "#ba1a1a",
+                "surface-container-lowest": "#ffffff",
+                "outline-variant": "#e1bfb5",
+                "on-surface": "#191c1e",
+                "on-tertiary": "#ffffff",
+                "surface-container-high": "#e6e8ea",
+                "secondary": "#35618d",
+                "on-secondary": "#ffffff",
+                "inverse-surface": "#2d3133",
+                "on-background": "#191c1e",
+                "on-secondary-fixed-variant": "#184974",
+                "on-tertiary-container": "#003832",
+                "secondary-container": "#a2cdff",
+                "outline": "#8d7168",
+                "surface-tint": "#ab3500",
+                "on-primary-fixed": "#390c00",
+                "on-secondary-fixed": "#001d35",
+                "primary-fixed": "#ffdbd0",
+                "primary-fixed-dim": "#ffb59d",
+                "on-tertiary-fixed": "#00201c",
+                "primary-container": "#ff6b35",
+                "on-error": "#ffffff",
+                "surface-bright": "#f7f9fb",
+                "on-surface-variant": "#594139",
+                "surface-container-low": "#f2f4f6",
+                "on-primary": "#ffffff",
+                "secondary-fixed-dim": "#a0cafc",
+                "on-secondary-fixed": "#001d35",
+                "on-primary-container": "#5f1900",
+                "primary": "#ab3500",
+                "inverse-primary": "#ffb59d",
+                "tertiary-container": "#00ac9b",
+                "secondary-fixed": "#d1e4ff",
+                "on-tertiary-fixed-variant": "#005048",
+                "on-primary-fixed-variant": "#832600",
+                "surface-container-highest": "#e0e3e5",
+                "tertiary": "#006b5f",
+                "surface-variant": "#e0e3e5",
+                "tertiary-fixed": "#71f8e4",
+                "surface-container": "#eceef0",
+                "background": "#f7f9fb",
+                "tertiary-fixed-dim": "#4fdbc8",
+                "on-error-container": "#93000a",
+                "error-container": "#ffdad6",
+                "surface": "#f7f9fb",
+                "surface-dim": "#d8dadc"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "margin-desktop": "32px",
+                "xxl": "48px",
+                "md": "16px",
+                "xl": "32px",
+                "gutter": "16px",
+                "xs": "4px",
+                "sm": "8px",
+                "margin-mobile": "16px",
+                "lg": "24px"
+            },
+            "fontFamily": {
+                "label-sm": ["Plus Jakarta Sans"],
+                "headline-lg-mobile": ["Plus Jakarta Sans"],
+                "display-lg": ["Plus Jakarta Sans"],
+                "headline-md": ["Plus Jakarta Sans"],
+                "headline-lg": ["Plus Jakarta Sans"],
+                "body-lg": ["Plus Jakarta Sans"],
+                "label-md": ["Plus Jakarta Sans"],
+                "body-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}],
+                "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon { font-variation-settings: 'FILL' 1; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-body-md text-on-background min-h-screen pb-24">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface shadow-sm h-16 flex justify-between items-center px-margin-mobile md:px-margin-desktop">
+<div class="flex items-center gap-sm">
+<button class="p-2 active:scale-95 duration-150 text-on-surface" onclick="history.back()">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary">Chỉnh sửa bài viết</h1>
+</div>
+<div class="flex items-center gap-sm">
+<button class="text-primary font-bold px-md py-sm hover:opacity-80 active:scale-95 transition-all">Lưu nháp</button>
+</div>
+</header>
+<main class="pt-20 px-margin-mobile max-w-2xl mx-auto space-y-lg">
+<!-- Media Upload Section -->
+<section class="space-y-sm">
+<div class="flex justify-between items-end">
+<label class="font-label-md text-label-md text-on-surface-variant">Ảnh &amp; Video (Tối đa 5)</label>
+<span class="text-label-sm font-label-sm text-primary">2/5</span>
+</div>
+<div class="flex gap-sm overflow-x-auto no-scrollbar py-sm">
+<!-- Media Item 1 -->
+<div class="relative flex-shrink-0 w-40 h-56 rounded-xl overflow-hidden shadow-sm group">
+<img class="w-full h-full object-cover" data-alt="A cinematic photo of a minimalist, sun-drenched cafe interior in Ho Chi Minh City. The space features warm wooden furniture, lush green plants in ceramic pots, and large glass windows reflecting golden hour light. The atmosphere is calm, artistic, and modern, following a clean light-mode aesthetic with vibrant natural accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8fSTOG3x0zdc8DTlTEnWUKyIwRjjMdq068gNz1oM9zVb3TN4kpGfupiORxrIcqc8UggNo0Or-p0Sq8Zm_8WAgJ4TMWVVBSqSIy3ADEvg7XNHeRL5sAgcY59Q_CcJOLQTNCX_VEgoA39a7Uy_fd84PlX05LRP9M8FinRaZJGZ_P3ThnrBjTqc01ZWGEnIeTaBj6S8ygcd6USkmKRkSlsixVWbKBHWqzwT-_R1HBtP4qiMVqog0YXMbZq_LAuWMQAtZxBOsP8W9CJ0"/>
+<button class="absolute top-2 right-2 bg-black/40 backdrop-blur-md text-white p-1 rounded-full hover:bg-error transition-colors">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+<div class="absolute bottom-0 w-full p-2 bg-gradient-to-t from-black/60 to-transparent">
+<span class="text-white text-[10px] font-bold uppercase tracking-wider">Ảnh chính</span>
+</div>
+</div>
+<!-- Media Item 2 -->
+<div class="relative flex-shrink-0 w-40 h-56 rounded-xl overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Close-up shot of a specialty latte with intricate tulip latte art in a textured ceramic cup. The drink is placed on a marble tabletop with a small sprig of dried lavender nearby. The lighting is soft and diffused, highlighting the rich textures and premium quality of the beverage within a sophisticated urban cafe setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSseoD_4W26cKlxwnhTS7pP8Rviauf1iLCPFSpfRhuFAxIjJ9ka8Uriz-5BnPcPb2UhNMBDgItklssArHJdwyxc8OoV3-yFj9q4GaeWmGp9JVwJXuO54B0V-jJeJqz5T9nsZB-ZBEZEnfCag0qAKWngTWWywlj9g1laFQMuAcewjgErWdBnTfHgSiQVQCKYYRdZBmScHiNiGHKRpoOxXKdt3W55TFVebTs9Da2Y_5FMtRzMUIZRPbqTl2_6dVsRQHV7x7ArqLHem4"/>
+<button class="absolute top-2 right-2 bg-black/40 backdrop-blur-md text-white p-1 rounded-full">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Add Button -->
+<button class="flex-shrink-0 w-40 h-56 rounded-xl border-2 border-dashed border-outline-variant bg-surface-container-low flex flex-col items-center justify-center gap-sm text-on-surface-variant active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-display-lg text-outline">add_a_photo</span>
+<span class="font-label-sm text-label-sm">Thêm ảnh/video</span>
+</button>
+</div>
+</section>
+<!-- Form Fields -->
+<div class="space-y-md bg-surface p-md rounded-xl shadow-sm">
+<!-- Title -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1" for="title">Tiêu đề bài viết</label>
+<input class="w-full bg-surface-container-low border-none rounded-xl px-md py-3 focus:ring-2 focus:ring-primary text-body-md font-body-md" id="title" placeholder="Nhập tiêu đề ấn tượng..." type="text" value="Quán cafe 'vibe' Hàn Quốc giữa lòng Sài Gòn"/>
+</div>
+<!-- Content -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1" for="content">Nội dung review</label>
+<textarea class="w-full bg-surface-container-low border-none rounded-xl px-md py-3 focus:ring-2 focus:ring-primary text-body-md font-body-md" id="content" placeholder="Chia sẻ trải nghiệm của bạn tại đây..." rows="6">Vừa tìm được một góc trốn nắng cực xinh tại Quận 1. Không gian tối giản nhưng cực kỳ tinh tế, ánh sáng tự nhiên ngập tràn phù hợp cho các bạn thích chụp ảnh sống ảo. Menu đa dạng, đặc biệt là món Signature Latte rất đậm đà. 
+
+Điểm cộng: Nhân viên nhiệt tình, nhạc chill, wifi mạnh cho bạn nào muốn làm việc.</textarea>
+</div>
+<!-- Tag Location -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1">Địa điểm gắn thẻ</label>
+<div class="relative group">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-primary">location_on</span>
+<input class="w-full bg-surface-container-low border-none rounded-xl pl-10 pr-md py-3 focus:ring-2 focus:ring-primary text-body-md font-body-md" type="text" value="The Minimalist Cafe - Quận 1"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+</div>
+<!-- Category Chips -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1">Chủ đề bài viết</label>
+<div class="flex flex-wrap gap-sm">
+<button class="px-md py-2 rounded-full bg-primary text-white font-label-sm text-label-sm flex items-center gap-xs">
+<span>Cafe</span>
+<span class="material-symbols-outlined text-sm">check</span>
+</button>
+<button class="px-md py-2 rounded-full bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm hover:bg-primary-fixed-dim/20 transition-colors">Đồ uống</button>
+<button class="px-md py-2 rounded-full bg-primary text-white font-label-sm text-label-sm flex items-center gap-xs">
+<span>Check-in</span>
+<span class="material-symbols-outlined text-sm">check</span>
+</button>
+<button class="px-md py-2 rounded-full bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm">Làm việc</button>
+<button class="px-md py-2 rounded-full border border-primary text-primary font-label-sm text-label-sm">
+                        + Thêm
+                    </button>
+</div>
+</div>
+</div>
+<!-- Visibility Toggle -->
+<div class="bg-surface p-md rounded-xl shadow-sm flex justify-between items-center">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">public</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md">Chế độ hiển thị</h3>
+<p class="text-label-sm text-on-surface-variant">Công khai cho mọi người</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Warning Info -->
+<div class="flex gap-sm p-md bg-secondary-fixed/30 rounded-xl border border-secondary-fixed">
+<span class="material-symbols-outlined text-secondary">info</span>
+<p class="text-label-sm text-on-secondary-fixed-variant">
+                Bài viết sau khi cập nhật sẽ được kiểm duyệt nội dung tự động để đảm bảo tuân thủ tiêu chuẩn cộng đồng.
+            </p>
+</div>
+</main>
+<!-- Bottom Action Bar -->
+<div class="fixed bottom-0 left-0 w-full bg-surface p-md shadow-[0px_-4px_20px_rgba(31,78,121,0.08)] flex gap-md z-50">
+<button class="flex-1 py-3 px-md border border-outline rounded-xl text-on-surface font-bold active:scale-95 transition-all">
+            Hủy bỏ
+        </button>
+<button class="flex-[2] py-3 px-md bg-primary text-white rounded-xl font-bold shadow-lg shadow-primary/20 active:scale-95 transition-all flex items-center justify-center gap-sm">
+            Cập nhật ngay
+            <span class="material-symbols-outlined">send</span>
+</button>
+</div>
+<!-- Hidden FAB Logic Replacement (Only for desktop view if needed) -->
+<div class="hidden md:block fixed right-8 bottom-24">
+<button class="w-14 h-14 bg-primary text-white rounded-full shadow-xl flex items-center justify-center hover:scale-105 active:scale-90 transition-transform">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+<script>
+        // Simple Interaction logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const inputs = document.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                input.addEventListener('focus', () => {
+                    input.parentElement.querySelector('label')?.classList.add('text-primary');
+                });
+                input.addEventListener('blur', () => {
+                    input.parentElement.querySelector('label')?.classList.remove('text-primary');
+                });
+            });
+        });
+
+        // Image delete simulation
+        const deleteButtons = document.querySelectorAll('.group button');
+        deleteButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if(confirm('Bạn có chắc muốn xóa ảnh này?')) {
+                    btn.closest('.relative').style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body></html>

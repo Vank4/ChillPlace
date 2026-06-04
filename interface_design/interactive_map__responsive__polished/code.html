@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>ChillPlace - Khám phá bản đồ</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .bottom-sheet-transition {
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .map-marker-pulse::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: currentColor;
+            opacity: 0.4;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.6; }
+            100% { transform: scale(3); opacity: 0; }
+        }
+        .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+        
+        /* Custom hide scrollbar */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#832600",
+                        "tertiary-container": "#00ac9b",
+                        "surface-container": "#eceef0",
+                        "surface-variant": "#e0e3e5",
+                        "tertiary-fixed-dim": "#4fdbc8",
+                        "surface-container-low": "#f2f4f6",
+                        "on-tertiary-container": "#003832",
+                        "on-tertiary": "#ffffff",
+                        "outline": "#8d7168",
+                        "primary-container": "#ff6b35",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#390c00",
+                        "secondary-fixed-dim": "#a0cafc",
+                        "surface": "#f7f9fb",
+                        "on-tertiary-fixed-variant": "#005048",
+                        "on-surface-variant": "#594139",
+                        "inverse-on-surface": "#eff1f3",
+                        "background": "#f7f9fb",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#006b5f",
+                        "secondary": "#35618d",
+                        "surface-container-high": "#e6e8ea",
+                        "primary-fixed": "#ffdbd0",
+                        "on-tertiary-fixed": "#00201c",
+                        "surface-container-highest": "#e0e3e5",
+                        "primary": "#ab3500",
+                        "surface-dim": "#d8dadc",
+                        "on-secondary-fixed": "#001d35",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#71f8e4",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#5f1900",
+                        "on-surface": "#191c1e",
+                        "on-secondary-fixed-variant": "#184974",
+                        "secondary-container": "#a2cdff",
+                        "surface-bright": "#f7f9fb",
+                        "inverse-primary": "#ffb59d",
+                        "outline-variant": "#e1bfb5",
+                        "on-secondary-container": "#2a5782",
+                        "primary-fixed-dim": "#ffb59d",
+                        "surface-tint": "#ab3500",
+                        "secondary-fixed": "#d1e4ff",
+                        "inverse-surface": "#2d3133",
+                        "error-container": "#ffdad6",
+                        "on-background": "#191c1e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "margin-mobile": "16px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "margin-desktop": "32px",
+                        "lg": "24px",
+                        "xxl": "48px",
+                        "md": "16px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface overflow-hidden">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 shadow-sm bg-surface dark:bg-inverse-surface flex justify-between items-center px-margin-mobile h-16">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-[28px]">explore</span>
+<h1 class="text-headline-md font-headline-md text-primary tracking-tight">ChillPlace</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-primary-fixed-dim border border-outline-variant">
+<img alt="Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXyDF__7mTPHhnM1jbkHYSnrDboROhpygHZn2FJ8NJNcCaYN5jNKMKygfIndVc3PCH3auO4hNHf61F3eUm-Fc8r5UOQ7bfMwqX6rdRCyBG537jPalgbJHc6wz83fdCVBXmOP9qRDhgN4j5Avxq2mmN_EPPhl1RWvSCA8nGpPSdoQGiTMAGoPsaMMssUerHTckmOoQrAfglbMXz80GIsneK9W85AAF9OodrvR5o_dhpwq16vwrmHzaup0gBo0dLrFRiBHsCYcxKVsA"/>
+</div>
+</div>
+</header>
+<!-- Main Map Canvas -->
+<main class="relative w-full h-screen pt-16">
+<!-- Mock Map Background -->
+<div class="absolute inset-0 z-0">
+<img alt="Map View" class="w-full h-screen object-cover grayscale-[10%]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbrqV-LaUGbtOgKrcfW-Xrfp35f4QH1EEpIUemz-m4d02UlLjSikLBKQ5yFmlLROMEWQCc8x4JSpxwakuB2veeFFZruf_c_s71rIlNcyvePjl0JxtY2FLTue-huLaFLpWJoLAnkpROP6Wbox8adWDyHrQyBIm24MfqpVRjGtULxOf7t0ZDQR13wMS2-NjpNe-jA2BvEF7ptHxkgkdybl9P0x_eFhJ8qEb_YQNv14JBu5ynbdO0FnYGOXTJ7ADMbvnPM8S37Tqw4rs"/>
+<!-- Interactive Map Markers -->
+<div class="absolute top-1/3 left-1/4 cursor-pointer group" id="marker-1" onclick="showPlaceDetail('m1')">
+<div class="relative flex items-center justify-center">
+<div class="map-marker-pulse absolute w-10 h-10 rounded-full text-primary"></div>
+<div class="relative z-10 w-8 h-8 bg-primary rounded-full border-2 border-white flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-white text-[18px]">coffee</span>
+</div>
+<div class="absolute -bottom-8 left-1/2 -translate-x-1/2 glass-panel px-2 py-0.5 rounded-lg text-[10px] font-bold shadow-sm whitespace-nowrap">The Chill Lab</div>
+</div>
+</div>
+<div class="absolute top-1/2 left-2/3 cursor-pointer group" id="marker-2" onclick="showPlaceDetail('m2')">
+<div class="relative flex items-center justify-center">
+<div class="absolute w-8 h-8 rounded-full text-tertiary" id="pulse-2"></div>
+<div class="relative z-10 w-8 h-8 bg-tertiary rounded-full border-2 border-white flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-white text-[18px]">park</span>
+</div>
+<div class="absolute -bottom-8 left-1/2 -translate-x-1/2 glass-panel px-2 py-0.5 rounded-lg text-[10px] font-bold shadow-sm whitespace-nowrap">Công viên xanh</div>
+</div>
+</div>
+<div class="absolute top-[60%] left-1/3 cursor-pointer group" id="marker-3" onclick="showPlaceDetail('m3')">
+<div class="relative flex items-center justify-center">
+<div class="absolute w-8 h-8 rounded-full text-secondary" id="pulse-3"></div>
+<div class="relative z-10 w-8 h-8 bg-secondary rounded-full border-2 border-white flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-white text-[18px]">restaurant</span>
+</div>
+<div class="absolute -bottom-8 left-1/2 -translate-x-1/2 glass-panel px-2 py-0.5 rounded-lg text-[10px] font-bold shadow-sm whitespace-nowrap">Bếp Việt</div>
+</div>
+</div>
+</div>
+<!-- Floating UI Overlays -->
+<div class="absolute top-20 left-0 right-0 z-20 flex flex-col items-center gap-3 px-margin-mobile">
+<!-- Search Bar -->
+<div class="glass-panel w-full max-w-md rounded-full px-4 py-3 flex items-center shadow-xl border border-white/40 transition-all focus-within:shadow-2xl">
+<span class="material-symbols-outlined text-primary mr-3">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md w-full placeholder-on-surface-variant/70 p-0" placeholder="Tìm kiếm địa điểm chill..." type="text"/>
+<span class="material-symbols-outlined text-on-surface-variant ml-2 opacity-60">mic</span>
+</div>
+<!-- Category Chips -->
+<div class="flex gap-2 w-full max-w-md overflow-x-auto no-scrollbar pb-1">
+<button class="glass-panel shrink-0 px-4 py-1.5 rounded-full text-label-md flex items-center gap-1.5 shadow-sm whitespace-nowrap border-primary/20 bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-[18px]">star</span>
+                Gợi ý
+            </button>
+<button class="glass-panel shrink-0 px-4 py-1.5 rounded-full text-label-md flex items-center gap-1.5 shadow-sm whitespace-nowrap">
+<span class="material-symbols-outlined text-[18px]">coffee</span>
+                Cà phê
+            </button>
+<button class="glass-panel shrink-0 px-4 py-1.5 rounded-full text-label-md flex items-center gap-1.5 shadow-sm whitespace-nowrap">
+<span class="material-symbols-outlined text-[18px]">restaurant</span>
+                Ăn uống
+            </button>
+<button class="glass-panel shrink-0 px-4 py-1.5 rounded-full text-label-md flex items-center gap-1.5 shadow-sm whitespace-nowrap">
+<span class="material-symbols-outlined text-[18px]">park</span>
+                Ngoài trời
+            </button>
+</div>
+</div>
+<!-- Sidebar Floating Actions -->
+<div class="absolute right-margin-mobile top-48 z-20 flex flex-col gap-3">
+<button class="w-12 h-12 bg-surface rounded-full flex items-center justify-center shadow-lg hover:bg-surface-container-high active:scale-90 transition-all group">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">my_location</span>
+</button>
+<button class="w-12 h-12 bg-surface rounded-full flex items-center justify-center shadow-lg hover:bg-surface-container-high active:scale-90 transition-all group">
+<span class="material-symbols-outlined text-secondary group-hover:rotate-45 transition-transform">recenter</span>
+</button>
+<button class="w-12 h-12 bg-surface rounded-full flex items-center justify-center shadow-lg hover:bg-surface-container-high active:scale-90 transition-all group">
+<span class="material-symbols-outlined text-tertiary">layers</span>
+</button>
+</div>
+<!-- Place Preview Bottom Sheet -->
+<div class="fixed inset-x-0 bottom-0 z-[60] bottom-sheet-transition translate-y-full px-margin-mobile pb-xxl lg:flex lg:justify-center" id="bottom-sheet">
+<div class="w-full lg:max-w-xl bg-surface rounded-[32px] shadow-[0px_-12px_40px_rgba(0,0,0,0.15)] p-6 relative overflow-hidden group border border-outline-variant/30">
+<!-- Drag Handle Area -->
+<div class="absolute top-0 left-0 w-full h-8 flex justify-center items-start pt-3 cursor-grab active:cursor-grabbing" id="drag-handle-area">
+<div class="w-12 h-1.5 bg-surface-container-highest rounded-full transition-colors group-hover:bg-outline-variant"></div>
+</div>
+<div class="flex flex-col md:flex-row gap-md items-start mt-4">
+<div class="w-full md:w-32 h-32 rounded-2xl overflow-hidden shrink-0 shadow-sm">
+<img alt="Location preview" class="w-full h-full object-cover" id="place-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAy8s9UWmvXOV0WX5S9cQvMtdl2PwB8yZufbKlmx7W9yFglhf-SJPbGG59sON2Ps0ayel9z2OoPDuVdrNzFtit4FJAgolLJQVt4sCLF8X5782e8sfBBdvUwibPtrLHfnw9SDiif65Ejqfv4eZEMIoHCW8D__-mWObUGiEhSLyOD4uryX5BFKnJEFXZjKHZ0sVYsJiBrYFeoj39mZzJwuY03dgVljIFxNyXN4vkEbwxMtUYmM1x1Cs6vJTDHdfBwR8yN1JTbXhju_EM"/>
+</div>
+<div class="flex-grow space-y-2">
+<div class="flex justify-between items-start">
+<div>
+<span class="bg-primary-fixed text-on-primary-fixed px-3 py-0.5 rounded-full text-label-sm uppercase tracking-wider mb-2 inline-block" id="place-category">Cà phê</span>
+<h2 class="text-headline-md font-headline-md text-on-surface" id="place-name">The Chill Lab</h2>
+</div>
+<button class="w-10 h-10 flex items-center justify-center hover:bg-surface-container-high rounded-full transition-colors text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">bookmark</span>
+</button>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant text-body-md">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+<span class="truncate" id="place-addr">123 Đường Chill, Quận 1, TP.HCM</span>
+</div>
+<div class="flex items-center gap-4 mt-2">
+<div class="flex items-center text-primary font-bold">
+<span class="material-symbols-outlined text-[18px] mr-1" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>4.8</span>
+</div>
+<div class="text-on-surface-variant text-label-md">• 2.4 km</div>
+<div class="text-tertiary font-bold text-label-md px-2 py-0.5 bg-tertiary/10 rounded-lg">Đang mở cửa</div>
+</div>
+</div>
+</div>
+<div class="flex gap-3 mt-6">
+<button class="flex-1 bg-primary text-white font-bold py-4 rounded-2xl shadow-lg shadow-primary/20 hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">directions</span>
+                    Chỉ đường
+                </button>
+<button class="flex-1 bg-surface-container-high text-on-surface font-bold py-4 rounded-2xl hover:bg-surface-container-highest active:scale-95 transition-all">
+                    Xem chi tiết
+                </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-20 px-2 pb-safe bg-surface/90 backdrop-blur-md dark:bg-inverse-surface z-50 rounded-t-3xl shadow-[0px_-4px_20px_rgba(0,0,0,0.05)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all px-3" href="#">
+<span class="material-symbols-outlined text-[26px]">home</span>
+<span class="text-[10px] font-bold mt-1">Trang chủ</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all px-3" href="#">
+<span class="material-symbols-outlined text-[26px]">search</span>
+<span class="text-[10px] font-bold mt-1">Khám phá</span>
+</a>
+<div class="flex flex-col items-center justify-center relative -top-3">
+<div class="bg-primary text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-primary/30 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">map</span>
+</div>
+<span class="text-[10px] font-bold text-primary mt-1">Bản đồ</span>
+</div>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all px-3" href="#">
+<span class="material-symbols-outlined text-[26px]">bookmark</span>
+<span class="text-[10px] font-bold mt-1">Đã lưu</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all px-3" href="#">
+<span class="material-symbols-outlined text-[26px]">person</span>
+<span class="text-[10px] font-bold mt-1">Tôi</span>
+</a>
+</nav>
+<!-- Floating Create Button -->
+<button class="fixed bottom-24 right-margin-mobile z-50 w-14 h-14 bg-secondary text-white rounded-full flex items-center justify-center shadow-xl active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[32px]">add</span>
+</button>
+<script>
+    const bottomSheet = document.getElementById('bottom-sheet');
+    const placeName = document.getElementById('place-name');
+    const placeAddr = document.getElementById('place-addr');
+    const placeCat = document.getElementById('place-category');
+    const placeImg = document.getElementById('place-img');
+
+    const places = {
+        m1: {
+            name: "The Chill Lab",
+            addr: "123 Đường Chill, Quận 1, TP.HCM",
+            cat: "Cà phê",
+            img: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=400",
+            color: "bg-primary-fixed",
+            textColor: "text-on-primary-fixed"
+        },
+        m2: {
+            name: "Công viên xanh",
+            addr: "Lãnh Binh Thăng, Quận 11, TP.HCM",
+            cat: "Thiên nhiên",
+            img: "https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&q=80&w=400",
+            color: "bg-tertiary-fixed",
+            textColor: "text-on-tertiary-fixed"
+        },
+        m3: {
+            name: "Bếp Việt",
+            addr: "456 Nguyễn Trãi, Quận 5, TP.HCM",
+            cat: "Ẩm thực",
+            img: "https://images.unsplash.com/photo-1567033161394-7c60e33621b4?auto=format&fit=crop&q=80&w=400",
+            color: "bg-secondary-fixed",
+            textColor: "text-on-secondary-fixed"
+        }
+    };
+
+    function showPlaceDetail(id) {
+        // Clear existing pulses
+        document.querySelectorAll('.map-marker-pulse').forEach(p => p.classList.remove('map-marker-pulse'));
+        
+        // Add pulse to active marker
+        const marker = document.getElementById('marker-' + id.replace('m', ''));
+        const pulseDiv = marker.querySelector('div > div:first-child');
+        pulseDiv.classList.add('map-marker-pulse');
+
+        const data = places[id];
+        placeName.innerText = data.name;
+        placeAddr.innerText = data.addr;
+        placeCat.innerText = data.cat;
+        placeImg.src = data.img;
+        
+        // Apply category styling
+        placeCat.className = `${data.color} ${data.textColor} px-3 py-0.5 rounded-full text-label-sm uppercase tracking-wider mb-2 inline-block transition-colors duration-300`;
+
+        bottomSheet.classList.remove('translate-y-full');
+        bottomSheet.classList.add('translate-y-0');
+    }
+
+    // Close bottom sheet when clicking on the map area
+    document.querySelector('main').addEventListener('click', (e) => {
+        if (!bottomSheet.contains(e.target) && !e.target.closest('[id^="marker-"]')) {
+            bottomSheet.classList.add('translate-y-full');
+            bottomSheet.classList.remove('translate-y-0');
+            // Remove pulse animations
+            document.querySelectorAll('.map-marker-pulse').forEach(p => p.classList.remove('map-marker-pulse'));
+        }
+    });
+
+    // Touch Handling for Bottom Sheet
+    let startY = 0;
+    let currentY = 0;
+    const sheetContent = bottomSheet.firstElementChild;
+
+    bottomSheet.addEventListener('touchstart', (e) => {
+        startY = e.touches[0].clientY;
+    });
+
+    bottomSheet.addEventListener('touchmove', (e) => {
+        currentY = e.touches[0].clientY;
+        const deltaY = currentY - startY;
+        
+        if (deltaY > 0) {
+            // Apply slight resistance-free translation during drag
+            sheetContent.style.transform = `translateY(${deltaY}px)`;
+        }
+    });
+
+    bottomSheet.addEventListener('touchend', (e) => {
+        const deltaY = currentY - startY;
+        sheetContent.style.transform = ''; // Reset inline style
+        
+        if (deltaY > 100) {
+            bottomSheet.classList.add('translate-y-full');
+            bottomSheet.classList.remove('translate-y-0');
+            document.querySelectorAll('.map-marker-pulse').forEach(p => p.classList.remove('map-marker-pulse'));
+        }
+    });
+</script>
+</body></html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .notification-card:hover .action-btn {
+            opacity: 1;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary": "#006b5f",
+                      "primary-container": "#ff6b35",
+                      "inverse-on-surface": "#eff1f3",
+                      "tertiary-fixed": "#71f8e4",
+                      "inverse-surface": "#2d3133",
+                      "secondary-container": "#a2cdff",
+                      "secondary": "#35618d",
+                      "background": "#f7f9fb",
+                      "surface-bright": "#f7f9fb",
+                      "error-container": "#ffdad6",
+                      "outline-variant": "#e1bfb5",
+                      "on-error-container": "#93000a",
+                      "on-primary": "#ffffff",
+                      "surface-variant": "#e0e3e5",
+                      "error": "#ba1a1a",
+                      "surface-container-high": "#e6e8ea",
+                      "on-primary-container": "#5f1900",
+                      "primary-fixed-dim": "#ffb59d",
+                      "primary-fixed": "#ffdbd0",
+                      "on-tertiary": "#ffffff",
+                      "surface-container": "#eceef0",
+                      "on-tertiary-container": "#003832",
+                      "on-surface-variant": "#594139",
+                      "on-background": "#191c1e",
+                      "tertiary-fixed-dim": "#4fdbc8",
+                      "surface-container-highest": "#e0e3e5",
+                      "secondary-fixed-dim": "#a0cafc",
+                      "tertiary-container": "#00ac9b",
+                      "on-primary-fixed": "#390c00",
+                      "on-secondary": "#ffffff",
+                      "surface-container-low": "#f2f4f6",
+                      "on-secondary-fixed-variant": "#184974",
+                      "primary": "#ab3500",
+                      "surface-tint": "#ab3500",
+                      "on-secondary-fixed": "#001d35",
+                      "outline": "#8d7168",
+                      "on-secondary-container": "#2a5782",
+                      "surface-container-lowest": "#ffffff",
+                      "on-surface": "#191c1e",
+                      "on-primary-fixed-variant": "#832600",
+                      "surface-dim": "#d8dadc",
+                      "secondary-fixed": "#d1e4ff",
+                      "inverse-primary": "#ffb59d",
+                      "on-tertiary-fixed": "#00201c",
+                      "on-error": "#ffffff",
+                      "surface": "#f7f9fb",
+                      "on-tertiary-fixed-variant": "#005048"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "xxl": "24px",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xs": "4px",
+                      "xxl": "48px",
+                      "margin-desktop": "32px",
+                      "margin-mobile": "16px",
+                      "gutter": "16px",
+                      "lg": "24px",
+                      "md": "16px",
+                      "sm": "8px",
+                      "xl": "32px"
+              },
+              "fontFamily": {
+                      "label-sm": ["Plus Jakarta Sans"],
+                      "headline-lg": ["Plus Jakarta Sans"],
+                      "headline-md": ["Plus Jakarta Sans"],
+                      "display-lg": ["Plus Jakarta Sans"],
+                      "body-md": ["Plus Jakarta Sans"],
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "label-md": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface">
+<!-- SideNavBar (Shared Component) -->
+<aside class="h-screen w-72 fixed left-0 top-0 bg-surface dark:bg-inverse-surface border-r border-outline-variant flex flex-col py-xl px-lg z-50">
+<div class="mb-xxl">
+<h1 class="font-display-lg text-display-lg font-black text-primary dark:text-primary-fixed-dim">ChillPlace</h1>
+<p class="font-label-md text-label-md text-on-surface-variant">Khám phá không gian</p>
+</div>
+<nav class="flex-1 space-y-md">
+<!-- Active State: Determined by intent. Currently generating Notifications, but based on JSON labels, mapping to closest logic or displaying as standard. None of the labels are "Notifications", so we show standard navigation. However, the user is in the app, so we'll maintain state. -->
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high dark:hover:bg-surface-container-highest p-md rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Trang chủ</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high dark:hover:bg-surface-container-highest p-md rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-label-md text-label-md">Khám phá</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high dark:hover:bg-surface-container-highest p-md rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-label-md text-label-md">Bản đồ</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high dark:hover:bg-surface-container-highest p-md rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="font-label-md text-label-md">Yêu thích</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high dark:hover:bg-surface-container-highest p-md rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Cài đặt</span>
+</a>
+</nav>
+<div class="mt-auto space-y-lg">
+<button class="w-full bg-primary-container text-on-primary py-md px-lg rounded-full font-bold hover:opacity-90 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                Đăng bài mới
+            </button>
+<div class="flex items-center gap-4 p-md rounded-xl hover:bg-surface-container-high transition-colors cursor-pointer">
+<img alt="User Profile Avatar" class="w-10 h-10 rounded-full object-cover" data-alt="A professional and friendly portrait of a young man with a warm smile, set against a blurred urban architectural background. The lighting is soft and natural, emphasizing a clean and modern aesthetic suitable for a social platform user profile. The overall color palette is bright and welcoming." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAU_cB51JFNT692GBATD_bUJK0np-et0nvYSV1Vl-BHphrd0EChlkF6xpPteyUxr59PMz394JAf3huD51-kb5YRjvMK2qaHZkhcEnJOxO-Dtm9rhvC6bUTu6XPd6dY1ofunXkoiBi8SA4Aw73OfEqubJ5TXkkq2qF36tsAMn-p6TfAof9WCkhD8Rz1GrDkfITEpLygD8JWCC3dhn7540qO3ZsXItocWixrUdysMEhMh8dgsKB0zEz0XnzNbKp1bsTqfMAxcP_DjBLc"/>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Alex Nguyen</p>
+<p class="text-xs text-on-surface-variant">Pro Explorer</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-72 min-h-screen p-xxl">
+<header class="flex justify-between items-end mb-xxl">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Thông báo</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Cập nhật những hoạt động mới nhất từ cộng đồng ChillPlace</p>
+</div>
+<div class="flex gap-md">
+<button class="flex items-center gap-2 px-lg py-md rounded-full border border-outline text-on-surface hover:bg-surface-container transition-colors font-label-md text-label-md">
+<span class="material-symbols-outlined" data-icon="done_all">done_all</span>
+                    Đánh dấu tất cả là đã đọc
+                </button>
+<button class="p-md rounded-full bg-surface-container hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+</button>
+</div>
+</header>
+<!-- Notification Timeline -->
+<div class="max-w-4xl space-y-xl">
+<!-- Today Section -->
+<section>
+<div class="flex items-center gap-md mb-lg">
+<span class="font-label-md text-label-md text-primary bg-primary-fixed px-lg py-xs rounded-full">Hôm nay</span>
+<div class="h-px flex-1 bg-outline-variant"></div>
+</div>
+<div class="space-y-md">
+<!-- Unread Notification -->
+<div class="notification-card group relative bg-white rounded-xxl p-lg shadow-sm border-l-4 border-primary hover:shadow-md transition-all flex gap-lg items-start">
+<div class="relative flex-shrink-0">
+<img alt="Avatar" class="w-14 h-14 rounded-full object-cover ring-2 ring-primary-fixed" data-alt="Close-up portrait of a woman with long dark hair, wearing a stylish denim jacket, smiling brightly in an outdoor setting with golden hour sunlight. The image has a vibrant, warm tone reflecting a high-energy social atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFcOZaEXeNmmVlFGmNp2-vdqpGt1QY3rAmoGDKeHkqVB2AHx0Lc5zeyE9x-OD4asaCMgnz5B_y1oHLn9kguLMvPHhJJUW7z7Nb1I-tb7Sy07KC08k-Wc7Rtt7qAjhDLe6HcH8sQpK0KP1GIo8yDqXV1jc2GKQoP4oyzEGmhZBQA4sWu6ZLITju31PVpLbe82pwWVjEJLtMZr4NwsKPB9tsSltWF4mYmrTskxxz320jGzYCELchftz9-E61ws1_QQmQANORdovof-A"/>
+<div class="absolute -bottom-1 -right-1 bg-tertiary-container text-white w-6 h-6 rounded-full flex items-center justify-center border-2 border-white">
+<span class="material-symbols-outlined text-xs" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-body-md text-body-md text-on-surface">
+<span class="font-bold">Minh Anh</span> đã thích bài viết <span class="text-secondary font-semibold">"Hoàng hôn tại Cầu Thủ Thiêm 2"</span> của bạn.
+                            </p>
+<span class="text-xs text-on-surface-variant block mt-xs">2 giờ trước • Quận 1, TP.HCM</span>
+</div>
+<div class="flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden shadow-sm">
+<img alt="Related Post" class="w-full h-full object-cover" data-alt="A stunning view of a modern cable-stayed bridge during a vibrant pink and orange sunset. The city skyline is visible in the background, with the river reflecting the sky's colors. The image captures the urban explorer vibe with high contrast and cinematic lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6exz_s2EbozSZkuCqur8Rcw5Z7mxcxdYUcuVi1qUrYKaiXFotyMqZinzRJVRW-pPi1kjCPWigUjyJd6rWJLe7o5PYd3oU7jsxmqhAMLT8vNq39MbjfgabsGXo1v7JU33pYJy6Due-CMachZ53DVEHK_ZLPM9Rs9tUkcLYSQ-WuIusB52ytHyRDUZJHSvrBC55kyQR7OhPs9RA0zqGOiQOY5-8UqkRQWLfDVBX6rTQutSc-MdIrR2Rs4gLCz3xRNo9L2-X_wq05kM"/>
+</div>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 flex gap-sm opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-sm bg-surface-container rounded-full hover:bg-error-container hover:text-error transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+<!-- New Follower Notification -->
+<div class="notification-card group relative bg-white rounded-xxl p-lg shadow-sm border-l-4 border-primary hover:shadow-md transition-all flex gap-lg items-center">
+<div class="relative flex-shrink-0">
+<img alt="Avatar" class="w-14 h-14 rounded-full object-cover ring-2 ring-primary-fixed" data-alt="Portrait of a young man with a casual, trendy hairstyle wearing a linen shirt. He is looking directly at the camera with a confident expression. The background is a blurred city street in daylight, maintaining a clean, modern look." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRvjB-c_BCSg_DCSB_F43DPs-BtPAu6Ss31YC6QjxL2rV6MWmJ2yUGHLMYgOtuoip_Wjb6VaAlDvaNsd5zkxCOcR5NYqc-_nVjDbZS3rDF-gkftJnhxdQpQjtv-8EH4LFSkbvqjFFd4AJ6stAgZUV-3a56r_tLmp6XMZHP5cLQAqSaDHc6fQ86KJbc64bP2FmnkeePqbP48R6ufuQmowwK2CFxaOlVfxScjJIL51hl9BwDX3Ki5g-hygXh2DEzSessnHx3XNUIjYY"/>
+<div class="absolute -bottom-1 -right-1 bg-secondary text-white w-6 h-6 rounded-full flex items-center justify-center border-2 border-white">
+<span class="material-symbols-outlined text-xs" data-icon="person_add" style="font-variation-settings: 'FILL' 1;">person_add</span>
+</div>
+</div>
+<div class="flex-1">
+<p class="font-body-md text-body-md text-on-surface">
+<span class="font-bold">Trung Kiên</span> đã bắt đầu theo dõi bạn.
+                            </p>
+<span class="text-xs text-on-surface-variant block mt-xs">5 giờ trước</span>
+</div>
+<button class="bg-primary text-on-primary px-lg py-sm rounded-full font-label-md text-label-md hover:brightness-110 transition-all">
+                            Theo dõi lại
+                        </button>
+</div>
+</div>
+</section>
+<!-- This Week Section -->
+<section>
+<div class="flex items-center gap-md mb-lg">
+<span class="font-label-md text-label-md text-on-surface-variant bg-surface-container px-lg py-xs rounded-full">Tuần này</span>
+<div class="h-px flex-1 bg-outline-variant"></div>
+</div>
+<div class="space-y-md">
+<!-- Read Notification - Bento Style Variation -->
+<div class="notification-card group relative bg-surface-container-low rounded-xxl p-lg border border-outline-variant/30 hover:bg-white hover:shadow-sm transition-all flex gap-lg items-start">
+<div class="relative flex-shrink-0">
+<img alt="Avatar" class="w-14 h-14 rounded-full object-cover grayscale opacity-80" data-alt="A portrait of a young woman with a thoughtful expression, wearing minimal jewelry. The lighting is soft and artistic, with a focus on high-quality textures. The background is a clean, neutral interior, contributing to a professional and calm aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB12UDr3ecri5KTE8MbDj8EMMgDJxivX6UaPZ-cxVar0k5N79ydUgxcIOwsbBzzrgXdt61a7fjCBK6d_B8HLRBwiNL3GLL7Y5ss9S6SKLM4GQkaoR0S_WKSm0HB-OaDPkBOKV5xRGzxklHYEVr7D7DvLP3dP9k1NgamMHfAVjbh3OHGk_MLgPnShJVYi_9RIxi4PM_F4T3vM2wU4qI25feaBj-sex4HUsmexQYvEEuR3qTneLebsECtitZh1FG4N7bBXTt-iEUqa1w"/>
+<div class="absolute -bottom-1 -right-1 bg-tertiary text-white w-6 h-6 rounded-full flex items-center justify-center border-2 border-white">
+<span class="material-symbols-outlined text-xs" data-icon="chat" style="font-variation-settings: 'FILL' 1;">chat</span>
+</div>
+</div>
+<div class="flex-1">
+<p class="font-body-md text-body-md text-on-surface">
+<span class="font-bold">Lan Phương</span> đã bình luận về địa điểm <span class="text-tertiary font-semibold">"Secret Coffee Da Kao"</span>: "Không gian ở đây thực sự rất chill vào buổi tối!"
+                            </p>
+<span class="text-xs text-on-surface-variant block mt-xs">Thứ 3 • Da Kao, Quận 1</span>
+</div>
+</div>
+<!-- System Notification -->
+<div class="notification-card group relative bg-surface-container-low rounded-xxl p-lg border border-outline-variant/30 hover:bg-white hover:shadow-sm transition-all flex gap-lg items-center">
+<div class="flex-shrink-0 w-14 h-14 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl" data-icon="stars" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+<div class="flex-1">
+<p class="font-body-md text-body-md text-on-surface">
+                                Chúc mừng! Bạn đã đạt danh hiệu <span class="font-bold text-primary">"Nhà Thám Hiểm Chuyên Nghiệp"</span> tuần này.
+                            </p>
+<span class="text-xs text-on-surface-variant block mt-xs">Thứ 2</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Floating Action Button (FAB) - Suppressed on Details but shown here as it is a Top-Level Content Page -->
+<div class="fixed bottom-xxl right-xxl flex flex-col gap-md">
+<button class="w-14 h-14 rounded-full bg-primary-container text-on-primary shadow-lg flex items-center justify-center hover:scale-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-3xl" data-icon="edit">edit</span>
+</button>
+</div>
+<!-- Micro-interaction Script -->
+<script>
+        document.querySelectorAll('.notification-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Visual feedback for reading a notification
+                this.classList.remove('border-primary');
+                this.classList.add('bg-surface-container-low');
+                const badge = this.querySelector('.ring-primary-fixed');
+                if (badge) badge.classList.remove('ring-primary-fixed');
+            });
+        });
+
+        // Atmospheric parallax on hover for avatars
+        document.querySelectorAll('.notification-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const img = card.querySelector('img');
+                const rect = card.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width - 0.5;
+                const y = (e.clientY - rect.top) / rect.height - 0.5;
+                if (img) {
+                    img.style.transform = `translate(${x * 4}px, ${y * 4}px)`;
+                }
+            });
+            card.addEventListener('mouseleave', (e) => {
+                const img = card.querySelector('img');
+                if (img) {
+                    img.style.transform = `translate(0, 0)`;
+                }
+            });
+        });
+    </script>
+</body></html>

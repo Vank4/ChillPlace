@@ -1,0 +1,383 @@
+<!DOCTYPE html><html class="light" lang="vi"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed-dim": "#4fdbc8",
+                      "secondary": "#35618d",
+                      "on-tertiary-container": "#003832",
+                      "on-primary-container": "#5f1900",
+                      "outline-variant": "#e1bfb5",
+                      "on-tertiary-fixed-variant": "#005048",
+                      "background": "#f7f9fb",
+                      "on-surface-variant": "#594139",
+                      "secondary-container": "#a2cdff",
+                      "on-secondary-fixed": "#001d35",
+                      "secondary-fixed": "#d1e4ff",
+                      "on-primary-fixed-variant": "#832600",
+                      "primary-fixed-dim": "#ffb59d",
+                      "surface-container-high": "#e6e8ea",
+                      "surface-dim": "#d8dadc",
+                      "on-tertiary-fixed": "#00201c",
+                      "tertiary-container": "#00ac9b",
+                      "on-tertiary": "#ffffff",
+                      "on-surface": "#191c1e",
+                      "primary-container": "#ff6b35",
+                      "surface": "#f7f9fb",
+                      "tertiary-fixed": "#71f8e4",
+                      "tertiary": "#006b5f",
+                      "surface-tint": "#ab3500",
+                      "on-error-container": "#93000a",
+                      "error": "#ba1a1a",
+                      "surface-container-highest": "#e0e3e5",
+                      "primary": "#ab3500",
+                      "on-background": "#191c1e",
+                      "inverse-primary": "#ffb59d",
+                      "surface-bright": "#f7f9fb",
+                      "surface-container-low": "#f2f4f6",
+                      "inverse-surface": "#2d3133",
+                      "error-container": "#ffdad6",
+                      "inverse-on-surface": "#eff1f3",
+                      "primary-fixed": "#ffdbd0",
+                      "surface-variant": "#e0e3e5",
+                      "on-error": "#ffffff",
+                      "surface-container": "#eceef0",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-fixed-variant": "#184974",
+                      "on-secondary": "#ffffff",
+                      "secondary-fixed-dim": "#a0cafc",
+                      "on-secondary-container": "#2a5782",
+                      "on-primary-fixed": "#390c00",
+                      "on-primary": "#ffffff",
+                      "outline": "#8d7168"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "2xl": "1.5rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sm": "8px",
+                      "xl": "32px",
+                      "md": "16px",
+                      "xxl": "48px",
+                      "gutter": "16px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "32px",
+                      "lg": "24px",
+                      "xs": "4px"
+              },
+              "fontFamily": {
+                      "label-sm": ["Plus Jakarta Sans"],
+                      "headline-md": ["Plus Jakarta Sans"],
+                      "headline-lg": ["Plus Jakarta Sans"],
+                      "body-md": ["Plus Jakarta Sans"],
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "label-md": ["Plus Jakarta Sans"],
+                      "display-lg": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- SideNavBar Shell -->
+<aside class="h-screen w-72 fixed left-0 top-0 bg-surface dark:bg-inverse-surface border-r border-outline-variant flex flex-col py-xl px-lg z-50">
+<div class="mb-xxl">
+<h1 class="font-display-lg text-display-lg font-black text-primary dark:text-primary-fixed-dim">ChillPlace</h1>
+<p class="font-label-md text-label-md text-on-surface-variant">Khám phá không gian</p>
+</div>
+<nav class="flex-1 space-y-md">
+<!-- Navigation Items -->
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-surface-variant hover:text-primary transition-all duration-200 p-md rounded-xl hover:bg-surface-container-high group" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Trang chủ</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-surface-variant hover:text-primary transition-all duration-200 p-md rounded-xl hover:bg-surface-container-high group" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-label-md text-label-md">Khám phá</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-surface-variant hover:text-primary transition-all duration-200 p-md rounded-xl hover:bg-surface-container-high group" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-label-md text-label-md">Bản đồ</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-surface-variant hover:text-primary transition-all duration-200 p-md rounded-xl hover:bg-surface-container-high group" href="#">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="font-label-md text-label-md">Yêu thích</span>
+</a>
+<!-- Active State: Settings -->
+<a class="flex items-center gap-4 text-primary dark:text-primary-fixed-dim font-bold border-r-4 border-primary p-md bg-surface-container-high rounded-l-xl transition-all duration-200 scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="settings" data-weight="fill" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-label-md text-label-md">Cài đặt</span>
+</a>
+</nav>
+<div class="mt-auto space-y-md">
+<button class="w-full bg-primary-container text-white py-md px-xl rounded-2xl font-bold text-label-md hover:opacity-90 transition-all flex items-center justify-center gap-2 shadow-lg">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+                Đăng bài mới
+            </button>
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors p-md" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-md text-label-md">Trợ giúp</span>
+</a>
+<div class="flex items-center gap-3 pt-md border-t border-outline-variant">
+<img alt="User Profile Avatar" class="w-10 h-10 rounded-full object-cover border-2 border-primary" data-alt="A professional and friendly portrait of a young male urban explorer with a warm smile, wearing modern tech-wear. The background is a soft-focus urban environment with warm sunset lighting, matching a vibrant and social media aesthetic. High-quality photography with natural skin textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLx1UBUgUquw-pSyp_gJekI6vo0xEMUnIRCpoLFS5GtSqd1NJFW-S6HoJHtEmUNaxpM9OJPJg25RQPcJLSLGjzb3Wm3n0A7aagKT8VsVYJoDIwAdKO6WuRm5O4TzcWm9QFSvuBsaerVLgFNBvyC2433yrnEFoOD0xYiKe6NMRQ5LjSzHcGmgZfQL_sEIPfT2VYyUaoWR-ZL53ma7T-rIxPuo4GjThv1HAFuIZOOtIVCHqzpIyRRguYHTw2nOzLRTxs30xbvPfX7x4">
+<div>
+<p class="font-label-md text-label-md font-bold">Quang Anh</p>
+<p class="text-[12px] text-on-surface-variant">@quanganh_chill</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-72 min-h-screen bg-surface-container-lowest p-margin-desktop">
+<!-- Header -->
+<header class="mb-xl">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Cài đặt hệ thống</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Quản lý tài khoản và trải nghiệm cá nhân của bạn tại ChillPlace</p>
+</header>
+<!-- Settings Layout -->
+<div class="grid grid-cols-12 gap-lg">
+<!-- Sidebar Categories (4 cols) -->
+<div class="col-span-4 space-y-sm"><button class="settings-tab w-full flex items-center justify-between p-lg rounded-2xl bg-white shadow-sm border-2 border-primary text-primary transition-all duration-200 hover:bg-surface-container-low" onclick="switchTab('account')">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-label-md">Tài khoản</span>
+</div>
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="settings-tab w-full flex items-center justify-between p-lg rounded-2xl bg-white shadow-sm border-2 border-transparent text-on-surface-variant hover:border-outline-variant hover:bg-surface-container-low transition-all duration-200" onclick="switchTab('notifications')">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="font-label-md text-label-md">Thông báo</span>
+</div>
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="settings-tab w-full flex items-center justify-between p-lg rounded-2xl bg-white shadow-sm border-2 border-transparent text-on-surface-variant hover:border-outline-variant hover:bg-surface-container-low transition-all duration-200" onclick="switchTab('privacy')">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+<span class="font-label-md text-label-md">Quyền riêng tư</span>
+</div>
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="settings-tab w-full flex items-center justify-between p-lg rounded-2xl bg-white shadow-sm border-2 border-transparent text-on-surface-variant hover:border-outline-variant hover:bg-surface-container-low transition-all duration-200" onclick="switchTab('appearance')">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined" data-icon="palette">palette</span>
+<span class="font-label-md text-label-md">Giao diện</span>
+</div>
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="settings-tab w-full flex items-center justify-between p-lg rounded-2xl bg-white shadow-sm border-2 border-transparent text-on-surface-variant hover:border-outline-variant hover:bg-surface-container-low transition-all duration-200" onclick="switchTab('support')">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined" data-icon="support_agent">support_agent</span>
+<span class="font-label-md text-label-md">Hỗ trợ</span>
+</div>
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button></div>
+<!-- Details Content (8 cols) -->
+<div class="col-span-8 bg-white rounded-2xl shadow-sm p-xxl border border-outline-variant overflow-hidden relative">
+<!-- Decorative background elements -->
+<div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-24 -left-24 w-64 h-64 bg-secondary/5 rounded-full blur-3xl"></div>
+<div class="relative z-10" id="settings-content">
+<!-- Account Settings (Default) -->
+<div class="space-y-xl" id="account-section">
+<div class="flex items-center justify-between mb-lg">
+<h3 class="font-headline-md text-headline-md text-on-surface">Hồ sơ cá nhân</h3>
+<button class="bg-primary text-white px-lg py-sm rounded-full font-label-md hover:shadow-lg transition-shadow">Lưu thay đổi</button>
+</div>
+<div class="flex items-center gap-xl mb-xxl">
+<div class="relative group cursor-pointer">
+<img class="w-32 h-32 rounded-2xl object-cover border-4 border-white ring-1 ring-outline-variant shadow-xl group-hover:opacity-80 transition-opacity" data-alt="Close-up portrait of a trendy young man for an avatar profile. He is in an urban rooftop setting with warm, golden hour lighting. The image captures a stylish, high-energy aesthetic with vibrant colors and sharp focus on facial features. Professional studio quality with cinematic lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_EJDa6KvUqvBqyswx6CesaJd68ccPyCs9HAvFTVGxjImuXw7sVv4ZWjk8ZjRNSd9WC7UCUkEYvSRSQ-iK9jfuWihhmSaxn-q4N7Rn9eiiiJ15PGb5rJDL4Qxxtoa1b7IhYx7__OjWc1yxqTzaWDAvrQX49k0ZOealDsrWqrpVpmG6X_u7jJYUA9-dHEK37qj8STjhQTSBzslm0rWYbT9YP95y9moz8Q47Zgsd7KjCe_1CpB7aec4oChqe3s6d56L1IxoG-c20ls0">
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white text-3xl" data-icon="photo_camera">photo_camera</span>
+</div>
+</div>
+<div class="flex-1 space-y-lg">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Tên hiển thị</label>
+<input class="w-full bg-surface border border-outline-variant rounded-xl p-md focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-outline-variant" type="text" value="Quang Anh" placeholder="Nhập tên của bạn">
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Tiểu sử</label>
+<textarea class="w-full bg-surface border border-outline-variant rounded-xl p-md focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all h-24 resize-none placeholder:text-outline-variant" placeholder="Kể về bản thân bạn...">Đam mê khám phá những quán cafe ẩn mình và không gian đô thị độc đáo tại Sài Gòn. ☕️🏙️</textarea>
+</div>
+</div>
+</div>
+<hr class="border-outline-variant">
+<div>
+<h4 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-lg font-bold">Bảo mật</h4>
+<div class="space-y-md">
+<div class="flex items-center justify-between p-lg border border-outline-variant rounded-xl hover:bg-surface-container-low cursor-pointer transition-colors group">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="lock">lock</span>
+<div>
+<p class="font-label-md text-label-md font-bold">Đổi mật khẩu</p>
+<p class="text-[12px] text-on-surface-variant">Cập nhật mật khẩu định kỳ để bảo vệ tài khoản</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</div>
+<div class="flex items-center justify-between p-lg border border-outline-variant rounded-xl hover:bg-surface-container-low cursor-pointer transition-colors group">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-secondary text-2xl" data-icon="phonelink_lock">phonelink_lock</span>
+<div>
+<div class="flex items-center gap-sm">
+<p class="font-label-md text-label-md font-bold">Xác thực 2 yếu tố (2FA)</p>
+<span class="px-2 py-0.5 bg-error/10 text-error text-[10px] font-bold rounded-full uppercase tracking-tighter">Chưa bật</span>
+</div>
+<p class="text-[12px] text-on-surface-variant">Tăng cường bảo mật cho đăng nhập của bạn</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Appearance Section (Hidden initially by JS toggle logic if added) -->
+<div class="hidden space-y-xl" id="appearance-section">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-lg">Tùy chỉnh giao diện</h3>
+<div class="grid grid-cols-2 gap-lg">
+<div class="p-lg border-2 border-primary rounded-2xl bg-surface-container-low flex flex-col items-center gap-md cursor-pointer">
+<div class="w-full h-24 bg-white rounded-xl shadow-sm border border-outline-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant" data-icon="light_mode">light_mode</span>
+</div>
+<p class="font-label-md text-label-md font-bold text-primary">Chế độ Sáng</p>
+</div>
+<div class="p-lg border-2 border-transparent rounded-2xl bg-inverse-surface flex flex-col items-center gap-md cursor-pointer group hover:border-outline">
+<div class="w-full h-24 bg-surface-container-highest rounded-xl shadow-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-on-primary-fixed" data-icon="dark_mode">dark_mode</span>
+</div>
+<p class="font-label-md text-label-md font-bold text-white opacity-60 group-hover:opacity-100">Chế độ Tối</p>
+</div>
+</div>
+<div class="space-y-lg mt-xxl">
+<div class="flex items-center justify-between">
+<div>
+<p class="font-label-md text-label-md">Ngôn ngữ hiển thị</p>
+<p class="text-[12px] text-on-surface-variant">Chọn ngôn ngữ bạn muốn sử dụng</p>
+</div>
+<select class="bg-surface border border-outline-variant rounded-xl px-xl py-sm font-label-md outline-none focus:border-primary">
+<option>Tiếng Việt</option>
+<option>English</option>
+<option>日本語</option>
+</select>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<p class="font-label-md text-label-md">Cỡ chữ</p>
+<p class="text-[12px] text-on-surface-variant">Điều chỉnh kích thước văn bản toàn hệ thống</p>
+</div>
+<div class="flex items-center gap-sm bg-surface-container p-xs rounded-full">
+<button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-white transition-colors">A-</button>
+<span class="px-md font-bold text-primary">Trung bình</span>
+<button class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center">A+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Privacy Section (Static Example) -->
+<div class="hidden space-y-xl" id="privacy-section">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-lg">Quyền riêng tư</h3>
+<div class="space-y-md">
+<div class="flex items-center justify-between p-lg bg-surface-container-low rounded-2xl">
+<div>
+<p class="font-label-md text-label-md font-bold">Chia sẻ vị trí</p>
+<p class="text-[12px] text-on-surface-variant">Cho phép bạn bè thấy vị trí hiện tại của bạn trên bản đồ</p>
+</div>
+<button class="w-12 h-6 bg-primary rounded-full relative transition-colors">
+<span class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></span>
+</button>
+</div>
+<div class="flex items-center justify-between p-lg bg-surface-container-low rounded-2xl">
+<div>
+<p class="font-label-md text-label-md font-bold">Trạng thái hoạt động</p>
+<p class="text-[12px] text-on-surface-variant">Hiển thị khi bạn đang trực tuyến</p>
+</div>
+<button class="w-12 h-6 bg-outline-variant rounded-full relative transition-colors">
+<span class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full"></span>
+</button>
+</div>
+<div class="p-lg border border-error/20 rounded-2xl bg-error/5 flex items-center justify-between mt-xl">
+<div class="flex items-center gap-md text-error">
+<span class="material-symbols-outlined" data-icon="block">block</span>
+<p class="font-label-md text-label-md font-bold">Danh sách chặn</p>
+</div>
+<button class="text-error font-label-md underline">Xem tất cả (0)</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        function switchTab(tabId) {
+            // Update Tab Styles
+            const tabs = document.querySelectorAll('.settings-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('border-primary', 'text-primary');
+                tab.classList.add('border-transparent', 'text-on-surface-variant');
+            });
+
+            // Highlight clicked tab
+            const activeTab = Array.from(tabs).find(t => t.innerText.toLowerCase().includes(tabId === 'account' ? 'tài khoản' : tabId === 'appearance' ? 'giao diện' : tabId === 'privacy' ? 'riêng tư' : ''));
+            if(activeTab) {
+                activeTab.classList.remove('border-transparent', 'text-on-surface-variant');
+                activeTab.classList.add('border-primary', 'text-primary');
+            }
+
+            // Toggle Sections
+            const sections = ['account-section', 'appearance-section', 'privacy-section'];
+            sections.forEach(s => {
+                const el = document.getElementById(s);
+                if(el) {
+                    if(s.includes(tabId)) {
+                        el.classList.remove('hidden');
+                    } else {
+                        el.classList.add('hidden');
+                    }
+                }
+            });
+        }
+
+        // Initialize state
+        window.onload = () => switchTab('account');
+    </script>
+
+
+</body></html>

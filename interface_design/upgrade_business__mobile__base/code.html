@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nâng cấp Doanh nghiệp | ChillPlace</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "inverse-on-surface": "#eff1f3",
+                "error": "#ba1a1a",
+                "surface-container-lowest": "#ffffff",
+                "outline-variant": "#e1bfb5",
+                "on-surface": "#191c1e",
+                "on-tertiary": "#ffffff",
+                "surface-container-high": "#e6e8ea",
+                "secondary": "#35618d",
+                "on-secondary": "#ffffff",
+                "inverse-surface": "#2d3133",
+                "on-background": "#191c1e",
+                "on-secondary-fixed-variant": "#184974",
+                "on-tertiary-container": "#003832",
+                "secondary-container": "#a2cdff",
+                "outline": "#8d7168",
+                "surface-tint": "#ab3500",
+                "on-primary-fixed": "#390c00",
+                "on-secondary-fixed-variant": "#184974",
+                "on-tertiary-container": "#003832",
+                "secondary-container": "#a2cdff",
+                "primary-fixed": "#ffdbd0",
+                "primary-fixed-dim": "#ffb59d",
+                "on-tertiary-fixed": "#00201c",
+                "primary-container": "#ff6b35",
+                "on-error": "#ffffff",
+                "surface-bright": "#f7f9fb",
+                "on-surface-variant": "#594139",
+                "surface-container-low": "#f2f4f6",
+                "on-primary": "#ffffff",
+                "secondary-fixed-dim": "#a0cafc",
+                "on-secondary-fixed": "#001d35",
+                "on-primary-container": "#5f1900",
+                "primary": "#ab3500",
+                "inverse-primary": "#ffb59d",
+                "tertiary-container": "#00ac9b",
+                "secondary-fixed": "#d1e4ff",
+                "on-tertiary-fixed-variant": "#005048",
+                "on-primary-fixed-variant": "#832600",
+                "surface-container-highest": "#e0e3e5",
+                "tertiary": "#006b5f",
+                "surface-variant": "#e0e3e5",
+                "tertiary-fixed": "#71f8e4",
+                "surface-container": "#eceef0",
+                "background": "#f7f9fb",
+                "tertiary-fixed-dim": "#4fdbc8",
+                "on-error-container": "#93000a",
+                "error-container": "#ffdad6",
+                "surface": "#f7f9fb",
+                "surface-dim": "#d8dadc"
+              },
+              "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+              },
+              "spacing": {
+                "margin-desktop": "32px",
+                "xxl": "48px",
+                "md": "16px",
+                "xl": "32px",
+                "gutter": "16px",
+                "xs": "4px",
+                "sm": "8px",
+                "margin-mobile": "16px",
+                "lg": "24px"
+              },
+              "fontFamily": {
+                "label-sm": ["Plus Jakarta Sans"],
+                "headline-lg-mobile": ["Plus Jakarta Sans"],
+                "display-lg": ["Plus Jakarta Sans"],
+                "headline-md": ["Plus Jakarta Sans"],
+                "headline-lg": ["Plus Jakarta Sans"],
+                "body-lg": ["Plus Jakarta Sans"],
+                "label-md": ["Plus Jakarta Sans"],
+                "body-md": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}],
+                "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- TopAppBar (From JSON) -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-surface-dim shadow-sm flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="explore">explore</span>
+<span class="font-headline-lg text-headline-lg font-black text-primary dark:text-primary-fixed">ChillPlace</span>
+</div>
+<div class="flex items-center gap-md">
+<button class="md:flex hidden font-label-md text-label-md text-on-surface-variant hover:opacity-80 transition-opacity">Hỗ trợ</button>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden border-2 border-primary">
+<img alt="User profile" data-alt="A professional headshot of a young entrepreneur in a modern office environment. The lighting is bright and natural, coming from a large window. He wears a clean white shirt and has a friendly, confident expression. The overall style is high-end corporate with a soft, clean aesthetic and a palette of warm skin tones and crisp whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrSMCKwlL6ldakFLUahCgOp378OJeldYrO7gh3MmWsux9oTcsKKJuBlAddU0V2SLDo6tr1rb3frgJTlG2j6lnWtmP6GAkmZ8LBTmmGUcOIxRtgoxGjyd5dLZl_YyoG_a6f7Op9S-GF5dmXvPClw_vOhOpjviu31yq3laFKmox_a6NctGWwpkO0OQq2ZVCQMjGsrOMBhrS0Qu2AOBLTZbczPis4N8_s5bZHAxOIr2-tmqJ6HuSKB0mCgkadK2ygpxzUyBRtu-0cljY"/>
+</div>
+</div>
+</header>
+<main class="mt-24 px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
+<!-- Hero Section Asymmetric -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg mb-xxl">
+<div class="lg:col-span-7 flex flex-col justify-center">
+<span class="text-primary font-label-md text-label-md uppercase tracking-widest mb-sm">Nâng tầm thương hiệu</span>
+<h1 class="font-display-lg text-display-lg text-on-surface mb-md">Biến không gian của bạn thành điểm đến triệu view</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-lg max-w-xl">
+                    Nâng cấp lên tài khoản Doanh nghiệp để mở khóa bộ công cụ quản lý chuyên nghiệp, xác thực chính chủ và tiếp cận hàng triệu người dùng ChillPlace.
+                </p>
+<div class="flex flex-wrap gap-md">
+<a class="bg-primary-container text-on-primary-container font-label-md text-label-md px-xl py-md rounded-xl shadow-lg hover:opacity-90 active:scale-95 transition-all" href="#register-form">Bắt đầu ngay</a>
+<button class="border-2 border-secondary text-secondary font-label-md text-label-md px-xl py-md rounded-xl hover:bg-secondary-container transition-colors">Tìm hiểu thêm</button>
+</div>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="rounded-3xl overflow-hidden aspect-[4/5] shadow-2xl relative z-10 border-4 border-white">
+<img alt="Business Experience" data-alt="A vibrant, modern restaurant interior with warm lighting and lush indoor plants. The scene is shot from a low angle to emphasize the spatial design. High-energy, kinetic vibe with patrons blurred in the background, creating a lively social atmosphere. Primary orange accents from ChillPlace branding appear subtly in the decor. Modern corporate high-contrast style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCn_0DIKJm3z_enapRjxPwnqAaIf-IE3_G9iuGa3nWBY0WNxrj6ro8I9Aq5zQadcTJdh7JKIlVln8gC14giJBylDQymexvjdSEQG4fZk-1TQy22hmnGAIBRrk4ngCldX2NGZ4SnSh-pgZIKu7liDBSNVpBzNW1ef3EVcjKKkYyvEWrGFauJZLx48BoIxkJU6XkWBrEvHMYb4Y2XPXqEK-fl6npPSREcvqrd4TR09tqlUO64eRzRP9Nt0oh4cRlkIlHatHjnip26wtM"/>
+</div>
+<!-- Floating Badge -->
+<div class="absolute -bottom-6 -left-6 glass-card p-lg rounded-2xl shadow-xl z-20 flex items-center gap-md border border-outline-variant">
+<div class="bg-tertiary-container p-sm rounded-full">
+<span class="material-symbols-outlined text-on-tertiary-container" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Cấp dấu xác minh</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Tăng 80% độ tin cậy</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Benefits Bento Grid -->
+<section class="mb-xxl">
+<h2 class="font-headline-lg text-headline-lg text-center mb-xl">Lợi ích đặc quyền</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<!-- Benefit 1 -->
+<div class="bg-surface-container-low p-lg rounded-[32px] flex flex-col gap-md border border-outline-variant hover:shadow-md transition-shadow">
+<div class="w-12 h-12 bg-primary-container rounded-2xl flex items-center justify-center">
+<span class="material-symbols-outlined text-white" data-icon="dashboard">dashboard</span>
+</div>
+<h3 class="font-headline-md text-headline-md">Quản lý chuyên nghiệp</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Dashboard phân tích thời gian thực về lưu lượng khách ghé thăm và tương tác trên bản đồ.</p>
+</div>
+<!-- Benefit 2 -->
+<div class="bg-secondary-container/30 p-lg rounded-[32px] flex flex-col gap-md border border-secondary/20 hover:shadow-md transition-shadow">
+<div class="w-12 h-12 bg-secondary rounded-2xl flex items-center justify-center">
+<span class="material-symbols-outlined text-white" data-icon="ads_click">ads_click</span>
+</div>
+<h3 class="font-headline-md text-headline-md">Quảng cáo ưu tiên</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Vị trí của bạn sẽ được làm nổi bật trên bản đồ và xuất hiện đầu danh sách tìm kiếm "Trending".</p>
+</div>
+<!-- Benefit 3 -->
+<div class="bg-tertiary-container/20 p-lg rounded-[32px] flex flex-col gap-md border border-tertiary/20 hover:shadow-md transition-shadow">
+<div class="w-12 h-12 bg-tertiary rounded-2xl flex items-center justify-center">
+<span class="material-symbols-outlined text-white" data-icon="campaign">campaign</span>
+</div>
+<h3 class="font-headline-md text-headline-md">Sự kiện &amp; Voucher</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Dễ dàng tạo các chương trình ưu đãi, thông báo sự kiện đến khách hàng trong khu vực 5km.</p>
+</div>
+</div>
+</section>
+<!-- Registration Form Section -->
+<section class="bg-white rounded-[40px] p-lg md:p-xxl shadow-sm border border-outline-variant overflow-hidden relative" id="register-form">
+<!-- Decorative circle -->
+<div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-xxl items-start">
+<div>
+<h2 class="font-headline-lg text-headline-lg mb-md">Đăng ký thông tin kinh doanh</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-xl">
+                        Đội ngũ của chúng tôi sẽ xem xét thông tin và liên hệ xác thực trong vòng 24 giờ làm việc.
+                    </p>
+<div class="space-y-lg">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary" data-icon="info">info</span>
+<p class="font-label-md text-label-md">Yêu cầu giấy phép kinh doanh hợp lệ</p>
+</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary" data-icon="image">image</span>
+<p class="font-label-md text-label-md">Cung cấp ít nhất 3 ảnh không gian chất lượng cao</p>
+</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary" data-icon="location_on">location_on</span>
+<p class="font-label-md text-label-md">Vị trí phải được xác định chính xác trên bản đồ ChillPlace</p>
+</div>
+</div>
+</div>
+<form class="space-y-md glass-card p-md md:p-lg rounded-3xl border border-outline-variant">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md px-sm">Tên doanh nghiệp</label>
+<input class="w-full bg-surface-container-low border-outline rounded-xl p-md focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="Ví dụ: Chill Coffee &amp; Studio" type="text"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md px-sm">Lĩnh vực</label>
+<select class="w-full bg-surface-container-low border-outline rounded-xl p-md focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all">
+<option>Cà phê &amp; Trà</option>
+<option>Nhà hàng &amp; Quán ăn</option>
+<option>Studio &amp; Triển lãm</option>
+<option>Giải trí &amp; Workshop</option>
+</select>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md px-sm">Địa chỉ kinh doanh</label>
+<input class="w-full bg-surface-container-low border-outline rounded-xl p-md focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="Số nhà, tên đường, quận/huyện..." type="text"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md px-sm">Mã số thuế / Giấy phép</label>
+<input class="w-full bg-surface-container-low border-outline rounded-xl p-md focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="0123456789" type="text"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md px-sm">Tài liệu xác thực (Ảnh GPKD)</label>
+<div class="border-2 border-dashed border-outline-variant rounded-2xl p-xl flex flex-col items-center justify-center bg-surface-container-lowest hover:bg-primary/5 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors text-4xl mb-sm" data-icon="cloud_upload">cloud_upload</span>
+<p class="font-label-md text-label-md">Kéo thả hoặc nhấn để tải lên</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Định dạng JPG, PNG (Tối đa 5MB)</p>
+</div>
+</div>
+<button class="w-full bg-primary text-white font-headline-md text-headline-md py-md rounded-2xl shadow-lg active:scale-95 transition-transform mt-lg" type="submit">Gửi yêu cầu nâng cấp</button>
+<p class="text-center font-label-sm text-label-sm text-on-surface-variant mt-sm">Bằng cách nhấn gửi, bạn đồng ý với Điều khoản doanh nghiệp của ChillPlace.</p>
+</form>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (From JSON) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center py-sm px-xs pb-6 bg-surface dark:bg-surface-container-lowest rounded-t-xl shadow-[0px_-4px_20px_rgba(31,78,121,0.08)] z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:text-primary transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-label-sm text-[10px]">Khám phá</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:text-primary transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="event">event</span>
+<span class="font-label-sm text-[10px]">Sự kiện</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:text-primary transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined text-4xl text-primary" data-icon="add_circle">add_circle</span>
+<span class="font-label-sm text-[10px]">Tạo mới</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:text-primary transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-[10px]">Hồ sơ</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-3 py-1 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-sm text-[10px]">Quản lý</span>
+</a>
+</nav>
+<!-- Floating UI decoration - Sparkles -->
+<div class="fixed inset-0 pointer-events-none z-0" id="sparkle-container"></div>
+<script>
+        // Micro-interaction: Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Lightweight sparkle effect
+        const createSparkle = () => {
+            const container = document.getElementById('sparkle-container');
+            const sparkle = document.createElement('div');
+            sparkle.className = 'absolute bg-primary rounded-full opacity-20';
+            const size = Math.random() * 4 + 2;
+            sparkle.style.width = `${size}px`;
+            sparkle.style.height = `${size}px`;
+            sparkle.style.left = `${Math.random() * 100}vw`;
+            sparkle.style.top = `${Math.random() * 100}vh`;
+            sparkle.style.transition = 'all 2s ease-out';
+            
+            container.appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.style.opacity = '0';
+                sparkle.style.transform = 'translateY(-20px)';
+                setTimeout(() => sparkle.remove(), 2000);
+            }, 100);
+        }
+
+        setInterval(createSparkle, 1000);
+    </script>
+</body></html>
