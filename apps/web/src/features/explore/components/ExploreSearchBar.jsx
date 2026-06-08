@@ -1,8 +1,8 @@
-import { SlidersHorizontal, Search } from "lucide-react";
+import { Search, SlidersHorizontal } from "lucide-react";
 
-export function ExploreSearchBar() {
+export function ExploreSearchBar({ value, onChange, onSubmit, onMockError }) {
   return (
-    <form className="explore-search" role="search">
+    <form className="explore-search" role="search" onSubmit={onSubmit}>
       <Search className="explore-search__icon" size={20} aria-hidden="true" />
       <label className="sr-only" htmlFor="explore-search-input">
         Tìm kiếm địa điểm
@@ -10,10 +10,11 @@ export function ExploreSearchBar() {
       <input
         id="explore-search-input"
         type="search"
-        defaultValue="cafe"
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
         placeholder="Tìm địa điểm, quán cafe, hashtag..."
       />
-      <button type="button" aria-label="Mở bộ lọc">
+      <button type="button" aria-label="Giả lập lỗi API" onClick={onMockError}>
         <SlidersHorizontal size={19} aria-hidden="true" />
       </button>
     </form>

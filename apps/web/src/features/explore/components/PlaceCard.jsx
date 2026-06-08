@@ -1,16 +1,50 @@
-import { Bookmark, MapPin, Star } from "lucide-react";
-import { Button } from "../../../components/common/Button.jsx";
+import { Bookmark, MapPin, Navigation, Star } from "lucide-react";
 import { TagChip } from "../../../components/common/TagChip.jsx";
 
-export function PlaceCard({ place }) {
+export function PlaceCard({ place, isSaved, onOpenDetail, onOpenMap, onToggleSave }) {
+  function handleCardClick() {
+    onOpenDetail(place.id);
+  }
+
+  function handleCardKeyDown(event) {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      onOpenDetail(place.id);
+    }
+  }
+
   return (
-    <article className="place-card">
+    <article
+      className="place-card"
+      role="button"
+      tabIndex={0}
+      onClick={handleCardClick}
+      onKeyDown={handleCardKeyDown}
+    >
       <div className="place-card__media">
         <img src={place.imageUrl} alt={place.alt} loading="lazy" decoding="async" />
-        <button type="button" aria-label={`Lưu ${place.name}`} className="place-card__save">
+        <button
+          type="button"
+          aria-label={isSaved ? `Bỏ lưu ${place.name}` : `Lưu ${place.name}`}
+          aria-pressed={isSaved}
+          className={isSaved ? "place-card__save is-saved" : "place-card__save"}
+          onClick={(event) => {
+            event.stopPropagation();
+            onToggleSave(place.id);
+          }}
+        >
           <Bookmark size={18} aria-hidden="true" />
         </button>
-        <span className="place-card__status">{place.status}</span>
+        <span
+          className={
+            place.statusCode === "open"
+              ? "place-card__status-dot is-open"
+              : "place-card__status-dot"
+          }
+        >
+          <span aria-hidden="true" />
+          <strong>{place.status}</strong>
+        </span>
       </div>
 
       <div className="place-card__body">
@@ -41,8 +75,30 @@ export function PlaceCard({ place }) {
         </div>
 
         <div className="place-card__actions">
-          <Button variant="ghost">Chi tiết</Button>
-          <Button>Chỉ đường</Button>
+          <button
+            type="button"
+            className="place-card__detail-action"
+            onClick={(event) => {
+              event.stopPropagation();
+              onOpenDetail(place.id);
+            }}
+          >
+            Chi tiết
+          </button>
+          <button
+            type="button"
+            className="place-card__direction-action"
+            aria-label={`Chỉ đường tới ${place.name}`}
+            onClick={(event) => {
+              event.stopPropagation();
+              onOpenMap(place.id);
+            }}
+          >
+            <span className="place-card__direction-icon">
+              <Navigation size={15} aria-hidden="true" />
+            </span>
+            <span className="place-card__direction-label">Chỉ đường</span>
+          </button>
         </div>
       </div>
     </article>

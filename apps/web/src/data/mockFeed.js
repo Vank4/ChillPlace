@@ -59,6 +59,7 @@ export const mockFeedPosts = [
     },
     mediaUrl:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuBMNaQ0Q7B1YPALwiLXWlgmsAp5mqE9Omrf_rVIJQblLZ0XJWDRLCsmoRN_zFC_7EW3g8spjGXulnKORTJYU7-wvTa-uulgpbqWZIsGffM0FrfNFsZ3cjxOBeb-L7vPeXQZ2-NLIFAOmDIzpSzGBwCVfwooNGynFKAmsO-tGmauuaSGvMIX58KR4tZKsBF73c_vHmKx_t30cQb50_o6OpBz0CAdsvZ79X_sTr581MTet73o7ea4XK8fuz-PBhyIEjQC-BPoooJdxzc",
+    mediaRatio: "portrait",
     alt: "Rung thong Da Lat vao buoi som voi anh sang mem va suong mo.",
     caption:
       "Một buổi chiều thơ mộng tại Đà Lạt với cốc cafe nóng và không gian yên tĩnh. Hợp để trốn deadline một chút rồi quay lại mạnh hơn.",
@@ -89,6 +90,7 @@ export const mockFeedPosts = [
     },
     mediaUrl:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuAxKs6pAEyNDbO_z1aw6pN7Vo-felEFGKOBypgboeAV1cTEJotvH6vea9PPnITPi6Wrtv-hBF2pjlReOrCJExwq1lp3gfmBwoM6NjXSIl4Qdb9zR-_DG6We6YcsK5jBo_SqkeV2pPto-lGSEdYSyHnVEpH2kg58vr1aFRU1652cmEgEGIuA1JC0jQ7DPm7wCJNlCaarMyjIS25_zEc3yRu_3eZmxwJbDsjtcsLjpg_Sd8ptgNBProhl_L9zHdaje8spOxsMfbBNXZM",
+    mediaRatio: "square",
     alt: "Quan cafe toi gian voi cua kinh lon, go sang mau va cay xanh.",
     caption:
       "Quán sáng, nhiều ổ cắm, bàn rộng. Team học bài hoặc làm việc cuối tuần sẽ thích vibe này.",
@@ -119,6 +121,7 @@ export const mockFeedPosts = [
     },
     mediaUrl:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuAG36-jfQ_Pqeqboynff647eY__9WshMfEmwgpolLjVdNY7d97Zrn0V_v8LANsbnAhIXWY-8YtYd6UywfzkBRVG6qrFOGlYKShqpli3ZgSb6ma-ZajP-dsMuAWd68-SRCdV1ARQUtUuapfLHrJG2C2T0PkT4oeO5x9tmEGAhcBG5VFv-Li47n_d77jcS7MPavtKk2yir3E43l6G1mJggoj6OKw4AKteTlpDGYcEtZA5e2a9gERNtKUA4gpIWwVWHFvHVMvQUfG9r8A",
+    mediaRatio: "landscape",
     alt: "Nha hang rooftop dem voi den vang va skyline thanh pho.",
     caption:
       "Happy hour 17:00-19:00, mua 1 tặng 1 mocktail cho nhóm bạn check-in trước hoàng hôn.",

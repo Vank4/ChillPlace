@@ -1,0 +1,38 @@
+.prototype-page {
+  display: grid;
+  width: min(100%, 760px);
+  min-height: 520px;
+  align-content: center;
+  gap: 14px;
+  margin: 0 auto;
+  padding: 28px;
+}
+
+.prototype-page > span {
+  color: var(--color-primary);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.prototype-page h1 {
+  margin: 0;
+  color: var(--color-text);
+  font-size: clamp(32px, 6vw, 56px);
+  line-height: 1.04;
+  letter-spacing: 0;
+}
+
+.prototype-page p {
+  max-width: 560px;
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.65;
+}
+
+.prototype-page .button {
+  width: fit-content;
+}
