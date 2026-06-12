@@ -1,7 +1,7 @@
 import { MapPin, Navigation, TrendingUp } from "lucide-react";
 import { exploreStats } from "../../../data/mockExplore.js";
 
-export function ExploreSidePanel() {
+export function ExploreSidePanel({ resultCount, keyword, onOpenMap }) {
   return (
     <aside className="explore-side" aria-label="Tổng quan khám phá">
       <section className="explore-side__map">
@@ -18,9 +18,12 @@ export function ExploreSidePanel() {
         </div>
         <div>
           <strong>Bản đồ khu vực</strong>
-          <p>6 địa điểm phù hợp với bộ lọc cafe gần bạn.</p>
+          <p>
+            {resultCount} địa điểm phù hợp
+            {keyword ? ` với từ khóa "${keyword}"` : " với bộ lọc hiện tại"}.
+          </p>
         </div>
-        <button type="button">
+        <button type="button" onClick={onOpenMap}>
           <Navigation size={16} aria-hidden="true" />
           Mở Map
         </button>
@@ -38,8 +41,8 @@ export function ExploreSidePanel() {
       <section className="explore-side__tip">
         <TrendingUp size={18} aria-hidden="true" />
         <div>
-          <strong>Gợi ý demo</strong>
-          <p>Trang này đang dùng mock data, sau này thay bằng `GET /api/places` với query filter.</p>
+          <strong>Mock API đang chạy</strong>
+          <p>Search, filter và bookmark đang dùng service giả lập kết hợp localStorage.</p>
         </div>
       </section>
     </aside>

@@ -129,6 +129,35 @@ Dev server:
 http://localhost:5173/
 ```
 
+## Điều Chỉnh Desktop Density
+
+Sau khi xem giao diện ở desktop 100%, UI ban đầu hơi lớn vì lấy cảm hứng trực tiếp từ prototype. Đã giảm kích thước tổng thể để vừa mắt hơn:
+
+- `apps/web/src/components/layout/AppShell.css`
+  - Sidebar desktop giảm từ `280px` xuống `240px`.
+  - Padding sidebar giảm từ `32px 24px` xuống `26px 20px`.
+  - Nav item giảm chiều cao từ `48px` xuống `44px`.
+  - Logo/brand và nút tạo bài trong sidebar giảm nhẹ.
+
+- `apps/web/src/features/feed/pages/HomeFeedPage.css`
+  - Max width tổng giảm từ `1440px` xuống `1240px`.
+  - Hero heading giảm từ max `44px` xuống max `38px`.
+  - Feed column desktop giảm từ `680px` xuống `560px`.
+  - Side panel desktop giảm từ `320px` xuống `280px`.
+  - Story avatar, feed action button, widget map art và card spacing giảm nhẹ.
+
+- `apps/web/src/features/explore/pages/ExplorePage.css`
+  - Max width tổng giảm từ `1440px` xuống `1240px`.
+  - Hero heading giảm từ max `44px` xuống max `38px`.
+  - Search bar, filter chip, place card, map side panel và stats card giảm nhẹ.
+  - Side panel desktop giảm từ `340px` xuống `300px`.
+
+- `apps/web/src/features/map/pages/MapPage.css`
+  - Search bar map, marker, preview card và preview panel desktop giảm nhẹ.
+  - Preview panel desktop giảm từ `360px` xuống `320px`.
+
+Mục tiêu của điều chỉnh này là giữ giao diện modern/social nhưng tránh cảm giác phóng to quá mức ở trình duyệt desktop 100%.
+
 ## Giải Thích Cho Giảng Viên
 
 Nếu hỏi layout tổng nằm ở đâu:
@@ -149,4 +178,3 @@ Nếu hỏi route được khai báo ở đâu:
 Nếu hỏi navigation gồm những mục nào:
 
 - `apps/web/src/constants/routes.js`
-

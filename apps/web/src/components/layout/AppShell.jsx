@@ -1,5 +1,6 @@
 import { Bell, Compass, Plus } from "lucide-react";
-import { NavLink, Outlet } from "react-router-dom";
+import { useLayoutEffect } from "react";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { IconButton } from "../common/IconButton.jsx";
 import { Avatar } from "../common/Avatar.jsx";
 import { Button } from "../common/Button.jsx";
@@ -8,8 +9,26 @@ import { mockCurrentUser } from "../../data/mockFeed.js";
 import "./AppShell.css";
 
 export function AppShell() {
+  const location = useLocation();
+  const isHomeRoute = location.pathname === "/";
+  const isMapRoute = location.pathname === "/map";
+  const isPostRoute = location.pathname.startsWith("/posts/");
+
+  useLayoutEffect(() => {
+    if (isHomeRoute) {
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    }
+  }, [isHomeRoute]);
+
   return (
-    <div className="app-shell">
+    <div
+      className={[
+        "app-shell",
+        isHomeRoute ? "app-shell--home" : "",
+        isMapRoute ? "app-shell--map" : "",
+        isPostRoute ? "app-shell--post" : ""
+      ].filter(Boolean).join(" ")}
+    >
       <aside className="desktop-sidebar" aria-label="Điều hướng chính">
         <NavBrand />
         <nav className="desktop-sidebar__nav">

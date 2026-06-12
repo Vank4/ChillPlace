@@ -1,7 +1,10 @@
 import { ArrowRight, Flame, MapPin } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { TagChip } from "../../../components/common/TagChip.jsx";
 
 export function TrendingPanel({ tags }) {
+  const navigate = useNavigate();
+
   return (
     <aside className="feed-side-panel" aria-label="Gợi ý khám phá">
       <section className="feed-widget">
@@ -17,7 +20,12 @@ export function TrendingPanel({ tags }) {
         <div className="feed-widget__tags">
           {tags.map((tag) => (
             <div className="feed-widget__tag-row" key={tag.id}>
-              <TagChip variant="trending">{tag.label}</TagChip>
+              <TagChip
+                variant="trending"
+                onClick={(tagValue) => navigate(`/tags/${encodeURIComponent(tagValue)}`)}
+              >
+                {tag.label}
+              </TagChip>
               <span>{tag.count}</span>
             </div>
           ))}

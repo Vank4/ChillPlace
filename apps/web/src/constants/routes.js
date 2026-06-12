@@ -20,7 +20,7 @@ export const publicNavItems = [
 
 export const mobileNavItems = [
   { label: "Home", path: "/", icon: Home },
-  { label: "Search", path: "/explore", icon: Search },
+  { label: "Search", path: "/search", icon: Search },
   { label: "Đăng", path: "/creator/posts/new", icon: Plus, isCreate: true },
   { label: "Map", path: "/map", icon: Map },
   { label: "Profile", path: "/profile", icon: User }
