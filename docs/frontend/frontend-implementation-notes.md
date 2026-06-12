@@ -76,10 +76,10 @@ Nhóm này phụ trách các màn hình xác thực và tài khoản người d�
 
 | Trang / Hạng mục | Route dự kiến | Note | Trạng thái |
 | --- | --- | --- | --- |
-| Login Page | `/login` | Chưa có | Chưa triển khai |
-| Register Page | `/register` | Chưa có | Chưa triển khai |
-| Forgot Password Page | `/forgot-password` | Chưa có | Chưa triển khai |
-| User Profile Page | `/profile` | Chưa có | Placeholder route |
+| Login Page | `/login` | [login-page.md](auth-user/login-page.md) | Đã triển khai |
+| Register Page | `/register` | [register-page.md](auth-user/register-page.md) | Đã triển khai |
+| Forgot Password Page | `/forgot-password` | [forgot-password-page.md](auth-user/forgot-password-page.md) | Đã triển khai |
+| User Profile Page | `/profile` | [user-profile-page.md](auth-user/user-profile-page.md) | Đã triển khai |
 | Settings Page | `/settings` | Chưa có | Placeholder route |
 
 ### Creator Center
