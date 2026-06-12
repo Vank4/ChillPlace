@@ -1,5 +1,6 @@
 import { ok } from "../../common/utils/apiResponse.js";
 import { checkDatabaseHealth } from "../../common/utils/dbHealth.js";
+import { env } from "../../config/env.js";
 
 export async function getHealth(req, res) {
   const db = await checkDatabaseHealth();
@@ -8,7 +9,7 @@ export async function getHealth(req, res) {
     res,
     {
       service: "chillplace-api",
-      env: process.env.NODE_ENV || "development",
+      env: env.nodeEnv,
       uptimeSec: Math.floor(process.uptime()),
       timestamp: new Date().toISOString(),
       db
@@ -16,4 +17,3 @@ export async function getHealth(req, res) {
     "OK"
   );
 }
-
