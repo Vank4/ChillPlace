@@ -1,7 +1,22 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Bookmark, MapPin, Navigation, Star } from "lucide-react";
 import { TagChip } from "../../../components/common/TagChip.jsx";
+import { getOpeningStatus } from "../../../utils/openingStatus.js";
 
 export function PlaceCard({ place, isSaved, onOpenDetail, onOpenMap, onToggleSave }) {
+  const navigate = useNavigate();
+  const [currentTime, setCurrentTime] = useState(() => new Date());
+  const openingStatus = getOpeningStatus(place.openingHours, currentTime);
+
+  useEffect(() => {
+    const timerId = window.setInterval(() => {
+      setCurrentTime(new Date());
+    }, 60000);
+
+    return () => window.clearInterval(timerId);
+  }, []);
+
   function handleCardClick() {
     onOpenDetail(place.id);
   }
@@ -36,14 +51,10 @@ export function PlaceCard({ place, isSaved, onOpenDetail, onOpenMap, onToggleSav
           <Bookmark size={18} aria-hidden="true" />
         </button>
         <span
-          className={
-            place.statusCode === "open"
-              ? "place-card__status-dot is-open"
-              : "place-card__status-dot"
-          }
+          className={`place-card__status-dot place-card__status-dot--${openingStatus.tone}`}
         >
           <span aria-hidden="true" />
-          <strong>{place.status}</strong>
+          <strong>{openingStatus.label}</strong>
         </span>
       </div>
 
@@ -70,7 +81,9 @@ export function PlaceCard({ place, isSaved, onOpenDetail, onOpenMap, onToggleSav
 
         <div className="place-card__tags">
           {place.tags.slice(0, 3).map((tag) => (
-            <TagChip key={tag}>{tag}</TagChip>
+            <TagChip key={tag} onClick={(tagValue) => navigate(`/tags/${encodeURIComponent(tagValue)}`)}>
+              {tag}
+            </TagChip>
           ))}
         </div>
 

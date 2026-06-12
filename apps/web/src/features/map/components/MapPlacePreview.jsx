@@ -1,8 +1,12 @@
 import { ArrowRight, Clock, MapPin, Navigation, Star } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "../../../components/common/Button.jsx";
 import { TagChip } from "../../../components/common/TagChip.jsx";
+import { getOpeningStatus } from "../../../utils/openingStatus.js";
 
 export function MapPlacePreview({ place, onOpenDetail, onDirections }) {
+  const navigate = useNavigate();
+
   if (!place) {
     return (
       <article className="map-preview map-preview--empty">
@@ -13,6 +17,8 @@ export function MapPlacePreview({ place, onOpenDetail, onDirections }) {
       </article>
     );
   }
+
+  const openingStatus = getOpeningStatus(place.openingHours);
 
   return (
     <article className="map-preview">
@@ -33,11 +39,13 @@ export function MapPlacePreview({ place, onOpenDetail, onDirections }) {
         </p>
         <p>
           <Clock size={15} aria-hidden="true" />
-          {place.status} · {place.priceRange}
+          {openingStatus.label} · {place.priceRange}
         </p>
         <div className="map-preview__tags">
           {place.tags.map((tag) => (
-            <TagChip key={tag}>{tag}</TagChip>
+            <TagChip key={tag} onClick={(tagValue) => navigate(`/tags/${encodeURIComponent(tagValue)}`)}>
+              {tag}
+            </TagChip>
           ))}
         </div>
         <div className="map-preview__actions">

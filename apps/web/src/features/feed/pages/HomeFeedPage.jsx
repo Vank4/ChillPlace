@@ -1,5 +1,6 @@
 import { useLayoutEffect, useMemo, useRef, useState } from "react";
-import { Flame, Heart, Menu, Plus, Search, Send, SlidersHorizontal, TrendingUp, X } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { ArrowRight, Flame, Heart, MapPin, Menu, Plus, Search, Send, SlidersHorizontal, TrendingUp, X } from "lucide-react";
 import { Avatar } from "../../../components/common/Avatar.jsx";
 import { mockCurrentUser, mockFeedPosts, mockTrendingTags } from "../../../data/mockFeed.js";
 import { FeedItem } from "../components/FeedItem.jsx";
@@ -79,6 +80,7 @@ function normalizeText(value) {
 }
 
 export function HomeFeedPage() {
+  const navigate = useNavigate();
   const [activeFeed, setActiveFeed] = useState("for-you");
   const [sideQuery, setSideQuery] = useState("");
   const [activeQuickFilter, setActiveQuickFilter] = useState("");
@@ -146,6 +148,9 @@ export function HomeFeedPage() {
     .sort((firstPost, secondPost) => secondPost.place.rating - firstPost.place.rating)
     .slice(0, 3);
 
+  const hasSideSearch = sideQuery.trim().length > 0;
+  const sideSearchResults = hasSideSearch ? filteredSidePosts.slice(0, 4) : [];
+
   useLayoutEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
     feedListRef.current?.scrollTo({ top: 0, left: 0, behavior: "auto" });
@@ -164,8 +169,20 @@ export function HomeFeedPage() {
   }
 
   function handleTrendingTag(tagLabel) {
-    setActiveTag((currentTag) => (currentTag === tagLabel ? "" : tagLabel));
-    setActiveQuickFilter("");
+    navigate(`/tags/${encodeURIComponent(tagLabel)}`);
+  }
+
+  function handleSideSearchSubmit(event) {
+    event.preventDefault();
+    const cleanQuery = sideQuery.trim();
+
+    if (cleanQuery) {
+      navigate(`/search?q=${encodeURIComponent(cleanQuery)}`);
+    }
+  }
+
+  function handleOpenPost(postId) {
+    navigate(`/posts/${postId}`);
   }
 
   function handleToggleComments(postId) {
@@ -254,14 +271,54 @@ export function HomeFeedPage() {
       />
 
       <section className="home-feed-page__side" aria-label="Gợi ý khám phá">
-        <label className="home-feed-page__search">
+        <form className="home-feed-page__search" role="search" onSubmit={handleSideSearchSubmit}>
           <Search size={13} aria-hidden="true" />
           <input
+            type="search"
             value={sideQuery}
             placeholder="Tìm kiếm không gian..."
+            aria-label="Tìm kiếm không gian"
             onChange={(event) => setSideQuery(event.target.value)}
           />
-        </label>
+          <button className="home-feed-page__search-submit" type="submit" aria-label="Xem trang kết quả tìm kiếm">
+            <ArrowRight size={12} aria-hidden="true" />
+          </button>
+        </form>
+
+        {hasSideSearch ? (
+          <article className="home-feed-page__side-card home-feed-page__search-results" aria-live="polite">
+            <div className="home-feed-page__side-heading">
+              <h2>Kết quả tìm kiếm</h2>
+              <button type="button" onClick={handleSideSearchSubmit}>
+                Xem tất cả
+              </button>
+            </div>
+
+            {sideSearchResults.length > 0 ? (
+              <div className="home-feed-page__search-result-list">
+                {sideSearchResults.map((post) => (
+                  <button
+                    className="home-feed-page__search-result"
+                    key={post.id}
+                    type="button"
+                    onClick={() => handleOpenPost(post.id)}
+                  >
+                    <img src={post.mediaUrl} alt="" loading="lazy" decoding="async" />
+                    <span>
+                      <strong>{post.place.name}</strong>
+                      <small>
+                        <MapPin size={10} aria-hidden="true" />
+                        {post.place.area} · {post.place.rating} ★
+                      </small>
+                    </span>
+                  </button>
+                ))}
+              </div>
+            ) : (
+              <div className="home-feed-page__search-empty">Không có kết quả phù hợp.</div>
+            )}
+          </article>
+        ) : null}
 
         <article className="home-feed-page__side-card">
           <div className="home-feed-page__side-heading">
@@ -306,7 +363,7 @@ export function HomeFeedPage() {
         <article className="home-feed-page__side-card">
           <div className="home-feed-page__side-heading">
             <h2>Gần bạn</h2>
-            <button type="button" onClick={() => handleChangeFeed("nearby")}>
+            <button type="button" onClick={() => navigate("/nearby")}>
               Xem thêm
             </button>
           </div>

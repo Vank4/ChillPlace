@@ -126,7 +126,13 @@ export function PostDetailPage() {
             <p>{post.caption}</p>
             <div className="post-detail-page__tag-row">
               {post.tags.map((tag) => (
-                <span key={tag}>#{tag}</span>
+                <button
+                  key={tag}
+                  type="button"
+                  onClick={() => navigate(`/tags/${encodeURIComponent(tag)}`)}
+                >
+                  #{tag}
+                </button>
               ))}
             </div>
           </div>
@@ -195,7 +201,13 @@ export function PostDetailPage() {
 
           <div className="post-detail-page__tag-row">
             {post.tags.map((tag) => (
-              <span key={tag}>#{tag}</span>
+              <button
+                key={tag}
+                type="button"
+                onClick={() => navigate(`/tags/${encodeURIComponent(tag)}`)}
+              >
+                #{tag}
+              </button>
             ))}
           </div>
         </section>

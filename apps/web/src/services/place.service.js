@@ -1,4 +1,5 @@
 import { mockPlaces } from "../mocks/places.mock.js";
+import { getOpeningStatus } from "../utils/openingStatus.js";
 
 const SAVED_PLACES_KEY = "chillplace.savedPlaces";
 const RECENT_SEARCHES_KEY = "chillplace.recentSearches";
@@ -32,7 +33,7 @@ function normalizeText(value) {
 }
 
 function applyFilters(places, params = {}) {
-  let result = [...places];
+  let result = places.map(withComputedOpeningStatus);
 
   if (params.keyword) {
     const keyword = normalizeText(params.keyword);
@@ -58,7 +59,7 @@ function applyFilters(places, params = {}) {
   }
 
   if (params.openNow) {
-    result = result.filter((place) => place.statusCode === "open");
+    result = result.filter((place) => getOpeningStatus(place.openingHours).isOpen);
   }
 
   if (params.minRating) {
@@ -89,6 +90,16 @@ function applyFilters(places, params = {}) {
   return result;
 }
 
+function withComputedOpeningStatus(place) {
+  const openingStatus = getOpeningStatus(place.openingHours);
+
+  return {
+    ...place,
+    status: openingStatus.label,
+    statusCode: openingStatus.tone
+  };
+}
+
 export async function getPlaces(params = {}) {
   await wait(params.delayMs);
 
@@ -101,7 +112,8 @@ export async function getPlaces(params = {}) {
 
 export async function getPlaceById(placeId) {
   await wait(260);
-  return mockPlaces.find((place) => place.id === placeId || place.slug === placeId) ?? null;
+  const place = mockPlaces.find((item) => item.id === placeId || item.slug === placeId);
+  return place ? withComputedOpeningStatus(place) : null;
 }
 
 export function getSavedPlaceIds() {
@@ -146,6 +158,6 @@ export function getSelectedFilters() {
   return readJson(SELECTED_FILTERS_KEY, {
     category: "popular",
     filters: ["nearby"],
-    keyword: "cafe"
+    keyword: ""
   });
 }

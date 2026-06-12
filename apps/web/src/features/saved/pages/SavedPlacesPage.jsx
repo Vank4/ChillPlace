@@ -13,6 +13,7 @@ import {
   Trash2
 } from "lucide-react";
 import { getPlaces, getSavedPlaceIds, toggleSavedPlace } from "../../../services/place.service.js";
+import { getOpeningStatus } from "../../../utils/openingStatus.js";
 import { PlaceCard } from "../../explore/components/PlaceCard.jsx";
 import "../../explore/pages/ExplorePage.css";
 import "./SavedPlacesPage.css";
@@ -60,6 +61,7 @@ export function SavedPlacesPage() {
   const [places, setPlaces] = useState([]);
   const [savedPlaceIds, setSavedPlaceIds] = useState(() => getSavedPlaceIds());
   const [isLoading, setIsLoading] = useState(true);
+  const [currentTime, setCurrentTime] = useState(() => new Date());
 
   useEffect(() => {
     let isMounted = true;
@@ -75,6 +77,14 @@ export function SavedPlacesPage() {
       isMounted = false;
     };
   }, [savedPlaceIds]);
+
+  useEffect(() => {
+    const timerId = window.setInterval(() => {
+      setCurrentTime(new Date());
+    }, 60000);
+
+    return () => window.clearInterval(timerId);
+  }, []);
 
   const filteredPlaces = useMemo(() => {
     const cleanKeyword = normalizeText(keyword);
@@ -96,7 +106,7 @@ export function SavedPlacesPage() {
     });
   }, [keyword]);
 
-  const openPlaces = places.filter((place) => place.statusCode === "open").length;
+  const openPlaces = places.filter((place) => getOpeningStatus(place.openingHours, currentTime).isOpen).length;
   const averageRating = places.length
     ? (places.reduce((total, place) => total + place.rating, 0) / places.length).toFixed(1)
     : "0.0";

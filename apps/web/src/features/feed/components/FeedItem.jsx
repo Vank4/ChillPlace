@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { MapPin, Star, TrendingUp } from "lucide-react";
+import { useEffect, useState } from "react";
+import { MapPin, Star } from "lucide-react";
+import { getOpeningStatus } from "../../../utils/openingStatus.js";
 import { FeedActionRail } from "./FeedActionRail.jsx";
 
 const supportedRatios = new Set(["portrait", "landscape", "square"]);
@@ -51,11 +52,21 @@ function getMediaWidthRule(width, height, orientation) {
 export function FeedItem({ post, isCommentsOpen = false, onToggleComments }) {
   const fallbackRatio = supportedRatios.has(post.mediaRatio) ? post.mediaRatio : "portrait";
   const [measuredMedia, setMeasuredMedia] = useState(null);
+  const [currentTime, setCurrentTime] = useState(() => new Date());
   const mediaRatio = measuredMedia?.orientation ?? fallbackRatio;
+  const openingStatus = getOpeningStatus(post.place.openingHours, currentTime);
   const mediaStyle = {
     "--feed-media-ratio": measuredMedia?.aspectRatio ?? fallbackAspectRatios[fallbackRatio],
     "--feed-media-width": measuredMedia?.widthRule ?? fallbackMediaWidths[fallbackRatio]
   };
+
+  useEffect(() => {
+    const timerId = window.setInterval(() => {
+      setCurrentTime(new Date());
+    }, 60000);
+
+    return () => window.clearInterval(timerId);
+  }, []);
 
   function handleImageLoad(event) {
     const { naturalWidth, naturalHeight } = event.currentTarget;
@@ -105,12 +116,10 @@ export function FeedItem({ post, isCommentsOpen = false, onToggleComments }) {
             <p className="feed-item__caption">{post.caption}</p>
 
             <div className="feed-item__meta-pills">
-              {post.isTrending ? (
-                <span>
-                  <TrendingUp size={12} aria-hidden="true" />
-                  Thịnh hành
-                </span>
-              ) : null}
+              <span className={`feed-item__status-pill feed-item__status-pill--${openingStatus.tone}`}>
+                <i aria-hidden="true" />
+                {openingStatus.label}
+              </span>
               <span>
                 <MapPin size={12} aria-hidden="true" />
                 {post.place.area} · {post.place.distance}

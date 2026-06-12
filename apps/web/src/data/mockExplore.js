@@ -92,7 +92,7 @@ export const explorePlaces = [
     rating: 4.4,
     reviewCount: 96,
     priceRange: "Free - 150k",
-    status: "Cuối tuần",
+    status: "Đang đóng",
     tags: ["event", "gallery", "weekend"],
     imageUrl:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuBpnXpX0FNGpTTXoai3bWsvQujaL10NpvwyNNLZqFyTjZjUpnnOuphqDY_RF6I6Gi_M0a4qt2VP_vxIQhz2uMqILXdDZXy9OId4SNO2TTV_6Ny-Ek2Mr3rFLL4j6IADPhE0gi_AM-cmJNnHolmf2UMAA5q1ff3_GTTOmo3Ci9qA7c5XUqzTVh9kOvLxrj9VjminXsAKkvuqmkcbghn5uRBAPX0LAqdtkJUALYGErioZRKxIB9tKreVmE8YEg40jiW7efuYY5dnpxAA",

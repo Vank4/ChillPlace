@@ -388,6 +388,8 @@
 }
 
 .tag-chip {
+  border: 0;
+  appearance: none;
   display: inline-flex;
   min-height: 30px;
   align-items: center;
@@ -397,6 +399,29 @@
   font-size: 12px;
   font-weight: 800;
   white-space: nowrap;
+}
+
+button.tag-chip {
+  cursor: pointer;
+  font-family: inherit;
+  transition:
+    color 160ms ease,
+    background 160ms ease,
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+button.tag-chip:hover,
+button.tag-chip:focus-visible {
+  color: var(--color-primary);
+  background: rgba(255, 107, 53, 0.12);
+  box-shadow: 0 8px 18px rgba(255, 107, 53, 0.12);
+  transform: translateY(-1px);
+}
+
+button.tag-chip:focus-visible {
+  outline: 2px solid rgba(255, 107, 53, 0.34);
+  outline-offset: 2px;
 }
 
 .tag-chip--default {

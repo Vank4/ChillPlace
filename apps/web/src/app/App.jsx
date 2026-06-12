@@ -3,10 +3,14 @@ import { AppShell } from "../components/layout/AppShell.jsx";
 import { ExplorePage } from "../features/explore/pages/ExplorePage.jsx";
 import { HomeFeedPage } from "../features/feed/pages/HomeFeedPage.jsx";
 import { MapPage } from "../features/map/pages/MapPage.jsx";
+import { NearbyDiscoveryPage } from "../features/nearby/pages/NearbyDiscoveryPage.jsx";
+import { NotificationsPage } from "../features/notifications/pages/NotificationsPage.jsx";
 import { PlaceDetailPage } from "../features/places/pages/PlaceDetailPage.jsx";
 import { PostDetailPage } from "../features/posts/pages/PostDetailPage.jsx";
 import { PrototypePage } from "../features/prototype/pages/PrototypePage.jsx";
 import { SavedPlacesPage } from "../features/saved/pages/SavedPlacesPage.jsx";
+import { SearchResultsPage } from "../features/search/pages/SearchResultsPage.jsx";
+import { TagDetailPage } from "../features/tags/pages/TagDetailPage.jsx";
 
 export function App() {
   return (
@@ -14,7 +18,10 @@ export function App() {
       <Route element={<AppShell />}>
         <Route index element={<HomeFeedPage />} />
         <Route path="explore" element={<ExplorePage />} />
-        <Route path="search" element={<ExplorePage />} />
+        <Route path="search" element={<SearchResultsPage />} />
+        <Route path="tags/:tag" element={<TagDetailPage />} />
+        <Route path="nearby" element={<NearbyDiscoveryPage />} />
+        <Route path="notifications" element={<NotificationsPage />} />
         <Route path="places/:placeId" element={<PlaceDetailPage />} />
         <Route path="posts/:postId" element={<PostDetailPage />} />
         <Route path="map" element={<MapPage />} />

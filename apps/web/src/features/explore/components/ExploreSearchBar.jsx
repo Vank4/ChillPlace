@@ -14,7 +14,10 @@ export function ExploreSearchBar({ value, onChange, onSubmit, onMockError }) {
         onChange={(event) => onChange(event.target.value)}
         placeholder="Tìm địa điểm, quán cafe, hashtag..."
       />
-      <button type="button" aria-label="Giả lập lỗi API" onClick={onMockError}>
+      <button className="explore-search__submit" type="submit" aria-label="Tìm kiếm">
+        <Search size={18} aria-hidden="true" />
+      </button>
+      <button className="explore-search__filter" type="button" aria-label="Giả lập lỗi API" onClick={onMockError}>
         <SlidersHorizontal size={19} aria-hidden="true" />
       </button>
     </form>

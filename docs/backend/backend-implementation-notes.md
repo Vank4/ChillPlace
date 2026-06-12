@@ -1,0 +1,382 @@
+# ChillPlace Backend Implementation Notes
+
+File này là mục lục tổng cho các ghi chú triển khai backend của dự án ChillPlace.
+
+Mỗi nhóm backend có một thư mục riêng trong `docs/backend/`. Khi hoàn thành một module API, tạo hoặc cập nhật một file Markdown riêng trong đúng thư mục nhóm để ghi lại endpoint, file code, database table, service rule, middleware, test và các điểm cần giải thích khi báo cáo.
+
+## Các Nhánh Công Việc
+
+- `feature/backend-foundation-api`
+- `feature/backend-auth-user`
+- `feature/backend-public-discovery-api`
+- `feature/backend-social-interactions`
+- `feature/backend-creator-center`
+- `feature/backend-business-center`
+- `feature/backend-admin-moderation`
+- `feature/backend-infra-testing`
+
+## Quy Ước Lưu Ghi Chú
+
+```text
+docs/backend/<ten-nhom>/<ten-module>.md
+```
+
+Ví dụ:
+
+- `docs/backend/foundation-api/project-setup-response-error.md`
+- `docs/backend/auth-user/auth-register-login-me.md`
+- `docs/backend/public-discovery-api/feed-places-search-map.md`
+
+## Nhóm Backend Và Module
+
+### Foundation API
+
+Nhóm này phụ trách nền tảng backend dùng chung cho toàn bộ API.
+
+| Module / Hạng mục | Endpoint / Phạm vi | Note | Trạng thái |
+| --- | --- | --- | --- |
+| Project Setup | Express app, server, env | Chưa có | Chưa triển khai |
+| Database Setup | MySQL, ORM, migration, seed | Chưa có | Chưa triển khai |
+| Response Helper | `success`, `message`, `data`, `pagination` | Chưa có | Chưa triển khai |
+| Error Handling | `AppError`, `errorHandler`, `notFoundHandler` | Chưa có | Chưa triển khai |
+| Validation Middleware | request params/query/body | Chưa có | Chưa triển khai |
+| Security Middleware | helmet, cors, rate limit | Chưa có | Chưa triển khai |
+| Upload Foundation | multer/local/cloudinary config | Chưa có | Chưa triển khai |
+
+Nội dung chính:
+
+- Cấu trúc Express theo module: route, controller, service, validation.
+- Chuẩn response thống nhất cho frontend.
+- Kết nối MySQL 8.x qua Prisma hoặc Sequelize.
+- `.env.example` cho local Laragon/MySQL.
+- Middleware chung: auth, role, validation, upload, rate limit, error.
+- Logging cơ bản: method, path, status, duration, user id nếu có.
+
+### Auth User
+
+Nhóm này phụ trách xác thực, tài khoản, profile và phân quyền người dùng.
+
+| Module / Hạng mục | Endpoint / Phạm vi | Note | Trạng thái |
+| --- | --- | --- | --- |
+| Register | `POST /api/auth/register` | Chưa có | Chưa triển khai |
+| Login | `POST /api/auth/login` | Chưa có | Chưa triển khai |
+| Current User | `GET /api/auth/me` | Chưa có | Chưa triển khai |
+| Update Profile | `PATCH /api/users/me` | Chưa có | Chưa triển khai |
+| Public Profile | `GET /api/users/:username/public` | Chưa có | Chưa triển khai |
+| Follow User | `POST /api/users/:id/follow` | Chưa có | Chưa triển khai |
+
+Nội dung chính:
+
+- JWT access token.
+- Hash password bằng bcrypt.
+- Middleware `requireAuth`.
+- Role-based access control: `user`, `creator`, `business`, `admin`.
+- Không trả `password_hash` hoặc dữ liệu nhạy cảm.
+- User status: `active`, `locked`, `deleted`.
+
+### Role Requests
+
+Nhóm này phụ trách yêu cầu nâng cấp Creator/Business và admin duyệt role.
+
+| Module / Hạng mục | Endpoint / Phạm vi | Note | Trạng thái |
+| --- | --- | --- | --- |
+| Creator Request | `POST /api/role-requests/creator` | Chưa có | Chưa triển khai |
+| Business Request | `POST /api/role-requests/business` | Chưa có | Chưa triển khai |
+| My Requests | `GET /api/role-requests/me` | Chưa có | Chưa triển khai |
+| Admin List Requests | `GET /api/admin/role-requests` | Chưa có | Chưa triển khai |
+| Approve Request | `PATCH /api/admin/role-requests/:id/approve` | Chưa có | Chưa triển khai |
+| Reject Request | `PATCH /api/admin/role-requests/:id/reject` | Chưa có | Chưa triển khai |
+
+Nội dung chính:
+
+- Duyệt Creator tạo `creator_profiles`.
+- Duyệt Business tạo/cập nhật `business_profiles`.
+- Transaction khi approve/reject.
+- Gửi notification cho user.
+- Ghi `audit_logs` cho admin action.
+
+### Public Discovery API
+
+Nhóm này phụ trách API cho luồng khám phá công khai: feed, explore, search, map, place detail, post detail, saved và tag detail.
+
+| Module / Hạng mục | Endpoint / Phạm vi | Note | Trạng thái |
+| --- | --- | --- | --- |
+| Categories | `GET /api/categories` | Chưa có | Chưa triển khai |
+| Places List/Search | `GET /api/places` | Chưa có | Chưa triển khai |
+| Nearby Places | `GET /api/places/nearby` | Chưa có | Chưa triển khai |
+| Map Places | `GET /api/map/places` | Chưa có | Chưa triển khai |
+| Place Detail | `GET /api/places/:slug` | Chưa có | Chưa triển khai |
+| Place Reviews | `GET /api/places/:id/reviews` | Chưa có | Chưa triển khai |
+| Place Promotions | `GET /api/places/:id/promotions` | Chưa có | Chưa triển khai |
+| Related Posts | `GET /api/places/:id/related-posts` | Chưa có | Chưa triển khai |
+| Feed | `GET /api/feed` | Chưa có | Chưa triển khai |
+| Post Detail | `GET /api/posts/:id` | Chưa có | Chưa triển khai |
+| Unified Search | `GET /api/search` | Chưa có | Chưa triển khai |
+| Trending Tags | `GET /api/tags/trending` | Chưa có | Chưa triển khai |
+| Tag Search | `GET /api/tags/search` | Chưa có | Chưa triển khai |
+| Tag Detail | `GET /api/tags/:slug` | Chưa có | Chưa triển khai |
+| Related Tags | `GET /api/tags/:slug/related` | Chưa có | Chưa triển khai |
+| Recommendations | `GET /api/recommendations` | Chưa có | Chưa triển khai |
+
+Nội dung chính:
+
+- Public API chỉ trả dữ liệu `approved`, `active`, `public`.
+- Feed dùng cursor pagination.
+- Places/search/map dùng page/limit hoặc bounding box.
+- Search trả grouped result: places, posts, tags.
+- Tag detail trả thông tin tag, bài viết liên quan, địa điểm liên quan.
+- Query hỗ trợ: `q`, `category`, `city`, `district`, `rating_min`, `open_now`, `lat`, `lng`, `radius`, `sort`, `page`, `limit`.
+
+### Media And Posts
+
+Nhóm này phụ trách upload media, tạo/sửa/xóa post và gắn tag/media.
+
+| Module / Hạng mục | Endpoint / Phạm vi | Note | Trạng thái |
+| --- | --- | --- | --- |
+| Upload Media | `POST /api/media/upload` | Chưa có | Chưa triển khai |
+| Create Post | `POST /api/posts` | Chưa có | Chưa triển khai |
+| Update Post | `PATCH /api/posts/:id` | Chưa có | Chưa triển khai |
+| Delete Post | `DELETE /api/posts/:id` | Chưa có | Chưa triển khai |
+| Share Post | `POST /api/posts/:id/share` | Chưa có | Chưa triển khai |
+| Attach Tags | `POST /api/posts/:id/tags` | Chưa có | Chưa triển khai |
+
+Nội dung chính:
+
+- Upload ảnh/video qua multer.
+- Ảnh: jpg, jpeg, png, webp.
+- Video: mp4.
+- Không upload file script/executable.
+- Tạo post bằng transaction: post, media, tags, counters/analytics.
+- Creator tạo review post; Business tạo promotion/event post.
+- Kiểm tra owner trước update/delete.
+
+### Social Interactions
+
+Nhóm này phụ trách like, comment, save, favorite, follow, review và report từ phía người dùng.
+
+| Module / Hạng mục | Endpoint / Phạm vi | Note | Trạng thái |
+| --- | --- | --- | --- |
+| Like Post | `POST /api/posts/:id/like` | Chưa có | Chưa triển khai |
+| Save Post | `POST /api/posts/:id/save` | Chưa có | Chưa triển khai |
+| Favorite Place | `POST /api/places/:id/favorite` | Chưa có | Chưa triển khai |
+| Favorites List | `GET /api/favorites` | Chưa có | Chưa triển khai |
+| Saved List | `GET /api/users/me/saved` | Chưa có | Chưa triển khai |
+| List Comments | `GET /api/posts/:id/comments` | Chưa có | Chưa triển khai |
+| Create Comment | `POST /api/posts/:id/comments` | Chưa có | Chưa triển khai |
+| Create Review | `POST /api/places/:id/reviews` | Chưa có | Chưa triển khai |
+| Update Review | `PATCH /api/reviews/:id` | Chưa có | Chưa triển khai |
+| Review Reply | `POST /api/reviews/:id/reply` | Chưa có | Chưa triển khai |
+| Report | `POST /api/reports` | Chưa có | Chưa triển khai |
+
+Nội dung chính:
+
+- Mutation trả counter/state mới nhất để frontend sync optimistic UI.
+- Like/save/favorite dùng unique constraint để tránh duplicate.
+- Comment hỗ trợ `parent_id` cho reply.
+- Review place dùng unique `(user_id, place_id)` và recalculate rating.
+- Report chống spam cùng target quá nhanh.
+
+### Creator Center API
+
+Nhóm này phụ trách API cho Creator dashboard và quản lý nội dung.
+
+| Module / Hạng mục | Endpoint / Phạm vi | Note | Trạng thái |
+| --- | --- | --- | --- |
+| Creator Stats | `GET /api/creator/stats` | Chưa có | Chưa triển khai |
+| Creator Posts | `GET /api/creator/posts` | Chưa có | Chưa triển khai |
+| Top Posts | `GET /api/creator/top-posts` | Chưa có | Chưa triển khai |
+| Creator Analytics | `GET /api/creator/analytics` | Chưa có | Chưa triển khai |
+| Post Analytics | `GET /api/analytics/posts/:id` | Chưa có | Chưa triển khai |
+
+Nội dung chính:
+
+- `requireRole("creator", "admin")`.
+- Creator chỉ xem post và analytics của mình.
+- Analytics có thể dùng counters trước, aggregate event sau.
+- Sort top posts theo view/like/save/comment.
+
+### Business Center API
+
+Nhóm này phụ trách API cho Business quản lý địa điểm, menu, media, promotion và review.
+
+| Module / Hạng mục | Endpoint / Phạm vi | Note | Trạng thái |
+| --- | --- | --- | --- |
+| Business Me | `GET /api/business/me` | Chưa có | Chưa triển khai |
+| Update Business | `PATCH /api/business/me` | Chưa có | Chưa triển khai |
+| Business Public | `GET /api/business/:slug/public` | Chưa có | Chưa triển khai |
+| Business Place | `GET /api/business/place` | Chưa có | Chưa triển khai |
+| Update Place | `PATCH /api/business/place` | Chưa có | Chưa triển khai |
+| Update Menu | `PATCH /api/business/menu` | Chưa có | Chưa triển khai |
+| Business Media | `GET /api/business/media` | Chưa có | Chưa triển khai |
+| Add Business Media | `POST /api/business/media` | Chưa có | Chưa triển khai |
+| Reorder Media | `PATCH /api/business/media/order` | Chưa có | Chưa triển khai |
+| Delete Media | `DELETE /api/business/media/:id` | Chưa có | Chưa triển khai |
+| Business Stats | `GET /api/business/stats` | Chưa có | Chưa triển khai |
+| Business Reviews | `GET /api/business/reviews` | Chưa có | Chưa triển khai |
+| Promotions List | `GET /api/business/promotions` | Chưa có | Chưa triển khai |
+| Create Promotion | `POST /api/business/promotions` | Chưa có | Chưa triển khai |
+| Update Promotion | `PATCH /api/business/promotions/:id` | Chưa có | Chưa triển khai |
+| Delete Promotion | `DELETE /api/business/promotions/:id` | Chưa có | Chưa triển khai |
+
+Nội dung chính:
+
+- `requireRole("business", "admin")`.
+- Business chỉ sửa place thuộc `business_profile_id` của mình.
+- Business chỉ hoạt động đầy đủ khi profile `approved`.
+- Promotion có `valid_from`, `valid_to`, `status`.
+- Review reply giới hạn một reply chính cho mỗi review nếu dùng bảng `review_replies`.
+
+### Notifications API
+
+Nhóm này phụ trách thông báo và unread count.
+
+| Module / Hạng mục | Endpoint / Phạm vi | Note | Trạng thái |
+| --- | --- | --- | --- |
+| List Notifications | `GET /api/notifications` | Chưa có | Chưa triển khai |
+| Unread Count | `GET /api/notifications/unread-count` | Chưa có | Chưa triển khai |
+| Mark One Read | `PATCH /api/notifications/:id/read` | Chưa có | Chưa triển khai |
+| Mark All Read | `PATCH /api/notifications/read-all` | Chưa có | Chưa triển khai |
+
+Nội dung chính:
+
+- User chỉ xem notification của mình.
+- Unread count dùng cho badge ở navigation/header.
+- `data_json` chỉ chứa thông tin an toàn cho frontend.
+
+### Admin Moderation API
+
+Nhóm này phụ trách quản trị, kiểm duyệt và audit logs.
+
+| Module / Hạng mục | Endpoint / Phạm vi | Note | Trạng thái |
+| --- | --- | --- | --- |
+| Admin Stats | `GET /api/admin/stats` | Chưa có | Chưa triển khai |
+| Audit Logs | `GET /api/admin/audit-logs` | Chưa có | Chưa triển khai |
+| Admin Users | `GET /api/admin/users` | Chưa có | Chưa triển khai |
+| User Status | `PATCH /api/admin/users/:id/status` | Chưa có | Chưa triển khai |
+| Admin Places | `GET /api/admin/places` | Chưa có | Chưa triển khai |
+| Place Status | `PATCH /api/admin/places/:id/status` | Chưa có | Chưa triển khai |
+| Admin Reports | `GET /api/admin/reports` | Chưa có | Chưa triển khai |
+| Resolve Report | `PATCH /api/admin/reports/:id/resolve` | Chưa có | Chưa triển khai |
+| Post Status | `PATCH /api/admin/posts/:id/status` | Chưa có | Chưa triển khai |
+| Comment Status | `PATCH /api/admin/comments/:id/status` | Chưa có | Chưa triển khai |
+| Admin Tags | `GET /api/admin/tags` | Chưa có | Chưa triển khai |
+| Tag Status | `PATCH /api/admin/tags/:id/status` | Chưa có | Chưa triển khai |
+| Merge Tags | `POST /api/admin/tags/merge` | Chưa có | Chưa triển khai |
+| Admin Categories | `GET /api/admin/categories` | Chưa có | Chưa triển khai |
+| Create Category | `POST /api/admin/categories` | Chưa có | Chưa triển khai |
+| Update Category | `PATCH /api/admin/categories/:id` | Chưa có | Chưa triển khai |
+
+Nội dung chính:
+
+- Tất cả `/api/admin/*` yêu cầu `role=admin`.
+- Admin action quan trọng phải ghi `audit_logs`.
+- Không cho admin tự khóa chính mình nếu là admin cuối cùng.
+- Admin list phải có pagination/filter.
+- Public query không trả dữ liệu pending/hidden/rejected.
+
+### Analytics Recommendation Jobs
+
+Nhóm này phụ trách analytics event, recommendation basic và background jobs.
+
+| Module / Hạng mục | Endpoint / Phạm vi | Note | Trạng thái |
+| --- | --- | --- | --- |
+| Analytics Events | `analytics_events` service | Chưa có | Chưa triển khai |
+| User Tag Preference | `user_tag_preferences` | Chưa có | Chưa triển khai |
+| Trending Tags Job | `trendingTags.job.js` | Chưa có | Chưa triển khai |
+| Expire Promotions Job | `expirePromotions.job.js` | Chưa có | Chưa triển khai |
+| Cleanup Media Job | `cleanupMedia.job.js` | Chưa có | Chưa triển khai |
+| Analytics Aggregate Job | `analyticsAggregate.job.js` | Chưa có | Chưa triển khai |
+
+Nội dung chính:
+
+- Ghi event khi view/like/save/comment/share/direction/follow.
+- Tăng điểm tag preference theo hành vi.
+- Feed For You ưu tiên tag sở thích, độ gần, độ mới và tương tác.
+- Promotion quá hạn chuyển sang `expired`.
+- Cleanup media chưa gắn resource sau 24h.
+
+### Infra Testing Deployment
+
+Nhóm này phụ trách seed data, test, tài liệu API và deployment.
+
+| Module / Hạng mục | Phạm vi | Note | Trạng thái |
+| --- | --- | --- | --- |
+| Seed Accounts | admin/user/creator/business | Chưa có | Chưa triển khai |
+| Seed Demo Data | categories, places, posts, tags | Chưa có | Chưa triển khai |
+| API Tests | Jest/Vitest + Supertest | Chưa có | Chưa triển khai |
+| Swagger/OpenAPI | API contract | Chưa có | Chưa triển khai |
+| README Backend | setup Laragon/MySQL | Chưa có | Chưa triển khai |
+| Deployment Config | Render/Railway/Cloudinary | Chưa có | Chưa triển khai |
+
+Nội dung chính:
+
+- Seed đủ dữ liệu để frontend bỏ mock.
+- Test auth, permission, validation, pagination, transaction rollback.
+- README hướng dẫn chạy local bằng Laragon/MySQL.
+- `.env.example` đầy đủ biến môi trường.
+
+## Quy Trình Làm Một Module Backend
+
+1. Đọc contract endpoint trong tài liệu backend và màn hình frontend liên quan.
+2. Xác định bảng database, quan hệ, index, constraint và migration cần thêm.
+3. Tạo validation schema cho params, query, body và file upload nếu có.
+4. Tạo route, controller, service và repository/ORM query.
+5. Gắn middleware phù hợp: `requireAuth`, `requireRole`, `validateRequest`, `upload`, `rateLimit`.
+6. Xử lý rule nghiệp vụ trong service: ownership, status, role, transaction, counters, notification, audit log.
+7. Trả response chuẩn:
+
+```json
+{
+  "success": true,
+  "message": "OK",
+  "data": {}
+}
+```
+
+8. Viết test happy path và các lỗi phổ biến: validation, 401, 403, 404, conflict.
+9. Test bằng Postman/Thunder Client hoặc automated test.
+10. Tạo hoặc cập nhật note riêng trong `docs/backend/<ten-nhom>/`.
+
+## Nội Dung Cần Có Trong Note Riêng
+
+- Tên module/API đã hoàn thành.
+- Endpoint liên quan.
+- File được thêm/sửa/xóa.
+- Database table/migration liên quan.
+- Controller/service/repository đã triển khai.
+- Middleware và validation đã dùng.
+- Rule nghiệp vụ quan trọng.
+- Quyền truy cập theo role.
+- Response mẫu success/error.
+- Transaction/counter/notification/audit log nếu có.
+- Test case đã chạy.
+- Các điểm quan trọng để giải thích khi giảng viên hỏi.
+- Những phần còn chờ frontend hoặc chờ backend module khác.
+
+## Definition Of Done Cho Một Endpoint
+
+- Có route, controller, service, validation schema.
+- Có middleware auth/role nếu endpoint cần bảo vệ.
+- Có response success/error đúng format.
+- Có xử lý 400, 401, 403, 404, 409 hoặc 422 khi phù hợp.
+- Có pagination/cursor nếu là list API.
+- Có ownership/status check nếu update/delete hoặc xem dữ liệu riêng tư.
+- Có transaction nếu thao tác nhiều bảng.
+- Có audit log nếu là admin action hoặc thay đổi dữ liệu nhạy cảm.
+- Có test tối thiểu cho happy path và lỗi phổ biến.
+- Frontend có thể gọi endpoint mà không cần đổi contract.
+
+## Checklist Bàn Giao Backend
+
+- README backend có hướng dẫn chạy local.
+- `.env.example` đầy đủ.
+- Migration chạy được từ máy sạch.
+- Seed data tạo đủ account demo và dữ liệu cho frontend.
+- API contract khớp tài liệu frontend.
+- Response format thống nhất toàn hệ thống.
+- Không trả dữ liệu nhạy cảm.
+- RoleGuard, ownership và status filter được test.
+- Upload media validate type/size.
+- Admin action ghi audit logs.
+- Feed/search/map/place detail/post detail/tag detail chạy được với dữ liệu thật.
+- Có integration test tối thiểu cho Auth, Places, Posts, Interactions và Admin.

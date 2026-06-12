@@ -165,8 +165,21 @@
     background-color 180ms ease;
 }
 
-.place-detail__status-dot.is-open {
+.place-detail__status-dot--open {
   background: #24f42d;
+}
+
+.place-detail__status-dot--opening {
+  color: #ffffff;
+  background: #0099ff;
+}
+
+.place-detail__status-dot--closing {
+  background: #ff2d2d;
+}
+
+.place-detail__status-dot--closed {
+  background: #6b7280;
 }
 
 .place-detail__status-dot > span {
@@ -191,8 +204,8 @@
 
 .place-detail__hero:hover .place-detail__status-dot,
 .place-detail__hero:focus-within .place-detail__status-dot {
-  width: 92px;
-  min-width: 92px;
+  width: 98px;
+  min-width: 98px;
   padding-right: 10px;
 }
 
@@ -908,8 +921,8 @@
 
   .place-detail__hero:hover .place-detail__status-dot,
   .place-detail__hero:focus-within .place-detail__status-dot {
-    width: 72px;
-    min-width: 72px;
+    width: 80px;
+    min-width: 80px;
     padding-right: 8px;
   }
 

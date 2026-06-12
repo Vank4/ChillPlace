@@ -33,7 +33,7 @@ function toQueryParams(keyword, category, filters) {
 export function ExplorePage() {
   const navigate = useNavigate();
   const initialFilters = useMemo(() => getSelectedFilters(), []);
-  const [keyword, setKeyword] = useState(initialFilters.keyword);
+  const [keyword, setKeyword] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(initialFilters.category);
   const [selectedFilters, setSelectedFilters] = useState(initialFilters.filters);
   const [places, setPlaces] = useState([]);
@@ -80,6 +80,8 @@ export function ExplorePage() {
   function handleSearchSubmit(event) {
     event.preventDefault();
     saveRecentSearch(keyword);
+    const cleanKeyword = keyword.trim();
+    navigate(cleanKeyword ? `/search?q=${encodeURIComponent(cleanKeyword)}` : "/search");
   }
 
   function handleCategorySelect(categoryId) {

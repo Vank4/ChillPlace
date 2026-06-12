@@ -13,6 +13,10 @@ export const mockPlaces = [
     priceRange: "45k - 120k",
     status: "Đang mở",
     statusCode: "open",
+    openingHours: {
+      open: "08:00",
+      close: "21:30"
+    },
     tags: ["studyspot", "matcha", "wifi"],
     hasCreatorReview: true,
     hasDeal: false,
@@ -36,6 +40,10 @@ export const mockPlaces = [
     priceRange: "120k - 350k",
     status: "Đang mở",
     statusCode: "open",
+    openingHours: {
+      open: "16:00",
+      close: "01:00"
+    },
     tags: ["rooftop", "sunset", "deal"],
     hasCreatorReview: true,
     hasDeal: true,
@@ -59,6 +67,10 @@ export const mockPlaces = [
     priceRange: "80k - 220k",
     status: "Sắp đóng",
     statusCode: "closing",
+    openingHours: {
+      open: "10:00",
+      close: "22:00"
+    },
     tags: ["vintage", "dinner", "date"],
     hasCreatorReview: false,
     hasDeal: false,
@@ -82,6 +94,10 @@ export const mockPlaces = [
     priceRange: "35k - 90k",
     status: "Đang mở",
     statusCode: "open",
+    openingHours: {
+      open: "07:00",
+      close: "23:00"
+    },
     tags: ["study", "quiet", "socket", "cafe"],
     hasCreatorReview: true,
     hasDeal: false,
@@ -103,8 +119,12 @@ export const mockPlaces = [
     rating: 4.4,
     reviewCount: 96,
     priceRange: "Free - 150k",
-    status: "Cuối tuần",
-    statusCode: "scheduled",
+    status: "Đang đóng",
+    statusCode: "closed",
+    openingHours: {
+      open: "09:00",
+      close: "18:00"
+    },
     tags: ["event", "gallery", "weekend"],
     hasCreatorReview: false,
     hasDeal: true,
@@ -128,6 +148,10 @@ export const mockPlaces = [
     priceRange: "60k - 180k",
     status: "Đang mở",
     statusCode: "open",
+    openingHours: {
+      open: "15:00",
+      close: "00:00"
+    },
     tags: ["garden", "sunset", "friends"],
     hasCreatorReview: true,
     hasDeal: false,
@@ -151,6 +175,10 @@ export const mockPlaces = [
     priceRange: "55k - 140k",
     status: "Đang mở",
     statusCode: "open",
+    openingHours: {
+      open: "07:30",
+      close: "22:00"
+    },
     tags: ["specialty", "coffee", "quiet"],
     hasCreatorReview: true,
     hasDeal: true,
@@ -174,6 +202,10 @@ export const mockPlaces = [
     priceRange: "70k - 180k",
     status: "Đang mở",
     statusCode: "open",
+    openingHours: {
+      open: "09:00",
+      close: "23:30"
+    },
     tags: ["cafe", "rooftop", "sunset"],
     hasCreatorReview: true,
     hasDeal: false,
@@ -197,6 +229,10 @@ export const mockPlaces = [
     priceRange: "40k - 95k",
     status: "Đang mở",
     statusCode: "open",
+    openingHours: {
+      open: "07:00",
+      close: "22:00"
+    },
     tags: ["study", "book", "wifi"],
     hasCreatorReview: false,
     hasDeal: false,
@@ -220,6 +256,10 @@ export const mockPlaces = [
     priceRange: "90k - 240k",
     status: "Đang mở",
     statusCode: "open",
+    openingHours: {
+      open: "06:30",
+      close: "15:00"
+    },
     tags: ["brunch", "healthy", "deal"],
     hasCreatorReview: false,
     hasDeal: true,
@@ -241,8 +281,12 @@ export const mockPlaces = [
     rating: 4.6,
     reviewCount: 132,
     priceRange: "80k - 160k",
-    status: "Tối nay",
-    statusCode: "scheduled",
+    status: "Đang đóng",
+    statusCode: "closed",
+    openingHours: {
+      open: "19:00",
+      close: "23:00"
+    },
     tags: ["music", "acoustic", "friends"],
     hasCreatorReview: true,
     hasDeal: true,
@@ -266,6 +310,10 @@ export const mockPlaces = [
     priceRange: "50k - 130k",
     status: "Đang mở",
     statusCode: "open",
+    openingHours: {
+      open: "08:30",
+      close: "21:00"
+    },
     tags: ["tea", "garden", "quiet"],
     hasCreatorReview: false,
     hasDeal: false,

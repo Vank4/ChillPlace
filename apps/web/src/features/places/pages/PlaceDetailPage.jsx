@@ -21,6 +21,7 @@ import {
   getSavedPlaceIds,
   toggleSavedPlace
 } from "../../../services/place.service.js";
+import { getOpeningStatus } from "../../../utils/openingStatus.js";
 import "./PlaceDetailPage.css";
 
 const USER_REVIEWS_KEY = "chillplace.userReviews";
@@ -60,13 +61,6 @@ function writeUserReviews(nextReviews) {
   window.localStorage.setItem(USER_REVIEWS_KEY, JSON.stringify(nextReviews));
 }
 
-function getStatusLabel(place) {
-  if (place?.statusCode === "open") return "Đang mở";
-  if (place?.statusCode === "closing") return "Sắp đóng";
-  if (place?.statusCode === "scheduled") return place.status || "Theo lịch";
-  return place?.status || "Đang cập nhật";
-}
-
 export function PlaceDetailPage() {
   const { placeId } = useParams();
   const navigate = useNavigate();
@@ -79,6 +73,7 @@ export function PlaceDetailPage() {
   const [draftRating, setDraftRating] = useState(5);
   const [draftText, setDraftText] = useState("");
   const [saveFeedback, setSaveFeedback] = useState("");
+  const [currentTime, setCurrentTime] = useState(() => new Date());
   const reviewsRef = useRef(null);
 
   useEffect(() => {
@@ -106,6 +101,14 @@ export function PlaceDetailPage() {
       isMounted = false;
     };
   }, [placeId]);
+
+  useEffect(() => {
+    const timerId = window.setInterval(() => {
+      setCurrentTime(new Date());
+    }, 60000);
+
+    return () => window.clearInterval(timerId);
+  }, []);
 
   const userReview = useMemo(() => {
     return place ? userReviews[place.id] : null;
@@ -161,7 +164,8 @@ export function PlaceDetailPage() {
     return <main className="place-detail place-detail__state">Không tìm thấy địa điểm phù hợp.</main>;
   }
 
-  const statusLabel = getStatusLabel(place);
+  const openingStatus = getOpeningStatus(place.openingHours, currentTime);
+  const statusLabel = openingStatus.label;
 
   return (
     <main className="place-detail">
@@ -175,7 +179,7 @@ export function PlaceDetailPage() {
       <section className="place-detail__hero" aria-label={`Ảnh đại diện ${place.name}`}>
         <img src={place.imageUrl} alt={place.alt} />
         <div className="place-detail__hero-overlay">
-          <span className={`place-detail__status-dot ${place.statusCode === "open" ? "is-open" : ""}`}>
+          <span className={`place-detail__status-dot place-detail__status-dot--${openingStatus.tone}`}>
             <span aria-hidden="true" />
             <strong>{statusLabel}</strong>
           </span>
@@ -223,7 +227,9 @@ export function PlaceDetailPage() {
             <p className="place-detail__description">{place.description}</p>
             <div className="place-detail__tags" aria-label="Hashtag địa điểm">
               {place.tags.map((tag) => (
-                <TagChip key={tag}>#{tag}</TagChip>
+                <TagChip key={tag} onClick={(tagValue) => navigate(`/tags/${encodeURIComponent(tagValue)}`)}>
+                  {tag}
+                </TagChip>
               ))}
             </div>
 
