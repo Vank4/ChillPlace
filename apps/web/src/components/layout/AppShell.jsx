@@ -1,15 +1,17 @@
 import { Bell, Compass, Plus } from "lucide-react";
-import { useLayoutEffect } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { IconButton } from "../common/IconButton.jsx";
 import { Avatar } from "../common/Avatar.jsx";
 import { Button } from "../common/Button.jsx";
 import { headerActions, mobileNavItems, publicNavItems } from "../../constants/routes.js";
 import { mockCurrentUser } from "../../data/mockFeed.js";
+import { getUserProfile } from "../../services/profile.service.js";
 import "./AppShell.css";
 
 export function AppShell() {
   const location = useLocation();
+  const [shellProfile, setShellProfile] = useState(() => getUserProfile());
   const isHomeRoute = location.pathname === "/";
   const isMapRoute = location.pathname === "/map";
   const isPostRoute = location.pathname.startsWith("/posts/");
@@ -19,6 +21,15 @@ export function AppShell() {
       window.scrollTo({ top: 0, left: 0, behavior: "auto" });
     }
   }, [isHomeRoute]);
+
+  useEffect(() => {
+    function refreshProfile() {
+      setShellProfile(getUserProfile());
+    }
+
+    window.addEventListener("chillplace:profile-updated", refreshProfile);
+    return () => window.removeEventListener("chillplace:profile-updated", refreshProfile);
+  }, []);
 
   return (
     <div
@@ -45,13 +56,13 @@ export function AppShell() {
             <Plus size={18} aria-hidden="true" />
             Đăng bài mới
           </Button>
-          <div className="desktop-sidebar__profile">
-            <Avatar src={mockCurrentUser.avatarUrl} alt="Ảnh đại diện Minh Nguyen" />
+          <NavLink className="desktop-sidebar__profile" to="/profile">
+            <Avatar src={shellProfile.avatarUrl || mockCurrentUser.avatarUrl} alt={`Ảnh đại diện ${shellProfile.name}`} />
             <div>
-              <strong>{mockCurrentUser.name}</strong>
-              <span>@{mockCurrentUser.username}</span>
+              <strong>{shellProfile.name}</strong>
+              <span>@{shellProfile.username}</span>
             </div>
-          </div>
+          </NavLink>
         </div>
       </aside>
 

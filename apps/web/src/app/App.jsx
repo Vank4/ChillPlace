@@ -1,5 +1,8 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { AppShell } from "../components/layout/AppShell.jsx";
+import { ForgotPasswordPage } from "../features/auth/pages/ForgotPasswordPage.jsx";
+import { LoginPage } from "../features/auth/pages/LoginPage.jsx";
+import { RegisterPage } from "../features/auth/pages/RegisterPage.jsx";
 import { ExplorePage } from "../features/explore/pages/ExplorePage.jsx";
 import { HomeFeedPage } from "../features/feed/pages/HomeFeedPage.jsx";
 import { MapPage } from "../features/map/pages/MapPage.jsx";
@@ -7,6 +10,7 @@ import { NearbyDiscoveryPage } from "../features/nearby/pages/NearbyDiscoveryPag
 import { NotificationsPage } from "../features/notifications/pages/NotificationsPage.jsx";
 import { PlaceDetailPage } from "../features/places/pages/PlaceDetailPage.jsx";
 import { PostDetailPage } from "../features/posts/pages/PostDetailPage.jsx";
+import { UserProfilePage } from "../features/profile/pages/UserProfilePage.jsx";
 import { PrototypePage } from "../features/prototype/pages/PrototypePage.jsx";
 import { SavedPlacesPage } from "../features/saved/pages/SavedPlacesPage.jsx";
 import { SearchResultsPage } from "../features/search/pages/SearchResultsPage.jsx";
@@ -15,6 +19,9 @@ import { TagDetailPage } from "../features/tags/pages/TagDetailPage.jsx";
 export function App() {
   return (
     <Routes>
+      <Route path="forgot-password" element={<ForgotPasswordPage />} />
+      <Route path="login" element={<LoginPage />} />
+      <Route path="register" element={<RegisterPage />} />
       <Route element={<AppShell />}>
         <Route index element={<HomeFeedPage />} />
         <Route path="explore" element={<ExplorePage />} />
@@ -47,16 +54,7 @@ export function App() {
             />
           }
         />
-        <Route
-          path="profile"
-          element={
-            <PrototypePage
-              eyebrow="Profile"
-              title="Hồ sơ người dùng"
-              description="Trang profile sẽ dùng userProfile trong localStorage hoặc API auth/me khi backend sẵn sàng."
-            />
-          }
-        />
+        <Route path="profile" element={<UserProfilePage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>

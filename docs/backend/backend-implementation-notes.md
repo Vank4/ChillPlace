@@ -35,13 +35,13 @@ Nhóm này phụ trách nền tảng backend dùng chung cho toàn bộ API.
 
 | Module / Hạng mục | Endpoint / Phạm vi | Note | Trạng thái |
 | --- | --- | --- | --- |
-| Project Setup | Express app, server, env | Chưa có | Chưa triển khai |
-| Database Setup | MySQL, ORM, migration, seed | Chưa có | Chưa triển khai |
-| Response Helper | `success`, `message`, `data`, `pagination` | Chưa có | Chưa triển khai |
-| Error Handling | `AppError`, `errorHandler`, `notFoundHandler` | Chưa có | Chưa triển khai |
-| Validation Middleware | request params/query/body | Chưa có | Chưa triển khai |
-| Security Middleware | helmet, cors, rate limit | Chưa có | Chưa triển khai |
-| Upload Foundation | multer/local/cloudinary config | Chưa có | Chưa triển khai |
+| Project Setup | Express app, server, env | [project-setup.md](foundation-api/project-setup.md) | Đã triển khai |
+| Database Setup | MySQL, ORM, migration, seed | [database-setup.md](foundation-api/database-setup.md) | Đã triển khai nền tảng |
+| Response Helper | `success`, `message`, `data`, `pagination` | [response-helper.md](foundation-api/response-helper.md) | Đã triển khai |
+| Error Handling | `AppError`, `errorHandler`, `notFoundHandler` | [error-handling.md](foundation-api/error-handling.md) | Đã triển khai |
+| Validation Middleware | request params/query/body | [validation-middleware.md](foundation-api/validation-middleware.md) | Đã triển khai |
+| Security Middleware | helmet, cors, rate limit | [security-middleware.md](foundation-api/security-middleware.md) | Đã triển khai |
+| Upload Foundation | multer/local/cloudinary config | [upload-foundation.md](foundation-api/upload-foundation.md) | Đã triển khai local foundation |
 
 Nội dung chính:
 

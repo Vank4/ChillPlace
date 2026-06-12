@@ -17,6 +17,11 @@ function parseDatabaseUrl(databaseUrl) {
   if (!database) {
     throw new Error("DATABASE_URL must include a database name.");
   }
+  if (!/^[A-Za-z0-9_]+$/.test(database)) {
+    throw new Error(
+      "Database name may contain only letters, numbers, and underscores."
+    );
+  }
 
   return {
     host: parsed.hostname,
@@ -51,4 +56,3 @@ bootstrapDatabase().catch((error) => {
   console.error("[db:bootstrap] Failed:", error.message);
   process.exit(1);
 });
-
