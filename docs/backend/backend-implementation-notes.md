@@ -101,22 +101,22 @@ Nhóm này phụ trách API cho luồng khám phá công khai: feed, explore, se
 
 | Module / Hạng mục | Endpoint / Phạm vi | Note | Trạng thái |
 | --- | --- | --- | --- |
-| Categories | `GET /api/categories` | Chưa có | Chưa triển khai |
-| Places List/Search | `GET /api/places` | Chưa có | Chưa triển khai |
-| Nearby Places | `GET /api/places/nearby` | Chưa có | Chưa triển khai |
-| Map Places | `GET /api/map/places` | Chưa có | Chưa triển khai |
-| Place Detail | `GET /api/places/:slug` | Chưa có | Chưa triển khai |
-| Place Reviews | `GET /api/places/:id/reviews` | Chưa có | Chưa triển khai |
-| Place Promotions | `GET /api/places/:id/promotions` | Chưa có | Chưa triển khai |
-| Related Posts | `GET /api/places/:id/related-posts` | Chưa có | Chưa triển khai |
-| Feed | `GET /api/feed` | Chưa có | Chưa triển khai |
-| Post Detail | `GET /api/posts/:id` | Chưa có | Chưa triển khai |
-| Unified Search | `GET /api/search` | Chưa có | Chưa triển khai |
-| Trending Tags | `GET /api/tags/trending` | Chưa có | Chưa triển khai |
-| Tag Search | `GET /api/tags/search` | Chưa có | Chưa triển khai |
-| Tag Detail | `GET /api/tags/:slug` | Chưa có | Chưa triển khai |
-| Related Tags | `GET /api/tags/:slug/related` | Chưa có | Chưa triển khai |
-| Recommendations | `GET /api/recommendations` | Chưa có | Chưa triển khai |
+| Categories | `GET /api/categories` | [places-map-detail.md](public-discovery-api/places-map-detail.md) | Đã triển khai |
+| Places List/Search | `GET /api/places` | [places-map-detail.md](public-discovery-api/places-map-detail.md) | Đã triển khai |
+| Nearby Places | `GET /api/places/nearby` | [places-map-detail.md](public-discovery-api/places-map-detail.md) | Đã triển khai |
+| Map Places | `GET /api/map/places` | [places-map-detail.md](public-discovery-api/places-map-detail.md) | Đã triển khai |
+| Place Detail | `GET /api/places/:slug` | [places-map-detail.md](public-discovery-api/places-map-detail.md) | Đã triển khai |
+| Place Reviews | `GET /api/places/:id/reviews` | [places-map-detail.md](public-discovery-api/places-map-detail.md) | Đã triển khai |
+| Place Promotions | `GET /api/places/:id/promotions` | [places-map-detail.md](public-discovery-api/places-map-detail.md) | Đã triển khai |
+| Related Posts | `GET /api/places/:id/related-posts` | [places-map-detail.md](public-discovery-api/places-map-detail.md) | Đã triển khai |
+| Feed | `GET /api/feed` | [feed-post-search.md](public-discovery-api/feed-post-search.md) | Đã triển khai |
+| Post Detail | `GET /api/posts/:id` | [feed-post-search.md](public-discovery-api/feed-post-search.md) | Đã triển khai |
+| Unified Search | `GET /api/search` | [feed-post-search.md](public-discovery-api/feed-post-search.md) | Đã triển khai |
+| Trending Tags | `GET /api/tags/trending` | [tags-recommendations.md](public-discovery-api/tags-recommendations.md) | Đã triển khai |
+| Tag Search | `GET /api/tags/search` | [tags-recommendations.md](public-discovery-api/tags-recommendations.md) | Đã triển khai |
+| Tag Detail | `GET /api/tags/:slug` | [tags-recommendations.md](public-discovery-api/tags-recommendations.md) | Đã triển khai |
+| Related Tags | `GET /api/tags/:slug/related` | [tags-recommendations.md](public-discovery-api/tags-recommendations.md) | Đã triển khai |
+| Recommendations | `GET /api/recommendations` | [tags-recommendations.md](public-discovery-api/tags-recommendations.md) | Đã triển khai |
 
 Nội dung chính:
 
