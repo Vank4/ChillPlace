@@ -58,12 +58,12 @@ Nhóm này phụ trách xác thực, tài khoản, profile và phân quyền ng�
 
 | Module / Hạng mục | Endpoint / Phạm vi | Note | Trạng thái |
 | --- | --- | --- | --- |
-| Register | `POST /api/auth/register` | Chưa có | Chưa triển khai |
-| Login | `POST /api/auth/login` | Chưa có | Chưa triển khai |
-| Current User | `GET /api/auth/me` | Chưa có | Chưa triển khai |
-| Update Profile | `PATCH /api/users/me` | Chưa có | Chưa triển khai |
-| Public Profile | `GET /api/users/:username/public` | Chưa có | Chưa triển khai |
-| Follow User | `POST /api/users/:id/follow` | Chưa có | Chưa triển khai |
+| Register | `POST /api/auth/register` | [auth-register-login-me.md](auth-user/auth-register-login-me.md) | Đã triển khai |
+| Login | `POST /api/auth/login` | [auth-register-login-me.md](auth-user/auth-register-login-me.md) | Đã triển khai |
+| Current User | `GET /api/auth/me` | [auth-register-login-me.md](auth-user/auth-register-login-me.md) | Đã triển khai |
+| Update Profile | `PATCH /api/users/me` | [profile-public-follow.md](auth-user/profile-public-follow.md) | Đã triển khai |
+| Public Profile | `GET /api/users/:username/public` | [profile-public-follow.md](auth-user/profile-public-follow.md) | Đã triển khai |
+| Follow User | `POST /api/users/:id/follow` | [profile-public-follow.md](auth-user/profile-public-follow.md) | Đã triển khai |
 
 Nội dung chính:
 

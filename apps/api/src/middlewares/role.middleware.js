@@ -1,11 +1,13 @@
-﻿export function requireRole(...allowedRoles) {
+import { AppError } from "../common/errors/AppError.js";
+
+export function requireRole(...allowedRoles) {
   return (req, res, next) => {
     if (!req.user) {
-      return res.status(401).json({ success: false, message: "Unauthorized" });
+      return next(AppError.unauthorized("Authentication is required"));
     }
 
     if (!allowedRoles.includes(req.user.role)) {
-      return res.status(403).json({ success: false, message: "Forbidden" });
+      return next(AppError.forbidden("You do not have permission"));
     }
 
     next();

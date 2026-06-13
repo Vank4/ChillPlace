@@ -59,8 +59,11 @@ model User {
   fullName      String         @map("full_name") @db.VarChar(120)
   email         String         @unique @db.VarChar(191)
   passwordHash  String         @map("password_hash") @db.VarChar(255)
+  phone         String?        @db.VarChar(30)
   avatarUrl     String?        @map("avatar_url") @db.Text
+  coverUrl      String?        @map("cover_url") @db.Text
   bio           String?        @db.Text
+  location      String?        @db.VarChar(120)
   role          UserRole       @default(user)
   status        GeneralStatus  @default(active)
   createdAt     DateTime       @default(now()) @map("created_at")
@@ -82,6 +85,7 @@ model User {
   auditLogs        AuditLog[]
   createdPlaces    Place[]         @relation("CreatedPlaces")
 
+  @@index([role, status])
   @@map("users")
 }
 
