@@ -12,7 +12,7 @@
     "prisma:deploy": "prisma migrate deploy --schema ../../prisma/schema.prisma",
     "prisma:studio": "prisma studio --schema ../../prisma/schema.prisma",
     "setup": "npm run db:bootstrap && npm run prisma:generate && npm run prisma:deploy",
-    "test": "node --test"
+    "test": "node --test --test-concurrency=1"
   },
   "dependencies": {
     "@prisma/client": "^5.22.0",
