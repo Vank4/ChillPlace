@@ -14,6 +14,7 @@ import { UserProfilePage } from "../features/profile/pages/UserProfilePage.jsx";
 import { PrototypePage } from "../features/prototype/pages/PrototypePage.jsx";
 import { SavedPlacesPage } from "../features/saved/pages/SavedPlacesPage.jsx";
 import { SearchResultsPage } from "../features/search/pages/SearchResultsPage.jsx";
+import { SettingsPage } from "../features/settings/pages/SettingsPage.jsx";
 import { TagDetailPage } from "../features/tags/pages/TagDetailPage.jsx";
 
 export function App() {
@@ -34,16 +35,7 @@ export function App() {
         <Route path="map" element={<MapPage />} />
         <Route path="favorites" element={<SavedPlacesPage />} />
         <Route path="saved" element={<SavedPlacesPage />} />
-        <Route
-          path="settings"
-          element={
-            <PrototypePage
-              eyebrow="Settings"
-              title="Cài đặt tài khoản"
-              description="Trang cài đặt đang ở mức prototype để giữ routing đầy đủ trong giai đoạn chưa nối backend."
-            />
-          }
-        />
+        <Route path="settings" element={<SettingsPage />} />
         <Route
           path="creator/posts/new"
           element={

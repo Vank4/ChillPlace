@@ -54,7 +54,7 @@ function normalizeText(value) {
     .replace(/Đ/g, "d");
 }
 
-export function SavedPlacesPage() {
+export function SavedPlacesPage({ embedded = false }) {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("places");
   const [keyword, setKeyword] = useState("");
@@ -115,33 +115,37 @@ export function SavedPlacesPage() {
     setSavedPlaceIds(toggleSavedPlace(placeId));
   }
 
-  return (
-    <main className="saved-page">
-      <section className="saved-page__hero" aria-label="Không gian đã lưu">
-        <div>
-          <span className="saved-page__eyebrow">Saved Space</span>
-          <h1>Không gian của anh</h1>
-          <p>Lưu giữ những địa điểm chill và bài viết đáng xem để quay lại nhanh khi cần lên lịch đi chơi.</p>
-        </div>
+  const Root = embedded ? "div" : "main";
 
-        <div className="saved-page__quick-stats" aria-label="Thống kê đã lưu">
+  return (
+    <Root className={embedded ? "saved-page saved-page--embedded" : "saved-page"}>
+      {!embedded ? (
+        <section className="saved-page__hero" aria-label="Không gian đã lưu">
           <div>
-            <Bookmark size={17} />
-            <strong>{places.length}</strong>
-            <span>Địa điểm</span>
+            <span className="saved-page__eyebrow">Saved Space</span>
+            <h1>Không gian của anh</h1>
+            <p>Lưu giữ những địa điểm chill và bài viết đáng xem để quay lại nhanh khi cần lên lịch đi chơi.</p>
           </div>
-          <div>
-            <Compass size={17} />
-            <strong>{openPlaces}</strong>
-            <span>Đang mở</span>
+
+          <div className="saved-page__quick-stats" aria-label="Thống kê đã lưu">
+            <div>
+              <Bookmark size={17} />
+              <strong>{places.length}</strong>
+              <span>Địa điểm</span>
+            </div>
+            <div>
+              <Compass size={17} />
+              <strong>{openPlaces}</strong>
+              <span>Đang mở</span>
+            </div>
+            <div>
+              <Star size={17} />
+              <strong>{averageRating}</strong>
+              <span>Rating TB</span>
+            </div>
           </div>
-          <div>
-            <Star size={17} />
-            <strong>{averageRating}</strong>
-            <span>Rating TB</span>
-          </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
 
       <section className="saved-page__toolbar" aria-label="Tìm kiếm và phân loại đã lưu">
         <label className="saved-page__search">
@@ -292,7 +296,7 @@ export function SavedPlacesPage() {
           )}
         </section>
       )}
-    </main>
+    </Root>
   );
 }
 

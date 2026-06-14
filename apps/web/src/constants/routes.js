@@ -15,6 +15,7 @@ export const publicNavItems = [
   { label: "Khám phá", path: "/explore", icon: Compass },
   { label: "Bản đồ", path: "/map", icon: Map },
   { label: "Đã lưu", path: "/favorites", icon: Heart },
+  { label: "Thông báo", path: "/notifications", icon: Bell },
   { label: "Cài đặt", path: "/settings", icon: Settings }
 ];
 
