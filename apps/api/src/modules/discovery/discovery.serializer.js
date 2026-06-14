@@ -104,7 +104,24 @@ export function serializeReview(review) {
       username: review.user.username,
       fullName: review.user.fullName,
       avatarUrl: review.user.avatarUrl
-    }
+    },
+    reply:
+      review.reply?.status === "approved" &&
+      review.reply.user?.status === "active"
+      ? {
+          id: review.reply.id,
+          content: review.reply.content,
+          createdAt: review.reply.createdAt,
+          updatedAt: review.reply.updatedAt,
+          user: {
+            id: review.reply.user.id,
+            username: review.reply.user.username,
+            fullName: review.reply.user.fullName,
+            avatarUrl: review.reply.user.avatarUrl,
+            role: review.reply.user.role
+          }
+        }
+      : null
   };
 }
 

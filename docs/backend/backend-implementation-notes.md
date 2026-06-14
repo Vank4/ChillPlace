@@ -156,17 +156,17 @@ Nhóm này phụ trách like, comment, save, favorite, follow, review và report
 
 | Module / Hạng mục | Endpoint / Phạm vi | Note | Trạng thái |
 | --- | --- | --- | --- |
-| Like Post | `POST /api/posts/:id/like` | Chưa có | Chưa triển khai |
-| Save Post | `POST /api/posts/:id/save` | Chưa có | Chưa triển khai |
-| Favorite Place | `POST /api/places/:id/favorite` | Chưa có | Chưa triển khai |
-| Favorites List | `GET /api/favorites` | Chưa có | Chưa triển khai |
-| Saved List | `GET /api/users/me/saved` | Chưa có | Chưa triển khai |
-| List Comments | `GET /api/posts/:id/comments` | Chưa có | Chưa triển khai |
-| Create Comment | `POST /api/posts/:id/comments` | Chưa có | Chưa triển khai |
-| Create Review | `POST /api/places/:id/reviews` | Chưa có | Chưa triển khai |
-| Update Review | `PATCH /api/reviews/:id` | Chưa có | Chưa triển khai |
-| Review Reply | `POST /api/reviews/:id/reply` | Chưa có | Chưa triển khai |
-| Report | `POST /api/reports` | Chưa có | Chưa triển khai |
+| Like Post | `POST /api/posts/:id/like` | [like-save-favorite.md](social-interactions/like-save-favorite.md) | Đã triển khai |
+| Save Post | `POST /api/posts/:id/save` | [like-save-favorite.md](social-interactions/like-save-favorite.md) | Đã triển khai |
+| Favorite Place | `POST /api/places/:id/favorite` | [like-save-favorite.md](social-interactions/like-save-favorite.md) | Đã triển khai |
+| Favorites List | `GET /api/favorites` | [like-save-favorite.md](social-interactions/like-save-favorite.md) | Đã triển khai |
+| Saved List | `GET /api/users/me/saved` | [like-save-favorite.md](social-interactions/like-save-favorite.md) | Đã triển khai |
+| List Comments | `GET /api/posts/:id/comments` | [comments-reviews.md](social-interactions/comments-reviews.md) | Đã triển khai |
+| Create Comment | `POST /api/posts/:id/comments` | [comments-reviews.md](social-interactions/comments-reviews.md) | Đã triển khai |
+| Create Review | `POST /api/places/:id/reviews` | [comments-reviews.md](social-interactions/comments-reviews.md) | Đã triển khai |
+| Update Review | `PATCH /api/reviews/:id` | [comments-reviews.md](social-interactions/comments-reviews.md) | Đã triển khai |
+| Review Reply | `POST /api/reviews/:id/reply` | [comments-reviews.md](social-interactions/comments-reviews.md) | Đã triển khai |
+| Report | `POST /api/reports` | [reports.md](social-interactions/reports.md) | Đã triển khai |
 
 Nội dung chính:
 

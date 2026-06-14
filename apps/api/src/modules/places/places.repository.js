@@ -169,6 +169,20 @@ export function listPlaceReviews(placeId, { page, limit }) {
             fullName: true,
             avatarUrl: true
           }
+        },
+        reply: {
+          include: {
+            user: {
+              select: {
+                id: true,
+                username: true,
+                fullName: true,
+                avatarUrl: true,
+                role: true,
+                status: true
+              }
+            }
+          }
         }
       }
     }),
