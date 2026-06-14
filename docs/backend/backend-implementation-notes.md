@@ -182,11 +182,11 @@ Nhóm này phụ trách API cho Creator dashboard và quản lý nội dung.
 
 | Module / Hạng mục | Endpoint / Phạm vi | Note | Trạng thái |
 | --- | --- | --- | --- |
-| Creator Stats | `GET /api/creator/stats` | Chưa có | Chưa triển khai |
-| Creator Posts | `GET /api/creator/posts` | Chưa có | Chưa triển khai |
-| Top Posts | `GET /api/creator/top-posts` | Chưa có | Chưa triển khai |
-| Creator Analytics | `GET /api/creator/analytics` | Chưa có | Chưa triển khai |
-| Post Analytics | `GET /api/analytics/posts/:id` | Chưa có | Chưa triển khai |
+| Creator Stats | `GET /api/creator/stats` | [creator-dashboard-analytics.md](creator-center/creator-dashboard-analytics.md) | Đã triển khai |
+| Creator Posts | `GET /api/creator/posts` | [creator-posts.md](creator-center/creator-posts.md) | Đã triển khai |
+| Top Posts | `GET /api/creator/top-posts` | [creator-dashboard-analytics.md](creator-center/creator-dashboard-analytics.md) | Đã triển khai |
+| Creator Analytics | `GET /api/creator/analytics` | [creator-dashboard-analytics.md](creator-center/creator-dashboard-analytics.md) | Đã triển khai |
+| Post Analytics | `GET /api/analytics/posts/:id` | [creator-dashboard-analytics.md](creator-center/creator-dashboard-analytics.md) | Đã triển khai |
 
 Nội dung chính:
 

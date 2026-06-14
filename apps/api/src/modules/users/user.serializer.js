@@ -35,8 +35,8 @@ export function serializePublicUser(user, viewer = {}) {
       : null,
     stats: {
       posts: user._count.posts,
-      followers: user._count.followers,
-      following: user._count.following
+      followers: user._count.following,
+      following: user._count.followers
     },
     isFollowing: Boolean(viewer.isFollowing)
   };
