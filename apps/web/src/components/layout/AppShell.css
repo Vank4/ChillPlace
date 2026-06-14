@@ -366,6 +366,12 @@
   background: var(--color-surface-soft);
 }
 
+.mobile-header__action-link.active {
+  color: var(--color-primary-deep);
+  background: var(--color-primary-soft);
+  box-shadow: inset 0 0 0 1px rgba(171, 53, 0, 0.16);
+}
+
 .icon-button:active {
   transform: scale(0.96);
 }

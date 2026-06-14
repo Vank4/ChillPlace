@@ -1,7 +1,6 @@
-import { Bell, Compass, Plus } from "lucide-react";
+import { Compass, Plus } from "lucide-react";
 import { useEffect, useLayoutEffect, useState } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
-import { IconButton } from "../common/IconButton.jsx";
 import { Avatar } from "../common/Avatar.jsx";
 import { Button } from "../common/Button.jsx";
 import { headerActions, mobileNavItems, publicNavItems } from "../../constants/routes.js";
@@ -70,12 +69,16 @@ export function AppShell() {
         <NavBrand compact />
         <div className="mobile-header__actions">
           {headerActions.map((action) => (
-            <IconButton
+            <NavLink
               key={action.path}
-              label={action.label}
-              icon={action.icon}
-              badge="3"
-            />
+              className="icon-button mobile-header__action-link"
+              to={action.path}
+              aria-label={action.label}
+              title={action.label}
+            >
+              <action.icon size={20} aria-hidden="true" />
+              <span className="icon-button__badge">3</span>
+            </NavLink>
           ))}
         </div>
       </header>

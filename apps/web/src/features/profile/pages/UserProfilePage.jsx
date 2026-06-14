@@ -1,7 +1,6 @@
 import { useMemo, useState } from "react";
 import {
   Bookmark,
-  Camera,
   CheckCircle2,
   Edit3,
   Grid3X3,
@@ -16,6 +15,7 @@ import {
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { getUserProfile, updateUserProfile } from "../../../services/profile.service.js";
+import { SavedPlacesPage } from "../../saved/pages/SavedPlacesPage.jsx";
 import "./UserProfilePage.css";
 
 const profilePosts = [
@@ -200,12 +200,7 @@ export function UserProfilePage() {
 
       <section className="profile-content">
         {activeTab === "saved" ? (
-          <div className="profile-saved">
-            <Bookmark size={34} />
-            <h2>Nội dung anh đã lưu</h2>
-            <p>Mở thư viện Saved để xem địa điểm và bài viết đã đánh dấu.</p>
-            <button type="button" onClick={() => navigate("/saved")}>Mở trang đã lưu</button>
-          </div>
+          <SavedPlacesPage embedded />
         ) : null}
 
         {activeTab === "reviews" ? (
@@ -293,9 +288,7 @@ function EditProfileDialog({ profile, onClose, onSave }) {
       name: draft.name.trim(),
       username: draft.username.trim().replace(/^@/, ""),
       bio: draft.bio.trim(),
-      location: draft.location.trim(),
-      avatarUrl: draft.avatarUrl.trim() || profile.avatarUrl,
-      coverUrl: draft.coverUrl.trim() || profile.coverUrl
+      location: draft.location.trim()
     });
     setIsSaving(false);
   }
@@ -314,7 +307,7 @@ function EditProfileDialog({ profile, onClose, onSave }) {
 
         <div className="profile-dialog__preview">
           <img src={draft.avatarUrl || profile.avatarUrl} alt="" />
-          <span><Camera size={17} /></span>
+          <span><CheckCircle2 size={17} /></span>
         </div>
 
         <label>
@@ -333,15 +326,6 @@ function EditProfileDialog({ profile, onClose, onSave }) {
           Khu vực
           <input value={draft.location} maxLength={60} onChange={(event) => updateDraft("location", event.target.value)} />
         </label>
-        <label>
-          URL ảnh đại diện
-          <input value={draft.avatarUrl} onChange={(event) => updateDraft("avatarUrl", event.target.value)} />
-        </label>
-        <label>
-          URL ảnh bìa
-          <input value={draft.coverUrl} onChange={(event) => updateDraft("coverUrl", event.target.value)} />
-        </label>
-
         {error ? <div className="profile-dialog__error">{error}</div> : null}
 
         <footer>

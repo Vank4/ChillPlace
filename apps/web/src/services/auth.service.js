@@ -1,6 +1,7 @@
 const AUTH_SESSION_KEY = "chillplace.authSession";
 const REGISTERED_USERS_KEY = "chillplace.registeredUsers";
 const PASSWORD_RESET_REQUESTS_KEY = "chillplace.passwordResetRequests";
+const PASSWORD_OVERRIDES_KEY = "chillplace.passwordOverrides";
 
 const defaultMockUsers = [
   {
@@ -31,7 +32,20 @@ function readRegisteredUsers() {
 }
 
 function getUsers() {
-  return [...defaultMockUsers, ...readRegisteredUsers()];
+  let passwordOverrides = {};
+
+  try {
+    passwordOverrides = JSON.parse(
+      window.localStorage.getItem(PASSWORD_OVERRIDES_KEY) ?? "{}"
+    );
+  } catch {
+    passwordOverrides = {};
+  }
+
+  return [...defaultMockUsers, ...readRegisteredUsers()].map((user) => ({
+    ...user,
+    password: passwordOverrides[normalizeEmail(user.email)] ?? user.password
+  }));
 }
 
 function createUsername(name, email) {
@@ -189,4 +203,44 @@ export function getAuthSession() {
 export function logout() {
   window.localStorage.removeItem(AUTH_SESSION_KEY);
   window.sessionStorage.removeItem(AUTH_SESSION_KEY);
+}
+
+export async function changePassword({ currentPassword, newPassword }) {
+  await wait(620);
+
+  const session = getAuthSession();
+  const email = session?.user?.email;
+  const user = email
+    ? getUsers().find(
+        (item) => normalizeEmail(item.email) === normalizeEmail(email)
+      )
+    : null;
+
+  if (!user) {
+    throw new Error("Không tìm thấy phiên đăng nhập. Vui lòng đăng nhập lại.");
+  }
+
+  if (user.password !== currentPassword) {
+    throw new Error("Mật khẩu hiện tại chưa đúng.");
+  }
+
+  let passwordOverrides = {};
+
+  try {
+    passwordOverrides = JSON.parse(
+      window.localStorage.getItem(PASSWORD_OVERRIDES_KEY) ?? "{}"
+    );
+  } catch {
+    passwordOverrides = {};
+  }
+
+  window.localStorage.setItem(
+    PASSWORD_OVERRIDES_KEY,
+    JSON.stringify({
+      ...passwordOverrides,
+      [normalizeEmail(email)]: newPassword
+    })
+  );
+
+  return { changedAt: new Date().toISOString() };
 }
