@@ -11,6 +11,14 @@ import {
   recommendationsRouter,
   searchRouter
 } from "../modules/discovery/discovery.routes.js";
+import {
+  favoritesRouter,
+  placeInteractionsRouter,
+  postInteractionsRouter,
+  reportsRouter,
+  reviewsRouter,
+  savedRouter
+} from "../modules/interactions/interactions.routes.js";
 
 export const apiRouter = Router();
 
@@ -25,3 +33,9 @@ apiRouter.use("/posts", postsRouter);
 apiRouter.use("/search", searchRouter);
 apiRouter.use("/tags", tagsRouter);
 apiRouter.use("/recommendations", recommendationsRouter);
+apiRouter.use("/posts", postInteractionsRouter);
+apiRouter.use("/places", placeInteractionsRouter);
+apiRouter.use("/favorites", favoritesRouter);
+apiRouter.use("/users", savedRouter);
+apiRouter.use("/reviews", reviewsRouter);
+apiRouter.use("/reports", reportsRouter);

@@ -71,8 +71,6 @@ Modal cho phép cập nhật:
 - Username.
 - Bio.
 - Khu vực.
-- URL ảnh đại diện.
-- URL ảnh bìa.
 
 Tên và username là trường bắt buộc. Sau khi lưu:
 
@@ -84,23 +82,32 @@ Tên và username là trường bắt buộc. Sau khi lưu:
 ## Logic Tab
 
 - `Bài viết`: hiển thị bento grid nội dung mock.
-- `Đã lưu`: CTA dẫn sang `/saved`.
+- `Đã lưu`: nhúng trực tiếp thư viện Saved với tìm kiếm, chuyển tab Địa điểm/Bài viết, empty state và danh sách dùng chung dữ liệu với `/saved`.
 - `Đánh giá`: danh sách đánh giá mock với rating sao.
 - `Được gắn thẻ`: hiển thị tập con bài viết được gắn tag.
 
 ## Responsive
 
 - Desktop:
-  - Cover lớn, avatar vuông bo góc nổi trên cover.
+  - Cover được nén chiều cao, avatar vuông bo góc nổi trên cover.
   - Profile actions nằm bên phải.
-  - Bento grid ba cột.
+  - Thông tin, thống kê, tab và bento grid ba cột được trình bày liên tục với khoảng cách gọn.
 
 - Mobile:
-  - Ẩn cover để bám prototype responsive.
-  - Avatar tròn và thông tin căn giữa.
-  - Chỉ giữ nút chỉnh sửa hồ sơ.
-  - Tab gọn, ẩn tab tagged.
+  - Cover ngắn và avatar bo góc tạo thành một khối nhận diện gọn.
+  - Thông tin căn trái để giảm chiều cao phần đầu trang.
+  - Giữ nút chỉnh sửa và nút chia sẻ dạng icon.
+  - Tab gọn, sticky bên dưới mobile header và ẩn tab tagged.
   - Grid hai cột, bài nổi bật full width.
+  - Overlay bài viết luôn hiển thị để không phụ thuộc hover trên màn hình cảm ứng.
+
+## Tối ưu giao diện bổ sung
+
+- Hợp nhất CSS thành một hệ quy tắc duy nhất, loại bỏ lớp compact override trùng lặp.
+- Giảm khoảng trắng bao quanh, chiều cao cover/header và khoảng cách giữa header, tab, nội dung.
+- Thêm hover cho action, tab, bài viết, review, CTA và map shortcut.
+- Modal chỉnh sửa được rút gọn còn các trường người dùng thực sự cần thao tác.
+- Hỗ trợ `prefers-reduced-motion`.
 
 ## Điểm Giải Thích Khi Báo Cáo
 
@@ -118,9 +125,5 @@ cd apps/web
 npm run build
 ```
 
-Kết quả:
-
-```text
-✓ built in 2.20s
-```
+Kết quả: build thành công với 1.650 modules.
 
