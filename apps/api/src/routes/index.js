@@ -24,6 +24,8 @@ import {
   creatorRouter
 } from "../modules/creator/creator.routes.js";
 import { businessRouter } from "../modules/business/business.routes.js";
+import { roleRequestsRouter } from "../modules/role-requests/role-requests.routes.js";
+import { adminRouter } from "../modules/admin/admin.routes.js";
 
 export const apiRouter = Router();
 
@@ -47,3 +49,5 @@ apiRouter.use("/reports", reportsRouter);
 apiRouter.use("/creator", creatorRouter);
 apiRouter.use("/analytics", analyticsRouter);
 apiRouter.use("/business", businessRouter);
+apiRouter.use("/role-requests", roleRequestsRouter);
+apiRouter.use("/admin", adminRouter);

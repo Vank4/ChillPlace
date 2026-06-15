@@ -80,12 +80,12 @@ Nhóm này phụ trách yêu cầu nâng cấp Creator/Business và admin duyệ
 
 | Module / Hạng mục | Endpoint / Phạm vi | Note | Trạng thái |
 | --- | --- | --- | --- |
-| Creator Request | `POST /api/role-requests/creator` | Chưa có | Chưa triển khai |
-| Business Request | `POST /api/role-requests/business` | Chưa có | Chưa triển khai |
-| My Requests | `GET /api/role-requests/me` | Chưa có | Chưa triển khai |
-| Admin List Requests | `GET /api/admin/role-requests` | Chưa có | Chưa triển khai |
-| Approve Request | `PATCH /api/admin/role-requests/:id/approve` | Chưa có | Chưa triển khai |
-| Reject Request | `PATCH /api/admin/role-requests/:id/reject` | Chưa có | Chưa triển khai |
+| Creator Request | `POST /api/role-requests/creator` | [role-requests.md](admin-moderation/role-requests.md) | Đã triển khai |
+| Business Request | `POST /api/role-requests/business` | [role-requests.md](admin-moderation/role-requests.md) | Đã triển khai |
+| My Requests | `GET /api/role-requests/me` | [role-requests.md](admin-moderation/role-requests.md) | Đã triển khai |
+| Admin List Requests | `GET /api/admin/role-requests` | [role-requests.md](admin-moderation/role-requests.md) | Đã triển khai |
+| Approve Request | `PATCH /api/admin/role-requests/:id/approve` | [role-requests.md](admin-moderation/role-requests.md) | Đã triển khai |
+| Reject Request | `PATCH /api/admin/role-requests/:id/reject` | [role-requests.md](admin-moderation/role-requests.md) | Đã triển khai |
 
 Nội dung chính:
 
@@ -249,22 +249,22 @@ Nhóm này phụ trách quản trị, kiểm duyệt và audit logs.
 
 | Module / Hạng mục | Endpoint / Phạm vi | Note | Trạng thái |
 | --- | --- | --- | --- |
-| Admin Stats | `GET /api/admin/stats` | Chưa có | Chưa triển khai |
-| Audit Logs | `GET /api/admin/audit-logs` | Chưa có | Chưa triển khai |
-| Admin Users | `GET /api/admin/users` | Chưa có | Chưa triển khai |
-| User Status | `PATCH /api/admin/users/:id/status` | Chưa có | Chưa triển khai |
-| Admin Places | `GET /api/admin/places` | Chưa có | Chưa triển khai |
-| Place Status | `PATCH /api/admin/places/:id/status` | Chưa có | Chưa triển khai |
-| Admin Reports | `GET /api/admin/reports` | Chưa có | Chưa triển khai |
-| Resolve Report | `PATCH /api/admin/reports/:id/resolve` | Chưa có | Chưa triển khai |
-| Post Status | `PATCH /api/admin/posts/:id/status` | Chưa có | Chưa triển khai |
-| Comment Status | `PATCH /api/admin/comments/:id/status` | Chưa có | Chưa triển khai |
-| Admin Tags | `GET /api/admin/tags` | Chưa có | Chưa triển khai |
-| Tag Status | `PATCH /api/admin/tags/:id/status` | Chưa có | Chưa triển khai |
-| Merge Tags | `POST /api/admin/tags/merge` | Chưa có | Chưa triển khai |
-| Admin Categories | `GET /api/admin/categories` | Chưa có | Chưa triển khai |
-| Create Category | `POST /api/admin/categories` | Chưa có | Chưa triển khai |
-| Update Category | `PATCH /api/admin/categories/:id` | Chưa có | Chưa triển khai |
+| Admin Stats | `GET /api/admin/stats` | [users-places-content.md](admin-moderation/users-places-content.md) | Đã triển khai |
+| Audit Logs | `GET /api/admin/audit-logs` | [reports-tags-categories-audit.md](admin-moderation/reports-tags-categories-audit.md) | Đã triển khai |
+| Admin Users | `GET /api/admin/users` | [users-places-content.md](admin-moderation/users-places-content.md) | Đã triển khai |
+| User Status | `PATCH /api/admin/users/:id/status` | [users-places-content.md](admin-moderation/users-places-content.md) | Đã triển khai |
+| Admin Places | `GET /api/admin/places` | [users-places-content.md](admin-moderation/users-places-content.md) | Đã triển khai |
+| Place Status | `PATCH /api/admin/places/:id/status` | [users-places-content.md](admin-moderation/users-places-content.md) | Đã triển khai |
+| Admin Reports | `GET /api/admin/reports` | [reports-tags-categories-audit.md](admin-moderation/reports-tags-categories-audit.md) | Đã triển khai |
+| Resolve Report | `PATCH /api/admin/reports/:id/resolve` | [reports-tags-categories-audit.md](admin-moderation/reports-tags-categories-audit.md) | Đã triển khai |
+| Post Status | `PATCH /api/admin/posts/:id/status` | [users-places-content.md](admin-moderation/users-places-content.md) | Đã triển khai |
+| Comment Status | `PATCH /api/admin/comments/:id/status` | [users-places-content.md](admin-moderation/users-places-content.md) | Đã triển khai |
+| Admin Tags | `GET /api/admin/tags` | [reports-tags-categories-audit.md](admin-moderation/reports-tags-categories-audit.md) | Đã triển khai |
+| Tag Status | `PATCH /api/admin/tags/:id/status` | [reports-tags-categories-audit.md](admin-moderation/reports-tags-categories-audit.md) | Đã triển khai |
+| Merge Tags | `POST /api/admin/tags/merge` | [reports-tags-categories-audit.md](admin-moderation/reports-tags-categories-audit.md) | Đã triển khai |
+| Admin Categories | `GET /api/admin/categories` | [reports-tags-categories-audit.md](admin-moderation/reports-tags-categories-audit.md) | Đã triển khai |
+| Create Category | `POST /api/admin/categories` | [reports-tags-categories-audit.md](admin-moderation/reports-tags-categories-audit.md) | Đã triển khai |
+| Update Category | `PATCH /api/admin/categories/:id` | [reports-tags-categories-audit.md](admin-moderation/reports-tags-categories-audit.md) | Đã triển khai |
 
 Nội dung chính:
 
