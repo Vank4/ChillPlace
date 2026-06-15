@@ -70,7 +70,7 @@ function createMulter(storage) {
   });
 }
 
-async function cleanup(files = []) {
+export async function cleanupUploadedFiles(files = []) {
   await Promise.all(
     files.map((file) => unlink(file.path).catch(() => undefined))
   );
@@ -88,7 +88,7 @@ export function uploadFiles(
   return (req, res, next) => {
     middleware(req, res, async (error) => {
       if (error) {
-        await cleanup(req.files);
+        await cleanupUploadedFiles(req.files);
         return next(error);
       }
 
@@ -99,7 +99,7 @@ export function uploadFiles(
       );
 
       if (oversizedImage) {
-        await cleanup(req.files);
+        await cleanupUploadedFiles(req.files);
         return next(
           AppError.badRequest(
             `Image files must not exceed ${env.maxImageSizeMb} MB.`

@@ -109,6 +109,7 @@ model BusinessProfile {
   id           Int           @id @default(autoincrement())
   userId        Int          @unique @map("user_id")
   businessName  String       @map("business_name") @db.VarChar(191)
+  slug          String?      @unique @db.VarChar(191)
   phone         String?      @db.VarChar(30)
   address       String?      @db.Text
   status        GeneralStatus @default(pending)
@@ -171,6 +172,7 @@ model Place {
   priceMin           Int?            @map("price_min")
   priceMax           Int?            @map("price_max")
   openingHours       Json?           @map("opening_hours")
+  menuJson           Json?           @map("menu_json")
   ratingAvg          Decimal         @default(0) @map("rating_avg") @db.Decimal(3, 2)
   ratingCount        Int             @default(0) @map("rating_count")
   status             GeneralStatus   @default(pending)
