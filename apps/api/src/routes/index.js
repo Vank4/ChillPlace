@@ -23,6 +23,7 @@ import {
   analyticsRouter,
   creatorRouter
 } from "../modules/creator/creator.routes.js";
+import { businessRouter } from "../modules/business/business.routes.js";
 
 export const apiRouter = Router();
 
@@ -45,3 +46,4 @@ apiRouter.use("/reviews", reviewsRouter);
 apiRouter.use("/reports", reportsRouter);
 apiRouter.use("/creator", creatorRouter);
 apiRouter.use("/analytics", analyticsRouter);
+apiRouter.use("/business", businessRouter);

@@ -201,22 +201,22 @@ Nhóm này phụ trách API cho Business quản lý địa điểm, menu, media,
 
 | Module / Hạng mục | Endpoint / Phạm vi | Note | Trạng thái |
 | --- | --- | --- | --- |
-| Business Me | `GET /api/business/me` | Chưa có | Chưa triển khai |
-| Update Business | `PATCH /api/business/me` | Chưa có | Chưa triển khai |
-| Business Public | `GET /api/business/:slug/public` | Chưa có | Chưa triển khai |
-| Business Place | `GET /api/business/place` | Chưa có | Chưa triển khai |
-| Update Place | `PATCH /api/business/place` | Chưa có | Chưa triển khai |
-| Update Menu | `PATCH /api/business/menu` | Chưa có | Chưa triển khai |
-| Business Media | `GET /api/business/media` | Chưa có | Chưa triển khai |
-| Add Business Media | `POST /api/business/media` | Chưa có | Chưa triển khai |
-| Reorder Media | `PATCH /api/business/media/order` | Chưa có | Chưa triển khai |
-| Delete Media | `DELETE /api/business/media/:id` | Chưa có | Chưa triển khai |
-| Business Stats | `GET /api/business/stats` | Chưa có | Chưa triển khai |
-| Business Reviews | `GET /api/business/reviews` | Chưa có | Chưa triển khai |
-| Promotions List | `GET /api/business/promotions` | Chưa có | Chưa triển khai |
-| Create Promotion | `POST /api/business/promotions` | Chưa có | Chưa triển khai |
-| Update Promotion | `PATCH /api/business/promotions/:id` | Chưa có | Chưa triển khai |
-| Delete Promotion | `DELETE /api/business/promotions/:id` | Chưa có | Chưa triển khai |
+| Business Me | `GET /api/business/me` | [profile-place-menu.md](business-center/profile-place-menu.md) | Đã triển khai |
+| Update Business | `PATCH /api/business/me` | [profile-place-menu.md](business-center/profile-place-menu.md) | Đã triển khai |
+| Business Public | `GET /api/business/:slug/public` | [profile-place-menu.md](business-center/profile-place-menu.md) | Đã triển khai |
+| Business Place | `GET /api/business/place` | [profile-place-menu.md](business-center/profile-place-menu.md) | Đã triển khai |
+| Update Place | `PATCH /api/business/place` | [profile-place-menu.md](business-center/profile-place-menu.md) | Đã triển khai |
+| Update Menu | `PATCH /api/business/menu` | [profile-place-menu.md](business-center/profile-place-menu.md) | Đã triển khai |
+| Business Media | `GET /api/business/media` | [business-media.md](business-center/business-media.md) | Đã triển khai |
+| Add Business Media | `POST /api/business/media` | [business-media.md](business-center/business-media.md) | Đã triển khai |
+| Reorder Media | `PATCH /api/business/media/order` | [business-media.md](business-center/business-media.md) | Đã triển khai |
+| Delete Media | `DELETE /api/business/media/:id` | [business-media.md](business-center/business-media.md) | Đã triển khai |
+| Business Stats | `GET /api/business/stats` | [stats-reviews-promotions.md](business-center/stats-reviews-promotions.md) | Đã triển khai |
+| Business Reviews | `GET /api/business/reviews` | [stats-reviews-promotions.md](business-center/stats-reviews-promotions.md) | Đã triển khai |
+| Promotions List | `GET /api/business/promotions` | [stats-reviews-promotions.md](business-center/stats-reviews-promotions.md) | Đã triển khai |
+| Create Promotion | `POST /api/business/promotions` | [stats-reviews-promotions.md](business-center/stats-reviews-promotions.md) | Đã triển khai |
+| Update Promotion | `PATCH /api/business/promotions/:id` | [stats-reviews-promotions.md](business-center/stats-reviews-promotions.md) | Đã triển khai |
+| Delete Promotion | `DELETE /api/business/promotions/:id` | [stats-reviews-promotions.md](business-center/stats-reviews-promotions.md) | Đã triển khai |
 
 Nội dung chính:
 

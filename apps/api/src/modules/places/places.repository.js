@@ -124,6 +124,7 @@ export function findPlaceBySlug(slug) {
         select: {
           id: true,
           businessName: true,
+          slug: true,
           phone: true,
           address: true,
           verifiedAt: true
