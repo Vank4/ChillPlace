@@ -131,6 +131,7 @@ model RoleRequest {
   status       GeneralStatus @default(pending)
   reason       String?     @db.Text
   evidenceUrl  String?     @map("evidence_url") @db.Text
+  applicationData Json?    @map("application_data")
   adminNote    String?     @map("admin_note") @db.Text
   reviewedBy   Int?        @map("reviewed_by")
   reviewedAt   DateTime?   @map("reviewed_at")
