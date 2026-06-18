@@ -301,12 +301,12 @@ Nhóm này phụ trách seed data, test, tài liệu API và deployment.
 
 | Module / Hạng mục | Phạm vi | Note | Trạng thái |
 | --- | --- | --- | --- |
-| Seed Accounts | admin/user/creator/business | Chưa có | Chưa triển khai |
-| Seed Demo Data | categories, places, posts, tags | Chưa có | Chưa triển khai |
-| API Tests | Jest/Vitest + Supertest | Chưa có | Chưa triển khai |
-| Swagger/OpenAPI | API contract | Chưa có | Chưa triển khai |
-| README Backend | setup Laragon/MySQL | Chưa có | Chưa triển khai |
-| Deployment Config | Render/Railway/Cloudinary | Chưa có | Chưa triển khai |
+| Seed Accounts | admin/user/creator/business | [seed-and-tests.md](infra-testing/seed-and-tests.md) | Đã triển khai |
+| Seed Demo Data | categories, places, posts, tags | [seed-and-tests.md](infra-testing/seed-and-tests.md) | Đã triển khai |
+| API Tests | Node test runner + HTTP integration | [seed-and-tests.md](infra-testing/seed-and-tests.md) | Đã triển khai |
+| Swagger/OpenAPI | API contract | [openapi-and-deployment.md](infra-testing/openapi-and-deployment.md) | Đã triển khai |
+| README Backend | setup Laragon/MySQL | [README API](../../apps/api/README.md) | Đã triển khai |
+| Deployment Config | Docker/Render/Railway/Cloudinary | [openapi-and-deployment.md](infra-testing/openapi-and-deployment.md) | Đã triển khai |
 
 Nội dung chính:
 

@@ -17,6 +17,7 @@ test("loadEnv applies foundation defaults", () => {
   assert.equal(config.corsOrigin, "http://localhost:5173");
   assert.equal(config.maxImageSizeMb, 5);
   assert.equal(config.maxVideoSizeMb, 80);
+  assert.equal(config.uploadDriver, "local");
 });
 
 test("loadEnv rejects missing required variables", () => {
@@ -40,6 +41,22 @@ test("loadEnv rejects unsafe production JWT secret", () => {
       }),
     /JWT_SECRET must be changed/
   );
+});
+
+test("loadEnv validates Cloudinary deployment settings", () => {
+  assert.throws(
+    () => loadEnv({ ...validEnv, UPLOAD_DRIVER: "cloudinary" }),
+    /Missing CLOUDINARY_CLOUD_NAME/
+  );
+  const config = loadEnv({
+    ...validEnv,
+    UPLOAD_DRIVER: "cloudinary",
+    CLOUDINARY_CLOUD_NAME: "demo",
+    CLOUDINARY_API_KEY: "key",
+    CLOUDINARY_API_SECRET: "secret"
+  });
+  assert.equal(config.uploadDriver, "cloudinary");
+  assert.equal(config.cloudinaryFolder, "chillplace");
 });
 
 test("unknown API route returns the standard error response", async (t) => {

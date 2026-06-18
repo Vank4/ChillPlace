@@ -26,10 +26,12 @@ import {
 import { businessRouter } from "../modules/business/business.routes.js";
 import { roleRequestsRouter } from "../modules/role-requests/role-requests.routes.js";
 import { adminRouter } from "../modules/admin/admin.routes.js";
+import { docsRouter } from "../modules/docs/docs.routes.js";
 
 export const apiRouter = Router();
 
 apiRouter.use(healthRouter);
+apiRouter.use(docsRouter);
 apiRouter.use("/auth", authRouter);
 apiRouter.use("/users", usersRouter);
 apiRouter.use("/categories", categoriesRouter);

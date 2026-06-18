@@ -37,6 +37,15 @@ export function loadEnv(source = process.env) {
   if (nodeEnv === "production" && jwtSecret === "change_me") {
     throw new Error("JWT_SECRET must be changed in production.");
   }
+  const uploadDriver = source.UPLOAD_DRIVER?.trim() || "local";
+  if (!["local", "cloudinary"].includes(uploadDriver)) {
+    throw new Error("UPLOAD_DRIVER must be local or cloudinary.");
+  }
+  if (uploadDriver === "cloudinary") {
+    required(source, "CLOUDINARY_CLOUD_NAME");
+    required(source, "CLOUDINARY_API_KEY");
+    required(source, "CLOUDINARY_API_SECRET");
+  }
 
   return Object.freeze({
     nodeEnv,
@@ -49,8 +58,12 @@ export function loadEnv(source = process.env) {
       source.FRONTEND_URL?.trim() ||
       source.CORS_ORIGIN?.trim() ||
       "http://localhost:5173",
-    uploadDriver: source.UPLOAD_DRIVER?.trim() || "local",
+    uploadDriver,
     uploadDir: source.UPLOAD_DIR?.trim() || "uploads",
+    cloudinaryCloudName: source.CLOUDINARY_CLOUD_NAME?.trim() || "",
+    cloudinaryApiKey: source.CLOUDINARY_API_KEY?.trim() || "",
+    cloudinaryApiSecret: source.CLOUDINARY_API_SECRET?.trim() || "",
+    cloudinaryFolder: source.CLOUDINARY_FOLDER?.trim() || "chillplace",
     maxImageSizeMb: positiveInteger(source, "MAX_IMAGE_SIZE_MB", "5"),
     maxVideoSizeMb: positiveInteger(source, "MAX_VIDEO_SIZE_MB", "80")
   });

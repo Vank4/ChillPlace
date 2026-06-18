@@ -1,5 +1,9 @@
 import path from "node:path";
 import { unlink } from "node:fs/promises";
+import {
+  cloudinaryAssetFromUrl,
+  deleteCloudinaryAsset
+} from "../../common/utils/cloudinary.js";
 import { AppError } from "../../common/errors/AppError.js";
 import { createPagination } from "../../common/utils/apiResponse.js";
 import { uploadConfig } from "../../middlewares/upload.middleware.js";
@@ -213,7 +217,7 @@ export async function addBusinessMedia(user, query, body, files = []) {
   const place = await resolvePlace(profile, query.place_id);
   const uploaded = files.map((file, index) => ({
     mediaType: file.mimetype.startsWith("video/") ? "video" : "image",
-    mediaUrl: `/uploads/${path.basename(file.filename)}`,
+    mediaUrl: file.remoteUrl ?? `/uploads/${path.basename(file.filename)}`,
     thumbnailUrl: null,
     sortOrder: body.sortOrder + index
   }));
@@ -255,6 +259,13 @@ export async function removeBusinessMedia(user, query, mediaId) {
   if (media.mediaUrl.startsWith("/uploads/")) {
     const filename = path.basename(media.mediaUrl);
     await unlink(path.join(uploadConfig.root, filename)).catch(() => undefined);
+  } else {
+    const asset = cloudinaryAssetFromUrl(media.mediaUrl);
+    if (asset) {
+      await deleteCloudinaryAsset(asset.publicId, asset.resourceType).catch(
+        () => undefined
+      );
+    }
   }
 }
 
