@@ -1,0 +1,9 @@
+.git
+.github
+**/node_modules
+**/.env
+**/uploads
+apps/web
+docs
+interface_design
+*.log

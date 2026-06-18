@@ -4,6 +4,10 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import multer from "multer";
 import { AppError } from "../common/errors/AppError.js";
+import {
+  deleteCloudinaryAsset,
+  uploadCloudinaryFile
+} from "../common/utils/cloudinary.js";
 import { env } from "../config/env.js";
 
 const IMAGE_MIME_TYPES = new Set([
@@ -72,7 +76,17 @@ function createMulter(storage) {
 
 export async function cleanupUploadedFiles(files = []) {
   await Promise.all(
-    files.map((file) => unlink(file.path).catch(() => undefined))
+    files.map((file) => {
+      if (file.cloudinaryPublicId) {
+        return deleteCloudinaryAsset(
+          file.cloudinaryPublicId,
+          file.cloudinaryResourceType
+        ).catch(() => undefined);
+      }
+      return file.path
+        ? unlink(file.path).catch(() => undefined)
+        : Promise.resolve();
+    })
   );
 }
 
@@ -82,7 +96,9 @@ export function uploadFiles(
   { storage = "disk" } = {}
 ) {
   const storageEngine =
-    storage === "memory" ? multer.memoryStorage() : diskStorage;
+    storage === "memory" || env.uploadDriver === "cloudinary"
+      ? multer.memoryStorage()
+      : diskStorage;
   const middleware = createMulter(storageEngine).array(fieldName, maxCount);
 
   return (req, res, next) => {
@@ -105,6 +121,20 @@ export function uploadFiles(
             `Image files must not exceed ${env.maxImageSizeMb} MB.`
           )
         );
+      }
+
+      if (env.uploadDriver === "cloudinary" && req.files?.length) {
+        try {
+          for (const file of req.files) {
+            const uploaded = await uploadCloudinaryFile(file);
+            file.remoteUrl = uploaded.url;
+            file.cloudinaryPublicId = uploaded.publicId;
+            file.cloudinaryResourceType = uploaded.resourceType;
+          }
+        } catch (uploadError) {
+          await cleanupUploadedFiles(req.files);
+          return next(uploadError);
+        }
       }
 
       next();
