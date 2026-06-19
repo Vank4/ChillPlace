@@ -28,6 +28,18 @@ export function getUserSettings() {
   }
 }
 
+export function applyThemePreference(darkMode = getUserSettings().darkMode) {
+  if (typeof document === "undefined") return;
+
+  const nextTheme = darkMode ? "dark" : "light";
+  document.documentElement.dataset.theme = nextTheme;
+  document.documentElement.style.colorScheme = nextTheme;
+}
+
+export function initializeThemePreference() {
+  applyThemePreference(getUserSettings().darkMode);
+}
+
 export async function updateUserSettings(nextSettings) {
   await new Promise((resolve) => window.setTimeout(resolve, 260));
 
@@ -38,6 +50,11 @@ export async function updateUserSettings(nextSettings) {
   };
 
   window.localStorage.setItem(USER_SETTINGS_KEY, JSON.stringify(settings));
+
+  if (Object.prototype.hasOwnProperty.call(nextSettings, "darkMode")) {
+    applyThemePreference(settings.darkMode);
+  }
+
   window.dispatchEvent(
     new CustomEvent("chillplace:settings-updated", { detail: settings })
   );

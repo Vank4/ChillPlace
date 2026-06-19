@@ -3,6 +3,10 @@ import { AppShell } from "../components/layout/AppShell.jsx";
 import { ForgotPasswordPage } from "../features/auth/pages/ForgotPasswordPage.jsx";
 import { LoginPage } from "../features/auth/pages/LoginPage.jsx";
 import { RegisterPage } from "../features/auth/pages/RegisterPage.jsx";
+import { CreatorAnalyticsPage } from "../features/creator/pages/CreatorAnalyticsPage.jsx";
+import { CreatorDraftsPage } from "../features/creator/pages/CreatorDraftsPage.jsx";
+import { CreatorPostsPage } from "../features/creator/pages/CreatorPostsPage.jsx";
+import { CreatePostPage } from "../features/creator/pages/CreatePostPage.jsx";
 import { ExplorePage } from "../features/explore/pages/ExplorePage.jsx";
 import { HomeFeedPage } from "../features/feed/pages/HomeFeedPage.jsx";
 import { MapPage } from "../features/map/pages/MapPage.jsx";
@@ -11,7 +15,6 @@ import { NotificationsPage } from "../features/notifications/pages/Notifications
 import { PlaceDetailPage } from "../features/places/pages/PlaceDetailPage.jsx";
 import { PostDetailPage } from "../features/posts/pages/PostDetailPage.jsx";
 import { UserProfilePage } from "../features/profile/pages/UserProfilePage.jsx";
-import { PrototypePage } from "../features/prototype/pages/PrototypePage.jsx";
 import { SavedPlacesPage } from "../features/saved/pages/SavedPlacesPage.jsx";
 import { SearchResultsPage } from "../features/search/pages/SearchResultsPage.jsx";
 import { SettingsPage } from "../features/settings/pages/SettingsPage.jsx";
@@ -36,16 +39,10 @@ export function App() {
         <Route path="favorites" element={<SavedPlacesPage />} />
         <Route path="saved" element={<SavedPlacesPage />} />
         <Route path="settings" element={<SettingsPage />} />
-        <Route
-          path="creator/posts/new"
-          element={
-            <PrototypePage
-              eyebrow="Create Post"
-              title="Tạo bài viết mới"
-              description="Flow tạo bài viết sẽ được nối với media upload và API sau, hiện đang là placeholder functional route."
-            />
-          }
-        />
+        <Route path="creator/posts" element={<CreatorPostsPage />} />
+        <Route path="creator/posts/new" element={<CreatePostPage />} />
+        <Route path="creator/drafts" element={<CreatorDraftsPage />} />
+        <Route path="creator/analytics" element={<CreatorAnalyticsPage />} />
         <Route path="profile" element={<UserProfilePage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>

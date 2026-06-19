@@ -88,10 +88,10 @@ Nhóm này phụ trách luồng người dùng tạo nội dung.
 
 | Trang / Hạng mục       | Route dự kiến        | Note    | Trạng thái        |
 | ---------------------- | -------------------- | ------- | ----------------- |
-| Create Post Page       | `/creator/posts/new` | Chưa có | Placeholder route |
-| My Posts Page          | `/creator/posts`     | Chưa có | Chưa triển khai   |
-| Drafts Page            | `/creator/drafts`    | Chưa có | Chưa triển khai   |
-| Creator Analytics Page | `/creator/analytics` | Chưa có | Chưa triển khai   |
+| Create Post Page       | `/creator/posts/new` | [create-post-page.md](creator-center/create-post-page.md) | Đã triển khai |
+| My Posts Page          | `/creator/posts`     | [my-posts-page.md](creator-center/my-posts-page.md) | Đã triển khai |
+| Drafts Page            | `/creator/drafts`    | [drafts-page.md](creator-center/drafts-page.md) | Đã triển khai |
+| Creator Analytics Page | `/creator/analytics` | [creator-analytics-page.md](creator-center/creator-analytics-page.md) | Đã triển khai |
 
 ### Business Center
 
@@ -131,16 +131,32 @@ Nhóm này phụ trách tối ưu cuối cùng sau khi các trang chính đã ho
 
 1. Xem bản thiết kế trong `interface_design/<ten-man-hinh>/`.
 2. Đọc `code.html` và `screen.png` để phân tích layout, responsive và component cần tách.
-3. Triển khai React: page component, component con, route, mock data/service, CSS responsive.
-4. Làm giao diện hoạt động như prototype thật: search/filter/state, localStorage, loading/empty/error, điều hướng route.
-5. Tối ưu desktop/mobile: kích thước, khoảng trắng, tránh tràn chữ, mobile header/bottom nav, hành vi tương tác.
-6. Chạy kiểm tra:
+3. Phân tích lại scale thực tế trước khi code: đối chiếu prototype với các màn đã tối ưu trong dự án để giảm kích thước, khoảng trắng, chiều cao card/header/tab và font cho phù hợp viewport thật.
+4. Triển khai React: page component, component con, route, mock data/service, CSS responsive.
+5. Làm giao diện hoạt động như prototype thật: search/filter/state, localStorage, loading/empty/error, điều hướng route.
+6. Tối ưu desktop/mobile: kích thước, khoảng trắng, tránh tràn chữ, mobile header/bottom nav, hành vi tương tác.
+7. Chạy kiểm tra:
 
 ```bash
 npm run build
 ```
 
-7. Tạo hoặc cập nhật note riêng trong `docs/frontend/<ten-nhom>/`.
+8. Tạo hoặc cập nhật note riêng trong `docs/frontend/<ten-nhom>/`.
+
+## Chuẩn Scale Giao Diện Đang Dùng
+
+Các prototype trong `interface_design/` thường phóng lớn hơn viewport thật. Khi triển khai, không bê nguyên kích thước từ prototype; cần scale lại theo chuẩn đã ổn định trong các màn `Profile`, `Settings`, `Saved`, `Explore` và `AppShell`.
+
+- Container desktop thường dùng `width: min(100%, 1180px)` đến `1280px`, padding ngoài khoảng `18px-28px`.
+- Mobile dùng breakpoint chính quanh `max-width: 759px`; các breakpoint nhỏ hơn thường quanh `430px-520px`.
+- Mobile header của `AppShell` cao khoảng `34px`; bottom nav khoảng `54px`. Thành phần sticky trên mobile cần đặt sát các mốc này, tránh tạo khoảng hở.
+- Card/page panel desktop nên dùng radius khoảng `16px-24px`, padding `14px-22px`; mobile giảm còn `10px-14px`.
+- Nút desktop phổ biến cao `34px-42px`; nút/tab mobile nên khoảng `31px-36px`, tránh pill quá cao làm chiếm khung hình.
+- Font desktop heading thường `25px-38px`; heading mobile khoảng `17px-24px`. Label/meta mobile thường `8px-11px`.
+- Avatar/card media trên mobile cần giảm mạnh so với prototype; ưu tiên bố cục ngang/gọn nếu phần đầu trang đang đẩy nội dung chính xuống quá xa.
+- Tab/filter mobile nên là thanh mỏng có icon nhỏ, active state nhẹ, không dùng card nổi cao nếu làm che hoặc đẩy nội dung.
+- Empty state chỉ dùng khi thật sự cần; nếu có thể hiển thị trực tiếp nội dung con như Saved trong Profile thì nhúng thẳng thay vì CTA trung gian.
+- Khi có hover đẹp trên desktop, vẫn phải có trạng thái đọc được trên mobile/touch, ví dụ overlay nội dung luôn hiển thị hoặc có nền đủ tương phản.
 
 ## Nội Dung Cần Có Trong Note Riêng
 

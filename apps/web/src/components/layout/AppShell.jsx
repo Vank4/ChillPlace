@@ -2,7 +2,6 @@ import { Compass, Plus } from "lucide-react";
 import { useEffect, useLayoutEffect, useState } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { Avatar } from "../common/Avatar.jsx";
-import { Button } from "../common/Button.jsx";
 import { headerActions, mobileNavItems, publicNavItems } from "../../constants/routes.js";
 import { mockCurrentUser } from "../../data/mockFeed.js";
 import { getUserProfile } from "../../services/profile.service.js";
@@ -51,10 +50,10 @@ export function AppShell() {
         </nav>
 
         <div className="desktop-sidebar__footer">
-          <Button className="desktop-sidebar__create">
+          <NavLink className="button button--primary desktop-sidebar__create" to="/creator/posts/new">
             <Plus size={18} aria-hidden="true" />
             Đăng bài mới
-          </Button>
+          </NavLink>
           <NavLink className="desktop-sidebar__profile" to="/profile">
             <Avatar src={shellProfile.avatarUrl || mockCurrentUser.avatarUrl} alt={`Ảnh đại diện ${shellProfile.name}`} />
             <div>

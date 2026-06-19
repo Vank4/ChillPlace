@@ -30,6 +30,7 @@ import {
   logout
 } from "../../../services/auth.service.js";
 import {
+  applyThemePreference,
   getUserSettings,
   updateUserSettings
 } from "../../../services/settings.service.js";
@@ -85,9 +86,7 @@ export function SettingsPage() {
   const CurrentSectionIcon = currentSection.icon;
 
   useEffect(() => {
-    document.documentElement.dataset.theme = settings.darkMode
-      ? "dark"
-      : "light";
+    applyThemePreference(settings.darkMode);
   }, [settings.darkMode]);
 
   function showToast(message) {
@@ -98,10 +97,6 @@ export function SettingsPage() {
   async function setPreference(key, value) {
     const nextSettings = await updateUserSettings({ [key]: value });
     setSettings(nextSettings);
-
-    if (key === "darkMode") {
-      document.documentElement.dataset.theme = value ? "dark" : "light";
-    }
 
     showToast("Đã lưu cài đặt");
   }
