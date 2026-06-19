@@ -14,6 +14,8 @@
 - `apps/web/src/features/settings/pages/SettingsPage.jsx`
 - `apps/web/src/features/settings/pages/SettingsPage.css`
 - `apps/web/src/services/settings.service.js`
+- `apps/web/src/styles/tokens.css`
+- `apps/web/src/styles/theme.css`
 - `apps/web/src/services/auth.service.js`
 - `apps/web/src/app/App.jsx`
 
@@ -24,6 +26,7 @@
 - Đổi mật khẩu mock có kiểm tra mật khẩu hiện tại, độ dài và xác nhận mật khẩu.
 - Bật/tắt 2FA, thông báo đẩy, email, cập nhật hệ thống, vị trí và trạng thái hoạt động.
 - Chọn quyền xem bài viết, ngôn ngữ và cỡ chữ qua dialog.
+- Toggle `Chế độ tối` áp dụng app-wide bằng `data-theme` trên `document.documentElement`, tự nạp lại từ `localStorage` khi mở app ở bất kỳ route nào.
 - Hiển thị điều khoản dịch vụ, chính sách bảo mật và trạng thái liên kết mạng xã hội.
 - Đăng xuất xóa session rồi chuyển về `/login`.
 - Toast phản hồi sau khi lưu hoặc thay đổi tùy chọn.
@@ -31,6 +34,7 @@
 ## Mock data và lưu trữ
 
 - `chillplace.userSettings`: lưu toàn bộ tùy chọn giao diện bằng `localStorage`.
+- `darkMode` được đồng bộ qua `applyThemePreference()` và `initializeThemePreference()` để toàn bộ AppShell, Auth, Public Discovery, Auth User và Creator Center dùng chung theme.
 - `chillplace.passwordOverrides`: lưu mật khẩu mock đã đổi để lần đăng nhập tiếp theo sử dụng.
 - Tái sử dụng `profile.service.js` và session từ `auth.service.js`.
 
@@ -50,4 +54,4 @@
 
 ## Kiểm tra
 
-- `npm run build`: thành công, Vite build 1.650 modules.
+- `npm run build`: thành công, Vite build 1.657 modules.
