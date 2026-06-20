@@ -12,6 +12,8 @@
   --color-surface-soft: #f2f4f6;
   --color-surface-muted: #e6e8ea;
   --color-text: #111827;
+  --color-ink: #111827;
+  --color-navy: #174b78;
   --color-text-soft: #374151;
   --color-muted: #6b7280;
   --color-border: #e5e7eb;
@@ -56,6 +58,8 @@
   --color-surface-soft: #172033;
   --color-surface-muted: #233047;
   --color-text: #f8fafc;
+  --color-ink: #f8fafc;
+  --color-navy: #8ec7ff;
   --color-text-soft: #d7dee9;
   --color-muted: #94a3b8;
   --color-border: rgba(148, 163, 184, 0.24);

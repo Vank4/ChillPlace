@@ -1,5 +1,6 @@
 import {
   Bell,
+  BriefcaseBusiness,
   Compass,
   Heart,
   Home,
@@ -16,6 +17,7 @@ export const publicNavItems = [
   { label: "Bản đồ", path: "/map", icon: Map },
   { label: "Đã lưu", path: "/favorites", icon: Heart },
   { label: "Thông báo", path: "/notifications", icon: Bell },
+  { label: "Business", path: "/business", icon: BriefcaseBusiness },
   { label: "Cài đặt", path: "/settings", icon: Settings }
 ];
 
