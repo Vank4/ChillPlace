@@ -1,6 +1,10 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { AppShell } from "../components/layout/AppShell.jsx";
 import { ForgotPasswordPage } from "../features/auth/pages/ForgotPasswordPage.jsx";
+import { BusinessDashboardPage } from "../features/business/pages/BusinessDashboardPage.jsx";
+import { BusinessPlacesPage } from "../features/business/pages/BusinessPlacesPage.jsx";
+import { BusinessPromotionsPage } from "../features/business/pages/BusinessPromotionsPage.jsx";
+import { BusinessReviewsPage } from "../features/business/pages/BusinessReviewsPage.jsx";
 import { LoginPage } from "../features/auth/pages/LoginPage.jsx";
 import { RegisterPage } from "../features/auth/pages/RegisterPage.jsx";
 import { CreatorAnalyticsPage } from "../features/creator/pages/CreatorAnalyticsPage.jsx";
@@ -43,6 +47,10 @@ export function App() {
         <Route path="creator/posts/new" element={<CreatePostPage />} />
         <Route path="creator/drafts" element={<CreatorDraftsPage />} />
         <Route path="creator/analytics" element={<CreatorAnalyticsPage />} />
+        <Route path="business" element={<BusinessDashboardPage />} />
+        <Route path="business/places" element={<BusinessPlacesPage />} />
+        <Route path="business/promotions" element={<BusinessPromotionsPage />} />
+        <Route path="business/reviews" element={<BusinessReviewsPage />} />
         <Route path="profile" element={<UserProfilePage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>

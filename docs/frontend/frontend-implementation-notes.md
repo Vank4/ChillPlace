@@ -99,10 +99,10 @@ Nhóm này phụ trách luồng chủ địa điểm/doanh nghiệp.
 
 | Trang / Hạng mục     | Route dự kiến          | Note    | Trạng thái      |
 | -------------------- | ---------------------- | ------- | --------------- |
-| Business Dashboard   | `/business`            | Chưa có | Chưa triển khai |
-| Place Management     | `/business/places`     | Chưa có | Chưa triển khai |
-| Promotion Management | `/business/promotions` | Chưa có | Chưa triển khai |
-| Business Reviews     | `/business/reviews`    | Chưa có | Chưa triển khai |
+| Business Dashboard   | `/business`            | [business-dashboard.md](business-center/business-dashboard.md) | Đã triển khai |
+| Place Management     | `/business/places`     | [place-management.md](business-center/place-management.md) | Đã triển khai |
+| Promotion Management | `/business/promotions` | [promotion-management.md](business-center/promotion-management.md) | Đã triển khai |
+| Business Reviews     | `/business/reviews`    | [business-reviews.md](business-center/business-reviews.md) | Đã triển khai |
 
 ### Admin Dashboard
 
