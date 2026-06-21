@@ -91,7 +91,7 @@ export function BusinessDashboardPage() {
           {state.reviews.slice(0, 3).map((review) => (
             <article className="business-review-card" key={review.id}>
               <header>
-                <img src={review.avatar} alt="" />
+                <img src={review.avatar} alt="" loading="lazy" decoding="async" />
                 <div>
                   <h3>{review.author}</h3>
                   <time dateTime={review.date}>{formatDate(review.date)}</time>

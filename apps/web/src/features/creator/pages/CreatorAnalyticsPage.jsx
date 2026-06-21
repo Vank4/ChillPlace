@@ -133,7 +133,7 @@ export function CreatorAnalyticsPage() {
         <div>
           {topPosts.map((post) => (
             <article key={post.id}>
-              <img src={post.imageUrl} alt="" />
+              <img src={post.imageUrl} alt="" loading="lazy" decoding="async" />
               <div>
                 <h3>{post.title}</h3>
                 <p>{post.place?.area ?? "Creator Center"}</p>

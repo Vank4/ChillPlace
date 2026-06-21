@@ -38,6 +38,7 @@ export function AppShell() {
         isPostRoute ? "app-shell--post" : ""
       ].filter(Boolean).join(" ")}
     >
+      <a className="skip-link" href="#main-content">Bỏ qua điều hướng</a>
       <aside className="desktop-sidebar" aria-label="Điều hướng chính">
         <NavBrand />
         <nav className="desktop-sidebar__nav">
@@ -82,7 +83,7 @@ export function AppShell() {
         </div>
       </header>
 
-      <main className="app-shell__content">
+      <main className="app-shell__content" id="main-content" tabIndex={-1}>
         <Outlet />
       </main>
 

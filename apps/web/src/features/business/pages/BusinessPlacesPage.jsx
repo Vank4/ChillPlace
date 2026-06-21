@@ -56,7 +56,7 @@ export function BusinessPlacesPage() {
       <section className="business-layout-grid">
         <div className="business-list">
           <article className="business-hero-card">
-            <img src={profile.heroImage} alt="" />
+            <img src={profile.heroImage} alt="" loading="eager" decoding="async" fetchPriority="high" />
             <div>
               <span className="business-badge">Hồ sơ công khai</span>
               <h2>{profile.name}</h2>
@@ -83,7 +83,7 @@ export function BusinessPlacesPage() {
             <div className="business-media-grid">
               {initialState.media.map((media) => (
                 <div className="business-media-tile" key={media.id}>
-                  <img src={media.image} alt={media.label} />
+                  <img src={media.image} alt={media.label} loading="lazy" decoding="async" />
                   <span>{media.label}</span>
                 </div>
               ))}
@@ -176,7 +176,7 @@ export function BusinessPlacesPage() {
       <section className="business-list" style={{ marginTop: 14 }}>
         {filteredPlaces.map((place) => (
           <article className="business-list-card" key={place.id}>
-            <img src={place.image} alt="" />
+            <img src={place.image} alt="" loading="lazy" decoding="async" />
             <div>
               <h3>{place.name}</h3>
               <p>{place.area}</p>

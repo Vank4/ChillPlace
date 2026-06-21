@@ -72,15 +72,15 @@ function Sparkline({ values, label, value, tone = "orange" }) {
     const y = 38 - ((item - min) / Math.max(1, max - min)) * 30;
     return `${x},${y}`;
   }).join(" ");
-  return <div className={`admin-sparkline admin-sparkline--${tone}`}><header><div><span>{label}</span><strong>{value}</strong></div><TrendingUp size={17} /></header><svg viewBox="0 0 100 42" preserveAspectRatio="none" aria-label={`Biểu đồ ${label}`}><defs><linearGradient id={`spark-${tone}`} x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="currentColor" stopOpacity=".28"/><stop offset="1" stopColor="currentColor" stopOpacity="0"/></linearGradient></defs><polygon points={`0,42 ${points} 100,42`} fill={`url(#spark-${tone})`} /><polyline points={points} fill="none" stroke="currentColor" strokeWidth="2.4" vectorEffect="non-scaling-stroke" /></svg></div>;
+  return <div className={`admin-sparkline admin-sparkline--${tone}`}><header><div><span>{label}</span><strong>{value}</strong></div><TrendingUp size={17} aria-hidden="true" /></header><svg viewBox="0 0 100 42" preserveAspectRatio="none" role="img" aria-label={`Biểu đồ ${label}: ${value}`}><defs><linearGradient id={`spark-${tone}`} x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="currentColor" stopOpacity=".28"/><stop offset="1" stopColor="currentColor" stopOpacity="0"/></linearGradient></defs><polygon points={`0,42 ${points} 100,42`} fill={`url(#spark-${tone})`} /><polyline points={points} fill="none" stroke="currentColor" strokeWidth="2.4" vectorEffect="non-scaling-stroke" /></svg></div>;
 }
 
 function DonutChart({ value, label, caption, tone = "orange", legend = [] }) {
-  return <div className={`admin-donut-card admin-donut-card--${tone}`}><div className="admin-donut" style={{ "--donut-value": `${value * 3.6}deg` }}><div><strong>{value}%</strong><span>{label}</span></div></div><div className="admin-donut-copy"><small>{caption}</small>{legend.map((item) => <span key={item.label}><i style={{ background: item.color }} />{item.label}<b>{item.value}</b></span>)}</div></div>;
+  return <div className={`admin-donut-card admin-donut-card--${tone}`} role="img" aria-label={`${caption}: ${value}% ${label}`}><div className="admin-donut" style={{ "--donut-value": `${value * 3.6}deg` }}><div><strong>{value}%</strong><span>{label}</span></div></div><div className="admin-donut-copy"><small>{caption}</small>{legend.map((item) => <span key={item.label}><i style={{ background: item.color }} />{item.label}<b>{item.value}</b></span>)}</div></div>;
 }
 
 function BarBreakdown({ title, subtitle, items }) {
-  return <article className="admin-viz-card"><header><div><span>{subtitle}</span><h2>{title}</h2></div><BarChart3 size={18} /></header><div className="admin-horizontal-bars">{items.map((item) => <div key={item.label}><span>{item.label}<b>{item.value}%</b></span><i><em style={{ width: `${item.value}%`, background: item.color }} /></i></div>)}</div></article>;
+  return <article className="admin-viz-card" aria-label={`${title}: ${items.map(item => `${item.label} ${item.value}%`).join(", ")}`}><header><div><span>{subtitle}</span><h2>{title}</h2></div><BarChart3 size={18} aria-hidden="true" /></header><div className="admin-horizontal-bars">{items.map((item) => <div key={item.label}><span>{item.label}<b>{item.value}%</b></span><i><em style={{ width: `${item.value}%`, background: item.color }} /></i></div>)}</div></article>;
 }
 
 function ActivityHeatmap({ title = "Mật độ hoạt động", values = [2,4,3,7,8,4,5,9,6,3,8,7,5,9,4,6,8,5,3,7,9,6,4,8] }) {

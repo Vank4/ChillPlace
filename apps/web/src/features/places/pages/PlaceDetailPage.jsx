@@ -177,7 +177,7 @@ export function PlaceDetailPage() {
       </div>
 
       <section className="place-detail__hero" aria-label={`Ảnh đại diện ${place.name}`}>
-        <img src={place.imageUrl} alt={place.alt} />
+        <img src={place.imageUrl} alt={place.alt} loading="eager" decoding="async" fetchPriority="high" />
         <div className="place-detail__hero-overlay">
           <span className={`place-detail__status-dot place-detail__status-dot--${openingStatus.tone}`}>
             <span aria-hidden="true" />
@@ -378,7 +378,7 @@ export function PlaceDetailPage() {
             <h2>Gợi ý gần đó</h2>
             {relatedPlaces.map((item) => (
               <button key={item.id} type="button" onClick={() => navigate(`/places/${item.id}`)}>
-                <img src={item.imageUrl} alt={item.alt} />
+                <img src={item.imageUrl} alt={item.alt} loading="lazy" decoding="async" />
                 <span>
                   <strong>{item.name}</strong>
                   <small>

@@ -1,0 +1,160 @@
+html {
+  min-height: 100%;
+  scrollbar-gutter: stable;
+  text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100dvh;
+  overflow-wrap: break-word;
+}
+
+:where(button, a, input, textarea, select, [role="button"]):focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--color-secondary) 72%, white);
+  outline-offset: 3px;
+}
+
+:where(button, a, [role="button"]):focus:not(:focus-visible) {
+  outline: none;
+}
+
+.skip-link {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 1000;
+  padding: 9px 13px;
+  color: #ffffff;
+  border-radius: 10px;
+  background: var(--color-secondary);
+  box-shadow: var(--shadow-panel);
+  font-size: 12px;
+  font-weight: 900;
+  transform: translateY(-150%);
+  transition: transform 160ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.route-loading {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 12px;
+  color: var(--color-muted);
+  background: var(--color-background);
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.route-loading span {
+  width: 34px;
+  height: 34px;
+  border: 3px solid var(--color-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: routeSpinner 700ms linear infinite;
+}
+
+@keyframes routeSpinner {
+  to { transform: rotate(360deg); }
+}
+
+:where(h1, h2, h3, p, strong, small, span) {
+  min-width: 0;
+}
+
+@supports (min-height: 100dvh) {
+  .app-shell,
+  .app-shell__content,
+  .admin-shell,
+  .admin-shell__body {
+    min-height: 100dvh;
+  }
+
+  .post-detail-page {
+    height: 100dvh;
+    min-height: 100dvh;
+  }
+
+  :is(.creator-page, .create-post-page, .business-page) {
+    min-height: 100dvh;
+  }
+}
+
+@supports (content-visibility: auto) {
+  :where(
+    .place-card,
+    .saved-post,
+    .business-list-card,
+    .creator-post-card,
+    .creator-draft-card,
+    .admin-place-card,
+    .admin-moderation-card,
+    .notification-card
+  ) {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 320px;
+  }
+}
+
+@media (pointer: coarse) {
+  :where(button, a, [role="button"], input, select) {
+    touch-action: manipulation;
+  }
+
+  :where(button, [role="button"]):not(.map-marker) {
+    min-block-size: 36px;
+  }
+}
+
+@media (hover: none) {
+  :where(button, a, [role="button"]):hover {
+    filter: none;
+  }
+}
+
+@media (max-width: 359px) {
+  .app-shell__content,
+  .admin-content {
+    padding-inline: 8px;
+  }
+
+  .bottom-nav {
+    right: 5px;
+    left: 5px;
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --color-border: currentColor;
+  }
+
+  :where(button, input, textarea, select, [role="button"]) {
+    border-width: 2px;
+  }
+}
+
+@media (forced-colors: active) {
+  :where(button, a, input, textarea, select, [role="button"]):focus-visible {
+    outline: 3px solid Highlight;
+  }
+
+  .admin-status i,
+  .place-card__status-dot > span {
+    forced-color-adjust: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .route-loading span {
+    animation: none;
+    border-color: var(--color-primary);
+  }
+}

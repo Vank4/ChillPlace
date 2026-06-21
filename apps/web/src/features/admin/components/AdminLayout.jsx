@@ -46,6 +46,7 @@ export function AdminLayout() {
 
   return (
     <div className="admin-shell">
+      <a className="skip-link" href="#admin-main-content">Bỏ qua điều hướng quản trị</a>
       <aside className="admin-sidebar">
         <NavLink className="admin-brand" to="/admin">
           <span><Compass size={20} /></span>
@@ -83,7 +84,7 @@ export function AdminLayout() {
           {adminNav.map((item) => <NavLink key={item.to} to={item.to} end={item.end}><item.icon size={16} />{item.label}</NavLink>)}
         </nav>
 
-        <main className="admin-content"><Outlet /></main>
+        <main className="admin-content" id="admin-main-content" tabIndex={-1}><Outlet /></main>
       </div>
     </div>
   );

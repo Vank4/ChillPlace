@@ -124,10 +124,10 @@ Nhóm này phụ trách tối ưu cuối cùng sau khi các trang chính đã ho
 
 | Trang / Hạng mục             | Phạm vi       | Note    | Trạng thái      |
 | ---------------------------- | ------------- | ------- | --------------- |
-| Responsive Audit             | Toàn frontend | Chưa có | Chưa triển khai |
-| Accessibility Pass           | Toàn frontend | Chưa có | Chưa triển khai |
-| Animation/Interaction Polish | Toàn frontend | Chưa có | Chưa triển khai |
-| Performance Polish           | Toàn frontend | Chưa có | Chưa triển khai |
+| Responsive Audit             | Toàn frontend | [responsive-audit.md](polish-responsive/responsive-audit.md) | Đã triển khai |
+| Accessibility Pass           | Toàn frontend | [accessibility-pass.md](polish-responsive/accessibility-pass.md) | Đã triển khai |
+| Animation/Interaction Polish | Toàn frontend | [animation-interaction-polish.md](polish-responsive/animation-interaction-polish.md) | Đã triển khai |
+| Performance Polish           | Toàn frontend | [performance-polish.md](polish-responsive/performance-polish.md) | Đã triển khai |
 
 ## Quy Trình Làm Một Trang Giao Diện
 
