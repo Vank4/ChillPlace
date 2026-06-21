@@ -1,4 +1,14 @@
 import { Navigate, Route, Routes } from "react-router-dom";
+import { AdminLayout } from "../features/admin/components/AdminLayout.jsx";
+import {
+  AdminDashboardPage,
+  AdminPlacesPage,
+  AdminPostsPage,
+  AdminReportsPage,
+  AdminRoleRequestsPage,
+  AdminTaxonomyPage,
+  AdminUsersPage
+} from "../features/admin/pages/AdminPages.jsx";
 import { AppShell } from "../components/layout/AppShell.jsx";
 import { ForgotPasswordPage } from "../features/auth/pages/ForgotPasswordPage.jsx";
 import { BusinessDashboardPage } from "../features/business/pages/BusinessDashboardPage.jsx";
@@ -30,6 +40,15 @@ export function App() {
       <Route path="forgot-password" element={<ForgotPasswordPage />} />
       <Route path="login" element={<LoginPage />} />
       <Route path="register" element={<RegisterPage />} />
+      <Route path="admin" element={<AdminLayout />}>
+        <Route index element={<AdminDashboardPage />} />
+        <Route path="users" element={<AdminUsersPage />} />
+        <Route path="places" element={<AdminPlacesPage />} />
+        <Route path="posts" element={<AdminPostsPage />} />
+        <Route path="reports" element={<AdminReportsPage />} />
+        <Route path="roles" element={<AdminRoleRequestsPage />} />
+        <Route path="tags" element={<AdminTaxonomyPage />} />
+      </Route>
       <Route element={<AppShell />}>
         <Route index element={<HomeFeedPage />} />
         <Route path="explore" element={<ExplorePage />} />

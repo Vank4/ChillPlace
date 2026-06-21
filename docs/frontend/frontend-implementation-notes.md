@@ -110,11 +110,13 @@ Nhóm này phụ trách giao diện quản trị hệ thống.
 
 | Trang / Hạng mục  | Route dự kiến    | Note    | Trạng thái      |
 | ----------------- | ---------------- | ------- | --------------- |
-| Admin Dashboard   | `/admin`         | Chưa có | Chưa triển khai |
-| User Management   | `/admin/users`   | Chưa có | Chưa triển khai |
-| Place Moderation  | `/admin/places`  | Chưa có | Chưa triển khai |
-| Post Moderation   | `/admin/posts`   | Chưa có | Chưa triển khai |
-| Report Management | `/admin/reports` | Chưa có | Chưa triển khai |
+| Admin Dashboard   | `/admin`         | [admin-dashboard.md](admin-dashboard/admin-dashboard.md) | Đã triển khai |
+| User Management   | `/admin/users`   | [user-management.md](admin-dashboard/user-management.md) | Đã triển khai |
+| Place Moderation  | `/admin/places`  | [place-moderation.md](admin-dashboard/place-moderation.md) | Đã triển khai |
+| Post Moderation   | `/admin/posts`   | [post-moderation.md](admin-dashboard/post-moderation.md) | Đã triển khai |
+| Report Management | `/admin/reports` | [report-management.md](admin-dashboard/report-management.md) | Đã triển khai |
+| Role Requests     | `/admin/roles`   | [role-requests.md](admin-dashboard/role-requests.md) | Đã triển khai |
+| Tags & Categories | `/admin/tags`    | [tags-categories.md](admin-dashboard/tags-categories.md) | Đã triển khai |
 
 ### Polish Responsive
 
@@ -135,13 +137,14 @@ Nhóm này phụ trách tối ưu cuối cùng sau khi các trang chính đã ho
 4. Triển khai React: page component, component con, route, mock data/service, CSS responsive.
 5. Làm giao diện hoạt động như prototype thật: search/filter/state, localStorage, loading/empty/error, điều hướng route.
 6. Tối ưu desktop/mobile: kích thước, khoảng trắng, tránh tràn chữ, mobile header/bottom nav, hành vi tương tác.
-7. Chạy kiểm tra:
+7. Kiểm tra giao diện ở cả light/dark mode: dùng design token thay cho màu ghi cứng; rà nền, chữ, viền, ảnh, shadow và các trạng thái hover/active/focus/disabled trên desktop lẫn mobile.
+8. Chạy kiểm tra:
 
 ```bash
 npm run build
 ```
 
-8. Tạo hoặc cập nhật note riêng trong `docs/frontend/<ten-nhom>/`.
+9. Tạo hoặc cập nhật note riêng trong `docs/frontend/<ten-nhom>/`.
 
 ## Chuẩn Scale Giao Diện Đang Dùng
 
