@@ -93,7 +93,7 @@ export function LoginPage() {
   return (
     <main className="login-page">
       <section className="login-visual" aria-label="Giới thiệu ChillPlace">
-        <img className="login-visual__image" src={lifestyleImage} alt="" />
+        <img className="login-visual__image" src={lifestyleImage} alt="" loading="eager" decoding="async" fetchPriority="high" />
         <div className="login-visual__shade" />
 
         <div className="login-visual__content">
@@ -110,7 +110,7 @@ export function LoginPage() {
             </p>
 
             <div className="login-checkin">
-              <img src={checkInAvatar} alt="" />
+              <img src={checkInAvatar} alt="" loading="lazy" decoding="async" />
               <div>
                 <strong>Minh Anh vừa check-in</strong>
                 <span>Cà phê Workshop, Quận 1</span>

@@ -233,10 +233,11 @@ export function HomeFeedPage() {
         </div>
 
         <div className="home-feed-page__list" ref={feedListRef}>
-          {visiblePosts.map((post) => (
+          {visiblePosts.map((post, index) => (
             <FeedItem
               key={post.id}
               post={post}
+              priority={index === 0}
               isCommentsOpen={commentPostId === post.id}
               onToggleComments={() => handleToggleComments(post.id)}
             />

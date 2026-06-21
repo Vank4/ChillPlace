@@ -162,7 +162,7 @@ export function SettingsPage() {
           ))}
 
           <div className="settings-nav__account">
-            <img src={profile.avatarUrl} alt="" />
+            <img src={profile.avatarUrl} alt="" loading="lazy" decoding="async" />
             <div>
               <strong>{profile.name}</strong>
               <span>@{profile.username}</span>
@@ -313,7 +313,7 @@ function AccountSection({
 
         <div className="settings-profile-form__body">
           <aside className="settings-profile-card">
-            <img src={draft.avatarUrl} alt={`Ảnh đại diện ${draft.name}`} />
+            <img src={draft.avatarUrl} alt={`Ảnh đại diện ${draft.name}`} loading="lazy" decoding="async" />
             <strong>{draft.name}</strong>
             <span>@{draft.username}</span>
             <small>{accountEmail}</small>

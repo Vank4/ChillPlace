@@ -95,7 +95,7 @@ export function ForgotPasswordPage() {
   return (
     <main className="forgot-page">
       <section className="forgot-visual" aria-label="Khôi phục tài khoản ChillPlace">
-        <img src={recoveryImage} alt="" />
+        <img src={recoveryImage} alt="" loading="eager" decoding="async" fetchPriority="high" />
         <div className="forgot-visual__shade" />
         <div className="forgot-visual__content">
           <Link to="/">

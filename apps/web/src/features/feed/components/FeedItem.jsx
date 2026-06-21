@@ -49,7 +49,7 @@ function getMediaWidthRule(width, height, orientation) {
   return `min(${maxWidth}, calc(var(--feed-media-available-height) * ${ratio.toFixed(4)}))`;
 }
 
-export function FeedItem({ post, isCommentsOpen = false, onToggleComments }) {
+export function FeedItem({ post, priority = false, isCommentsOpen = false, onToggleComments }) {
   const fallbackRatio = supportedRatios.has(post.mediaRatio) ? post.mediaRatio : "portrait";
   const [measuredMedia, setMeasuredMedia] = useState(null);
   const [currentTime, setCurrentTime] = useState(() => new Date());
@@ -90,7 +90,8 @@ export function FeedItem({ post, isCommentsOpen = false, onToggleComments }) {
           <img
             src={post.mediaUrl}
             alt={post.alt}
-            loading="lazy"
+            loading={priority ? "eager" : "lazy"}
+            fetchPriority={priority ? "high" : "auto"}
             decoding="async"
             onLoad={handleImageLoad}
           />

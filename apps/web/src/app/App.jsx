@@ -1,41 +1,44 @@
-import { Navigate, Route, Routes } from "react-router-dom";
-import { AdminLayout } from "../features/admin/components/AdminLayout.jsx";
-import {
-  AdminDashboardPage,
-  AdminPlacesPage,
-  AdminPostsPage,
-  AdminReportsPage,
-  AdminRoleRequestsPage,
-  AdminTaxonomyPage,
-  AdminUsersPage
-} from "../features/admin/pages/AdminPages.jsx";
+import { lazy, Suspense, useEffect } from "react";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { AppShell } from "../components/layout/AppShell.jsx";
-import { ForgotPasswordPage } from "../features/auth/pages/ForgotPasswordPage.jsx";
-import { BusinessDashboardPage } from "../features/business/pages/BusinessDashboardPage.jsx";
-import { BusinessPlacesPage } from "../features/business/pages/BusinessPlacesPage.jsx";
-import { BusinessPromotionsPage } from "../features/business/pages/BusinessPromotionsPage.jsx";
-import { BusinessReviewsPage } from "../features/business/pages/BusinessReviewsPage.jsx";
-import { LoginPage } from "../features/auth/pages/LoginPage.jsx";
-import { RegisterPage } from "../features/auth/pages/RegisterPage.jsx";
-import { CreatorAnalyticsPage } from "../features/creator/pages/CreatorAnalyticsPage.jsx";
-import { CreatorDraftsPage } from "../features/creator/pages/CreatorDraftsPage.jsx";
-import { CreatorPostsPage } from "../features/creator/pages/CreatorPostsPage.jsx";
-import { CreatePostPage } from "../features/creator/pages/CreatePostPage.jsx";
-import { ExplorePage } from "../features/explore/pages/ExplorePage.jsx";
-import { HomeFeedPage } from "../features/feed/pages/HomeFeedPage.jsx";
-import { MapPage } from "../features/map/pages/MapPage.jsx";
-import { NearbyDiscoveryPage } from "../features/nearby/pages/NearbyDiscoveryPage.jsx";
-import { NotificationsPage } from "../features/notifications/pages/NotificationsPage.jsx";
-import { PlaceDetailPage } from "../features/places/pages/PlaceDetailPage.jsx";
-import { PostDetailPage } from "../features/posts/pages/PostDetailPage.jsx";
-import { UserProfilePage } from "../features/profile/pages/UserProfilePage.jsx";
-import { SavedPlacesPage } from "../features/saved/pages/SavedPlacesPage.jsx";
-import { SearchResultsPage } from "../features/search/pages/SearchResultsPage.jsx";
-import { SettingsPage } from "../features/settings/pages/SettingsPage.jsx";
-import { TagDetailPage } from "../features/tags/pages/TagDetailPage.jsx";
+
+const lazyNamed = (loader, name) => lazy(() => loader().then((module) => ({ default: module[name] })));
+const AdminLayout = lazyNamed(() => import("../features/admin/components/AdminLayout.jsx"), "AdminLayout");
+const AdminDashboardPage = lazyNamed(() => import("../features/admin/pages/AdminPages.jsx"), "AdminDashboardPage");
+const AdminUsersPage = lazyNamed(() => import("../features/admin/pages/AdminPages.jsx"), "AdminUsersPage");
+const AdminPlacesPage = lazyNamed(() => import("../features/admin/pages/AdminPages.jsx"), "AdminPlacesPage");
+const AdminPostsPage = lazyNamed(() => import("../features/admin/pages/AdminPages.jsx"), "AdminPostsPage");
+const AdminReportsPage = lazyNamed(() => import("../features/admin/pages/AdminPages.jsx"), "AdminReportsPage");
+const AdminRoleRequestsPage = lazyNamed(() => import("../features/admin/pages/AdminPages.jsx"), "AdminRoleRequestsPage");
+const AdminTaxonomyPage = lazyNamed(() => import("../features/admin/pages/AdminPages.jsx"), "AdminTaxonomyPage");
+const ForgotPasswordPage = lazyNamed(() => import("../features/auth/pages/ForgotPasswordPage.jsx"), "ForgotPasswordPage");
+const LoginPage = lazyNamed(() => import("../features/auth/pages/LoginPage.jsx"), "LoginPage");
+const RegisterPage = lazyNamed(() => import("../features/auth/pages/RegisterPage.jsx"), "RegisterPage");
+const BusinessDashboardPage = lazyNamed(() => import("../features/business/pages/BusinessDashboardPage.jsx"), "BusinessDashboardPage");
+const BusinessPlacesPage = lazyNamed(() => import("../features/business/pages/BusinessPlacesPage.jsx"), "BusinessPlacesPage");
+const BusinessPromotionsPage = lazyNamed(() => import("../features/business/pages/BusinessPromotionsPage.jsx"), "BusinessPromotionsPage");
+const BusinessReviewsPage = lazyNamed(() => import("../features/business/pages/BusinessReviewsPage.jsx"), "BusinessReviewsPage");
+const CreatorAnalyticsPage = lazyNamed(() => import("../features/creator/pages/CreatorAnalyticsPage.jsx"), "CreatorAnalyticsPage");
+const CreatorDraftsPage = lazyNamed(() => import("../features/creator/pages/CreatorDraftsPage.jsx"), "CreatorDraftsPage");
+const CreatorPostsPage = lazyNamed(() => import("../features/creator/pages/CreatorPostsPage.jsx"), "CreatorPostsPage");
+const CreatePostPage = lazyNamed(() => import("../features/creator/pages/CreatePostPage.jsx"), "CreatePostPage");
+const ExplorePage = lazyNamed(() => import("../features/explore/pages/ExplorePage.jsx"), "ExplorePage");
+const HomeFeedPage = lazyNamed(() => import("../features/feed/pages/HomeFeedPage.jsx"), "HomeFeedPage");
+const MapPage = lazyNamed(() => import("../features/map/pages/MapPage.jsx"), "MapPage");
+const NearbyDiscoveryPage = lazyNamed(() => import("../features/nearby/pages/NearbyDiscoveryPage.jsx"), "NearbyDiscoveryPage");
+const NotificationsPage = lazyNamed(() => import("../features/notifications/pages/NotificationsPage.jsx"), "NotificationsPage");
+const PlaceDetailPage = lazyNamed(() => import("../features/places/pages/PlaceDetailPage.jsx"), "PlaceDetailPage");
+const PostDetailPage = lazyNamed(() => import("../features/posts/pages/PostDetailPage.jsx"), "PostDetailPage");
+const UserProfilePage = lazyNamed(() => import("../features/profile/pages/UserProfilePage.jsx"), "UserProfilePage");
+const SavedPlacesPage = lazyNamed(() => import("../features/saved/pages/SavedPlacesPage.jsx"), "SavedPlacesPage");
+const SearchResultsPage = lazyNamed(() => import("../features/search/pages/SearchResultsPage.jsx"), "SearchResultsPage");
+const SettingsPage = lazyNamed(() => import("../features/settings/pages/SettingsPage.jsx"), "SettingsPage");
+const TagDetailPage = lazyNamed(() => import("../features/tags/pages/TagDetailPage.jsx"), "TagDetailPage");
 
 export function App() {
   return (
+    <Suspense fallback={<div className="route-loading" role="status" aria-live="polite"><span />Đang mở không gian...</div>}>
+    <RouteMetadata />
     <Routes>
       <Route path="forgot-password" element={<ForgotPasswordPage />} />
       <Route path="login" element={<LoginPage />} />
@@ -74,5 +77,42 @@ export function App() {
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>
+    </Suspense>
   );
+}
+
+function RouteMetadata() {
+  const location = useLocation();
+
+  useEffect(() => {
+    const routeName = getRouteName(location.pathname);
+    document.title = `${routeName} | ChillPlace`;
+  }, [location.pathname]);
+
+  return null;
+}
+
+function getRouteName(pathname) {
+  if (pathname.startsWith("/admin")) return "Quản trị hệ thống";
+  if (pathname.startsWith("/business")) return "Business Center";
+  if (pathname.startsWith("/creator")) return "Creator Center";
+  if (pathname.startsWith("/places/")) return "Chi tiết địa điểm";
+  if (pathname.startsWith("/posts/")) return "Chi tiết bài viết";
+  if (pathname.startsWith("/tags/")) return "Khám phá hashtag";
+  const labels = {
+    "/": "Trang chủ",
+    "/explore": "Khám phá",
+    "/search": "Tìm kiếm",
+    "/nearby": "Gần bạn",
+    "/map": "Bản đồ",
+    "/favorites": "Đã lưu",
+    "/saved": "Đã lưu",
+    "/notifications": "Thông báo",
+    "/profile": "Hồ sơ",
+    "/settings": "Cài đặt",
+    "/login": "Đăng nhập",
+    "/register": "Đăng ký",
+    "/forgot-password": "Khôi phục mật khẩu"
+  };
+  return labels[pathname] || "Khám phá không gian";
 }

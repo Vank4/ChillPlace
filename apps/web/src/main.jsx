@@ -5,6 +5,7 @@ import { App } from "./app/App.jsx";
 import { initializeThemePreference } from "./services/settings.service.js";
 import "./styles/global.css";
 import "./styles/theme.css";
+import "./styles/polish.css";
 
 initializeThemePreference();
 

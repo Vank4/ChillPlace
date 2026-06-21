@@ -95,7 +95,7 @@ export function CreatorDraftsPage() {
       <section className="creator-draft-grid" aria-label="Danh sách bản nháp">
         {filteredDrafts.map((draft) => (
           <article className="creator-draft-card" key={draft.id}>
-            <img src={draft.imageUrl} alt="" />
+            <img src={draft.imageUrl} alt="" loading="lazy" decoding="async" />
             <div>
               <span>
                 <Clock3 size={13} />

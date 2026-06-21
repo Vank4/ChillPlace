@@ -105,7 +105,7 @@ export function CreatorPostsPage() {
       <section className="creator-post-list" aria-label="Danh sách bài viết">
         {filteredPosts.map((post) => (
           <article className="creator-post-card" key={post.id}>
-            <img src={post.imageUrl} alt="" />
+            <img src={post.imageUrl} alt="" loading="lazy" decoding="async" />
             <div className="creator-post-card__content">
               <div className="creator-post-card__topline">
                 <span className={`creator-status creator-status--${post.status}`}>

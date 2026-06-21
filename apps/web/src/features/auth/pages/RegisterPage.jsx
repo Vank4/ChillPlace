@@ -142,7 +142,7 @@ export function RegisterPage() {
   return (
     <main className="register-page">
       <section className="register-visual" aria-label="Cộng đồng ChillPlace">
-        <img src={desktopImage} alt="" />
+        <img src={desktopImage} alt="" loading="eager" decoding="async" fetchPriority="high" />
         <div className="register-visual__shade" />
         <div className="register-visual__content">
           <Link to="/">ChillPlace</Link>
@@ -156,7 +156,7 @@ export function RegisterPage() {
           <footer>
             <span className="register-community">
               {communityAvatars.map((avatar) => (
-                <img key={avatar} src={avatar} alt="" />
+                <img key={avatar} src={avatar} alt="" loading="lazy" decoding="async" />
               ))}
             </span>
             <strong>+5k người đã tham gia hôm nay</strong>
@@ -173,7 +173,7 @@ export function RegisterPage() {
         </header>
 
         <div className="register-mobile-hero">
-          <img src={mobileImage} alt="" />
+          <img src={mobileImage} alt="" decoding="async" />
           <div>
             <h1>Bắt đầu hành trình của bạn</h1>
             <p>Tham gia cộng đồng khám phá lớn nhất</p>

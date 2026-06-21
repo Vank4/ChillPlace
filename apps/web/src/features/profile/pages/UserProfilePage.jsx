@@ -129,13 +129,13 @@ export function UserProfilePage() {
     <main className="profile-page">
       <section className="profile-page__header">
         <div className="profile-cover">
-          <img src={profile.coverUrl} alt="Ảnh bìa hồ sơ" />
+          <img src={profile.coverUrl} alt="Ảnh bìa hồ sơ" loading="eager" decoding="async" fetchPriority="high" />
           <div className="profile-cover__shade" />
         </div>
 
         <div className="profile-identity">
           <div className="profile-avatar">
-            <img src={profile.avatarUrl} alt={`Ảnh đại diện ${profile.name}`} />
+            <img src={profile.avatarUrl} alt={`Ảnh đại diện ${profile.name}`} decoding="async" />
             <span title="Tài khoản đã xác minh">
               <CheckCircle2 size={18} />
             </span>
@@ -306,7 +306,7 @@ function EditProfileDialog({ profile, onClose, onSave }) {
         </header>
 
         <div className="profile-dialog__preview">
-          <img src={draft.avatarUrl || profile.avatarUrl} alt="" />
+          <img src={draft.avatarUrl || profile.avatarUrl} alt="" loading="lazy" decoding="async" />
           <span><CheckCircle2 size={17} /></span>
         </div>
 
